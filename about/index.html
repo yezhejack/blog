@@ -3,23 +3,19 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>统计自然语言处理基础-第九章-马尔可夫模型 | JackYip</title>
+    <title>about | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Natural Language Processing,马尔科夫,HMM" />
-    
-    <meta name="description" content="马尔可夫模型（HMM）">
-<meta property="og:type" content="article">
-<meta property="og:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
-<meta property="og:url" content="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/index.html">
+    <meta name="description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about">
+<meta property="og:url" content="http://yezhejack.github.io/about/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="马尔可夫模型（HMM）">
-<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-04T14:14:52.000Z">
+<meta property="og:description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
+<meta property="og:updated_time" content="2016-05-02T11:31:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
-<meta name="twitter:description" content="马尔可夫模型（HMM）">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta name="twitter:title" content="about">
+<meta name="twitter:description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,49 +149,31 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/NLP/">NLP</a>
+    <em class="page-title-link" data-url="/about/index.html">about</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-HMM隐马尔科夫模型" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        统计自然语言处理基础-第九章-马尔可夫模型
+        about
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/05/01/HMM隐马尔科夫模型/" class="article-date">
-    <time datetime="2016-05-01T01:46:50.000Z" itemprop="datePublished">2016-05-01</time>
+            <a href="/about/index.html" class="article-date">
+    <time datetime="2015-12-30T02:41:57.000Z" itemprop="datePublished">2015-12-30</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HMM/">HMM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/马尔科夫/">马尔科夫</a></li></ul>
-
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="马尔可夫模型"><a href="#马尔可夫模型" class="headerlink" title="马尔可夫模型"></a>马尔可夫模型</h1><h2 id="后向过程"><a href="#后向过程" class="headerlink" title="后向过程"></a>后向过程</h2><p>这个过程是和前向相对应的，所表示的意思是从当前t时刻开始，观测到$T$这样的观测序列，并且知道t时刻的隐藏状态是$X_{t}$。在给定的模型$\mu$的情况下，能观察到之前的序列的概率就称为后向过程。给出的公式如下：</p>
-<center><br><span>$\beta _{i}(t)=P(o_{t}...o_{T},X_{t},\mu)$</span><!-- Has MathJax --><br></center>
-
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><center><br><span>$\beta _{i}(T +1)=1, 1\leq i\leq N$</span><!-- Has MathJax --><br></center>
-
-<h3 id="推导"><a href="#推导" class="headerlink" title="推导"></a>推导</h3><center><br><span>$\beta _{i}(t)=\sum_{j+1}^{N}a_{ij}b_{ijo_t}\beta _{j}(t+1)  1\leq t\leq T  1\leq i \leq N$</span><!-- Has MathJax --><br></center>
-
-<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\pi_i\beta_i(1)$</span><!-- Has MathJax --><br></center>
-
-
-<h2 id="前向后向的结合"><a href="#前向后向的结合" class="headerlink" title="前向后向的结合"></a>前向后向的结合</h2><p>我们可以让前向后向公式结合来计算一个观测序列的概率</p>
-<center><br><span>$P(O,X_{t}=i|\mu)=\alpha_{i}(t)\beta_{i}(t)$</span><!-- Has MathJax --><br></center>
-
-<p>有了这个中间公式之后，我们就可以计算</p>
-<center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\alpha_{i}(t)\beta_{i}(t),1\leq t \leq T +1$</span><!-- Has MathJax --><br></center>
-
-
+            <p>E-mail: yezhejack at gmail.com<br>GitHub: <a href="https://github.com/yezhejack" target="_blank" rel="external">https://github.com/yezhejack</a></p>
 
         </div>
         <footer class="article-footer">
@@ -203,7 +181,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/" data-id="cinsygprs0002iugel5v6utnb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/about/index.html" data-id="cinsygprq0001iuge4wgv1s0x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -267,16 +245,6 @@ var _hmt = _hmt || [];
     </div>
 </article>
 
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-    
-    </section>
-
                         </div>
                     </section>
                     <aside id="sidebar">
@@ -319,29 +287,6 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            基于hexo开源架构的GitHub博客维护
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2016/04/25/LibSVM使用/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">LibSVM使用</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -524,13 +469,13 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/';
+    var disqus_url = 'http://yezhejack.github.io/about/index.html';
     
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
