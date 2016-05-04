@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    <title>linux常见操作 | JackYip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Linux,服务器" />
+    
+    <meta name="description" content="基于ubuntu的linux以及screen配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux常见操作">
+<meta property="og:url" content="http://yezhejack.github.io/2015/12/20/linux常见操作/index.html">
+<meta property="og:site_name" content="JackYip">
+<meta property="og:description" content="基于ubuntu的linux以及screen配置">
+<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta property="og:updated_time" content="2016-05-04T14:16:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux常见操作">
+<meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:creator" content="@JackYezhe">
+<link rel="publisher" href="yezhejack@gmail.com">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-77290061-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?diE3krA1NOXASEry";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-linux常见操作" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        linux常见操作
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2015/12/20/linux常见操作/" class="article-date">
+    <time datetime="2015-12-20T08:23:15.000Z" itemprop="datePublished">2015-12-20</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><h4 id="增加一个用户"><a href="#增加一个用户" class="headerlink" title="增加一个用户"></a>增加一个用户</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g <span class="params">&lt;初始组名称&gt;</span> -G <span class="params">&lt;附属组名称&gt;</span> -m -d <span class="meta-keyword">/home/</span><span class="params">&lt;username&gt;</span> -s <span class="meta-keyword">/bin/</span>bash <span class="params">&lt;username&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">g</span> benben -<span class="keyword">G</span> sudo -<span class="keyword">m</span> -<span class="keyword">d</span> /home/zhangsan -s /bin/bash zhangsan</span><br><span class="line">passwd zhangsan</span><br></pre></td></tr></table></figure>
+<p>上面新建了一个用户，属于笨笨组的，同时也属于sudo组，拥有sudo权限，是个拥有很高权限的管理员，仅次于root。同时他的目录定义在了<code>/home/zhangsan</code>，同时将shell指定为/bin/bash，第二句话会设置一个密码。 </p>
+<p>如果只是一个普通的用户，不希望让他拥有sudo权限的话，将<code>-G</code>参数去掉，只让他属于benben组即可。这样这个帐户就无法安装东西，必须联系管理员才能进行安装。</p>
+<h4 id="公共工作空间"><a href="#公共工作空间" class="headerlink" title="公共工作空间"></a>公共工作空间</h4><p>为了让大家共同合作，可以利用管理员账户建立一个目录，这个目录的组别属于benben，也就是需要合作的人的共同组别。然后将这个目录的属于组修改为benben。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">chgrp</span> -R <span class="keyword">benben </span>/mnt/<span class="keyword">benben</span></span><br></pre></td></tr></table></figure>
+<p>然后再修改这个目录的权限为775，也就是rwx rwx r_x，拥有者和组成员拥有读、写、执行权限，而其他人只拥有读、执行权限。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">775</span> <span class="meta-keyword">/mnt/</span>benben</span><br></pre></td></tr></table></figure>
+<h4 id="为用户增加sudo权限"><a href="#为用户增加sudo权限" class="headerlink" title="为用户增加sudo权限"></a>为用户增加sudo权限</h4><p>登陆到root账号，然后输入下面的命令，以<code>zhangsan</code>这个用户为例</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo zhangsan</span><br></pre></td></tr></table></figure>
+<p>也可以在<code>/etc/group</code>中在sudo后面加上<code>zhangsan</code></p>
+<h3 id="增加用户到另一个用户组中"><a href="#增加用户到另一个用户组中" class="headerlink" title="增加用户到另一个用户组中"></a>增加用户到另一个用户组中</h3><p>我新建了一个用户yezhe，然后想要把它增加到用户组sudo中，以便于使用sudo命令，这里需要使用root用户</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo yezhe</span><br></pre></td></tr></table></figure>
+<h3 id="更改用户的工作目录"><a href="#更改用户的工作目录" class="headerlink" title="更改用户的工作目录"></a>更改用户的工作目录</h3><p>需要用root权限</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /<span class="built_in">home</span>/yezhe yezhe</span><br></pre></td></tr></table></figure>
+<h3 id="如果出现一个用户在命令行无法显示名字和路径"><a href="#如果出现一个用户在命令行无法显示名字和路径" class="headerlink" title="如果出现一个用户在命令行无法显示名字和路径"></a>如果出现一个用户在命令行无法显示名字和路径</h3><p>这个情况下我在更改了<code>/etc/passwd</code>之后就可以了，也就是给它添加一个shell，一般默认是和root一样用同一个shell:<code>/bin/bash</code></p>
+<h3 id="screen设置"><a href="#screen设置" class="headerlink" title="screen设置"></a>screen设置</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">Set</span> default <span class="comment">encoding using utf8</span></span><br><span class="line">defutf8 <span class="comment">on</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 解决中文乱码,这个要按需配置</span><br><span class="line">defencoding <span class="comment">utf8</span></span><br><span class="line">encoding <span class="comment">utf8 utf8</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#兼容shell 使得<span class="comment">.bashrc .profile</span> /etc/<span class="comment">profile</span>等里面的别名等设置生效</span><br><span class="line">shell <span class="comment">-$SHELL</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">set</span> <span class="comment">the startup message</span></span><br><span class="line">startup_message <span class="comment">off</span></span><br><span class="line">term <span class="comment">linux</span></span><br><span class="line"></span><br><span class="line">## 解决无法滚动</span><br><span class="line">termcapinfo <span class="comment">xterm</span>|<span class="comment">xterms</span>|<span class="comment">xs ti@:te=\E[2J</span></span><br><span class="line"> </span><br><span class="line"># 屏幕缓冲区行数</span><br><span class="line">defscrollback <span class="comment">10000</span></span><br><span class="line"> </span><br><span class="line"># 下标签设置</span><br><span class="line">hardstatus <span class="comment">on</span></span><br><span class="line">caption <span class="comment">always</span> <span class="comment">"%&#123;= kw&#125;%-w%&#123;= kG&#125;%&#123;+b&#125;[%n %t]%&#123;-b&#125;%&#123;= kw&#125;%+w %=%d %M %0c %&#123;g&#125;%H%&#123;-&#125;"</span></span><br><span class="line"> </span><br><span class="line">#关闭闪屏</span><br><span class="line">vbell <span class="comment">off</span></span><br><span class="line"> </span><br><span class="line">#Keboard <span class="comment">binding</span></span><br><span class="line"># bind <span class="comment">Alt+z to move to previous window</span></span><br><span class="line">bindkey <span class="comment">^[z prev</span></span><br><span class="line"># bind <span class="comment">Alt+x to move to next window</span></span><br><span class="line">bindkey <span class="comment">^[x next</span></span><br><span class="line"></span><br><span class="line"># bind <span class="comment">Alt</span>`~<span class="comment">= to screen0</span>~<span class="comment">12</span></span><br><span class="line">bindkey <span class="comment">"^[`"</span><span class="comment"> select 0</span></span><br><span class="line">bindkey <span class="comment">"^[1"</span><span class="comment"> select 1</span></span><br><span class="line">bindkey <span class="comment">"^[2"</span><span class="comment"> select 2</span></span><br><span class="line">bindkey <span class="comment">"^[3"</span><span class="comment"> select 3</span></span><br><span class="line">bindkey <span class="comment">"^[4"</span><span class="comment"> select 4</span></span><br><span class="line">bindkey <span class="comment">"^[5"</span><span class="comment"> select 5</span></span><br><span class="line">bindkey <span class="comment">"^[6"</span><span class="comment"> select 6</span></span><br><span class="line">bindkey <span class="comment">"^[7"</span><span class="comment"> select 7</span></span><br><span class="line">bindkey <span class="comment">"^[8"</span><span class="comment"> select 8</span></span><br><span class="line">bindkey <span class="comment">"^[9"</span><span class="comment"> select 9</span></span><br><span class="line">bindkey <span class="comment">"^[0"</span><span class="comment"> select 10</span></span><br><span class="line">bindkey <span class="comment">"^[-"</span><span class="comment"> select 11</span></span><br><span class="line">bindkey <span class="comment">"^[="</span><span class="comment"> select 12</span></span><br><span class="line"># bind <span class="comment">F5 to create a new screen</span></span><br><span class="line">bindkey <span class="comment">-k k5 screen</span></span><br><span class="line"># bind <span class="comment">F6 to detach screen session (to background)</span></span><br><span class="line">bindkey <span class="comment">-k k6 detach</span></span><br><span class="line"># bind <span class="comment">F7 to kill current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k7 kill</span>``</span><br><span class="line"># bind <span class="comment">F8 to rename current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k8 title</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在screen中，一个session中可以包含多个windows</li>
+<li><code>C-a A</code> 用于修改当前标签的名字</li>
+<li><code>C-a k</code> 关闭当前windows</li>
+</ul>
+<h2 id="运维方案"><a href="#运维方案" class="headerlink" title="运维方案"></a>运维方案</h2><ul>
+<li>这个方案以ubuntu 14.04 为例，并且是使用vultr的服务器。</li>
+</ul>
+<h3 id="修改root账号的密码"><a href="#修改root账号的密码" class="headerlink" title="修改root账号的密码"></a>修改root账号的密码</h3><ul>
+<li>登录root账号</li>
+<li>使用 <code>passwd root</code>命令，即可根据提示修改密码</li>
+</ul>
+<h3 id="增加个人用户，并使其拥有sudo权限"><a href="#增加个人用户，并使其拥有sudo权限" class="headerlink" title="增加个人用户，并使其拥有sudo权限"></a>增加个人用户，并使其拥有sudo权限</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">d</span> /home/zhangsan -<span class="keyword">m</span> zhangsan</span><br><span class="line">passwd zhangsan</span><br><span class="line">usermod -<span class="keyword">G</span> sudo zhangsan</span><br></pre></td></tr></table></figure>
+<p>第一行的命令同时为<code>zhangsan</code>这个账户增加了一个工作目录，第二行为修改密码，第三行为修改这个账户的权限，将其加入到sudo的组中，到此为止一个简单的linxu远程服务器的用户部分就已经配置好了。</p>
+<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> <span class="symbol">&lt;name&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看主机最近一次的启动时间"><a href="#查看主机最近一次的启动时间" class="headerlink" title="查看主机最近一次的启动时间"></a>查看主机最近一次的启动时间</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">who</span> -b</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cinsxq0ku000rdege54msn1ce" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/JackYezhe/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/zhe.ye.921/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/yezhejack" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jacklouisyeah/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            redis
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2015/12/10/git以及github的用法/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Git以及GitHub的用法</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="基于hexo开源架构的GitHub博客维护" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="title">基于hexo开源架构的GitHub博客维护</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T16:00:00.000Z" itemprop="datePublished">2016-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/01/HMM隐马尔科夫模型/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第九章-马尔可夫模型" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/01/HMM隐马尔科夫模型/" class="title">统计自然语言处理基础-第九章-马尔可夫模型</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T01:46:50.000Z" itemprop="datePublished">2016-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/25/LibSVM使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="LibSVM使用" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/04/25/LibSVM使用/" class="title">LibSVM使用</a></p>
+                            <p class="item-date"><time datetime="2016-04-25T15:21:02.000Z" itemprop="datePublished">2016-04-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第十三章-机器翻译" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="title">统计自然语言处理基础-第十三章-机器翻译</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T06:22:00.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/NLP入门/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="NLP入门" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/NLP入门/" class="title">NLP入门</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T05:37:47.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 16.67px;">Natural Language Processing</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 13.33px;">OS X</a> <a href="/tags/STL/" style="font-size: 20px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/编程语言/" style="font-size: 13.33px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.google.com/ncr">Google</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 yezhejack</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'yezhejack';
+    
+    
+    var disqus_url = 'http://yezhejack.github.io/2015/12/20/linux常见操作/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

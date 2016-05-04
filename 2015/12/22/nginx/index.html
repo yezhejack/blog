@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    <title>nginx | JackYip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Server,Nginx" />
+    
+    <meta name="description" content="Nginx安装和配置，Nginx访问量统计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx">
+<meta property="og:url" content="http://yezhejack.github.io/2015/12/22/nginx/index.html">
+<meta property="og:site_name" content="JackYip">
+<meta property="og:description" content="Nginx安装和配置，Nginx访问量统计">
+<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta property="og:updated_time" content="2016-05-04T14:16:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx">
+<meta name="twitter:description" content="Nginx安装和配置，Nginx访问量统计">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:creator" content="@JackYezhe">
+<link rel="publisher" href="yezhejack@gmail.com">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-77290061-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?diE3krA1NOXASEry";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-nginx" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        nginx
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2015/12/22/nginx/" class="article-date">
+    <time datetime="2015-12-21T16:26:18.000Z" itemprop="datePublished">2015-12-22</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="keyword">using</span> PCRE library: /mnt/application/pcre<span class="number">-8.32</span></span><br><span class="line">  + OpenSSL library is <span class="keyword">not</span> used</span><br><span class="line">  + <span class="keyword">using</span> builtin md5 code</span><br><span class="line">  + sha1 library is <span class="keyword">not</span> found</span><br><span class="line">  + <span class="keyword">using</span> zlib library: /mnt/application/zlib<span class="number">-1.2</span><span class="number">.8</span></span><br><span class="line"></span><br><span class="line">  nginx path prefix: <span class="string">"/usr/local/nginx"</span></span><br><span class="line">  nginx binary <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/sbin/nginx"</span></span><br><span class="line">  nginx configuration prefix: <span class="string">"/usr/local/nginx/conf"</span></span><br><span class="line">  nginx configuration <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/conf/nginx.conf"</span></span><br><span class="line">  nginx pid <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/nginx.pid"</span></span><br><span class="line">  nginx error <span class="built_in">log</span> <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/error.log"</span></span><br><span class="line">  nginx <span class="keyword">http</span> access <span class="built_in">log</span> <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/access.log"</span></span><br><span class="line">  nginx <span class="keyword">http</span> client request body temporary <span class="built_in">files</span>: <span class="string">"client_body_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> proxy temporary <span class="built_in">files</span>: <span class="string">"proxy_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> fastcgi temporary <span class="built_in">files</span>: <span class="string">"fastcgi_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> uwsgi temporary <span class="built_in">files</span>: <span class="string">"uwsgi_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> scgi temporary <span class="built_in">files</span>: <span class="string">"scgi_temp"</span></span><br></pre></td></tr></table></figure>
+<h3 id="从源码安装nginx"><a href="#从源码安装nginx" class="headerlink" title="从源码安装nginx"></a>从源码安装nginx</h3><h3 id="拷贝nginx-到sbin"><a href="#拷贝nginx-到sbin" class="headerlink" title="拷贝nginx 到sbin"></a>拷贝nginx 到sbin</h3><h3 id="分析access-log-访问量"><a href="#分析access-log-访问量" class="headerlink" title="分析access.log 访问量"></a>分析access.log 访问量</h3><p>access.log是记录了所有的nginx的访问链接，并且纪录了这些访问的结果。可以使用python中的正则表达式来对其进行解析。这里需要python的re模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">ip = <span class="string">r"?P&lt;ip&gt;[\d.]*"</span></span><br><span class="line">date = <span class="string">r"?P&lt;date&gt;\d+"</span></span><br><span class="line">month = <span class="string">r"?P&lt;month&gt;\w+"</span></span><br><span class="line">year = <span class="string">r"?P&lt;year&gt;\d+"</span></span><br><span class="line">log_time = <span class="string">r"?P&lt;time&gt;\S+"</span></span><br><span class="line">method = <span class="string">r"?P&lt;method&gt;\S+"</span></span><br><span class="line">request = <span class="string">r"?P&lt;request&gt;\S+"</span></span><br><span class="line">status = <span class="string">r"?P&lt;status&gt;\d+"</span></span><br><span class="line">bodyBytesSent = <span class="string">r"?P&lt;bodyBytesSent&gt;\d+"</span></span><br><span class="line">refer = <span class="string">r"""?P&lt;refer&gt;</span><br><span class="line">         [^\"]*</span><br><span class="line">         """</span></span><br><span class="line">userAgent=<span class="string">r"""?P&lt;userAgent&gt;</span><br><span class="line">                .*</span><br><span class="line">               """</span></span><br><span class="line">p = re.compile(<span class="string">r"(%s)\ -\ -\ \[(%s)/(%s)/(%s)\:(%s)\ [\S]+\]\ \"(%s)?[\s]?(%s)?.*?\"\ (%s)\ (%s)\ \"(%s)\"\ \"(%s).*?\""</span> %( ip, date, month, year, log_time, method, request, status, bodyBytesSent, refer, userAgent ), re.VERBOSE)</span><br><span class="line">m = re.findall(p, line)</span><br></pre></td></tr></table></figure>
+<h3 id="分割access-log"><a href="#分割access-log" class="headerlink" title="分割access.log"></a>分割access.log</h3>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2015/12/22/nginx/" data-id="cinsxq0l0000ydegew78gdhee" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/JackYezhe/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/zhe.ye.921/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/yezhejack" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jacklouisyeah/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/03/28/安装libsvm和gnuplot/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            安装libsvm和gnuplot
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">mpv播放器使用指南</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="基于hexo开源架构的GitHub博客维护" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="title">基于hexo开源架构的GitHub博客维护</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T16:00:00.000Z" itemprop="datePublished">2016-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/01/HMM隐马尔科夫模型/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第九章-马尔可夫模型" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/01/HMM隐马尔科夫模型/" class="title">统计自然语言处理基础-第九章-马尔可夫模型</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T01:46:50.000Z" itemprop="datePublished">2016-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/25/LibSVM使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="LibSVM使用" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/04/25/LibSVM使用/" class="title">LibSVM使用</a></p>
+                            <p class="item-date"><time datetime="2016-04-25T15:21:02.000Z" itemprop="datePublished">2016-04-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第十三章-机器翻译" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="title">统计自然语言处理基础-第十三章-机器翻译</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T06:22:00.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/NLP入门/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="NLP入门" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/NLP入门/" class="title">NLP入门</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T05:37:47.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 16.67px;">Natural Language Processing</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 13.33px;">OS X</a> <a href="/tags/STL/" style="font-size: 20px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/编程语言/" style="font-size: 13.33px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.google.com/ncr">Google</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 yezhejack</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'yezhejack';
+    
+    
+    var disqus_url = 'http://yezhejack.github.io/2015/12/22/nginx/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>

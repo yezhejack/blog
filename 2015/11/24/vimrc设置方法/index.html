@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    <title>vimrc设置方法 | JackYip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Linux,vim" />
+    
+    <meta name="description" content="vimrc设置方法，高亮，显示行数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vimrc设置方法">
+<meta property="og:url" content="http://yezhejack.github.io/2015/11/24/vimrc设置方法/index.html">
+<meta property="og:site_name" content="JackYip">
+<meta property="og:description" content="vimrc设置方法，高亮，显示行数">
+<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta property="og:updated_time" content="2016-05-04T14:21:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vimrc设置方法">
+<meta name="twitter:description" content="vimrc设置方法，高亮，显示行数">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:creator" content="@JackYezhe">
+<link rel="publisher" href="yezhejack@gmail.com">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-77290061-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?diE3krA1NOXASEry";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-vimrc设置方法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        vimrc设置方法
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2015/11/24/vimrc设置方法/" class="article-date">
+    <time datetime="2015-11-24T08:26:22.000Z" itemprop="datePublished">2015-11-24</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="vimrc的位置"><a href="#vimrc的位置" class="headerlink" title=".vimrc的位置"></a>.vimrc的位置</h3><p>OS X和Linux的系统中，全局的vimrc的位置是/usr/share/vim/.vimrc，这个是不用更改的，可能也不能更改，但是我们可以将其复制到~/目录下，也就是/<home>/目录下，然后再进行更改。因为这个目录下的.vimrc的优先级比前者高，所以会优先使用这个。</home></p>
+<h3 id="vimrc的配置"><a href="#vimrc的配置" class="headerlink" title=".vimrc的配置"></a>.vimrc的配置</h3><p>从网络上搜刮来的现成配置<br><figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" =&gt; General</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" Sets how many lines of history VIM has to remember</span><br><span class="line">set history=700</span><br><span class="line"></span><br><span class="line">"</span> Enable filetype plugins</span><br><span class="line">filetype plugin on</span><br><span class="line">filetype indent on</span><br><span class="line"></span><br><span class="line"><span class="string">" Set to auto read when a file is changed from the outside</span><br><span class="line">set autoread</span><br><span class="line"></span><br><span class="line">"</span> With a map leader it's possible to <span class="keyword">do</span> extra key combinations</span><br><span class="line"><span class="string">" like &lt;leader&gt;w saves the current file</span><br><span class="line">let mapleader = "</span>,<span class="string">"</span><br><span class="line">let g:mapleader = "</span>,<span class="string">"</span><br><span class="line"></span><br><span class="line">"</span> Fast saving</span><br><span class="line">nmap &lt;leader&gt;w :w!&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" =&gt; VIM user interface</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" Set 7 lines to the cursor - when moving vertically using j/k</span><br><span class="line">set so=7</span><br><span class="line"></span><br><span class="line">"</span> Turn on the WiLd menu</span><br><span class="line">set wildmenu</span><br><span class="line"></span><br><span class="line"><span class="string">" Ignore compiled files</span><br><span class="line">set wildignore=*.o,*~,*.pyc</span><br><span class="line"></span><br><span class="line">"Always</span> show current position</span><br><span class="line">set ruler</span><br><span class="line"></span><br><span class="line"><span class="string">" Height of the command bar</span><br><span class="line">set cmdheight=2</span><br><span class="line"></span><br><span class="line">"</span> A buffer becomes hidden when it is abandoned</span><br><span class="line">set hid</span><br><span class="line"></span><br><span class="line"><span class="string">" Configure backspace so it acts as it should act</span><br><span class="line">set backspace=eol,start,indent</span><br><span class="line">set whichwrap+=&lt;,&gt;,h,l</span><br><span class="line"></span><br><span class="line">"</span> Ignore case when searching</span><br><span class="line">set ignorecase</span><br><span class="line"></span><br><span class="line"><span class="string">" When searching try to be smart about cases </span><br><span class="line">set smartcase</span><br><span class="line"></span><br><span class="line">"</span> Highlight search results</span><br><span class="line">set hlsearch</span><br><span class="line"></span><br><span class="line"><span class="string">" Makes search act like search in modern browsers</span><br><span class="line">set incsearch</span><br><span class="line"></span><br><span class="line">"</span> Don't redraw <span class="keyword">while</span> executing macros (good performance config)</span><br><span class="line">set lazyredraw</span><br><span class="line"></span><br><span class="line"><span class="string">" For regular expressions turn magic on</span><br><span class="line">set magic</span><br><span class="line"></span><br><span class="line">"</span> Show matching brackets when text indicator is over them</span><br><span class="line">set showmatch</span><br><span class="line"><span class="string">" How many tenths of a second to blink when matching brackets</span><br><span class="line">set mat=2</span><br><span class="line"></span><br><span class="line">"</span> No annoying sound on errors</span><br><span class="line">set noerrorbells</span><br><span class="line">set novisualbell</span><br><span class="line">set t_vb=</span><br><span class="line">set tm=<span class="number">500</span></span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line"><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" =&gt; Colors and Fonts</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" Enable syntax highlighting</span><br><span class="line">syntax enable</span><br><span class="line"></span><br><span class="line">colorscheme desert</span><br><span class="line">set background=dark</span><br><span class="line"></span><br><span class="line">"</span> <span class="built_in">Set</span> extra options when running <span class="keyword">in</span> GUI mode</span><br><span class="line"><span class="keyword">if</span> has(<span class="string">"gui_running"</span>)</span><br><span class="line">    set guioptions-=T</span><br><span class="line">    set guioptions+=<span class="literal">e</span></span><br><span class="line">    set t_Co=<span class="number">256</span></span><br><span class="line">    set guitablabel=%M\ %t</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"><span class="string">" Set utf8 as standard encoding and en_US as the standard language</span><br><span class="line">set encoding=utf8</span><br><span class="line"></span><br><span class="line">"</span> Use Unix as the standard file <span class="keyword">type</span></span><br><span class="line">set ffs=unix,dos,mac</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" =&gt; Files, backups and undo</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" Turn backup off, since most stuff is in SVN, git et.c anyway...</span><br><span class="line">set nobackup</span><br><span class="line">set nowb</span><br><span class="line">set noswapfile</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""</span></span><br><span class="line"><span class="string">" =&gt; Text, tab and indent related</span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""</span></span><br><span class="line"><span class="string">" Use spaces instead of tabs</span><br><span class="line">set expandtab</span><br><span class="line"></span><br><span class="line">"</span> Be smart when <span class="keyword">using</span> tabs ;)</span><br><span class="line">set smarttab</span><br><span class="line"></span><br><span class="line"><span class="string">" 1 tab == 4 spaces</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set tabstop=4</span><br><span class="line"></span><br><span class="line">"</span> Linebreak on <span class="number">500</span> characters</span><br><span class="line">set lbr</span><br><span class="line">set tw=<span class="number">500</span></span><br><span class="line"></span><br><span class="line">set ai <span class="string">"Auto indent</span><br><span class="line">set si "Smart</span> indent</span><br><span class="line">set wrap <span class="string">"Wrap lines</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""""</span><br><span class="line">" =&gt; Visual mode related</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" Visual mode pressing * or # searches for the current selection</span><br><span class="line">" Super useful! From an idea by Michael Naumann</span><br><span class="line">vnoremap &lt;silent&gt; * :call VisualSelection('f')&lt;CR&gt;</span><br><span class="line">vnoremap &lt;silent&gt; # :call VisualSelection('b')&lt;CR&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" =&gt; Moving around, tabs, windows and buffers</span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""</span></span><br><span class="line"><span class="string">" Treat long lines as break lines (useful when moving around in them)</span><br><span class="line">map j gj</span><br><span class="line">map k gk</span><br><span class="line"></span><br><span class="line">"</span> Map &lt;Space&gt; to / (search) and Ctrl-&lt;Space&gt; to ? (backwards search)</span><br><span class="line">map &lt;space&gt; /</span><br><span class="line">map &lt;c-space&gt; ?</span><br><span class="line"></span><br><span class="line"><span class="string">" Disable highlight when &lt;leader&gt;&lt;cr&gt; is pressed</span><br><span class="line">map &lt;silent&gt; &lt;leader&gt;&lt;cr&gt; :noh&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">"</span> Smart way to move between windows</span><br><span class="line">map &lt;C-j&gt; &lt;C-W&gt;j</span><br><span class="line">map &lt;C-k&gt; &lt;C-W&gt;k</span><br><span class="line">map &lt;C-h&gt; &lt;C-W&gt;h</span><br><span class="line">map &lt;C-l&gt; &lt;C-W&gt;l</span><br><span class="line"></span><br><span class="line"><span class="string">" Close the current buffer</span><br><span class="line">map &lt;leader&gt;bd :Bclose&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">"</span> Close all the buffers</span><br><span class="line">map &lt;leader&gt;ba :<span class="number">1</span>,<span class="number">1000</span> bd!&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"><span class="string">" Useful mappings for managing tabs</span><br><span class="line">map &lt;leader&gt;tn :tabnew&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;to :tabonly&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tc :tabclose&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;tm :tabmove</span><br><span class="line"></span><br><span class="line">"</span> Opens a new tab with the current buffer's path</span><br><span class="line"><span class="string">" Super useful when editing files in the same directory</span><br><span class="line">map &lt;leader&gt;te :tabedit &lt;c-r&gt;=expand("</span>%:p:<span class="string">h")&lt;cr&gt;/</span><br><span class="line"></span><br><span class="line">"</span> Switch CWD to the directory of the open buffer</span><br><span class="line">map &lt;leader&gt;cd :cd %:p:h&lt;cr&gt;:pwd&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"><span class="string">" Specify the behavior when switching between buffers </span><br><span class="line">try</span><br><span class="line">  set switchbuf=useopen,usetab,newtab</span><br><span class="line">  set stal=2</span><br><span class="line">catch</span><br><span class="line">endtry</span><br><span class="line"></span><br><span class="line">"</span> Return to last edit position when opening files (You want this!)</span><br><span class="line">autocmd BufReadPost *</span><br><span class="line">     \ <span class="keyword">if</span> line(<span class="string">"'\""</span>) &gt; <span class="number">0</span> &amp;&amp; line(<span class="string">"'\""</span>) &lt;= line(<span class="string">"$"</span>) |</span><br><span class="line">     \   exe <span class="string">"normal! g`\""</span> |</span><br><span class="line">     \ endif</span><br><span class="line"><span class="string">" Remember info about open buffers on close</span><br><span class="line">set viminfo^=%</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""""</span><br><span class="line">" =&gt; Status line</span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">"""</span><br><span class="line">" Always show the status line</span><br><span class="line">set laststatus=2</span><br><span class="line"></span><br><span class="line">" Format the status line</span><br><span class="line">set statusline=\ %&#123;HasPaste()&#125;%F%m%r%h\ %w\ \ CWD:\ %r%&#123;getcwd()&#125;%h\ \ \ Line:\ %l</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span></span><br><span class="line"><span class="string">" =&gt; Editing mappings</span><br><span class="line">"</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""""""</span><span class="string">""</span></span><br><span class="line"><span class="string">" Remap VIM 0 to first non-blank character</span><br><span class="line">map 0 ^</span><br><span class="line"></span><br><span class="line">"</span> Move a line of text <span class="keyword">using</span> ALT+[jk] or Comamnd+[jk] on mac</span><br><span class="line">nmap &lt;M-j&gt; mz:m+&lt;cr&gt;<span class="string">`z</span><br><span class="line">nmap &lt;M-k&gt; mz:m-2&lt;cr&gt;`</span>z</span><br><span class="line">vmap &lt;M-j&gt; :m'&gt;+&lt;cr&gt;<span class="string">`&lt;my`</span>&gt;mzgv<span class="string">`yo`</span>z</span><br><span class="line">vmap &lt;M-k&gt; :m'&lt;-<span class="number">2</span>&lt;cr&gt;<span class="string">`&gt;my`</span>&lt;mzgv<span class="string">`yo`</span>z</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> has(<span class="string">"mac"</span>) || has(<span class="string">"macunix"</span>)</span><br><span class="line">  nmap &lt;D-j&gt; &lt;M-j&gt;</span><br><span class="line">  nmap &lt;D-k&gt; &lt;M-k&gt;</span><br><span class="line">  vmap &lt;D-j&gt; &lt;M-j&gt;</span><br><span class="line">  vmap &lt;D-k&gt; &lt;M-k&gt;</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"><span class="string">" Delete trailing white space on save, useful for Python and CoffeeScript ;)</span><br><span class="line">func! DeleteTrailingWS()</span><br><span class="line">  exe "normal</span> <span class="string">mz"</span><br><span class="line">  %s/\s\+$//ge</span><br><span class="line">  exe "normal</span> <span class="string">`z"</span><br><span class="line">endfunc</span><br><span class="line">autocmd BufWrite *.py :call DeleteTrailingWS()</span><br><span class="line">autocmd BufWrite *.coffee :call DeleteTrailingWS()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" =&gt; vimgrep searching and cope displaying</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" When you press gv you vimgrep after the selected text</span><br><span class="line">vnoremap &lt;silent&gt; gv :call VisualSelection('gv')&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">" Open vimgrep and put the cursor in the right position</span><br><span class="line">map &lt;leader&gt;g :vimgrep // **/*.&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;&lt;left&gt;</span><br><span class="line"></span><br><span class="line">" Vimgreps in the current file</span><br><span class="line">map &lt;leader&gt;&lt;space&gt; :vimgrep // &lt;C-R&gt;%&lt;C-A&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;&lt;right&gt;</span><br><span class="line"></span><br><span class="line">" When you press &lt;leader&gt;r you can search and replace the selected text</span><br><span class="line">vnoremap &lt;silent&gt; &lt;leader&gt;r :call VisualSelection('replace')&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">" Do :help cope if you are unsure what cope is. It's super useful!</span><br><span class="line">"</span><br><span class="line">" When you search with vimgrep, display your results in cope by doing:</span><br><span class="line">"   &lt;leader&gt;cc</span><br><span class="line">"</span><br><span class="line">" To go to the next search result do:</span><br><span class="line">"   &lt;leader&gt;n</span><br><span class="line">"</span><br><span class="line">" To go to the previous search results do:</span><br><span class="line">"   &lt;leader&gt;p</span><br><span class="line">"</span><br><span class="line">map &lt;leader&gt;cc :botright cope&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;co ggVGy:tabnew&lt;cr&gt;:set syntax=qf&lt;cr&gt;pgg</span><br><span class="line">map &lt;leader&gt;n :cn&lt;cr&gt;</span><br><span class="line">map &lt;leader&gt;p :cp&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" =&gt; Spell checking</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" Pressing ,ss will toggle and untoggle spell checking</span><br><span class="line">map &lt;leader&gt;ss :setlocal spell!&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">" Shortcuts using &lt;leader&gt;</span><br><span class="line">map &lt;leader&gt;sn ]s</span><br><span class="line">map &lt;leader&gt;sp [s</span><br><span class="line">map &lt;leader&gt;sa zg</span><br><span class="line">map &lt;leader&gt;s? z=</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" =&gt; Misc</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" Remove the Windows ^M - when the encodings gets messed up</span><br><span class="line">noremap &lt;Leader&gt;m mmHmt:%s/&lt;C-V&gt;&lt;cr&gt;//ge&lt;cr&gt;'tzt'm</span><br><span class="line"></span><br><span class="line">" Quickly open a buffer for scripbble</span><br><span class="line">map &lt;leader&gt;q :e ~/buffer&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">" Toggle paste mode on and off</span><br><span class="line">map &lt;leader&gt;pp :setlocal paste!&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" =&gt; Helper functions</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">function! CmdLine(str)</span><br><span class="line">    exe "menu Foo.Bar :" . a:str</span><br><span class="line">    emenu Foo.Bar</span><br><span class="line">    unmenu Foo</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">function! VisualSelection(direction) range</span><br><span class="line">    let l:saved_reg = @"</span><br><span class="line">    execute "normal! vgvy"</span><br><span class="line"></span><br><span class="line">    let l:pattern = escape(@", '\\/.*$^~[]')</span><br><span class="line">    let l:pattern = substitute(l:pattern, "\n$", "", "")</span><br><span class="line"></span><br><span class="line">    if a:direction == 'b'</span><br><span class="line">        execute "normal ?" . l:pattern . "^M"</span><br><span class="line">    elseif a:direction == 'gv'</span><br><span class="line">        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')</span><br><span class="line">    elseif a:direction == 'replace'</span><br><span class="line">        call CmdLine("%s" . '/'. l:pattern . '/')</span><br><span class="line">    elseif a:direction == 'f'</span><br><span class="line">        execute "normal /" . l:pattern . "^M"</span><br><span class="line">    endif</span><br><span class="line"></span><br><span class="line">    let @/ = l:pattern</span><br><span class="line">    let @" = l:saved_reg</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">" Returns true if paste mode is enabled</span><br><span class="line">function! HasPaste()</span><br><span class="line">    if &amp;paste</span><br><span class="line">        return 'PASTE MODE  '</span><br><span class="line">    en</span><br><span class="line">    return ''</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">" Don't close window, when deleting a buffer</span><br><span class="line">command! Bclose call &lt;SID&gt;BufcloseCloseIt()</span><br><span class="line">function! &lt;SID&gt;BufcloseCloseIt()</span><br><span class="line">   let l:currentBufNum = bufnr("%")</span><br><span class="line">   let l:alternateBufNum = bufnr("#")</span><br><span class="line"></span><br><span class="line">   if buflisted(l:alternateBufNum)</span><br><span class="line">     buffer #</span><br><span class="line">   else</span><br><span class="line">     bnext</span><br><span class="line">   endif</span><br><span class="line"></span><br><span class="line">   if bufnr("%") == l:currentBufNum</span><br><span class="line">     new</span><br><span class="line">   endif</span><br><span class="line"></span><br><span class="line">   if buflisted(l:currentBufNum)</span><br><span class="line">     execute("bdelete! ".l:currentBufNum)</span><br><span class="line">   endif</span><br><span class="line">endfunction</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2015/11/24/vimrc设置方法/" data-id="cinsxq0ld001ddegeuxif3eha" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/JackYezhe/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/zhe.ye.921/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/yezhejack" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jacklouisyeah/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2015/11/28/OS-X中安装虚拟linux服务器/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            OS_X中安装虚拟linux服务器
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2015/11/24/sublime使用方法/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">sublime使用方法</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="基于hexo开源架构的GitHub博客维护" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" class="title">基于hexo开源架构的GitHub博客维护</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T16:00:00.000Z" itemprop="datePublished">2016-05-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/01/HMM隐马尔科夫模型/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第九章-马尔可夫模型" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/01/HMM隐马尔科夫模型/" class="title">统计自然语言处理基础-第九章-马尔可夫模型</a></p>
+                            <p class="item-date"><time datetime="2016-05-01T01:46:50.000Z" itemprop="datePublished">2016-05-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/25/LibSVM使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="LibSVM使用" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/04/25/LibSVM使用/" class="title">LibSVM使用</a></p>
+                            <p class="item-date"><time datetime="2016-04-25T15:21:02.000Z" itemprop="datePublished">2016-04-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="统计自然语言处理基础-第十三章-机器翻译" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="title">统计自然语言处理基础-第十三章-机器翻译</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T06:22:00.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/04/17/NLP入门/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="NLP入门" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/04/17/NLP入门/" class="title">NLP入门</a></p>
+                            <p class="item-date"><time datetime="2016-04-17T05:37:47.000Z" itemprop="datePublished">2016-04-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 16.67px;">Natural Language Processing</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 13.33px;">OS X</a> <a href="/tags/STL/" style="font-size: 20px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/编程语言/" style="font-size: 13.33px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.google.com/ncr">Google</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 yezhejack</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'yezhejack';
+    
+    
+    var disqus_url = 'http://yezhejack.github.io/2015/11/24/vimrc设置方法/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
