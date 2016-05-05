@@ -3,23 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>linux常见操作 | JackYip</title>
+    <title>统计自然语言处理基础-第九章-马尔可夫模型 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Linux,服务器" />
+        <meta name="keywords" content="Natural Language Processing,马尔科夫,HMM" />
     
-    <meta name="description" content="基于ubuntu的linux以及screen配置">
+    <meta name="description" content="马尔可夫模型（HMM）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux常见操作">
-<meta property="og:url" content="http://yezhejack.github.io/2015/12/20/linux常见操作/index.html">
+<meta property="og:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/05/HMM隐马尔科夫模型/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="基于ubuntu的linux以及screen配置">
-<meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-05-04T16:00:23.000Z">
+<meta property="og:description" content="马尔可夫模型（HMM）">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-05-05T09:06:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux常见操作">
-<meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/linux.jpg">
+<meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
+<meta name="twitter:description" content="马尔可夫模型（HMM）">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,72 +153,119 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-linux常见操作" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-HMM隐马尔科夫模型" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        linux常见操作
+        统计自然语言处理基础-第九章-马尔可夫模型
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2015/12/20/linux常见操作/" class="article-date">
-    <time datetime="2015-12-20T08:23:15.000Z" itemprop="datePublished">2015-12-20</time>
+            <a href="/2016/05/05/HMM隐马尔科夫模型/" class="article-date">
+    <time datetime="2016-05-04T16:00:00.000Z" itemprop="datePublished">2016-05-05</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HMM/">HMM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/马尔科夫/">马尔科夫</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><h4 id="增加一个用户"><a href="#增加一个用户" class="headerlink" title="增加一个用户"></a>增加一个用户</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g <span class="params">&lt;初始组名称&gt;</span> -G <span class="params">&lt;附属组名称&gt;</span> -m -d <span class="meta-keyword">/home/</span><span class="params">&lt;username&gt;</span> -s <span class="meta-keyword">/bin/</span>bash <span class="params">&lt;username&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">g</span> benben -<span class="keyword">G</span> sudo -<span class="keyword">m</span> -<span class="keyword">d</span> /home/zhangsan -s /bin/bash zhangsan</span><br><span class="line">passwd zhangsan</span><br></pre></td></tr></table></figure>
-<p>上面新建了一个用户，属于笨笨组的，同时也属于sudo组，拥有sudo权限，是个拥有很高权限的管理员，仅次于root。同时他的目录定义在了<code>/home/zhangsan</code>，同时将shell指定为/bin/bash，第二句话会设置一个密码。 </p>
-<p>如果只是一个普通的用户，不希望让他拥有sudo权限的话，将<code>-G</code>参数去掉，只让他属于benben组即可。这样这个帐户就无法安装东西，必须联系管理员才能进行安装。</p>
-<h4 id="公共工作空间"><a href="#公共工作空间" class="headerlink" title="公共工作空间"></a>公共工作空间</h4><p>为了让大家共同合作，可以利用管理员账户建立一个目录，这个目录的组别属于benben，也就是需要合作的人的共同组别。然后将这个目录的属于组修改为benben。</p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">chgrp</span> -R <span class="keyword">benben </span>/mnt/<span class="keyword">benben</span></span><br></pre></td></tr></table></figure>
-<p>然后再修改这个目录的权限为775，也就是rwx rwx r_x，拥有者和组成员拥有读、写、执行权限，而其他人只拥有读、执行权限。</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">775</span> <span class="meta-keyword">/mnt/</span>benben</span><br></pre></td></tr></table></figure>
-<h4 id="为用户增加sudo权限"><a href="#为用户增加sudo权限" class="headerlink" title="为用户增加sudo权限"></a>为用户增加sudo权限</h4><p>登陆到root账号，然后输入下面的命令，以<code>zhangsan</code>这个用户为例</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo zhangsan</span><br></pre></td></tr></table></figure>
-<p>也可以在<code>/etc/group</code>中在sudo后面加上<code>zhangsan</code></p>
-<h3 id="增加用户到另一个用户组中"><a href="#增加用户到另一个用户组中" class="headerlink" title="增加用户到另一个用户组中"></a>增加用户到另一个用户组中</h3><p>我新建了一个用户yezhe，然后想要把它增加到用户组sudo中，以便于使用sudo命令，这里需要使用root用户</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo yezhe</span><br></pre></td></tr></table></figure>
-<h3 id="更改用户的工作目录"><a href="#更改用户的工作目录" class="headerlink" title="更改用户的工作目录"></a>更改用户的工作目录</h3><p>需要用root权限</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /<span class="built_in">home</span>/yezhe yezhe</span><br></pre></td></tr></table></figure>
-<h3 id="如果出现一个用户在命令行无法显示名字和路径"><a href="#如果出现一个用户在命令行无法显示名字和路径" class="headerlink" title="如果出现一个用户在命令行无法显示名字和路径"></a>如果出现一个用户在命令行无法显示名字和路径</h3><p>这个情况下我在更改了<code>/etc/passwd</code>之后就可以了，也就是给它添加一个shell，一般默认是和root一样用同一个shell:<code>/bin/bash</code></p>
-<h3 id="screen设置"><a href="#screen设置" class="headerlink" title="screen设置"></a>screen设置</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">Set</span> default <span class="comment">encoding using utf8</span></span><br><span class="line">defutf8 <span class="comment">on</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 解决中文乱码,这个要按需配置</span><br><span class="line">defencoding <span class="comment">utf8</span></span><br><span class="line">encoding <span class="comment">utf8 utf8</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#兼容shell 使得<span class="comment">.bashrc .profile</span> /etc/<span class="comment">profile</span>等里面的别名等设置生效</span><br><span class="line">shell <span class="comment">-$SHELL</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">set</span> <span class="comment">the startup message</span></span><br><span class="line">startup_message <span class="comment">off</span></span><br><span class="line">term <span class="comment">linux</span></span><br><span class="line"></span><br><span class="line">## 解决无法滚动</span><br><span class="line">termcapinfo <span class="comment">xterm</span>|<span class="comment">xterms</span>|<span class="comment">xs ti@:te=\E[2J</span></span><br><span class="line"> </span><br><span class="line"># 屏幕缓冲区行数</span><br><span class="line">defscrollback <span class="comment">10000</span></span><br><span class="line"> </span><br><span class="line"># 下标签设置</span><br><span class="line">hardstatus <span class="comment">on</span></span><br><span class="line">caption <span class="comment">always</span> <span class="comment">"%&#123;= kw&#125;%-w%&#123;= kG&#125;%&#123;+b&#125;[%n %t]%&#123;-b&#125;%&#123;= kw&#125;%+w %=%d %M %0c %&#123;g&#125;%H%&#123;-&#125;"</span></span><br><span class="line"> </span><br><span class="line">#关闭闪屏</span><br><span class="line">vbell <span class="comment">off</span></span><br><span class="line"> </span><br><span class="line">#Keboard <span class="comment">binding</span></span><br><span class="line"># bind <span class="comment">Alt+z to move to previous window</span></span><br><span class="line">bindkey <span class="comment">^[z prev</span></span><br><span class="line"># bind <span class="comment">Alt+x to move to next window</span></span><br><span class="line">bindkey <span class="comment">^[x next</span></span><br><span class="line"></span><br><span class="line"># bind <span class="comment">Alt</span>`~<span class="comment">= to screen0</span>~<span class="comment">12</span></span><br><span class="line">bindkey <span class="comment">"^[`"</span><span class="comment"> select 0</span></span><br><span class="line">bindkey <span class="comment">"^[1"</span><span class="comment"> select 1</span></span><br><span class="line">bindkey <span class="comment">"^[2"</span><span class="comment"> select 2</span></span><br><span class="line">bindkey <span class="comment">"^[3"</span><span class="comment"> select 3</span></span><br><span class="line">bindkey <span class="comment">"^[4"</span><span class="comment"> select 4</span></span><br><span class="line">bindkey <span class="comment">"^[5"</span><span class="comment"> select 5</span></span><br><span class="line">bindkey <span class="comment">"^[6"</span><span class="comment"> select 6</span></span><br><span class="line">bindkey <span class="comment">"^[7"</span><span class="comment"> select 7</span></span><br><span class="line">bindkey <span class="comment">"^[8"</span><span class="comment"> select 8</span></span><br><span class="line">bindkey <span class="comment">"^[9"</span><span class="comment"> select 9</span></span><br><span class="line">bindkey <span class="comment">"^[0"</span><span class="comment"> select 10</span></span><br><span class="line">bindkey <span class="comment">"^[-"</span><span class="comment"> select 11</span></span><br><span class="line">bindkey <span class="comment">"^[="</span><span class="comment"> select 12</span></span><br><span class="line"># bind <span class="comment">F5 to create a new screen</span></span><br><span class="line">bindkey <span class="comment">-k k5 screen</span></span><br><span class="line"># bind <span class="comment">F6 to detach screen session (to background)</span></span><br><span class="line">bindkey <span class="comment">-k k6 detach</span></span><br><span class="line"># bind <span class="comment">F7 to kill current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k7 kill</span>``</span><br><span class="line"># bind <span class="comment">F8 to rename current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k8 title</span></span><br></pre></td></tr></table></figure>
+            <h1 id="马尔可夫模型"><a href="#马尔可夫模型" class="headerlink" title="马尔可夫模型"></a>马尔可夫模型</h1><h2 id="9-3-隐马尔可夫模型的三个基本问题"><a href="#9-3-隐马尔可夫模型的三个基本问题" class="headerlink" title="9.3 隐马尔可夫模型的三个基本问题"></a>9.3 隐马尔可夫模型的三个基本问题</h2><ol>
+<li>给出一个模型$\mu=(A,B,\pi)$，怎样有效地计算某个观测序列发生的概率，即$P(O|\mu)$？</li>
+<li>给出观测序列$O$和模型$\mu$，我们怎样选择一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，以便能够最好地解释观测序列？</li>
+<li>给定观测序列$O$，以及通过改变模型$\mu=(A,B,\pi)$的参数而得到的模型空间，我们怎样才能找到一个最好地解释这个观测序列的模型。</li>
+</ol>
+<p>这中间包含了三个量：</p>
+<ol>
+<li>观测序列$O$</li>
+<li>模型$\mu$</li>
+<li>状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax --></li>
+</ol>
+<p>第一个是马尔可夫模型的正向用途，第二个是求出隐藏状态，第三个则是学习过程，即通过现象去学习一个模型。</p>
+<h3 id="9-3-1计算观测序列的概率"><a href="#9-3-1计算观测序列的概率" class="headerlink" title="9.3.1计算观测序列的概率"></a>9.3.1计算观测序列的概率</h3><p>每个状态到达观测序列$O$都有一定的概率，我们将所有状态到达观测状体的概率相加不就可以得到在给定模型$\mu$的情况下，观测序列$O$出现的概率。</p>
+<p>给定一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，然后对应的到达$O$的概率就为</p>
+<center><br><span>$$P(O|X,\mu)=\Pi_{t=1}^{T}P(O_t|X_t,X_t+1,\mu)
+=b_{X_{1}X_{2}o_{1}} b_{X_{2}X_{3}o_{2}}...b_{X_{T}X_{T+1}o_{T}}$$</span><!-- Has MathJax --><br></center>
+
+<p>出现这个状态序列的概率为</p>
+<center><br><span>$P(X|\mu)=\pi_{x_1}a_{X_1 X_2}a_{X_2 X_3}...a_{X_TX_{T+1}}$</span><!-- Has MathJax --><br></center>
+
+<p>因此</p>
+<center><br><span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>最终</p>
+<center><br><span>$P(O|\mu)=\sum_X P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>分析一下这个算法，虽然说这个算法非常直观，推导也是初学者级别（没错就是我），但是首先给定一个$X$我们想要算出<span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax -->就需要$T-1+T+1$次的乘法，然后$X$还有<span>$N^{T+1}$</span><!-- Has MathJax -->个组合，算出每个组合就需要<span>$(2T)N^{T+1}$</span><!-- Has MathJax -->次乘法，再将这些组合的结果相乘，就得到了<span>$(2T＋1)N^{T+1}$</span><!-- Has MathJax -->次乘法的需求。</p>
+<p>直觉告诉我这里面有重复计算的结果，其实整个计算过程和动态规划很像，每条边都有代价</p>
+<p><img src="/img/1.jpg" alt="格路算法"></p>
+<p>一个格子<span>$(S_i,t)$</span><!-- Has MathJax -->存储了一些信息。</p>
+<h4 id="前向过程"><a href="#前向过程" class="headerlink" title="前向过程"></a>前向过程</h4><p><img src="/img/2.jpg" alt="前向过程"></p>
+<center><br><span>$\alpha_i(t)=P(o_1 o_2 ... o_{t-1},X_t=i|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>$\alpha_i(t)$存储在格路的<span>$(S_i,t)$</span><!-- Has MathJax -->中，表示在$t$时刻已状态<span>$S_i$</span><!-- Has MathJax -->结束的概率。</p>
 <ul>
-<li>在screen中，一个session中可以包含多个windows</li>
-<li><code>C-a A</code> 用于修改当前标签的名字</li>
-<li><code>C-a k</code> 关闭当前windows</li>
+<li><strong>初始化</strong></li>
 </ul>
-<h2 id="运维方案"><a href="#运维方案" class="headerlink" title="运维方案"></a>运维方案</h2><ul>
-<li>这个方案以ubuntu 14.04 为例，并且是使用vultr的服务器。</li>
+<center><br><span>$\alpha_i(1)=\pi_i,1 \leq i \leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>推导</strong></li>
 </ul>
-<h3 id="修改root账号的密码"><a href="#修改root账号的密码" class="headerlink" title="修改root账号的密码"></a>修改root账号的密码</h3><ul>
-<li>登录root账号</li>
-<li>使用 <code>passwd root</code>命令，即可根据提示修改密码</li>
+<center><br><span>$\alpha_i(t+1)=\sum_{t=1}^{N} \alpha_i(t) a_{ij}b_{ijo_t},1\leq t\leq T,1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>求和</strong> </li>
 </ul>
-<h3 id="增加个人用户，并使其拥有sudo权限"><a href="#增加个人用户，并使其拥有sudo权限" class="headerlink" title="增加个人用户，并使其拥有sudo权限"></a>增加个人用户，并使其拥有sudo权限</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">d</span> /home/zhangsan -<span class="keyword">m</span> zhangsan</span><br><span class="line">passwd zhangsan</span><br><span class="line">usermod -<span class="keyword">G</span> sudo zhangsan</span><br></pre></td></tr></table></figure>
-<p>第一行的命令同时为<code>zhangsan</code>这个账户增加了一个工作目录，第二行为修改密码，第三行为修改这个账户的权限，将其加入到sudo的组中，到此为止一个简单的linxu远程服务器的用户部分就已经配置好了。</p>
-<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> <span class="symbol">&lt;name&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="查看主机最近一次的启动时间"><a href="#查看主机最近一次的启动时间" class="headerlink" title="查看主机最近一次的启动时间"></a>查看主机最近一次的启动时间</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">who</span> -b</span><br></pre></td></tr></table></figure>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^N\alpha_i(T+1)$</span><!-- Has MathJax --><br></center>
+
+<p>用前向过程来计算观测序列的概率，可以只需要$2N^2T$次乘法就可以搞定了。</p>
+<h4 id="后向过程"><a href="#后向过程" class="headerlink" title="后向过程"></a>后向过程</h4><p>这个过程是和前向相对应的，所表示的意思是从当前t时刻开始，观测到$T$这样的观测序列，并且知道t时刻的隐藏状态是$X_{t}$。在给定的模型$\mu$的情况下，能观察到之前的序列的概率就称为后向过程。之所以要引入后向概率是为了解决三个基本问题中的第三个问题。</p>
+<p>给出的公式如下：</p>
+<center><br><span>$\beta _{i}(t)=P(o_{t}...o_{T},X_{t},\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>后向过程理解起来会有点难度，特别是像我这样直观先行的动物来说，对于公式总得翻译得直白一点才能想想。这个过程也就是当某一时刻<span>$X_t=i$</span><!-- Has MathJax -->的情况下，开始转换的到最后能得出<span>$o_{t}...o_{T}$</span><!-- Has MathJax -->这个观测序列的概率，也就是<span>$\beta _{i}(t)$</span><!-- Has MathJax -->，这样我们可以依赖于。如果我们知道<span>$\beta _{i}(t＋1)$</span><!-- Has MathJax -->的值的话，这个就很简单了，<span>$\beta _{i}(t)$</span><!-- Has MathJax -->想要到达最后的概率是通过各个<span>$\beta _{i}(t＋1),1 \leq i \leq N$</span><!-- Has MathJax -->的节点到达最后的概率只喝，因此它的推导公式就很好理解了。</p>
+<ul>
+<li><strong>初始化</strong></li>
+</ul>
+<center><br><span>$\beta _{i}(T +1)=1, 1\leq i\leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>推导</strong></li>
+</ul>
+<center><br><span>$\beta _{i}(t)=\sum_{j+1}^{N}a_{ij}b_{ijo_t}\beta _{j}(t+1),1\leq t\leq T  1\leq i \leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>求和</strong></li>
+</ul>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\pi_i\beta_i(1)$</span><!-- Has MathJax --><br></center>
+
+
+
+<h2 id="前向后向的结合"><a href="#前向后向的结合" class="headerlink" title="前向后向的结合"></a>前向后向的结合</h2><p>我们可以让前向后向公式结合来计算一个观测序列的概率</p>
+<center><br><span>$P(O,X_{t}=i|\mu)=\alpha_{i}(t)\beta_{i}(t)$</span><!-- Has MathJax --><br></center>
+
+<p>有了这个中间公式之后，我们就可以计算</p>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\alpha_{i}(t)\beta_{i}(t),1\leq t \leq T +1$</span><!-- Has MathJax --><br></center>
+
+
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cinu2jv77000tp9gebwifg39l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/HMM隐马尔科夫模型/" data-id="cinu2jv6l0004p9geci0abzqi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -338,20 +385,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/22/nginx/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            nginx
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2015/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">redis</p>
+        <p class="article-nav-title">基于hexo开源架构的GitHub博客维护</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -543,7 +580,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2015/12/20/linux常见操作/';
+    var disqus_url = 'http://yezhejack.github.io/2016/05/05/HMM隐马尔科夫模型/';
     
     (function() {
     var dsq = document.createElement('script');
