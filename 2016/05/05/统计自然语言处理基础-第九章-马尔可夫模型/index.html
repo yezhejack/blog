@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T13:03:19.000Z">
+<meta property="og:updated_time" content="2016-05-05T13:24:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -261,8 +261,9 @@ var _hmt = _hmt || [];
 <h3 id="9-3-2确定最佳状态序列"><a href="#9-3-2确定最佳状态序列" class="headerlink" title="9.3.2确定最佳状态序列"></a>9.3.2确定最佳状态序列</h3><p>这个过程通常被称为是一个译码，被人模糊地描述为“找到能够最好地解释观测值的状态序列”。存在两种方法：</p>
 <ol>
 <li><p>对于每一个$t,1\leq t \leq T+1$，我们可以找到<span>$X_t$</span><!-- Has MathJax -->，使得<span>$P(X_t|O,\mu)$</span><!-- Has MathJax -->最大</p>
- <center><br> <span>$P(X_t|O,\mu)$</span><!-- Has MathJax --><br> </center></li>
-<li>但这个方式实际上是最大化了奖杯正确猜测的状态的期望数目，所以最常用的方法是<code>Viterbi算法</code>。</li>
+</li>
+<li><p>但这个方式实际上是最大化了奖杯正确猜测的状态的期望数目，所以最常用的方法是<code>Viterbi算法</code>。</p>
+</li>
 </ol>
 <p><strong>Viterbi算法</strong></p>
 <p>我们希望找到一个状体序列$X$:</p>
@@ -278,13 +279,27 @@ var _hmt = _hmt || [];
 <p>为了解决这个问题，定义：</p>
 <center><br><span>$\delta_j(t)=\max_{X_1...X_{t-1}} P(X_1 ... X_{t-1},o_1 ... o_{t-1},X_t=j|\mu)$</span><!-- Has MathJax --><br></center>
 
+<p>变量<span>$\psi_j(t)$</span><!-- Has MathJax -->记录了导致这条最可能路径的入弧节点。还是用动态规划的思想来解决。</p>
+<p><strong>初始化</strong></p>
+<center><br><span>$\delta_j(t)=\pi_j,1 \leq j \leq N$</span><!-- Has MathJax --><br></center>
+
+<p><strong>推导</strong></p>
+<center><br><span>$\delta_j(t+1)=\max_{1\leqi\leqN}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+
+<p>然后存储回溯路径</p>
+<center><br><span>$\psi_j(t+1)=\arg\max_{1\leqi\leqN}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+
+<p><strong>终止以及路径读出</strong></p>
+<center><br><span>$$\hat{X}_{T+1}=\arg\max_{1 \leq i \leq N}\delta_i(T+1)\\
+\hat{X}_t=\psi_{\hat{X}_{T+1}}(t+1)\\
+P(\hat{X})=\max_{1\leqi\leqN}\delta_i(T+1)$$</span><!-- Has MathJax --><br></center>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinuazywt001o0igeuzwup2hv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinubrs89001n1cgep4klmk3j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
