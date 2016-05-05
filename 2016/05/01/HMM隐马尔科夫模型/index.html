@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T07:43:40.000Z">
+<meta property="og:updated_time" content="2016-05-05T08:18:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -191,6 +191,23 @@ var _hmt = _hmt || [];
 <li>状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax --></li>
 </ol>
 <p>第一个是马尔可夫模型的正向用途，第二个是求出隐藏状态，第三个则是学习过程，即通过现象去学习一个模型。</p>
+<h3 id="9-3-1计算观测序列的概率"><a href="#9-3-1计算观测序列的概率" class="headerlink" title="9.3.1计算观测序列的概率"></a>9.3.1计算观测序列的概率</h3><p>每个状态到达观测序列$O$都有一定的概率，我们将所有状态到达观测状体的概率相加不就可以得到在给定模型$\mu$的情况下，观测序列$O$出现的概率。</p>
+<p>给定一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，然后对应的到达$O$的概率就为</p>
+<center><br><span>$$P(O|X,\mu)=\Pi_{t=1}^{T}P(O_t|X_t,X_t+1,\mu)
+=b_{X_{1}X_{2}o_{1}} b_{X_{2}X_{3}o_{2}}...b_{X_{T}X_{T+1}o_{T}}$$</span><!-- Has MathJax --><br></center>
+
+<p>出现这个状态序列的概率为</p>
+<center><br><span>$P(X|\mu)=\pi_{x_1}a_{X_1 X_2}a_{X_2 X_3}...a_{X_TX_{T+1}}$</span><!-- Has MathJax --><br></center>
+
+<p>因此</p>
+<center><br><span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>最终</p>
+<center><br><span>$P(O|\mu)=\sum_X P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>分析一下这个算法，虽然说这个算法非常直观，推导也是初学者级别（没错就是我），但是首先给定一个$X$我们想要算出<span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax -->就需要$T-1+T+1$次的乘法，然后$X$还有<span>$N^{T+1}$</span><!-- Has MathJax -->个组合，算出每个组合就需要<span>$(2T)N^{T+1}$</span><!-- Has MathJax -->次乘法，再将这些组合的结果相乘，就得到了<span>$(2T＋1)N^{T+1}$</span><!-- Has MathJax -->次乘法的需求。</p>
+<p>直觉告诉我这里面有重复计算的结果，其实整个计算过程和动态规划很像，每条边都有代价</p>
+<p><img src="/img/1.jpg" alt="格路算法"></p>
 <h2 id="后向过程"><a href="#后向过程" class="headerlink" title="后向过程"></a>后向过程</h2><p>这个过程是和前向相对应的，所表示的意思是从当前t时刻开始，观测到$T$这样的观测序列，并且知道t时刻的隐藏状态是$X_{t}$。在给定的模型$\mu$的情况下，能观察到之前的序列的概率就称为后向过程。给出的公式如下：</p>
 <center><br><span>$\beta _{i}(t)=P(o_{t}...o_{T},X_{t},\mu)$</span><!-- Has MathJax --><br></center>
 
@@ -218,7 +235,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/" data-id="cintzckbt0000mygej6z41nsm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/" data-id="cintzyv2o0001nngetnr7mrk1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
