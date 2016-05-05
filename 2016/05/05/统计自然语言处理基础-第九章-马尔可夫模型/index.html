@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T13:30:01.000Z">
+<meta property="og:updated_time" content="2016-05-05T16:49:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -293,13 +293,22 @@ var _hmt = _hmt || [];
 <center><br><span>$$\hat{X}_{T+1}=\arg\max_{1 \leq i \leq N}\delta_i(T+1)\\
 \hat{X}_t=\psi_{\hat{X}_{T+1}}(t+1)\\
 P(\hat{X})=\max_{1 \leq i \leq N}\delta_i(T+1)$$</span><!-- Has MathJax --><br></center>
+
+<h3 id="9-3-3隐马尔可夫的参数估计问题"><a href="#9-3-3隐马尔可夫的参数估计问题" class="headerlink" title="9.3.3隐马尔可夫的参数估计问题"></a>9.3.3隐马尔可夫的参数估计问题</h3><p>这个问题可以看作是求解下面这个式子。这个已经可以算是机器学习的问题，对一个式子进行最优化，这里用的最优化方法是EM算法的一个特例。因为这个问题没有一个解析解，并不像之前的两个问题一样。这个方法叫做迭代爬山算法，也叫做Baum-Welch或前向后向算法。</p>
+<center><br><span>$\arg \max_{\mu} P(O_{training}|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p><strong>过程</strong></p>
+<span>$p_t(i,j)$</span><!-- Has MathJax -->是在给定观测序列$O$的情况下，在$t$时刻经过某条弧的概率。<br><br><center><br><span>$$p_t(i,j)=P(X_t=i,X_{t+1}=j|O,\mu)\\
+&amp;=\frac{P(X_t=i,X_{t+1}=j,O|\mu)}{P(O|\mu)}\\$$</span><!-- Has MathJax -->
+<p></p></center><p></p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinubyc6p001p22ge29s9u4uc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinuj2hph003ad5gelobdk3s5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
