@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T13:24:58.000Z">
+<meta property="og:updated_time" content="2016-05-05T13:27:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -284,22 +284,22 @@ var _hmt = _hmt || [];
 <center><br><span>$\delta_j(t)=\pi_j,1 \leq j \leq N$</span><!-- Has MathJax --><br></center>
 
 <p><strong>推导</strong></p>
-<center><br><span>$\delta_j(t+1)=\max_{1\leqi\leqN}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+<center><br><span>$\delta_j(t+1)=\max_{1\leq i\leq N}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
 
 <p>然后存储回溯路径</p>
-<center><br><span>$\psi_j(t+1)=\arg\max_{1\leqi\leqN}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+<center><br><span>$\psi_j(t+1)=\arg\max_{1\leq i\leq N}\delta_i(t)a_{ij}b_{ijo_t},1\leq j\leq N$</span><!-- Has MathJax --><br></center>
 
 <p><strong>终止以及路径读出</strong></p>
 <center><br><span>$$\hat{X}_{T+1}=\arg\max_{1 \leq i \leq N}\delta_i(T+1)\\
 \hat{X}_t=\psi_{\hat{X}_{T+1}}(t+1)\\
-P(\hat{X})=\max_{1\leqi\leqN}\delta_i(T+1)$$</span><!-- Has MathJax --><br></center>
+P(\hat{X})=\max_{1 \leq i \leq N}\delta_i(T+1)$$</span><!-- Has MathJax --><br></center>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinubrs89001n1cgep4klmk3j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinubv44c001n1pgewn2sqc6i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
