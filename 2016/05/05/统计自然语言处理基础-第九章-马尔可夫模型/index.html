@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T09:10:02.000Z">
+<meta property="og:updated_time" content="2016-05-05T09:18:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -251,21 +251,21 @@ var _hmt = _hmt || [];
 
 
 
-<h2 id="前向后向的结合"><a href="#前向后向的结合" class="headerlink" title="前向后向的结合"></a>前向后向的结合</h2><p>我们可以让前向后向公式结合来计算一个观测序列的概率</p>
+<h4 id="前向后向的结合"><a href="#前向后向的结合" class="headerlink" title="前向后向的结合"></a>前向后向的结合</h4><p>我们可以让前向后向公式结合来计算一个观测序列的概率</p>
 <center><br><span>$P(O,X_{t}=i|\mu)=\alpha_{i}(t)\beta_{i}(t)$</span><!-- Has MathJax --><br></center>
 
 <p>有了这个中间公式之后，我们就可以计算</p>
 <center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\alpha_{i}(t)\beta_{i}(t),1\leq t \leq T +1$</span><!-- Has MathJax --><br></center>
 
-
-
+<p>到此为止，我们解决了第一个问题了</p>
+<h3 id="9-3-2确定最佳状态序列"><a href="#9-3-2确定最佳状态序列" class="headerlink" title="9.3.2确定最佳状态序列"></a>9.3.2确定最佳状态序列</h3>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinu2svl0001nqcgeek50uwtd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinu9rg340036yygephha9wys" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
