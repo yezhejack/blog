@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T07:35:21.000Z">
+<meta property="og:updated_time" content="2016-05-05T07:43:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -181,9 +181,16 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h1 id="马尔可夫模型"><a href="#马尔可夫模型" class="headerlink" title="马尔可夫模型"></a>马尔可夫模型</h1><h2 id="9-3-隐马尔可夫模型的三个基本问题"><a href="#9-3-隐马尔可夫模型的三个基本问题" class="headerlink" title="9.3 隐马尔可夫模型的三个基本问题"></a>9.3 隐马尔可夫模型的三个基本问题</h2><ol>
 <li>给出一个模型$\mu=(A,B,\pi)$，怎样有效地计算某个观测序列发生的概率，即$P(O|\mu)$？</li>
-<li>给出观测序列$O$和模型$\mu$，我们怎样选择一个状态序列$(X<em>{1},…,X</em>{T+1})$，以便能够最好地解释观测序列？</li>
+<li>给出观测序列$O$和模型$\mu$，我们怎样选择一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，以便能够最好地解释观测序列？</li>
 <li>给定观测序列$O$，以及通过改变模型$\mu=(A,B,\pi)$的参数而得到的模型空间，我们怎样才能找到一个最好地解释这个观测序列的模型。</li>
 </ol>
+<p>这中间包含了三个量：</p>
+<ol>
+<li>观测序列$O$</li>
+<li>模型$\mu$</li>
+<li>状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax --></li>
+</ol>
+<p>第一个是马尔可夫模型的正向用途，第二个是求出隐藏状态，第三个则是学习过程，即通过现象去学习一个模型。</p>
 <h2 id="后向过程"><a href="#后向过程" class="headerlink" title="后向过程"></a>后向过程</h2><p>这个过程是和前向相对应的，所表示的意思是从当前t时刻开始，观测到$T$这样的观测序列，并且知道t时刻的隐藏状态是$X_{t}$。在给定的模型$\mu$的情况下，能观察到之前的序列的概率就称为后向过程。给出的公式如下：</p>
 <center><br><span>$\beta _{i}(t)=P(o_{t}...o_{T},X_{t},\mu)$</span><!-- Has MathJax --><br></center>
 
@@ -211,7 +218,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/" data-id="cintzac1h0004m4ge3ijmif7g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/01/HMM隐马尔科夫模型/" data-id="cintzckbt0000mygej6z41nsm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
