@@ -3,19 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>about | JackYip</title>
+    <title>统计自然语言处理基础-第九章-马尔可夫模型 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yezhejack.github.io/about/index.html">
+        <meta name="keywords" content="Natural Language Processing,马尔科夫,HMM" />
+    
+    <meta name="description" content="马尔可夫模型（HMM）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
-<meta property="og:updated_time" content="2016-05-02T11:31:26.000Z">
+<meta property="og:description" content="马尔可夫模型（HMM）">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-05-05T09:10:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="E-mail: yezhejack at gmail.comGitHub: https://github.com/yezhejack">
+<meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
+<meta name="twitter:description" content="马尔可夫模型（HMM）">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -149,31 +153,111 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/about/index.html">about</em>
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-统计自然语言处理基础-第九章-马尔可夫模型" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        about
+        统计自然语言处理基础-第九章-马尔可夫模型
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/about/index.html" class="article-date">
-    <time datetime="2015-12-30T02:41:57.000Z" itemprop="datePublished">2015-12-30</time>
+            <a href="/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" class="article-date">
+    <time datetime="2016-05-05T09:09:00.000Z" itemprop="datePublished">2016-05-05</time>
 </a>
             
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HMM/">HMM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/马尔科夫/">马尔科夫</a></li></ul>
+
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>E-mail: yezhejack at gmail.com<br>GitHub: <a href="https://github.com/yezhejack" target="_blank" rel="external">https://github.com/yezhejack</a></p>
+            <h1 id="马尔可夫模型"><a href="#马尔可夫模型" class="headerlink" title="马尔可夫模型"></a>马尔可夫模型</h1><h2 id="9-3-隐马尔可夫模型的三个基本问题"><a href="#9-3-隐马尔可夫模型的三个基本问题" class="headerlink" title="9.3 隐马尔可夫模型的三个基本问题"></a>9.3 隐马尔可夫模型的三个基本问题</h2><ol>
+<li>给出一个模型$\mu=(A,B,\pi)$，怎样有效地计算某个观测序列发生的概率，即$P(O|\mu)$？</li>
+<li>给出观测序列$O$和模型$\mu$，我们怎样选择一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，以便能够最好地解释观测序列？</li>
+<li>给定观测序列$O$，以及通过改变模型$\mu=(A,B,\pi)$的参数而得到的模型空间，我们怎样才能找到一个最好地解释这个观测序列的模型。</li>
+</ol>
+<p>这中间包含了三个量：</p>
+<ol>
+<li>观测序列$O$</li>
+<li>模型$\mu$</li>
+<li>状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax --></li>
+</ol>
+<p>第一个是马尔可夫模型的正向用途，第二个是求出隐藏状态，第三个则是学习过程，即通过现象去学习一个模型。</p>
+<h3 id="9-3-1计算观测序列的概率"><a href="#9-3-1计算观测序列的概率" class="headerlink" title="9.3.1计算观测序列的概率"></a>9.3.1计算观测序列的概率</h3><p>每个状态到达观测序列$O$都有一定的概率，我们将所有状态到达观测状体的概率相加不就可以得到在给定模型$\mu$的情况下，观测序列$O$出现的概率。</p>
+<p>给定一个状态序列<span>$(X_{1},...,X_{T+1})$</span><!-- Has MathJax -->，然后对应的到达$O$的概率就为</p>
+<center><br><span>$$P(O|X,\mu)=\Pi_{t=1}^{T}P(O_t|X_t,X_t+1,\mu)
+=b_{X_{1}X_{2}o_{1}} b_{X_{2}X_{3}o_{2}}...b_{X_{T}X_{T+1}o_{T}}$$</span><!-- Has MathJax --><br></center>
+
+<p>出现这个状态序列的概率为</p>
+<center><br><span>$P(X|\mu)=\pi_{x_1}a_{X_1 X_2}a_{X_2 X_3}...a_{X_TX_{T+1}}$</span><!-- Has MathJax --><br></center>
+
+<p>因此</p>
+<center><br><span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>最终</p>
+<center><br><span>$P(O|\mu)=\sum_X P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>分析一下这个算法，虽然说这个算法非常直观，推导也是初学者级别（没错就是我），但是首先给定一个$X$我们想要算出<span>$P(O,X|\mu)=P(O|X,\mu)P(X|\mu)$</span><!-- Has MathJax -->就需要$T-1+T+1$次的乘法，然后$X$还有<span>$N^{T+1}$</span><!-- Has MathJax -->个组合，算出每个组合就需要<span>$(2T)N^{T+1}$</span><!-- Has MathJax -->次乘法，再将这些组合的结果相乘，就得到了<span>$(2T＋1)N^{T+1}$</span><!-- Has MathJax -->次乘法的需求。</p>
+<p>直觉告诉我这里面有重复计算的结果，其实整个计算过程和动态规划很像，每条边都有代价</p>
+<p><img src="/img/1.jpg" alt="格路算法"></p>
+<p>一个格子<span>$(S_i,t)$</span><!-- Has MathJax -->存储了一些信息。</p>
+<h4 id="前向过程"><a href="#前向过程" class="headerlink" title="前向过程"></a>前向过程</h4><p><img src="/img/2.jpg" alt="前向过程"></p>
+<center><br><span>$\alpha_i(t)=P(o_1 o_2 ... o_{t-1},X_t=i|\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>$\alpha_i(t)$存储在格路的<span>$(S_i,t)$</span><!-- Has MathJax -->中，表示在$t$时刻已状态<span>$S_i$</span><!-- Has MathJax -->结束的概率。</p>
+<ul>
+<li><strong>初始化</strong></li>
+</ul>
+<center><br><span>$\alpha_i(1)=\pi_i,1 \leq i \leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>推导</strong></li>
+</ul>
+<center><br><span>$\alpha_i(t+1)=\sum_{t=1}^{N} \alpha_i(t) a_{ij}b_{ijo_t},1\leq t\leq T,1\leq j\leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>求和</strong> </li>
+</ul>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^N\alpha_i(T+1)$</span><!-- Has MathJax --><br></center>
+
+<p>用前向过程来计算观测序列的概率，可以只需要$2N^2T$次乘法就可以搞定了。</p>
+<h4 id="后向过程"><a href="#后向过程" class="headerlink" title="后向过程"></a>后向过程</h4><p>这个过程是和前向相对应的，所表示的意思是从当前t时刻开始，观测到$T$这样的观测序列，并且知道t时刻的隐藏状态是$X_{t}$。在给定的模型$\mu$的情况下，能观察到之前的序列的概率就称为后向过程。之所以要引入后向概率是为了解决三个基本问题中的第三个问题。</p>
+<p>给出的公式如下：</p>
+<center><br><span>$\beta _{i}(t)=P(o_{t}...o_{T},X_{t},\mu)$</span><!-- Has MathJax --><br></center>
+
+<p>后向过程理解起来会有点难度，特别是像我这样直观先行的动物来说，对于公式总得翻译得直白一点才能想想。这个过程也就是当某一时刻<span>$X_t=i$</span><!-- Has MathJax -->的情况下，开始转换的到最后能得出<span>$o_{t}...o_{T}$</span><!-- Has MathJax -->这个观测序列的概率，也就是<span>$\beta _{i}(t)$</span><!-- Has MathJax -->，这样我们可以依赖于。如果我们知道<span>$\beta _{i}(t＋1)$</span><!-- Has MathJax -->的值的话，这个就很简单了，<span>$\beta _{i}(t)$</span><!-- Has MathJax -->想要到达最后的概率是通过各个<span>$\beta _{i}(t＋1),1 \leq i \leq N$</span><!-- Has MathJax -->的节点到达最后的概率只喝，因此它的推导公式就很好理解了。</p>
+<ul>
+<li><strong>初始化</strong></li>
+</ul>
+<center><br><span>$\beta _{i}(T +1)=1, 1\leq i\leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>推导</strong></li>
+</ul>
+<center><br><span>$\beta _{i}(t)=\sum_{j+1}^{N}a_{ij}b_{ijo_t}\beta _{j}(t+1),1\leq t\leq T  1\leq i \leq N$</span><!-- Has MathJax --><br></center>
+
+<ul>
+<li><strong>求和</strong></li>
+</ul>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\pi_i\beta_i(1)$</span><!-- Has MathJax --><br></center>
+
+
+
+<h2 id="前向后向的结合"><a href="#前向后向的结合" class="headerlink" title="前向后向的结合"></a>前向后向的结合</h2><p>我们可以让前向后向公式结合来计算一个观测序列的概率</p>
+<center><br><span>$P(O,X_{t}=i|\mu)=\alpha_{i}(t)\beta_{i}(t)$</span><!-- Has MathJax --><br></center>
+
+<p>有了这个中间公式之后，我们就可以计算</p>
+<center><br><span>$P(O|\mu)=\sum_{i=1}^{N}\alpha_{i}(t)\beta_{i}(t),1\leq t \leq T +1$</span><!-- Has MathJax --><br></center>
+
+
 
         </div>
         <footer class="article-footer">
@@ -181,7 +265,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/about/index.html" data-id="cinu2o4je004lpugevh8nknkw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinu2o4ia001npuge8ym213y4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -245,6 +329,16 @@ var _hmt = _hmt || [];
     </div>
 </article>
 
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
                         </div>
                     </section>
                     <aside id="sidebar">
@@ -287,6 +381,19 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/05/02/基于hexo开源架构的GitHub博客维护/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">基于hexo开源架构的GitHub博客维护</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -473,13 +580,13 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/about/index.html';
+    var disqus_url = 'http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/';
     
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
