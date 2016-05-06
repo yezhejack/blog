@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="马尔可夫模型（HMM）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-05T16:56:39.000Z">
+<meta property="og:updated_time" content="2016-05-06T17:57:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计自然语言处理基础-第九章-马尔可夫模型">
 <meta name="twitter:description" content="马尔可夫模型（HMM）">
@@ -303,6 +303,9 @@ P(\hat{X})=\max_{1 \leq i \leq N}\delta_i(T+1)$$</span><!-- Has MathJax --><br><
 =\frac{\alpha_i(t) a_{ij}b_{ijo_t} |beta_j(t+1)}{\sum_{m=1}^N\alpha_m(t)\beta_m(t)}\\
 =\frac{\alpha_i(t) a_{ij}b_{ijo_t} |beta_j(t+1)}{\sum_{m=1}^N \sum_{n=1}^N \alpha_m(t) a_{mn}b_{mno_t}\beta_n^{t+1}}$$</span><!-- Has MathJax -->
 <p></p></center><p></p>
+<p>求解上面这个式子是这个问题的关键，因为更新$\pi$，$A$和$B$都需要这个式子</p>
+<p>计算这个的时候需要先计算出前向过程和后向过程，上面这个式子实际上可能是有误导性的，因为虽然它把这个分的这么细，但实际上都需要前向和后向过程，所以可以直接获得$P(O|\mu)$。然后分子就更好算了，其中四个量都是已知的。有了<span>$p_t(i,j)$</span><!-- Has MathJax -->之后，<span>$a_{ij}$</span><!-- Has MathJax -->就是可以更新为所有从i出发到达j的弧的概率除以从i出发的概率，<span>$\pi_i$</span><!-- Has MathJax -->则是在$t=1$时刻的从$i$出发的弧的个数除以$t=1$时刻出发的所有弧的个数。<span>$b_{ijk}$</span><!-- Has MathJax -->则是所有从i到j的弧中，发射出状态k的概率。</p>
+<p>这样之后一次参数更新就完成了，我们就有了新的模型，当观察序列的出现概率没有显著增长的话，算法就可以停止了。</p>
 
         </div>
         <footer class="article-footer">
@@ -310,7 +313,7 @@ P(\hat{X})=\max_{1 \leq i \leq N}\delta_i(T+1)$$</span><!-- Has MathJax --><br><
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinujbz8g001of0geaajpy4sl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" data-id="cinw0xz85002li2gehy7h4kv8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
