@@ -3,18 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>标签：: 服务器 | JackYip</title>
+    <title>词性标注 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackYip">
-<meta property="og:url" content="http://yezhejack.github.io/tags/服务器/index.html">
+        <meta name="keywords" content="Natural Language Processing,统计自然语言处理基础,词性标注" />
+    
+    <meta name="description" content="词性标注">
+<meta property="og:type" content="article">
+<meta property="og:title" content="词性标注">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/08/词性标注/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description">
+<meta property="og:description" content="词性标注">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-05-08T14:16:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackYip">
-<meta name="twitter:description">
+<meta name="twitter:title" content="词性标注">
+<meta name="twitter:description" content="词性标注">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -148,74 +153,148 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签：: <em>服务器</em>
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-词性标注" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2015" class="archive-year"><i class="icon fa fa-calendar-o"></i>2015</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2015/12/20/linux常见操作/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="linux常见操作" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2015/12/20/linux常见操作/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Howto/">Howto</a>
-            </p>
-            <p class="date"><time datetime="2015-12-20T08:23:15.000Z" itemprop="datePublished">2015-12-20</time></p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2015/12/20/linux常见操作/">linux常见操作</a>
+        词性标注
         </h1>
     
 
-        <p class="article-excerpt">
-            用户管理增加一个用户1useradd -g &lt;初始组名称&gt; -G &lt;附属组名称&gt; -m -d /home/&lt;username&gt; -s /bin/bash &lt;username&gt;
-12useradd -g benben -G sudo -m -d /home/zhangsan -s /bin/bash zhangsanpasswd zhangsan
-上面
-        </p>
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/05/08/词性标注/" class="article-date">
+    <time datetime="2016-05-08T14:16:00.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/统计自然语言处理基础/">统计自然语言处理基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/词性标注/">词性标注</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="词性标注"><a href="#词性标注" class="headerlink" title="词性标注"></a>词性标注</h1><h2 id="10-1标记中的信息源"><a href="#10-1标记中的信息源" class="headerlink" title="10.1标记中的信息源"></a>10.1标记中的信息源</h2><ol>
+<li>观察感兴趣词的邻近上下文的其它词的词性</li>
+<li>利用词本身提供的信息，有人做了一个词性标注起<code>dumb</code>，这个标注器只是将所有词最常用的词性标注给这个词，就取得了<code>90%</code>的准确率。</li>
+</ol>
+<p>因此词之间用法及其不平均，因此用统计的方法会更甚一筹。</p>
+<h2 id="10-2马尔可夫模型标注器"><a href="#10-2马尔可夫模型标注器" class="headerlink" title="10.2马尔可夫模型标注器"></a>10.2马尔可夫模型标注器</h2><h3 id="10-2-1概率模型"><a href="#10-2-1概率模型" class="headerlink" title="10.2.1概率模型"></a>10.2.1概率模型</h3><p>马尔可夫链的两个特性</p>
+<ul>
+<li>有限视野（limited horizon）<span>$P(X_{i+1}=t^j|X_1,...X_i)=P(X_{i+1}=t^j|X_i)$</span><!-- Has MathJax --></li>
+<li>时间不变形<span>$P(X_{i+1}=t^j|X_1,...X_i)=P(X_{2}=t^j|X_1)$</span><!-- Has MathJax --></li>
+</ul>
+<p>下表指示标注预料库和句子中特殊位置的词和词性，用上标表示词典中的词和标注集中的词性类别。</p>
+<p>有限视野的式子可以简化为</p>
+<center><br><span>$P(t_{i+1}|t_{1,i})=P(t_{i+1}|t_i)$</span><!-- Has MathJax --><br></center>
+
+<p>标记$t^k$跟随$t^j$的最大似然估计来自于不同的标记跟随某个特定标记的相对频率估计。</p>
+<center><br><span>$P(t_{i+1}|t_i)＝\frac{C(t^j,t^k)}{C(t^j)}$</span><!-- Has MathJax --><br></center>
+
+<p>这个问题应用到马尔可夫里，对应的状态就是词的标注，而每次离开一个状态发射出的词就是我们的观察序列。</p>
+<p>发射概率：</p>
+<center><br><span>$P(O_n=k|X_n=s_i,X_{n+1}=s_j)＝b_{ijk}$</span><!-- Has MathJax --><br></center>
+
+<p>可以通过最大似然估计来直接估计一个词被一个特定的状态（标记）发射出来的概率：</p>
+<center><br><span>$P(w^l|t^j)＝\frac{C(w^l,t^j}{C(t^j)}$</span><!-- Has MathJax --><br></center>
+
+<p>我们最终要解决这个词性标注问题的话，我们所有求解的是下面这样的式子：</p>
+<center><br><span>$$\arg\max_{t_{1,n}}P(t_{1,n}|w_{1,n})=\arg\max_{t_{1,n}}\frac{P(w_{1,n}|t_{1,n})P(t_{1,n})}{P(w_{1,n})}\\
+=\arg\max_{t_{1,n}}P(w_{1,n}|t_{1,n})P(t_{1,n})$$</span><!-- Has MathJax --><br></center>
+
+<p>这个式子在这里还是可以继续化解下去的，只需要再做两个假设，首先是<code>词语之间是独立的</code>，这样式子就变成了</p>
+<center><br><span>$P(w_{1,n}|t_{1,n})=\prod_{i=1}^n P(w_i|t_{1,n}) P(t_n|t_{1,n-1}) P(t_{n-1}|t_{1,n-2})...P(t_2|t_1)$</span><!-- Has MathJax --><br></center>
+
+<p>然后在假设一下<code>每个词的出现只依赖于自己本身的标注</code>，那么整个式子又变为了这样</p>
+<center><br><span>$$P(w_{1,n}|t_{1,n})=\prod_{i=1}^n P(w_i|t_{i}) P(t_n|t_{n-1}) P(t_{n-1}|t_{1,n-2})...P(t_2|t_1)\\
+=\prod[P(w_i|t_i)P(t_i|t_{i-1})]$$</span><!-- Has MathJax --><br></center>
+
+<h3 id="10-2-2-Viterbi算法"><a href="#10-2-2-Viterbi算法" class="headerlink" title="10.2.2 Viterbi算法"></a>10.2.2 Viterbi算法</h3><p>至此，可能已经一脸懵逼了，但是实际上我们已经将问题化解为了马尔可夫问题，我们可以放心地用马尔可夫链来解这个问题了。我们有了转移概率和发射概率了分别是<span>$P(t_{i}|t_{i-1})$</span><!-- Has MathJax -->和<span>$P(w_{i}|t_{i})$</span><!-- Has MathJax -->。然后呢，这个是一个给了观测序列，叫求状态的问题，因此用动态规划对应的<code>Viterbi</code>算法。在马尔可夫中有讲到。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="cinynxzz1001tr7getj2b8l9b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
-
+    </section>
 
                         </div>
                     </section>
@@ -259,6 +338,19 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/05/07/HTTP学习以及push机制/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">HTTP学习以及push机制</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -449,11 +541,13 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
+    var disqus_url = 'http://yezhejack.github.io/2016/05/08/词性标注/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
@@ -473,6 +567,23 @@ var _hmt = _hmt || [];
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
