@@ -6,7 +6,7 @@
     <title>词性标注 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Natural Language Processing,统计自然语言处理基础,词性标注" />
+        <meta name="keywords" content="Natural Language Processing,词性标注,统计自然语言处理基础" />
     
     <meta name="description" content="词性标注">
 <meta property="og:type" content="article">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="词性标注">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-08T14:16:45.000Z">
+<meta property="og:updated_time" content="2016-05-08T15:35:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词性标注">
 <meta name="twitter:description" content="词性标注">
@@ -215,6 +215,14 @@ var _hmt = _hmt || [];
 =\prod[P(w_i|t_i)P(t_i|t_{i-1})]$$</span><!-- Has MathJax --><br></center>
 
 <h3 id="10-2-2-Viterbi算法"><a href="#10-2-2-Viterbi算法" class="headerlink" title="10.2.2 Viterbi算法"></a>10.2.2 Viterbi算法</h3><p>至此，可能已经一脸懵逼了，但是实际上我们已经将问题化解为了马尔可夫问题，我们可以放心地用马尔可夫链来解这个问题了。我们有了转移概率和发射概率了分别是<span>$P(t_{i}|t_{i-1})$</span><!-- Has MathJax -->和<span>$P(w_{i}|t_{i})$</span><!-- Has MathJax -->。然后呢，这个是一个给了观测序列，叫求状态的问题，因此用动态规划对应的<code>Viterbi</code>算法。在马尔可夫中有讲到。</p>
+<h3 id="10-2-3-未登录词"><a href="#10-2-3-未登录词" class="headerlink" title="10.2.3 未登录词"></a>10.2.3 未登录词</h3><p>在实践中不同的标注器在不同语料库上的不同准确率主要是由为登录词的比例决定的，智能化的标注器就需要能够对未登录词的词性进行一定的猜测。</p>
+<p><code>eischedel</code>在1993年的论文中基于三种信息估计了词语生成概率：</p>
+<ol>
+<li>一个标注可以生成一个未登录词的概率有多大</li>
+<li>生成大写词或者小写词的概率有多大</li>
+<li>生成连字符或者特殊后缀的可能性</li>
+</ol>
+<center><br><span>$P(W^l|t^j)=/frac{1}{Z} P(unknown word|t^j) P(capitalized|t^j) P(endings or hyph|t^j)$</span><!-- Has MathJax --><br></center>
 
         </div>
         <footer class="article-footer">
@@ -222,7 +230,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="cinynxzz1001tr7getj2b8l9b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="cinyqr4uo001xuugexfcdvs4n" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
