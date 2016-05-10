@@ -3,18 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>归档: 2016/3 | JackYip</title>
+    <title>如何在python中使用正则表达式 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackYip">
-<meta property="og:url" content="http://yezhejack.github.io/archives/2016/03/index.html">
+        <meta name="keywords" content="python,正则表达式" />
+    
+    <meta name="description" content="正则表达式的写法，参考文档：howto_regex.pdf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在python中使用正则表达式">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/10/正则表达式/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description">
+<meta property="og:description" content="正则表达式的写法，参考文档：howto_regex.pdf">
+<meta property="og:image" content="http://yezhejack.github.io/img/Howto.jpg">
+<meta property="og:updated_time" content="2016-05-10T09:32:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackYip">
-<meta name="twitter:description">
+<meta name="twitter:title" content="如何在python中使用正则表达式">
+<meta name="twitter:description" content="正则表达式的写法，参考文档：howto_regex.pdf">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -148,80 +153,181 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-archive"></i>归档: 2016/3
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-正则表达式" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/03/28/安装libsvm和gnuplot/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Howto.PNG)" alt="安装libsvm和gnuplot" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/03/28/安装libsvm和gnuplot/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Howto/">Howto</a>
-            </p>
-            <p class="date"><time datetime="2016-03-28T09:07:22.000Z" itemprop="datePublished">2016-03-28</time></p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/03/28/安装libsvm和gnuplot/">安装libsvm和gnuplot</a>
+        如何在python中使用正则表达式
         </h1>
     
 
-        <p class="article-excerpt">
-            安装libsvm安装
-直接下载源码，然后进入目录make
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/05/10/正则表达式/" class="article-date">
+    <time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
 
-安装gnuplot安装
-下载源码
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <ul>
+<li><code>.</code>匹配除了换行符以外的任意字符。</li>
+<li><code>*</code>表示前面的内容可以连续重复任意次。</li>
+<li><code>.*</code>就表示匹配前面任意个除换行符外的字符组成的字符串。</li>
+</ul>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>略过。讲讲我的心路历程吧</p>
+<p>正则表达式这个我真的是拖了很久才开始接触的东西，现在终于避不过去了，现在有个要探测字符串中是否含有<code>QQ表情</code>和<code>emoji</code>表情的任务。目标语言是python</p>
+<h1 id="简单模式"><a href="#简单模式" class="headerlink" title="简单模式"></a>简单模式</h1><h2 id="2-1-匹配字符"><a href="#2-1-匹配字符" class="headerlink" title="2.1 匹配字符"></a>2.1 匹配字符</h2><p>必须要掌握的是<code>元符号metacharacter</code>。这里有一个完整的元符号列表</p>
+<ol>
+<li><code>.</code></li>
+<li><code>^</code></li>
+<li><code>$</code></li>
+<li><code>*</code></li>
+<li><code>+</code></li>
+<li><code>?</code></li>
+<li><code>{</code></li>
+<li><code>}</code></li>
+<li><code>[</code></li>
+<li><code>]</code></li>
+<li><code>\</code></li>
+<li><code>|</code></li>
+<li><code>(</code></li>
+<li><code>)</code></li>
+</ol>
+<p>首先是<code>[</code>和<code>]</code>这两个符号。它们用来表示一组符号，你希望用这组符号之一来匹配，这里面也可以表示一个范围，使用<code>-</code>来连接两个符号，来表示范围。例如<code>[abc]</code>可以匹配<code>a</code>，<code>b</code>或<code>c</code>之一，这个相当于<code>[a-c]</code>。</p>
+<p>其他元符号在字符组中不再是元字符的概念。例如<code>[amk$]</code>会匹配下面的任意一个字符<code>a</code>，<code>k</code>，<code>m</code>或<code>$</code>。</p>
+<p>如果在字符组的第一个是一个<code>^</code>的话表示这个字符组会匹配不在这个字符组中的任何一个，如果是在外面的话就只是简单地匹配<code>^</code>这个字符。</p>
+<p><code>\</code>是一个转义符，加在元字符前会让这个元字符不在是元字符，而是简单地匹配它本身。类似python中的字符串。同时它也和一些符号也可以组成一些特殊的符号，来表示一些预先定义好的字符组。</p>
+<ol>
+<li><code>\d</code>相当于<code>[0-9]</code></li>
+<li><code>\D</code>相当于<code>[^0-9]</code></li>
+<li><code>\s</code>相当于<code>[\t\n\r\f\v]</code>，匹配所有空白字符</li>
+<li><code>\S</code>相当于<code>[^\t\n\r\f\v]</code>，匹配所有非空白字符</li>
+<li><code>\w</code>相当于<code>[a-zA-Z0-9_]</code></li>
+<li><code>\W</code>相当于<code>[^a-zA-Z0-9_]</code></li>
+</ol>
+<p>这符号可以放在字符组中，例如<code>[\s,.]</code>可以匹配任何的非空白字符以及<code>,</code>和<code>.</code>。</p>
+<p>还有一个元字符<code>.</code>表示匹配除了回车符号的字符。</p>
+<h2 id="2-2-重复的东西"><a href="#2-2-重复的东西" class="headerlink" title="2.2 重复的东西"></a>2.2 重复的东西</h2><p>元字符<code>*</code>并不匹配真正的符号<code>*</code>，相反的，它可以匹配让前面部分重复0至任意次数的字符串。遇到带元符号<code>*</code>的表达式，它会尽可能长地匹配子串。它会先尽量长地去先匹配，然后根据后面的字符来不断缩短自己的长度。</p>
+<p>另一个可以重复的元字符是<code>+</code>，表示匹配一次或者多次。差别在于这个元字符至少得一次。</p>
+<p>元字符<code>?</code>表示匹配一次或者零次。</p>
+<p>最复杂的表示重复的元字符是<code>{m,n}</code>，<code>m</code>和<code>n</code>是两个整数，$m \leq n$。这个表示对应的部分最少重复<code>m</code>次，最多重复<code>n</code>次。如果<code>m</code>缺了，会自动补上0，如果<code>n</code>缺了，会认为可以最多重复无限多次。当然说无限多次，依然是由机器、软件等限制的。</p>
+<h1 id="3-使用正则表达式"><a href="#3-使用正则表达式" class="headerlink" title="3 使用正则表达式"></a>3 使用正则表达式</h1><p>首先要把正则表达式编译成一个<code>object</code>，然后在去<code>match</code>他们。</p>
+<h2 id="3-1-编译正则表达式"><a href="#3-1-编译正则表达式" class="headerlink" title="3.1 编译正则表达式"></a>3.1 编译正则表达式</h2><p><code>p=re.compile(&#39;ab*&#39;,re.IGNORECASE)</code>可以忽略大小写。</p>
+<h2 id="3-2-backslash灾难"><a href="#3-2-backslash灾难" class="headerlink" title="3.2 backslash灾难"></a>3.2 backslash灾难</h2><p>这里会产生很多的麻烦，而且让结果很难理解，因此可以使用字符的前缀<code>r</code>处理字符串，例如<code>r&quot;\n&quot;</code>不再是一个回车了，而是两个字符<code>\</code>和<code>n</code>。</p>
+<h2 id="3-3-匹配"><a href="#3-3-匹配" class="headerlink" title="3.3 匹配"></a>3.3 匹配</h2><ul>
+<li><code>match()</code>如果没匹配，则返回<code>None</code></li>
+<li><code>search()</code>如果没匹配，则返回<code>None</code></li>
+<li><code>findall()</code>找到所有的匹配子串，然后返回一个<code>list</code></li>
+<li><code>finditer()</code>找到所有的匹配子串，然后返回一个迭代器</li>
+</ul>
+<p>我们可以从<code>match object</code>里面通过下面四个函数获得匹配的信息</p>
+<ul>
+<li><code>group()</code>返回匹配的字符串</li>
+<li><code>start()``end()</code>返回开始和结束的位置</li>
+<li><code>span()</code>返回一个元组表示<code>(start,end)</code></li>
+</ul>
+<h2 id="3-4-模块级别的函数"><a href="#3-4-模块级别的函数" class="headerlink" title="3.4 模块级别的函数"></a>3.4 模块级别的函数</h2><p>可以使用不创建re的<code>object</code>的调用方法，例如<code>re.match(r&#39;From\s+&#39;,&#39;Fromage amk&#39;)</code>，这个方法会在<code>cache</code>中创建<code>object</code>。之后使用相同的<code>RE</code>的话速度会快。</p>
+<h2 id="3-5-解释标志"><a href="#3-5-解释标志" class="headerlink" title="3.5 解释标志"></a>3.5 解释标志</h2><ul>
+<li><code>DOTALL</code>和<code>S</code>会让<code>.</code>匹配任何字符，包括换行符。</li>
+<li><code>IGNORECASE</code>和<code>I</code>会忽略大小写来进行匹配。</li>
+<li><code>LOCALE</code>和<code>L</code>这个会根据你的系统是哪个国家的，改变对应的字符集例如<code>\w</code>的字符范围</li>
+<li><code>MULTITLINE</code>和<code>M</code></li>
+<li></li>
+</ul>
+<h1 id="更多的模式"><a href="#更多的模式" class="headerlink" title="更多的模式"></a>更多的模式</h1><h2 id="更多的元符号"><a href="#更多的元符号" class="headerlink" title="更多的元符号"></a>更多的元符号</h2><ul>
+<li><code>\b</code>是匹配一个词的边界</li>
+<li></li>
+</ul>
 
-1234cd 目录./configuremakesudo make install
-可能遇到的问题
-我是在使用libsvm的easy.py来测试的时候遇到无法检测出gnuplot存在，查其原因，可能是因为在/usr/bin目录下没有看到gnuplot，而是在/usr/local/bin中有。因此需要找到
-        </p>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2016/05/10/正则表达式/" data-id="cio18ojyc001ga0geu0j3kolf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
-
+    </section>
 
                         </div>
                     </section>
@@ -265,6 +371,19 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/05/08/词性标注/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">词性标注</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -455,11 +574,13 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
+    var disqus_url = 'http://yezhejack.github.io/2016/05/10/正则表达式/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
@@ -479,6 +600,23 @@ var _hmt = _hmt || [];
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
