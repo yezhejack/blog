@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="正则表达式的写法，参考文档：howto_regex.pdf">
 <meta property="og:image" content="http://yezhejack.github.io/img/Howto.jpg">
-<meta property="og:updated_time" content="2016-05-10T09:32:35.000Z">
+<meta property="og:updated_time" content="2016-05-10T10:03:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在python中使用正则表达式">
 <meta name="twitter:description" content="正则表达式的写法，参考文档：howto_regex.pdf">
@@ -241,13 +241,21 @@ var _hmt = _hmt || [];
 <li><code>DOTALL</code>和<code>S</code>会让<code>.</code>匹配任何字符，包括换行符。</li>
 <li><code>IGNORECASE</code>和<code>I</code>会忽略大小写来进行匹配。</li>
 <li><code>LOCALE</code>和<code>L</code>这个会根据你的系统是哪个国家的，改变对应的字符集例如<code>\w</code>的字符范围</li>
-<li><code>MULTITLINE</code>和<code>M</code></li>
-<li></li>
+<li><code>MULTITLINE</code>和<code>M</code>这个flag会影响到<code>^</code>和<code>$</code>等符号</li>
+<li><code>UNICODE</code>和<code>U</code>让<code>\w</code> <code>\W</code> <code>\b</code> <code>\B</code> <code>\d</code> <code>\D</code> <code>\s</code> <code>\S</code>依靠Unicode，这个还有待考察</li>
+<li><code>VERBOSE</code>和<code>X</code>这个可以在里面插入用<code>#</code>的注释</li>
 </ul>
 <h1 id="更多的模式"><a href="#更多的模式" class="headerlink" title="更多的模式"></a>更多的模式</h1><h2 id="更多的元符号"><a href="#更多的元符号" class="headerlink" title="更多的元符号"></a>更多的元符号</h2><ul>
 <li><code>\b</code>是匹配一个词的边界</li>
-<li></li>
+<li><code>|</code>是一个表示或的符号，但是它的优先级很低，这样可以让它的结果更合理，例如<code>Crow|Servo</code>表示的是匹配<code>Crow</code>和<code>Servo</code>中的其中一个，而不是<code>w</code>货<code>S</code>中的一个。</li>
+<li><code>^</code>表示匹配字符串的开端，如果有<code>MULTILINE</code>的标志的话，它也会匹配每个换行，如果只是想匹配在句子首部的单词<code>From</code>的话，可以使用的正则表达式是<code>^From</code>。</li>
+<li><code>$</code>匹配的是句尾、行尾或者换行符号的后面的位置</li>
+<li><code>\A</code>在没有<code>MULTILINE</code>的情况下和<code>^</code>一样，但是在有<code>MULTILINE</code>的情况下也只匹配字符串首部</li>
+<li><code>\Z</code>无论什么情况下也都匹配字符串的尾部</li>
+<li><code>\b</code>前面已经介绍过了，但是这里要抢到一个很严重的冲突，如果没有在正则表达式的字符串前加上<code>r</code>的话，<code>python</code>会把<code>\b</code>处理成空格，这样就无法正常匹配了</li>
+<li><code>\B</code>则是匹配不是词的边界</li>
 </ul>
+<h2 id="4-2-Grouping"><a href="#4-2-Grouping" class="headerlink" title="4.2 Grouping"></a>4.2 Grouping</h2><p>可以用<code>(</code>和<code>)</code>来讲许多字符当作一个整体，类似数学计算中的概念。</p>
 
         </div>
         <footer class="article-footer">
@@ -255,7 +263,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/10/正则表达式/" data-id="cio18ojyc001ga0geu0j3kolf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/10/正则表达式/" data-id="cio19ro22001pb0ge9o3imntv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
