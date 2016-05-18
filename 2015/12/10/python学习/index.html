@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="记录python的一些用法">
 <meta property="og:image" content="http://yezhejack.github.io/img/Programmer.PNG">
-<meta property="og:updated_time" content="2016-05-04T14:18:23.000Z">
+<meta property="og:updated_time" content="2016-05-18T08:57:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习">
 <meta name="twitter:description" content="记录python的一些用法">
@@ -213,14 +213,14 @@ var _hmt = _hmt || [];
 <h3 id="内存分析工具meliae"><a href="#内存分析工具meliae" class="headerlink" title="内存分析工具meliae"></a>内存分析工具meliae</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> Cython</span><br><span class="line">sudo pip <span class="keyword">install</span> meliae</span><br></pre></td></tr></table></figure>
 <h4 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> meliae <span class="keyword">import</span> scanner</span><br><span class="line">scanner.dump_all_objects(<span class="string">'/opt/log/dump.txt'</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="分析内存"><a href="#分析内存" class="headerlink" title="分析内存"></a>分析内存</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from meliae import loader</span><br><span class="line"><span class="keyword">om</span> = loader.load(<span class="string">'/opt/log/dump.txt'</span>)</span><br><span class="line"><span class="keyword">om</span>.compute_parents()</span><br><span class="line"><span class="keyword">om</span>.collapse_instance_dicts()</span><br><span class="line"><span class="keyword">om</span>.summarize()</span><br></pre></td></tr></table></figure>
-
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/10/python学习/" data-id="ciocglngt0019nqgeku77zc7m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/10/python学习/" data-id="ciocgm2m1001ao2ged0ycblyo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
