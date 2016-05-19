@@ -3,18 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>标签：: mpv | JackYip</title>
+    <title>socket编程的一些问题 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackYip">
-<meta property="og:url" content="http://yezhejack.github.io/tags/mpv/index.html">
+        <meta name="keywords" content="socket,linux,unix" />
+    
+    <meta name="description" content="socket编程的一些问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="socket编程的一些问题">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description">
+<meta property="og:description" content="socket编程的一些问题">
+<meta property="og:image" content="http://yezhejack.github.io/img/Learning.png">
+<meta property="og:updated_time" content="2016-05-18T23:34:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackYip">
-<meta name="twitter:description">
+<meta name="twitter:title" content="socket编程的一些问题">
+<meta name="twitter:description" content="socket编程的一些问题">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Learning.png">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -148,73 +153,112 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签：: <em>mpv</em>
+    <a class="page-title-link" href="/categories/Learning/">Learning</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-socket编程的一些问题" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2015" class="archive-year"><i class="icon fa fa-calendar-o"></i>2015</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2015/12/20/mpv播放器使用指南/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Howto.PNG)" alt="mpv播放器使用指南" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2015/12/20/mpv播放器使用指南/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Howto/">Howto</a>
-            </p>
-            <p class="date"><time datetime="2015-12-20T08:23:15.000Z" itemprop="datePublished">2015-12-20</time></p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2015/12/20/mpv播放器使用指南/">mpv播放器使用指南</a>
+        socket编程的一些问题
         </h1>
     
 
-        <p class="article-excerpt">
-            mpv播放器这是我觉得在mac os x平台上最好用的播放器了，耗电量正常情况下都很好。
-homebrew安装
-        </p>
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/05/19/socket编程的一些问题/" class="article-date">
+    <time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/socket/">socket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/" data-id="ciodzrltt0014m6gedltfkogg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
-
+    </section>
 
                         </div>
                     </section>
@@ -258,6 +302,19 @@ homebrew安装
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">spawn-fcgi源码阅读</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -448,11 +505,13 @@ homebrew安装
     var disqus_shortname = 'yezhejack';
     
     
+    var disqus_url = 'http://yezhejack.github.io/2016/05/19/socket编程的一些问题/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
@@ -472,6 +531,23 @@ homebrew安装
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
