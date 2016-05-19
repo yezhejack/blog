@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="socket编程的一些问题">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.png">
-<meta property="og:updated_time" content="2016-05-18T23:34:01.000Z">
+<meta property="og:updated_time" content="2016-05-19T09:14:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket编程的一些问题">
 <meta name="twitter:description" content="socket编程的一些问题">
@@ -179,14 +179,17 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="为什么"><a href="#为什么" class="headerlink" title="为什么"></a>为什么</h2>
+            <h2 id="多个进程监听一个socket"><a href="#多个进程监听一个socket" class="headerlink" title="多个进程监听一个socket"></a>多个进程监听一个socket</h2><p>对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。</p>
+<p>扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一个进程accept成功，其他都失败，重新阻塞，也就是说所有监听进程同时被内核调度唤醒，这当然会耗费一定的系统资源。 而2.6以上，则已经不存在惊群现象了，但是由于开发者开发程序时使用了如epoll等异步通知技术，仍然会造成惊群，如有需要更高性能要求，或许参考nginx的实现方案，这里就不详述了。</p>
+<p><em>作者：云帆技术博客</em></p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/" data-id="cioe2fio9001kpfgen27hqhew" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/" data-id="cioe5iy6q0014s9gedxld1odv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -306,20 +309,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/05/19/spawn-fcgi源码阅读/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            spawn-fcgi源码阅读
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/05/16/Flask学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">flask学习笔记</p>
+        <p class="article-nav-title">spawn-fcgi源码阅读</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -338,25 +331,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -369,6 +343,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
@@ -395,25 +388,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
-                            <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
-                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/10/正则表达式/" class="thumbnail">
     
     
@@ -426,6 +400,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
                             <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
+                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
+                            <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
                             <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
                         </div>
                     </li>

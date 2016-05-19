@@ -202,7 +202,8 @@ var _hmt = _hmt || [];
     
 
         <p class="article-excerpt">
-            为什么
+            多个进程监听一个socket对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。
+扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一
         </p>
     </div>
 </article>
@@ -314,25 +315,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -345,6 +327,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
@@ -371,25 +372,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
-                            <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
-                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/10/正则表达式/" class="thumbnail">
     
     
@@ -402,6 +384,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
                             <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
+                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
+                            <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
                             <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
                         </div>
                     </li>
@@ -518,21 +519,7 @@ var _hmt = _hmt || [];
     </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
-�接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://www.google.com/ncr">Google</a>
-                    </li>
-                
-                    <li>
-                        <a href="https://github.com/ppoffice/hexo-theme-hueman">hueman</a>
-                    </li>
-                
-                    <li>
-                        <a href="http://iori.sinaapp.com/17.html">mathjax-guideline</a>
-                    </li>
+     </li>
                 
             </ul>
         </div>
