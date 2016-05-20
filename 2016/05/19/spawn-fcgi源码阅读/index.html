@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="之前做项目正好用到了spawn-fcgi来管理我的fastcgi进程，因此想阅读一下这个源码来增进对linux一些了解，例如权限什么的。">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.png">
-<meta property="og:updated_time" content="2016-05-19T14:03:01.000Z">
+<meta property="og:updated_time" content="2016-05-20T16:18:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spawn-fcgi源码阅读">
 <meta name="twitter:description" content="之前做项目正好用到了spawn-fcgi来管理我的fastcgi进程，因此想阅读一下这个源码来增进对linux一些了解，例如权限什么的。">
@@ -196,6 +196,7 @@ var _hmt = _hmt || [];
 <h2 id="chroot-一种沙盒机制"><a href="#chroot-一种沙盒机制" class="headerlink" title="chroot 一种沙盒机制"></a>chroot 一种沙盒机制</h2><p>这个可以将程序运行的作用范围控制在一定的距离内。</p>
 <h2 id="fork"><a href="#fork" class="headerlink" title="fork()"></a>fork()</h2><p>这个可以返回子进程的进程号，同时子进程拥有父进程的所有上下文，也就是让程序运行到fork()前的状态，因此可以用child来区分当前进程是子进程还是父进程。</p>
 <h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p>文件描述符的前三个0,1,2总是stdin stdout 和stderr。大量的应用程序都依赖这个特性，虽然这个好像并不是标准。</p>
+<h2 id="比sleep更精确的计时器"><a href="#比sleep更精确的计时器" class="headerlink" title="比sleep更精确的计时器"></a>比sleep更精确的计时器</h2><p>在unix中sleep的精确度为1s，而select(0,NULL,NULL,NULL,&amp;val)是一个更精确的计时器，可以以微秒为单位。</p>
 <h2 id="源码及注释"><a href="#源码及注释" class="headerlink" title="源码及注释"></a>源码及注释</h2><p>下载地址<br><a href="/download/spawn-fcgi.c"><strong><em>spawn-fcgi.c</em></strong></a></p>
 
         </div>
@@ -204,7 +205,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/" data-id="ciofcb805001ugbgee3lvszie" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/" data-id="ciofxl0gr0019ymgewgwp0sx9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -403,25 +404,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/10/正则表达式/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Howto.PNG)" alt="如何在python中使用正则表达式" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
-                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
     
     
@@ -434,6 +416,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
                             <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
+                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/10/正则表达式/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="如何在python中使用正则表达式" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
                             <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
                         </div>
                     </li>

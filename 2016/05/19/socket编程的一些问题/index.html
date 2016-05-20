@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="socket编程的一些问题">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.png">
-<meta property="og:updated_time" content="2016-05-19T09:14:58.000Z">
+<meta property="og:updated_time" content="2016-05-20T16:18:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket编程的一些问题">
 <meta name="twitter:description" content="socket编程的一些问题">
@@ -182,6 +182,7 @@ var _hmt = _hmt || [];
             <h2 id="多个进程监听一个socket"><a href="#多个进程监听一个socket" class="headerlink" title="多个进程监听一个socket"></a>多个进程监听一个socket</h2><p>对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。</p>
 <p>扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一个进程accept成功，其他都失败，重新阻塞，也就是说所有监听进程同时被内核调度唤醒，这当然会耗费一定的系统资源。 而2.6以上，则已经不存在惊群现象了，但是由于开发者开发程序时使用了如epoll等异步通知技术，仍然会造成惊群，如有需要更高性能要求，或许参考nginx的实现方案，这里就不详述了。</p>
 <p><em>作者：云帆技术博客</em></p>
+<p>这个方面可以从socket的accept函数的源码中得到解答，每个socket维护了一个deque来存储请求，可见是个FIFO的请求结构。</p>
 
         </div>
         <footer class="article-footer">
@@ -189,7 +190,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/" data-id="ciofcb802001ogbgesnshbpm8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/" data-id="ciofxl0gk0012ymgew9vn5bo1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -398,25 +399,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/10/正则表达式/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Howto.PNG)" alt="如何在python中使用正则表达式" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
-                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
     
     
@@ -429,6 +411,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
                             <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
+                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/10/正则表达式/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="如何在python中使用正则表达式" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2016/05/10/正则表达式/" class="title">如何在python中使用正则表达式</a></p>
                             <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
                         </div>
                     </li>
