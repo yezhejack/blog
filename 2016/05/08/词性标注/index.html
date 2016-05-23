@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="词性标注">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-23T04:57:07.000Z">
+<meta property="og:updated_time" content="2016-05-23T14:34:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词性标注">
 <meta name="twitter:description" content="词性标注">
@@ -229,9 +229,25 @@ var _hmt = _hmt || [];
 <p>之前使用的基本都是二元语法，就是只看当前词的前一个词，而三元语法会保留前面两个词的信息，保留了更多的信息。</p>
 <p><strong>插值和可变记忆</strong></p>
 <p>三元标注器会存在数据稀疏的问题。为了解决这个问题，可以采用一元、二元和三元的概率的线性插值。</p>
-<center><br><span>$P(t_i|t_{1,i-1})=\lamda_1 P_1(t_i) + \lamda_2 P_2(t_i|t_{i-1})+\lamda_3 P_3(t_i|t_{i-1},t_{i-2})$</span><!-- Has MathJax --><br></center>
+<center><br><span>$P(t_i|t_{1,i-1})=\lambda_1 P_1(t_i) + \lambda_2 P_2(t_i|t_{i-1})+\lambda_3 P_3(t_i|t_{i-1},t_{i-2})$</span><!-- Has MathJax --><br></center>
 
-<p>这种线性插值方法将在第六章中提及，怎样使用HMM来估计参数<span>$\lamda_i$</span><!-- Has MathJax --> 已经在第九章中讲过。</p>
+<p>这种线性插值方法将在第六章中提及，怎样使用HMM来估计参数<span>$\lambda_i$</span><!-- Has MathJax --> 已经在第九章中讲过。</p>
+<p>还有可变记忆马尔可夫模型（Variable Memory Markov Model,VMMM）。用混合长度的状态代替了二元或者三元语法标注器中的固定长度状态，一个VMMM标注器可以从一个记忆了前两个标记（对应三元语法模型）的状态转移到一个记忆了前三个标记（对应四元语法模型）的状态，再转移到一个没有记忆（对应一元语法模型）的状态。</p>
+<p><strong>平滑</strong><br>线性插值是平滑估计的一种方法。例如Charniak(1993)使用了类似加1法的一种思想。</p>
+<center><br><span>$P(t^j|t^{j-1})=(1-\epsilon)\frac{C(t^{j-1},t^j)}{C(t^{j-1})} +\epsilon$</span><!-- Has MathJax --><br></center>
+
+<p><strong>可逆性</strong><br>一个从左到右译码（标注）的马尔可夫模型。实际上，从右到左译码是等同的。</p>
+<center><br><span>$P(t_{1,n})=P(t_1)P(t_{1,2}|t_1)P(t_{2,3}|t_2) ... P(t_{n-1,n}|t_{n-1})=\frac{P(t_1)P(t_{1,2})P(t_{2,3})...P(t_{n-1,n})}{P(t_1)P(t_2)...P(t_{n-1})}=P(t_n)P(t_{n-1,n}|t_n)...P(t_{2,3}|t_3)P(t_{1,2}|t_2)$</span><!-- Has MathJax --><br></center>
+
+<h2 id="10-3-隐马尔可夫标注器"><a href="#10-3-隐马尔可夫标注器" class="headerlink" title="10.3 隐马尔可夫标注器"></a>10.3 隐马尔可夫标注器</h2><p>在我们有很大的标注语料库的时候，马尔可夫模型标注器可以工作得很好，但是这个情况不常见，我们会希望标注一个特定领域内的文本，这个领域内的词语生成概率与可获得的训练文本是不一样的。</p>
+<h3 id="10-3-1-隐马尔可夫模型在词性标注中的应用"><a href="#10-3-1-隐马尔可夫模型在词性标注中的应用" class="headerlink" title="10.3.1 隐马尔可夫模型在词性标注中的应用"></a>10.3.1 隐马尔可夫模型在词性标注中的应用</h3><p>就算没有训练数据，也可以使用HMM来学习标记序列的规则。第九章中介绍的HMM包含如下的元素：</p>
+<ol>
+<li>一个状态集</li>
+<li>一个输出字母表</li>
+<li>初始状态概率</li>
+<li>状态转移概率</li>
+<li>符号发射概率</li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -239,7 +255,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="ciojjkjdi004pkwgeqlq93vxj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="ciok471vr003qbcgefadouyz7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -391,25 +407,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.png)" alt="socket编程的一些问题" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
     
     
@@ -422,6 +419,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.png)" alt="socket编程的一些问题" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
