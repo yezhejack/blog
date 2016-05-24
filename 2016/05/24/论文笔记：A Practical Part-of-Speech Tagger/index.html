@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于马尔可夫的词性标注经典论文－A Practical Part-of-Speech Tagger，主要解决了我如何处理训练数据的问题。">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-24T16:11:01.000Z">
+<meta property="og:updated_time" content="2016-05-24T16:16:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文笔记：A Practical Part-of-Speech Tagger">
 <meta name="twitter:description" content="基于马尔可夫的词性标注经典论文－A Practical Part-of-Speech Tagger，主要解决了我如何处理训练数据的问题。">
@@ -201,7 +201,7 @@ var _hmt = _hmt || [];
 <h2 id="3-隐马尔可夫模型"><a href="#3-隐马尔可夫模型" class="headerlink" title="3 隐马尔可夫模型"></a>3 隐马尔可夫模型</h2><p>应用HMM有两个任务，估计参数和先验概率，在训练集合上。计算隐藏状态的转移序列。</p>
 <h2 id="数值稳定性"><a href="#数值稳定性" class="headerlink" title="数值稳定性"></a>数值稳定性</h2><p>因为前向后向算中使用到的乘积的结果是0到1之间的数值，很容易下溢，所以需要调整放大一下。首先是前向概率，重新计算一遍，分子是当前的前向概率，分母是当前时刻的所有前向概率的和。同样的处理过程同样应用在后向概率上。B的稀疏性可以减少一下一些运算，可以先检测对应的位置上是否有0，有的话就不用计算了。</p>
 <h2 id="训练集的处理方式"><a href="#训练集的处理方式" class="headerlink" title="训练集的处理方式"></a>训练集的处理方式</h2><p>我看这篇论文的主要目的在于知道隐马尔可夫对训练集的处理方式。如果是显马尔可夫的话，只要用最大似然的方式统计A、B以及Pi就可以了，但是如果是隐马尔可夫的话，我们需要一个序列来作为训练集。正常情况下就是把整个文本当作一个序列，作为估计，而不是以句子为单位。但是这篇文章中为了优化，将其分为多个长度相同的部分训练参数，最后将参数做平均。如果是按照每句话划分的话，最后合并的时候因为matrix的size不同，会导致无法平均。</p>
-<p>下载地址<br><a href="/papers/1.pdf"><strong><em>A Practical Part-of-Speech Tagger</em></strong></a></p>
+<p>下载地址<br><a href="http://nlp.cs.swarthmore.edu/~richardw/papers/2up/A92-1018.pdf" target="_blank" rel="external"><strong><em>A Practical Part-of-Speech Tagger.pdf</em></strong></a></p>
 
         </div>
         <footer class="article-footer">
@@ -209,7 +209,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" data-id="cioln2kmf0024d7gexv7ssdnd" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" data-id="ciolnaj3f0024ergew4qqw3lt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -330,9 +330,9 @@ var _hmt = _hmt || [];
 <nav id="article-nav">
     
     
-        <a href="/2016/05/19/socket编程的一些问题/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">socket编程的一些问题</p>
+        <p class="article-nav-title">spawn-fcgi源码阅读</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -370,25 +370,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.png)" alt="socket编程的一些问题" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
     
     
@@ -401,6 +382,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.png)" alt="socket编程的一些问题" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
