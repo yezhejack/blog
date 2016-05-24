@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="词性标注">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-23T14:34:50.000Z">
+<meta property="og:updated_time" content="2016-05-24T16:03:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词性标注">
 <meta name="twitter:description" content="词性标注">
@@ -248,14 +248,28 @@ var _hmt = _hmt || [];
 <li>状态转移概率</li>
 <li>符号发射概率</li>
 </ol>
+<p>有两种方法可以来处理初始化HMM的所有参数，一种是基于每个词语的统计，而另一种是基于每个等价类的统计，将词语聚集到词语等价类中，让同一类的词语允许同样的标注。我们用<span>$b_{j.l}$</span><!-- Has MathJax -->来表示词语（或词类）l由标记j发射的概率。</p>
+<p><strong>Jelinek的方法</strong></p>
+<center><br><span>$b_{j.l}=\frac{b^{*}_{j.l} C(w^l)}{\sum_{w^m} b^{*}_{j.m} C(w^m)}$</span><!-- Has MathJax --><br></center>
 
+<center><br><span>$b^{*}_{j.l}=0 如果t^j不是w^l所允许的词性$</span><!-- Has MathJax --><br></center>
+
+<center><br><span>$b^{*}_{j.l}=\frac{1}{T(w^l)} 其它$</span><!-- Has MathJax --><br></center>
+
+<p><strong>Kupiec的方法</strong></p>
+<p>这个和前面的Jelinke的方法差不多，只是不针对每个词了，而是针对等价类，但是如果有一个很完美的数据库的话，这个方法就散失优势了。</p>
+<h3 id="10-3-2-隐马尔可夫模型训练中的初始化的作用"><a href="#10-3-2-隐马尔可夫模型训练中的初始化的作用" class="headerlink" title="10.3.2 隐马尔可夫模型训练中的初始化的作用"></a>10.3.2 隐马尔可夫模型训练中的初始化的作用</h3><p>为了防止训练过度，可以在训练集上留出一个验证集，每次迭代后都测试一下，在性能下降的时候就停止迭代。</p>
+<h2 id="10-4-基于转换的学习"><a href="#10-4-基于转换的学习" class="headerlink" title="10.4 基于转换的学习"></a>10.4 基于转换的学习</h2><p>我们需要一个已经标注好的语料库和一个词典作为输入数据。首先用最常用的标记来标注训练语料库中的每个词，这就是我们需要词典的原因。接下来学习算法构建了一个转换的排序表，它把初始的标注转化为接近正确的标注。通过再次初始化来选择每个词最常用的标记，再应用转换，这个排序表就可以用来标注新的文本。</p>
+<h3 id="10-4-1-转换"><a href="#10-4-1-转换" class="headerlink" title="10.4.1 转换"></a>10.4.1 转换</h3><p>一个转换包括两个部分，一个是触发环境，另一个是重写规则。大概的意思就是在特定的位置上出现特殊的标注的时候，这个标注需要进行转换，触发重写规则。</p>
+<h3 id="10-4-2-学习算法"><a href="#10-4-2-学习算法" class="headerlink" title="10.4.2 学习算法"></a>10.4.2 学习算法</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C0:=corpus with each word tagged with its most frequent tag</span><br><span class="line"><span class="keyword">for</span> k:=0 step 1 do</span><br><span class="line">    v:=the transformation ui that minimizes E(ui(Ck))</span><br><span class="line">    <span class="keyword">if</span> (E(Ck))-E(v(Ck)))&lt;e then <span class="keyword">break</span> fi</span><br><span class="line">    C(k+1)=v(Ck)</span><br><span class="line">    T(k+1)=v</span><br><span class="line">end</span><br><span class="line">Output sequence:T1...Tk</span><br></pre></td></tr></table></figure>
+<h3 id="10-4-3-与其他模型的关系"><a href="#10-4-3-与其他模型的关系" class="headerlink" title="10.4.3 与其他模型的关系"></a>10.4.3 与其他模型的关系</h3>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="ciok471vr003qbcgefadouyz7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/08/词性标注/" data-id="ciolmty9o0034aigev728zifv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -375,11 +389,11 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/05/10/正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/05/10/Minimal Height Tree/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            如何在python中使用正则表达式
+            Minimal Height Tree
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -407,19 +421,19 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+                            <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.PNG)" alt="论文笔记：A Practical Part-of-Speech Tagger" class="thumbnail-image"></span>
     
     
 </a>
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="title">论文笔记：A Practical Part-of-Speech Tagger</a></p>
+                            <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
                         </div>
                     </li>
                 
@@ -445,6 +459,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.png)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2016/05/16/Flask学习笔记/" class="thumbnail">
     
     
@@ -458,25 +491,6 @@ var _hmt = _hmt || [];
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/16/Flask学习笔记/" class="title">flask学习笔记</a></p>
                             <p class="item-date"><time datetime="2016-05-16T12:56:00.000Z" itemprop="datePublished">2016-05-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Leetcode/">Leetcode</a></p>
-                            <p class="item-title"><a href="/2016/05/10/Minimal Height Tree/" class="title">Minimal Height Tree</a></p>
-                            <p class="item-date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
                         </div>
                     </li>
                 
@@ -508,7 +522,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -518,7 +532,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -528,7 +542,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12.5px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 17.5px;">Natural Language Processing</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12.5px;">OS X</a> <a href="/tags/STL/" style="font-size: 17.5px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12.5px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12.5px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 15px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 15px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12.5px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 10px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 17.5px;">C++</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12.5px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12.5px;">OS X</a> <a href="/tags/STL/" style="font-size: 17.5px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12.5px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12.5px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12.5px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 15px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 15px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12.5px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 12.5px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 
