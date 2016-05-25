@@ -3,23 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>nginx | JackYip</title>
+    <title>词性标注 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Server,Nginx" />
+        <meta name="keywords" content="Natural Language Processing,词性标注,统计自然语言处理基础" />
     
-    <meta name="description" content="Nginx安装和配置，Nginx访问量统计">
+    <meta name="description" content="词性标注">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx">
-<meta property="og:url" content="http://yezhejack.github.io/2015/12/22/nginx/index.html">
+<meta property="og:title" content="词性标注">
+<meta property="og:url" content="http://yezhejack.github.io/2016/05/25/词性标注/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="Nginx安装和配置，Nginx访问量统计">
-<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
-<meta property="og:updated_time" content="2016-05-04T14:16:46.000Z">
+<meta property="og:description" content="词性标注">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-05-25T15:21:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx">
-<meta name="twitter:description" content="Nginx安装和配置，Nginx访问量统计">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:title" content="词性标注">
+<meta name="twitter:description" content="词性标注">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,43 +153,133 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-nginx" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-词性标注" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        nginx
+        词性标注
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2015/12/22/nginx/" class="article-date">
-    <time datetime="2015-12-21T16:26:18.000Z" itemprop="datePublished">2015-12-22</time>
+            <a href="/2016/05/25/词性标注/" class="article-date">
+    <time datetime="2016-05-25T14:16:00.000Z" itemprop="datePublished">2016-05-25</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nginx/">Nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/统计自然语言处理基础/">统计自然语言处理基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/词性标注/">词性标注</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="keyword">using</span> PCRE library: /mnt/application/pcre<span class="number">-8.32</span></span><br><span class="line">  + OpenSSL library is <span class="keyword">not</span> used</span><br><span class="line">  + <span class="keyword">using</span> builtin md5 code</span><br><span class="line">  + sha1 library is <span class="keyword">not</span> found</span><br><span class="line">  + <span class="keyword">using</span> zlib library: /mnt/application/zlib<span class="number">-1.2</span><span class="number">.8</span></span><br><span class="line"></span><br><span class="line">  nginx path prefix: <span class="string">"/usr/local/nginx"</span></span><br><span class="line">  nginx binary <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/sbin/nginx"</span></span><br><span class="line">  nginx configuration prefix: <span class="string">"/usr/local/nginx/conf"</span></span><br><span class="line">  nginx configuration <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/conf/nginx.conf"</span></span><br><span class="line">  nginx pid <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/nginx.pid"</span></span><br><span class="line">  nginx error <span class="built_in">log</span> <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/error.log"</span></span><br><span class="line">  nginx <span class="keyword">http</span> access <span class="built_in">log</span> <span class="built_in">file</span>: <span class="string">"/usr/local/nginx/logs/access.log"</span></span><br><span class="line">  nginx <span class="keyword">http</span> client request body temporary <span class="built_in">files</span>: <span class="string">"client_body_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> proxy temporary <span class="built_in">files</span>: <span class="string">"proxy_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> fastcgi temporary <span class="built_in">files</span>: <span class="string">"fastcgi_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> uwsgi temporary <span class="built_in">files</span>: <span class="string">"uwsgi_temp"</span></span><br><span class="line">  nginx <span class="keyword">http</span> scgi temporary <span class="built_in">files</span>: <span class="string">"scgi_temp"</span></span><br></pre></td></tr></table></figure>
-<h3 id="从源码安装nginx"><a href="#从源码安装nginx" class="headerlink" title="从源码安装nginx"></a>从源码安装nginx</h3><h3 id="拷贝nginx-到sbin"><a href="#拷贝nginx-到sbin" class="headerlink" title="拷贝nginx 到sbin"></a>拷贝nginx 到sbin</h3><h3 id="分析access-log-访问量"><a href="#分析access-log-访问量" class="headerlink" title="分析access.log 访问量"></a>分析access.log 访问量</h3><p>access.log是记录了所有的nginx的访问链接，并且纪录了这些访问的结果。可以使用python中的正则表达式来对其进行解析。这里需要python的re模块</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">ip = <span class="string">r"?P&lt;ip&gt;[\d.]*"</span></span><br><span class="line">date = <span class="string">r"?P&lt;date&gt;\d+"</span></span><br><span class="line">month = <span class="string">r"?P&lt;month&gt;\w+"</span></span><br><span class="line">year = <span class="string">r"?P&lt;year&gt;\d+"</span></span><br><span class="line">log_time = <span class="string">r"?P&lt;time&gt;\S+"</span></span><br><span class="line">method = <span class="string">r"?P&lt;method&gt;\S+"</span></span><br><span class="line">request = <span class="string">r"?P&lt;request&gt;\S+"</span></span><br><span class="line">status = <span class="string">r"?P&lt;status&gt;\d+"</span></span><br><span class="line">bodyBytesSent = <span class="string">r"?P&lt;bodyBytesSent&gt;\d+"</span></span><br><span class="line">refer = <span class="string">r"""?P&lt;refer&gt;</span><br><span class="line">         [^\"]*</span><br><span class="line">         """</span></span><br><span class="line">userAgent=<span class="string">r"""?P&lt;userAgent&gt;</span><br><span class="line">                .*</span><br><span class="line">               """</span></span><br><span class="line">p = re.compile(<span class="string">r"(%s)\ -\ -\ \[(%s)/(%s)/(%s)\:(%s)\ [\S]+\]\ \"(%s)?[\s]?(%s)?.*?\"\ (%s)\ (%s)\ \"(%s)\"\ \"(%s).*?\""</span> %( ip, date, month, year, log_time, method, request, status, bodyBytesSent, refer, userAgent ), re.VERBOSE)</span><br><span class="line">m = re.findall(p, line)</span><br></pre></td></tr></table></figure>
-<h3 id="分割access-log"><a href="#分割access-log" class="headerlink" title="分割access.log"></a>分割access.log</h3>
+            <h1 id="词性标注"><a href="#词性标注" class="headerlink" title="词性标注"></a>词性标注</h1><h2 id="10-1标记中的信息源"><a href="#10-1标记中的信息源" class="headerlink" title="10.1标记中的信息源"></a>10.1标记中的信息源</h2><ol>
+<li>观察感兴趣词的邻近上下文的其它词的词性</li>
+<li>利用词本身提供的信息，有人做了一个词性标注起<code>dumb</code>，这个标注器只是将所有词最常用的词性标注给这个词，就取得了<code>90%</code>的准确率。</li>
+</ol>
+<p>因此词之间用法及其不平均，因此用统计的方法会更甚一筹。</p>
+<h2 id="10-2马尔可夫模型标注器"><a href="#10-2马尔可夫模型标注器" class="headerlink" title="10.2马尔可夫模型标注器"></a>10.2马尔可夫模型标注器</h2><h3 id="10-2-1概率模型"><a href="#10-2-1概率模型" class="headerlink" title="10.2.1概率模型"></a>10.2.1概率模型</h3><p>马尔可夫链的两个特性</p>
+<ul>
+<li>有限视野（limited horizon）<span>$P(X_{i+1}=t^j|X_1,...X_i)=P(X_{i+1}=t^j|X_i)$</span><!-- Has MathJax --></li>
+<li>时间不变形<span>$P(X_{i+1}=t^j|X_1,...X_i)=P(X_{2}=t^j|X_1)$</span><!-- Has MathJax --></li>
+</ul>
+<p>下表指示标注预料库和句子中特殊位置的词和词性，用上标表示词典中的词和标注集中的词性类别。</p>
+<p>有限视野的式子可以简化为</p>
+<center><br><span>$P(t_{i+1}|t_{1,i})=P(t_{i+1}|t_i)$</span><!-- Has MathJax --><br></center>
+
+<p>标记$t^k$跟随$t^j$的最大似然估计来自于不同的标记跟随某个特定标记的相对频率估计。</p>
+<center><br><span>$P(t_{i+1}|t_i)＝\frac{C(t^j,t^k)}{C(t^j)}$</span><!-- Has MathJax --><br></center>
+
+<p>这个问题应用到马尔可夫里，对应的状态就是词的标注，而每次离开一个状态发射出的词就是我们的观察序列。</p>
+<p>发射概率：</p>
+<center><br><span>$P(O_n=k|X_n=s_i,X_{n+1}=s_j)＝b_{ijk}$</span><!-- Has MathJax --><br></center>
+
+<p>可以通过最大似然估计来直接估计一个词被一个特定的状态（标记）发射出来的概率：</p>
+<center><br><span>$P(w^l|t^j)＝\frac{C(w^l,t^j}{C(t^j)}$</span><!-- Has MathJax --><br></center>
+
+<p>我们最终要解决这个词性标注问题的话，我们所有求解的是下面这样的式子：</p>
+<center><br><span>$$\arg\max_{t_{1,n}}P(t_{1,n}|w_{1,n})=\arg\max_{t_{1,n}}\frac{P(w_{1,n}|t_{1,n})P(t_{1,n})}{P(w_{1,n})}\\
+=\arg\max_{t_{1,n}}P(w_{1,n}|t_{1,n})P(t_{1,n})$$</span><!-- Has MathJax --><br></center>
+
+<p>这个式子在这里还是可以继续化解下去的，只需要再做两个假设，首先是<code>词语之间是独立的</code>，这样式子就变成了</p>
+<center><br><span>$P(w_{1,n}|t_{1,n})=\prod_{i=1}^n P(w_i|t_{1,n}) P(t_n|t_{1,n-1}) P(t_{n-1}|t_{1,n-2})...P(t_2|t_1)$</span><!-- Has MathJax --><br></center>
+
+<p>然后在假设一下<code>每个词的出现只依赖于自己本身的标注</code>，那么整个式子又变为了这样</p>
+<center><br><span>$$P(w_{1,n}|t_{1,n})=\prod_{i=1}^n P(w_i|t_{i}) P(t_n|t_{n-1}) P(t_{n-1}|t_{1,n-2})...P(t_2|t_1)\\
+=\prod[P(w_i|t_i)P(t_i|t_{i-1})]$$</span><!-- Has MathJax --><br></center>
+
+<h3 id="10-2-2-Viterbi算法"><a href="#10-2-2-Viterbi算法" class="headerlink" title="10.2.2 Viterbi算法"></a>10.2.2 Viterbi算法</h3><p>至此，可能已经一脸懵逼了，但是实际上我们已经将问题化解为了马尔可夫问题，我们可以放心地用马尔可夫链来解这个问题了。我们有了转移概率和发射概率了分别是<span>$P(t_{i}|t_{i-1})$</span><!-- Has MathJax -->和<span>$P(w_{i}|t_{i})$</span><!-- Has MathJax -->。然后呢，这个是一个给了观测序列，叫求状态的问题，因此用动态规划对应的<code>Viterbi</code>算法。在马尔可夫中有讲到。</p>
+<h3 id="10-2-3-算法的变形"><a href="#10-2-3-算法的变形" class="headerlink" title="10.2.3 算法的变形"></a>10.2.3 算法的变形</h3><p><strong>未登录词</strong></p>
+<p>在实践中不同的标注器在不同语料库上的不同准确率主要是由为登录词的比例决定的，智能化的标注器就需要能够对未登录词的词性进行一定的猜测。</p>
+<p><code>eischedel</code>在1993年的论文中基于三种信息估计了词语生成概率：</p>
+<ol>
+<li>一个标注可以生成一个未登录词的概率有多大</li>
+<li>生成大写词或者小写词的概率有多大</li>
+<li>生成连字符或者特殊后缀的可能性</li>
+</ol>
+<center><br><span>$P(W^l|t^j)=\frac{1}{Z} P(unknown word|t^j) P(capitalized|t^j) P(endings or hyph|t^j)$</span><!-- Has MathJax --><br></center>
+
+<p><strong>三元语法标注器</strong></p>
+<p>之前使用的基本都是二元语法，就是只看当前词的前一个词，而三元语法会保留前面两个词的信息，保留了更多的信息。</p>
+<p><strong>插值和可变记忆</strong></p>
+<p>三元标注器会存在数据稀疏的问题。为了解决这个问题，可以采用一元、二元和三元的概率的线性插值。</p>
+<center><br><span>$P(t_i|t_{1,i-1})=\lambda_1 P_1(t_i) + \lambda_2 P_2(t_i|t_{i-1})+\lambda_3 P_3(t_i|t_{i-1},t_{i-2})$</span><!-- Has MathJax --><br></center>
+
+<p>这种线性插值方法将在第六章中提及，怎样使用HMM来估计参数<span>$\lambda_i$</span><!-- Has MathJax --> 已经在第九章中讲过。</p>
+<p>还有可变记忆马尔可夫模型（Variable Memory Markov Model,VMMM）。用混合长度的状态代替了二元或者三元语法标注器中的固定长度状态，一个VMMM标注器可以从一个记忆了前两个标记（对应三元语法模型）的状态转移到一个记忆了前三个标记（对应四元语法模型）的状态，再转移到一个没有记忆（对应一元语法模型）的状态。</p>
+<p><strong>平滑</strong><br>线性插值是平滑估计的一种方法。例如Charniak(1993)使用了类似加1法的一种思想。</p>
+<center><br><span>$P(t^j|t^{j-1})=(1-\epsilon)\frac{C(t^{j-1},t^j)}{C(t^{j-1})} +\epsilon$</span><!-- Has MathJax --><br></center>
+
+<p><strong>可逆性</strong><br>一个从左到右译码（标注）的马尔可夫模型。实际上，从右到左译码是等同的。</p>
+<center><br><span>$P(t_{1,n})=P(t_1)P(t_{1,2}|t_1)P(t_{2,3}|t_2) ... P(t_{n-1,n}|t_{n-1})=\frac{P(t_1)P(t_{1,2})P(t_{2,3})...P(t_{n-1,n})}{P(t_1)P(t_2)...P(t_{n-1})}=P(t_n)P(t_{n-1,n}|t_n)...P(t_{2,3}|t_3)P(t_{1,2}|t_2)$</span><!-- Has MathJax --><br></center>
+
+<h2 id="10-3-隐马尔可夫标注器"><a href="#10-3-隐马尔可夫标注器" class="headerlink" title="10.3 隐马尔可夫标注器"></a>10.3 隐马尔可夫标注器</h2><p>在我们有很大的标注语料库的时候，马尔可夫模型标注器可以工作得很好，但是这个情况不常见，我们会希望标注一个特定领域内的文本，这个领域内的词语生成概率与可获得的训练文本是不一样的。</p>
+<h3 id="10-3-1-隐马尔可夫模型在词性标注中的应用"><a href="#10-3-1-隐马尔可夫模型在词性标注中的应用" class="headerlink" title="10.3.1 隐马尔可夫模型在词性标注中的应用"></a>10.3.1 隐马尔可夫模型在词性标注中的应用</h3><p>就算没有训练数据，也可以使用HMM来学习标记序列的规则。第九章中介绍的HMM包含如下的元素：</p>
+<ol>
+<li>一个状态集</li>
+<li>一个输出字母表</li>
+<li>初始状态概率</li>
+<li>状态转移概率</li>
+<li>符号发射概率</li>
+</ol>
+<p>有两种方法可以来处理初始化HMM的所有参数，一种是基于每个词语的统计，而另一种是基于每个等价类的统计，将词语聚集到词语等价类中，让同一类的词语允许同样的标注。我们用<span>$b_{j.l}$</span><!-- Has MathJax -->来表示词语（或词类）l由标记j发射的概率。</p>
+<p><strong>Jelinek的方法</strong></p>
+<center><br><span>$b_{j.l}=\frac{b^{*}_{j.l} C(w^l)}{\sum_{w^m} b^{*}_{j.m} C(w^m)}$</span><!-- Has MathJax --><br></center>
+
+<center><br><span>$b^{*}_{j.l}=0 如果t^j不是w^l所允许的词性$</span><!-- Has MathJax --><br></center>
+
+<center><br><span>$b^{*}_{j.l}=\frac{1}{T(w^l)} 其它$</span><!-- Has MathJax --><br></center>
+
+<p><strong>Kupiec的方法</strong></p>
+<p>这个和前面的Jelinke的方法差不多，只是不针对每个词了，而是针对等价类，但是如果有一个很完美的数据库的话，这个方法就散失优势了。</p>
+<h3 id="10-3-2-隐马尔可夫模型训练中的初始化的作用"><a href="#10-3-2-隐马尔可夫模型训练中的初始化的作用" class="headerlink" title="10.3.2 隐马尔可夫模型训练中的初始化的作用"></a>10.3.2 隐马尔可夫模型训练中的初始化的作用</h3><p>为了防止训练过度，可以在训练集上留出一个验证集，每次迭代后都测试一下，在性能下降的时候就停止迭代。</p>
+<h2 id="10-4-基于转换的学习"><a href="#10-4-基于转换的学习" class="headerlink" title="10.4 基于转换的学习"></a>10.4 基于转换的学习</h2><p>我们需要一个已经标注好的语料库和一个词典作为输入数据。首先用最常用的标记来标注训练语料库中的每个词，这就是我们需要词典的原因。接下来学习算法构建了一个转换的排序表，它把初始的标注转化为接近正确的标注。通过再次初始化来选择每个词最常用的标记，再应用转换，这个排序表就可以用来标注新的文本。</p>
+<h3 id="10-4-1-转换"><a href="#10-4-1-转换" class="headerlink" title="10.4.1 转换"></a>10.4.1 转换</h3><p>一个转换包括两个部分，一个是触发环境，另一个是重写规则。大概的意思就是在特定的位置上出现特殊的标注的时候，这个标注需要进行转换，触发重写规则。</p>
+<h3 id="10-4-2-学习算法"><a href="#10-4-2-学习算法" class="headerlink" title="10.4.2 学习算法"></a>10.4.2 学习算法</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C0:=corpus with each word tagged with its most frequent tag</span><br><span class="line"><span class="keyword">for</span> k:=0 step 1 do</span><br><span class="line">    v:=the transformation ui that minimizes E(ui(Ck))</span><br><span class="line">    <span class="keyword">if</span> (E(Ck))-E(v(Ck)))&lt;e then <span class="keyword">break</span> fi</span><br><span class="line">    C(k+1)=v(Ck)</span><br><span class="line">    T(k+1)=v</span><br><span class="line">end</span><br><span class="line">Output sequence:T1...Tk</span><br></pre></td></tr></table></figure>
+<p>最初我们使用最常见的标记标注每个词。在每次迭代中，我们选择最可能减少错误率的转换，通过标注过的语料库<span>$C_{k}$</span><!-- Has MathJax -->中的被错误标注的词语的数目来衡量错误率<span>$E(C_k)$</span><!-- Has MathJax -->。</p>
+<p>如何应用转换也有两种方式，一种是具有立即效果的，另一种是具有延迟效果的。如果是延迟转换的话<code>A-&gt;B</code>会将<code>AAAA</code>转换为<code>ABBB</code>。而立即转换的话则会变为<code>ABAB</code>。</p>
+<p>这个标注模型的一个应用Brill(1995b)。在HMM标注中，非监督学习唯一可以获得的信息是每个词有哪些标记是允许的，我们可以利用很多词只有一种词性标记这个事实，并把它作为选择转换的积分计分函数。而且文章中展示的问题没有训练过度的问题。这个文章中使用的无监督的学习，什么是无监督的学习（unsupervised learning）呢，就是看输入的数据是没有标签的，如果有，就是有监督的学习。</p>
+<p>会有一个转换模版，其中有context，一个待转换tags集合，一个转换目标tag，所以可见这个模版是可穷举的。然后我们假设有一个Score，先不管这个Score是怎么来了，总之每个转换（transition）都可以得出一个Score，然后选一个Score最大的，作为这个迭代产出的转换。</p>
+<p>为了得到这个Score的计分标准比较有趣，因为如果是有监督的学习，那么可以看错误个数，但是这个方法确实无监督的。每次都是以当前已有的转换作为标准。刚开始的时候每个词都是被标注上它所有的可能词性（文中就是tags）。公式就不列举了，公式大概的意思就是找到一个好的能够消除词性标注歧义的转换是 一个通过测量在同一个context和同一个单词中无歧义地出现的一个tag的可能性大于其他tag的tag，最后的结果也不一定是完全消歧的，一个单词仍然可能含有多个可能的tag。</p>
+<p><center><br><span>$freq(Y)/freq(Z)*incontext(Z,C)$</span><!-- Has MathJax --><br></center><br>这个公式中<code>freq(Y)</code>是在语料库中，<code>tag Y</code>无歧义地出现的次数，同理<code>freq(Z)</code>是<code>tag Z</code>在语料库中无歧义出现的次数,而incontext(Z,C)就是白表示在C的条件下一个单词被无歧义地被标注为Z的个数。而R是一个能让这个式子最大化的一个Z，然后Score就是等于</p>
+<p><center><br><span>$incontext(Y,C)-freq(Y)/freq(R)*incontext(R,C)$</span><!-- Has MathJax --><br></center><br>公式的主体是incontext(Y,C)和incontext(R,C)，而另外的freq(Y)/freq(R)则是用于协调相对概率的。</p>
+<p>其中有提到一种监督学习和非监督学习结合的HMM词性标注器，就是先通过监督学习，从corpus中学习到HMM的初始参数，然后再通过Baum－Welch算法在一个未标注的corpus中调整参数。</p>
+<h3 id="10-4-3-与其他模型的关系"><a href="#10-4-3-与其他模型的关系" class="headerlink" title="10.4.3 与其他模型的关系"></a>10.4.3 与其他模型的关系</h3><p>决策树有点类似基于转换的方式，但是它很容易特化，在以最小化错误率为目标的情况下它很容易在训练集上获得100%的正确率，但迁移到新的数据集上的时候就会显得性能很差。</p>
+<h2 id="10-6-标注准确率和标注器的应用"><a href="#10-6-标注准确率和标注器的应用" class="headerlink" title="10.6 标注准确率和标注器的应用"></a>10.6 标注准确率和标注器的应用</h2><h3 id="10-6-1-标注准确率"><a href="#10-6-1-标注准确率" class="headerlink" title="10.6.1 标注准确率"></a>10.6.1 标注准确率</h3><p>看论文的时候，经常看到说某某标注器提高了一个百分点或者两个百分点的准确率，通常会被窝嗤之以鼻，认为在实际应用中，这么一丁点的差别不会影响很大。但是例如一个97%准确率的标注器有63%的可能性讲一个有15个词的句子标注对，而另一个准确率达到98%的标注器则有74%的可能性将一个有15个词的句子完全标注对。因此一个百分点的提高也会对应用产生挺大的影响。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/22/nginx/" data-id="cion0r4nz0014pmgefs4eobea" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/25/词性标注/" data-id="cion0r4pp004upmgexzn5k11e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -309,20 +399,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/03/28/安装libsvm和gnuplot/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            安装libsvm和gnuplot
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">mpv播放器使用指南</p>
+        <p class="article-nav-title">论文笔记：A Practical Part-of-Speech Tagger</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -518,7 +598,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2015/12/22/nginx/';
+    var disqus_url = 'http://yezhejack.github.io/2016/05/25/词性标注/';
     
     (function() {
     var dsq = document.createElement('script');
