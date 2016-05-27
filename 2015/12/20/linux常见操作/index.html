@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-05-27T06:01:23.000Z">
+<meta property="og:updated_time" content="2016-05-27T10:38:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -216,15 +216,14 @@ var _hmt = _hmt || [];
 <p><code>command</code>就是我们要跑的程序。<code>out.put</code>就是我们希望把屏幕上输出的内容存入的文件，比如我希望明天一早起来看到一个程序的结尾，但是我又不想改这个程序让其把最后的算法结果存入某个程序（其实就是懒）。<code>2</code>表示标准输出，而<code>1</code>表示标准错误输出。另外提一句<code>0</code>就是表示标准输入，这些都是一个进程的默认的文件描述符，unix中一切皆文件。</p>
 <p>如果中间的符号改为<code>&gt;&gt;</code>的话，是以追加的方式写文件。</p>
 <h3 id="查看cpu信息"><a href="#查看cpu信息" class="headerlink" title="查看cpu信息"></a>查看cpu信息</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/cpuinfo</span><br></pre></td></tr></table></figure>
-<p>###</p>
-
+<h3 id="使用nologin运行程序"><a href="#使用nologin运行程序" class="headerlink" title="使用nologin运行程序"></a>使用nologin运行程序</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u nologin <span class="tag">&lt;<span class="name">cmd</span>&gt;</span></span><br></pre></td></tr></table></figure>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="ciopbndtj0025hygeo8xpax9o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cioplj2nj0011s6geec7bdbn4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -344,20 +343,20 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2015/12/22/nginx/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            mpv播放器使用指南
+            nginx
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2015/12/10/git以及github的用法/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2015/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Git以及GitHub的用法</p>
+        <p class="article-nav-title">redis</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
