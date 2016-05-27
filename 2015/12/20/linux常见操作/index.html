@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-05-04T16:00:23.000Z">
+<meta property="og:updated_time" content="2016-05-27T06:01:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -212,13 +212,19 @@ var _hmt = _hmt || [];
 <p>第一行的命令同时为<code>zhangsan</code>这个账户增加了一个工作目录，第二行为修改密码，第三行为修改这个账户的权限，将其加入到sudo的组中，到此为止一个简单的linxu远程服务器的用户部分就已经配置好了。</p>
 <h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> <span class="symbol">&lt;name&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="查看主机最近一次的启动时间"><a href="#查看主机最近一次的启动时间" class="headerlink" title="查看主机最近一次的启动时间"></a>查看主机最近一次的启动时间</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">who</span> -b</span><br></pre></td></tr></table></figure>
+<h2 id="在高性能服务器上跑训练"><a href="#在高性能服务器上跑训练" class="headerlink" title="在高性能服务器上跑训练"></a>在高性能服务器上跑训练</h2><h3 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">command</span> &gt; <span class="title">out</span>.<span class="title">put</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span></span><br></pre></td></tr></table></figure>
+<p><code>command</code>就是我们要跑的程序。<code>out.put</code>就是我们希望把屏幕上输出的内容存入的文件，比如我希望明天一早起来看到一个程序的结尾，但是我又不想改这个程序让其把最后的算法结果存入某个程序（其实就是懒）。<code>2</code>表示标准输出，而<code>1</code>表示标准错误输出。另外提一句<code>0</code>就是表示标准输入，这些都是一个进程的默认的文件描述符，unix中一切皆文件。</p>
+<p>如果中间的符号改为<code>&gt;&gt;</code>的话，是以追加的方式写文件。</p>
+<h3 id="查看cpu信息"><a href="#查看cpu信息" class="headerlink" title="查看cpu信息"></a>查看cpu信息</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/cpuinfo</span><br></pre></td></tr></table></figure>
+<p>###</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cioo1ap0c000l2mge3av1jjjo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="ciopbndtj0025hygeo8xpax9o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -338,11 +344,11 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            redis
+            mpv播放器使用指南
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
@@ -427,25 +433,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="socket编程的一些问题" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
     
     
@@ -458,6 +445,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="socket编程的一些问题" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>

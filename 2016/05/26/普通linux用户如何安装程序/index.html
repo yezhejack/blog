@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="因为个人只有linux服务器的普通账户，不想麻烦admin来安装软件，所以尝试自己安装软件。">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-05-26T08:24:48.000Z">
+<meta property="og:updated_time" content="2016-05-26T14:11:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="普通linux用户如何安装程序">
 <meta name="twitter:description" content="因为个人只有linux服务器的普通账户，不想麻烦admin来安装软件，所以尝试自己安装软件。">
@@ -192,6 +192,10 @@ var _hmt = _hmt || [];
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=<span class="regexp">/home/xxx</span><span class="regexp">/ LDFLAGS="-L/home</span><span class="regexp">/xxx/lib</span><span class="string">"</span><br><span class="line">make</span><br><span class="line">make install</span></span><br></pre></td></tr></table></figure>
 <p>默认情况下当前用户目录下的bin也会在$PATH中，如果没有的话就需要google一下怎么添加了。</p>
 <p>这时候完成了</p>
+<h2 id="安装java"><a href="#安装java" class="headerlink" title="安装java"></a>安装java</h2><p>因为我需要一个1.8版本的java，因此我需要在我的路径下能够用1.8版本的java。<br>我们去下载一个jdk for linxu-64bit，然后解压它，放到<code>/home/xxx/java</code>中，然后在.bashrc的最后加上，</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">JAVA_HOME=<span class="regexp">/home/xxx</span><span class="regexp">/java/jdk</span>1.<span class="number">8.0_73</span></span><br><span class="line">CLASSPATH=.:$JAVA_HOME/<span class="class"><span class="keyword">lib</span>.<span class="title">tools</span>.<span class="title">jar</span></span></span><br><span class="line">PATH=$JAVA_HOME/<span class="symbol">bin:</span>$HOME/<span class="symbol">bin:</span>$PATH</span><br><span class="line">export PATH JAVA_HOME CLASSPATH</span><br></pre></td></tr></table></figure>
+<p>每个路径用<code>:</code>隔开，然后搜索的顺序也是按照这个顺序的（有待证实）因为我把PATH那一行中讲$PATH放到第一个之后，一直是使用全局的jdk，我调换一下位置之后就可以了。大概是优先在前面的路径中搜索相应的东西，没有的话再逐级往后找。</p>
+<h2 id="Virtualenv"><a href="#Virtualenv" class="headerlink" title="Virtualenv"></a>Virtualenv</h2><p>这个适合与python，可以自己单独地安装想要的package</p>
 
         </div>
         <footer class="article-footer">
@@ -199,7 +203,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/26/普通linux用户如何安装程序/" data-id="cioo1ap14001k2mgenezvtxu7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/26/普通linux用户如何安装程序/" data-id="ciopbndue0035hygehp69d42a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -398,25 +402,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="socket编程的一些问题" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
     
     
@@ -429,6 +414,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="socket编程的一些问题" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
