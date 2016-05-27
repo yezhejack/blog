@@ -6,7 +6,7 @@
     <title>python学习 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="编程语言,python" />
+        <meta name="keywords" content="python,编程语言" />
     
     <meta name="description" content="记录python的一些用法">
 <meta property="og:type" content="article">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="记录python的一些用法">
 <meta property="og:image" content="http://yezhejack.github.io/img/Programmer.jpg">
-<meta property="og:updated_time" content="2016-05-27T06:02:05.000Z">
+<meta property="og:updated_time" content="2016-05-27T11:36:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习">
 <meta name="twitter:description" content="记录python的一些用法">
@@ -213,14 +213,15 @@ var _hmt = _hmt || [];
 <h3 id="内存分析工具meliae"><a href="#内存分析工具meliae" class="headerlink" title="内存分析工具meliae"></a>内存分析工具meliae</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> Cython</span><br><span class="line">sudo pip <span class="keyword">install</span> meliae</span><br></pre></td></tr></table></figure>
 <h4 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> meliae <span class="keyword">import</span> scanner</span><br><span class="line">scanner.dump_all_objects(<span class="string">'/opt/log/dump.txt'</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="分析内存"><a href="#分析内存" class="headerlink" title="分析内存"></a>分析内存</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from meliae import loader</span><br><span class="line"><span class="keyword">om</span> = loader.load(<span class="string">'/opt/log/dump.txt'</span>)</span><br><span class="line"><span class="keyword">om</span>.compute_parents()</span><br><span class="line"><span class="keyword">om</span>.collapse_instance_dicts()</span><br><span class="line"><span class="keyword">om</span>.summarize()</span><br></pre></td></tr></table></figure>
-<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2>
+<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h2 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h2><p>最近遇到一个问题，我需要跑N个进程的训练程序，然后我想有序地输出结果到文件中，并且是以追加的形式，因此我要在打开文件之前就</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/10/python学习/" data-id="cioplj2o5001qs6geawilkvmj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/10/python学习/" data-id="ciopz1mji00135jgeoek5i1lw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -429,25 +430,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
-                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -460,6 +442,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/05/19/socket编程的一些问题/" class="title">socket编程的一些问题</a></p>
+                            <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/05/19/spawn-fcgi源码阅读/" class="title">spawn-fcgi源码阅读</a></p>
                             <p class="item-date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
                         </div>
                     </li>
