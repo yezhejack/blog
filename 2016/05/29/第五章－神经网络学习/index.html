@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="机器学习（周志华）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-30T09:16:51.000Z">
+<meta property="og:updated_time" content="2016-05-30T09:33:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五章－神经网络学习">
 <meta name="twitter:description" content="机器学习（周志华）">
@@ -193,8 +193,8 @@ var _hmt = _hmt || [];
 <p>每层神经网络与下一层神经网络全互连，神经元之间不存在同层连接，也不存在跨层连接，这样的神经网络通常称为<code>多层前馈神经网络（multi-layer feedforward neural networks）</code>，其中输入层神经元仅接收外界输入。前馈并不意味着网络中的信号不能向后传，而是指网络拓扑结构上不存在环或回路。</p>
 <h2 id="5-3-误差逆传播算法"><a href="#5-3-误差逆传播算法" class="headerlink" title="5.3 误差逆传播算法"></a>5.3 误差逆传播算法</h2><p><code>误差逆传播算法（error BackPropagation）</code>简称<code>BP算法</code>可以用来学习一个神经网络模型。其不仅可以用于多层前馈神经网络，还可以用于其他类型，例如训练递归神经网络，<strong>但通常说的<code>BP网络</code>指的是用<code>BP算法</code>训练的多层前馈神经网络</strong>。</p>
 <p><img src="/img/神经网络1.jpg" alt="两层神经网络"></p>
-<p>对训练样例<span>$(x_k,y_k)$</span><!-- Has MathJax -->来说，假定神经网络的输出为<span>${\br \hat{y}_j^k}=(\hat{y}_1^k,\hat{y}_2^k,...,\hat{y}_l^k$</span><!-- Has MathJax -->即</p>
-<center><br><span>${\br \hat{y}_j^k}=f(\beta_j-\theta_j)$</span><!-- Has MathJax --><br></center>
+<p>对训练样例<span>$(x_k,y_k)$</span><!-- Has MathJax -->来说，假定神经网络的输出为<span>${\br {\hat{y_j^k}}}=(\hat{y}_1^k,\hat{y}_2^k,...,\hat{y}_l^k$</span><!-- Has MathJax -->即</p>
+<center><br><span>${\br {\hat{y_j^k}}}=f(\beta_j-\theta_j)$</span><!-- Has MathJax --><br></center>
 
 <p>则网络在<span>$(x_k,y_k)$</span><!-- Has MathJax -->上的均方误差为</p>
 <center><br><span>$E_k =\frac{1}{2} \sum_{j=1}^{l} (\hat{y_j^k}-y_j^k)^2$</span><!-- Has MathJax --><br></center>
@@ -212,7 +212,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciottgv4a002exjgezyrow20r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciottiq6x002exwgexsmsq2ut" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -411,25 +411,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="NAACL-2013-Socher-Manning-DeepLearning" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="title">NAACL-2013-Socher-Manning-DeepLearning</a></p>
-                            <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="thumbnail">
     
     
@@ -442,6 +423,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
                             <p class="item-title"><a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="title">论文笔记：A Practical Part-of-Speech Tagger</a></p>
+                            <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="NAACL-2013-Socher-Manning-DeepLearning" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="title">NAACL-2013-Socher-Manning-DeepLearning</a></p>
                             <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
                         </div>
                     </li>
