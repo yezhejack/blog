@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="机器学习（周志华）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-30T11:02:21.000Z">
+<meta property="og:updated_time" content="2016-05-30T11:07:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五章－神经网络学习">
 <meta name="twitter:description" content="机器学习（周志华）">
@@ -233,18 +233,20 @@ E_k=\frac{1}{2} \sum_{j=1}$$</span><!-- Has MathJax --><br></center>
 
 <p>除此之外我们还有三种参数需要更新，分别是<span>$\theta v \gamma$</span><!-- Has MathJax -->。</p>
 <p>书中没有给出具体的推导，但是我们可以来自己算一下。首先是<span>$\theta$</span><!-- Has MathJax --></p>
-<center><br><span>$$\theta_j=\theta_j - \frac{\partial E_k}{\partial \theta_j} \\
-\frac{\partial E_k}{\partial \theta_j}= \frac{\partial E_k}{\partial \theta_j} cdot \frac{\partial \hat{y_j^k}}{\partial \theta_j} \\
+<span>$$\theta_j=\theta_j - \frac{\partial E_k}{\partial \theta_j} \\
+\frac{\partial E_k}{\partial \theta_j}= \frac{\partial E_k}{\partial \theta_j} \cdot \frac{\partial \hat{y_j^k}}{\partial \theta_j} \\
 =-(\hat{y_j^k} - y_j^k) \cdot -f\prime(\beta_j-\theta_j) \\
 =(\hat{y_j^k} - y_j^k)\hat{y_j^k}(1-\hat{y_j^k}) \\
-=g_j$$</span><!-- Has MathJax --><br></center>
+=g_j$$</span><!-- Has MathJax -->
+<p>所以呢</p>
+<span>$\Delat \theta_j=-\eta g_j$</span><!-- Has MathJax -->
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciotwn5v700291fgeq7jpoocl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciotwvncf002d1tgetqfw0dks" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -443,25 +445,6 @@ E_k=\frac{1}{2} \sum_{j=1}$$</span><!-- Has MathJax --><br></center>
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="NAACL-2013-Socher-Manning-DeepLearning" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="title">NAACL-2013-Socher-Manning-DeepLearning</a></p>
-                            <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="thumbnail">
     
     
@@ -474,6 +457,25 @@ E_k=\frac{1}{2} \sum_{j=1}$$</span><!-- Has MathJax --><br></center>
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
                             <p class="item-title"><a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="title">论文笔记：A Practical Part-of-Speech Tagger</a></p>
+                            <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="NAACL-2013-Socher-Manning-DeepLearning" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/05/24/NAACL-2013-Socher-Manning-DeepLearning/" class="title">NAACL-2013-Socher-Manning-DeepLearning</a></p>
                             <p class="item-date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
                         </div>
                     </li>
