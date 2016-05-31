@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="机器学习（周志华）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-30T16:24:06.000Z">
+<meta property="og:updated_time" content="2016-05-31T07:15:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五章－神经网络学习">
 <meta name="twitter:description" content="机器学习（周志华）">
@@ -274,14 +274,39 @@ e_h &amp; =-\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial
 <li>遗传算法</li>
 </ul>
 <p>这些方法大多都是启发式的，缺乏理论保障，不保证效果。</p>
-<h2 id="5-5-其他常见神经网络"><a href="#5-5-其他常见神经网络" class="headerlink" title="5.5 其他常见神经网络"></a>5.5 其他常见神经网络</h2><h3 id="5-5-1-RBF网络"><a href="#5-5-1-RBF网络" class="headerlink" title="5.5.1 RBF网络"></a>5.5.1 RBF网络</h3>
+<h2 id="5-5-其他常见神经网络"><a href="#5-5-其他常见神经网络" class="headerlink" title="5.5 其他常见神经网络"></a>5.5 其他常见神经网络</h2><h3 id="5-5-1-RBF网络"><a href="#5-5-1-RBF网络" class="headerlink" title="5.5.1 RBF网络"></a>5.5.1 RBF网络</h3><p><code>RBF（Radial Basis Function)径向基函数``网络</code>是一种单隐层前馈神经网络，它使用<code>径向基函数</code>作为激活函数，输出层则是对隐层神经元输出的线性组合。假定输入为<code>d</code>维向量<code>x</code>，输出为实值，则<code>RBF网络</code>可以表示成</p>
+<center><br><span>$$\begin{align}
+\varphi(x) = \sum_{i=1}^{q} w_i \rho(x,c_i)
+\end{align}$$</span><!-- Has MathJax --><br></center>
+
+<p>其中<code>q</code>为隐层神经元个数，$c_i$和$w_\i$分别是第i个隐层神经元所对应的中心和权重。</p>
+<center><br><span>$$\begin{align}
+\rho(x,c_i)=e^{-\beta_i||x-c_i||^2}$$</span><!-- Has MathJax --><br></center>
+
+<p>训练步骤：</p>
+<ul>
+<li>确定神经元中心$c_i$，通常使用随机采样、聚类</li>
+<li>利用BP算法来确定参数$w_i$和$\beta_i$</li>
+</ul>
+<h3 id="5-5-2-ART网络"><a href="#5-5-2-ART网络" class="headerlink" title="5.5.2 ART网络"></a>5.5.2 ART网络</h3><p><code>竞争型学习</code>是神经网络中一种常用的无监督学习策略，各个输出层神经元互相竞争，每一时刻仅有一个竞争获胜的神经元被激活。这种机制叫做<code>胜者通吃（winner-take-all）原则</code>。</p>
+<p><code>ART(Adaptive Resonance Theory，自适应谐振理论)</code>网络是竞争学习的重要代表。由<code>比较层</code> <code>识别层</code> <code>识别阈值</code> <code>重置模块</code>构成。其中<code>比较层</code>负责接收输入的向量，然后将其传递给<code>识别层</code>,<code>识别层</code>的每个神经元代表一个模式类，神经元数目可在训练过程中动态增长以增加新的模式类。</p>
+<p>竞争最简单的方式是计算输入向量与每个识别层神经元所对应的模式类的<code>代表向量</code>之间的距离，距离最小者胜。获胜神经元将向其他识别层神经元发送抑制激活信号。若相似度大于阈值，则当前输入样本将被归为该代表向量所属类别，同时网络的连接权将更新，使得以后在接收到相似输入样本时该模式类会计算出更大的相似度。若相似度不大于阈值，则在<code>识别层</code>增加一个新的神经元，其代表向量就是当前向量。</p>
+<p>最早的<code>ART网络</code>只能处理布尔型输入数据，后来发展出了能处理实值输入的<code>ART2网络</code>，结合模糊处理的<code>FuzzyART网络</code>，以及可进行监督学习的<code>ARTMAP网络</code>。</p>
+<h3 id="5-5-3-SOM网络"><a href="#5-5-3-SOM网络" class="headerlink" title="5.5.3 SOM网络"></a>5.5.3 SOM网络</h3><p><code>SOM(Self-Organizing Map)，自组织映射</code>也是一种竞争学习型的无监督神经网络。</p>
+<p>它能将高维输入数据映射到低维空间，通常是二维空间，同时保持输入数据在高维空间的拓扑结构，即将高维空间中相似的样本点映射到网络输出层中的邻近神经元。</p>
+<p>输出神经元以矩阵的形式排布在二维空间上，同时每个神经元都有一个代表自己的权向量，同样是距离最近的神经元成为竞争获胜者。然后最佳匹配单元及其邻近神经元的权向量将被调整，以使得这些全向量与当前输入样本的距离缩小。</p>
+<h3 id="5-5-4-级联相关网络"><a href="#5-5-4-级联相关网络" class="headerlink" title="5.5.4 级联相关网络"></a>5.5.4 级联相关网络</h3><p>这个网络多了一个学习目标，就是网络的结构。与前馈神经网络相比，级联相关网络无需设置网络层数、隐层神经元数目，且训练速度较快，但其在数据较小时易陷入过拟合。</p>
+<h3 id="5-5-5-Elman-网络"><a href="#5-5-5-Elman-网络" class="headerlink" title="5.5.5 Elman 网络"></a>5.5.5 Elman 网络</h3><p>这是一个<code>递归神经网络（recurrent neural network）</code>，它允许网络中出现环形结构，从而可让一些神经元的输出反馈回来作为输入信号。<em>这样的结构与信息反馈过程，使得网络在t时刻的输出状态不仅与t时刻的输入相关，还和t-1时刻的网络状态相关，从而能处理与时间有关的动态变化</em>。</p>
+<p>网络的训练需要通过<code>推广的BP算法进行</code>。</p>
+<h3 id="5-5-6-Boltzmann机"><a href="#5-5-6-Boltzmann机" class="headerlink" title="5.5.6 Boltzmann机"></a>5.5.6 Boltzmann机</h3><p>能量最小化时网络达到理想状态。它也是一种递归神经网络，其神经元分为两层<code>显层</code>和<code>隐层</code>。<code>显层</code>用于表示数据的输入与输出，<code>隐层</code>则被理解为数据的内在表达。并且神经元都是布尔型的。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciou86rrh001vfygehlntfoji" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciov40lbh002a3cgem6ocb6tz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="维护博客的工作流程，这里主要是针对`Maupassant`这个主题来进行部署">
 <meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
-<meta property="og:updated_time" content="2016-05-04T14:22:23.000Z">
+<meta property="og:updated_time" content="2016-05-31T05:59:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于hexo开源架构的GitHub博客维护">
 <meta name="twitter:description" content="维护博客的工作流程，这里主要是针对`Maupassant`这个主题来进行部署">
@@ -180,7 +180,7 @@ var _hmt = _hmt || [];
         </div>
         <div class="article-entry" itemprop="articleBody">
             <h3 id="添加博文"><a href="#添加博文" class="headerlink" title="添加博文"></a>添加博文</h3><ol>
-<li>进入到hexo的根目录，然后在 source/_posts中建立一个新的以.md结尾的markdown文档。</li>
+<li>进入到hexo的根目录，然后在 <code>source/_posts</code>中建立一个新的以.md结尾的markdown文档。</li>
 <li><p>文档开头需要填写yaml格式的描述，用于网站的存放</p>
 <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">title: 基于hexo开源架构的GitHub博客维护</span><br><span class="line">date: 2015-11-23 17:52:37</span><br><span class="line">tags:</span><br><span class="line">-<span class="ruby"> 站点维护</span><br><span class="line"></span>-<span class="ruby"> hexo</span><br><span class="line"></span>-<span class="ruby"> github</span><br><span class="line"></span>categories:</span><br><span class="line">-<span class="ruby"> 维护</span><br><span class="line"></span>description: 维护博客的工作流程</span><br></pre></td></tr></table></figure>
 </li>
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 <p>这样应该就可以了</p>
 <h2 id="修改网站的配置"><a href="#修改网站的配置" class="headerlink" title="修改网站的配置"></a>修改网站的配置</h2><p>这里需要打开<code>_config.yml</code>。对里面的<code>language</code>和<code>theme</code>都要进行对应的修改。</p>
 <h2 id="swiftype-搜索功能的加入"><a href="#swiftype-搜索功能的加入" class="headerlink" title="swiftype 搜索功能的加入"></a>swiftype 搜索功能的加入</h2><p>这里依然需要去相应网站去设置，主要问题在于给出的代码应该加在什么地方。新版本的<code>maupassant</code>里面单独有一个<code>themes/maupassant/layout/_widget/search.jade</code>。</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> theme.swiftype</span><br><span class="line">  .widget</span><br><span class="line">    <span class="keyword">input</span>.<span class="keyword">st</span>-default-<span class="keyword">search</span>-<span class="keyword">input</span>(placeholder='<span class="keyword">Search</span>' <span class="keyword">type</span>='text')</span><br><span class="line">  script.</span><br><span class="line">        (function(w,<span class="keyword">d</span>,t,<span class="keyword">u</span>,<span class="keyword">n</span>,s,<span class="keyword">e</span>)&#123;w['SwiftypeObject']=<span class="keyword">n</span>;w[<span class="keyword">n</span>]=w[<span class="keyword">n</span>]||function()&#123;</span><br><span class="line">        (w[<span class="keyword">n</span>].q=w[<span class="keyword">n</span>].q||[]).push(arguments);&#125;;s=<span class="keyword">d</span>.createElement(t);</span><br><span class="line">        <span class="keyword">e</span>=<span class="keyword">d</span>.getElementsByTagName(t)[0];s.async=1;s.src=<span class="keyword">u</span>;<span class="keyword">e</span>.parentNode.insertBefore(s,<span class="keyword">e</span>);</span><br><span class="line">        &#125;)(<span class="keyword">window</span>,document,'script','<span class="comment">//s.swiftypecdn.com/install/v2/st.js','_st');</span></span><br><span class="line">                    </span><br><span class="line">        _st('install','Z-tgtsfWWX8ZNoWubjoC','2.0.0');</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> theme.swiftype</span><br><span class="line">  .widget</span><br><span class="line">    <span class="keyword">input</span>.<span class="keyword">st</span>-default-<span class="keyword">search</span>-<span class="keyword">input</span>(placeholder='<span class="keyword">Search</span>' <span class="keyword">type</span>='text')</span><br><span class="line">  script.</span><br><span class="line">        (function(w,<span class="keyword">d</span>,t,<span class="keyword">u</span>,<span class="keyword">n</span>,s,<span class="keyword">e</span>)&#123;w['SwiftypeObject']=<span class="keyword">n</span>;w[<span class="keyword">n</span>]=w[<span class="keyword">n</span>]||function()&#123;</span><br><span class="line">        (w[<span class="keyword">n</span>].q=w[<span class="keyword">n</span>].q||[]).push(arguments);&#125;;s=<span class="keyword">d</span>.createElement(t);</span><br><span class="line">        <span class="keyword">e</span>=<span class="keyword">d</span>.getElementsByTagName(t)[0];s.async=1;s.src=<span class="keyword">u</span>;<span class="keyword">e</span>.parentNode.insertBefore(s,<span class="keyword">e</span>);</span><br><span class="line">        &#125;)(<span class="keyword">window</span>,document,'script','<span class="comment">//s.swiftypecdn.com/install/v2/st.js','_st');</span></span><br><span class="line"></span><br><span class="line">        _st('install','Z-tgtsfWWX8ZNoWubjoC','2.0.0');</span><br></pre></td></tr></table></figure>
 <p>当然在<code>themes/maupassant/_config.yml</code>中还需要填入key才行</p>
 <h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><ul>
 <li>在<code>source/img</code>中存入图片，命名为<code>avator.jpg</code>。</li>
@@ -219,13 +219,14 @@ var _hmt = _hmt || [];
 \dot{y} &amp; = \rho x - y - xz \\
 \dot{z} &amp; = -\beta z + xy
 \end{aligned}$$</span><!-- Has MathJax -->
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/02/基于hexo开源架构的GitHub博客维护/" data-id="ciou86rrq0023fygeurmkc1l1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/02/基于hexo开源架构的GitHub博客维护/" data-id="ciov40lb4001r3cgesqa5y0tp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
