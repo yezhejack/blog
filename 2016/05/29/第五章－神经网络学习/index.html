@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="机器学习（周志华）">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-05-31T07:18:12.000Z">
+<meta property="og:updated_time" content="2016-05-31T07:27:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="第五章－神经网络学习">
 <meta name="twitter:description" content="机器学习（周志华）">
@@ -300,7 +300,15 @@ e_h &amp; =-\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial
 <h3 id="5-5-5-Elman-网络"><a href="#5-5-5-Elman-网络" class="headerlink" title="5.5.5 Elman 网络"></a>5.5.5 Elman 网络</h3><p>这是一个<code>递归神经网络（recurrent neural network）</code>，它允许网络中出现环形结构，从而可让一些神经元的输出反馈回来作为输入信号。<em>这样的结构与信息反馈过程，使得网络在t时刻的输出状态不仅与t时刻的输入相关，还和t-1时刻的网络状态相关，从而能处理与时间有关的动态变化</em>。</p>
 <p>网络的训练需要通过<code>推广的BP算法进行</code>。</p>
 <h3 id="5-5-6-Boltzmann机"><a href="#5-5-6-Boltzmann机" class="headerlink" title="5.5.6 Boltzmann机"></a>5.5.6 Boltzmann机</h3><p>能量最小化时网络达到理想状态。它也是一种递归神经网络，其神经元分为两层<code>显层</code>和<code>隐层</code>。<code>显层</code>用于表示数据的输入与输出，<code>隐层</code>则被理解为数据的内在表达。并且神经元都是布尔型的。</p>
-<p>令向量$\br s$</p>
+<p>令向量$\bf s$是一个n维的0、1向量，表示n个神经元的状态，$w_ij$ 表示神经元i与j之间的连接权，$\theta_i$表示神经元i的阈值。状态向量$\bf s$的<code>Boltzmann机</code>的能量定义为</p>
+<center><br><span>$$\begin{align}
+E(s)=-\sum_{i=1}^{n-1} \sum_{j=i+1}^{n} w_{ij}s_i s_j- \sum_{i=1}^{n} \theta_i s_i
+\end{align}$$</span><!-- Has MathJax --><br></center>
+
+<p>其出现的概率则是有下面的式子决定</p>
+<center><br><span>$$\begin{align}
+P(s)=\frac{e^{-E(s)}}{\sum_t e^{-E(t)}}
+\end{align}$$</span><!-- Has MathJax --><br></center>
 
         </div>
         <footer class="article-footer">
@@ -308,7 +316,7 @@ e_h &amp; =-\frac{\partial E_k}{\partial b_h} \cdot \frac{\partial b_h}{\partial
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciov44api00294fgetwf457jb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/05/29/第五章－神经网络学习/" data-id="ciov4graf002e4wgepectmn4q" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
