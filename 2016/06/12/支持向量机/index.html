@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="参考教材：李航博士的统计学习方法第七章 支持向量机">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-06-12T12:42:54.000Z">
+<meta property="og:updated_time" content="2016-06-12T16:09:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机">
 <meta name="twitter:description" content="参考教材：李航博士的统计学习方法第七章 支持向量机">
@@ -182,20 +182,26 @@ var _hmt = _hmt || [];
             <h1 id="第七章-支持向量机"><a href="#第七章-支持向量机" class="headerlink" title="第七章 支持向量机"></a>第七章 支持向量机</h1><h2 id="7-1线性可分支持向量机与硬间隔最大化"><a href="#7-1线性可分支持向量机与硬间隔最大化" class="headerlink" title="7.1线性可分支持向量机与硬间隔最大化"></a>7.1线性可分支持向量机与硬间隔最大化</h2><h3 id="7-1-1线性可分支持向量机"><a href="#7-1-1线性可分支持向量机" class="headerlink" title="7.1.1线性可分支持向量机"></a>7.1.1线性可分支持向量机</h3><p>一般的，当训练数据集线性可分时，存在无穷个分离超平面可将两类数据正确分开。感知机利用误分类最小的策略，求得分离超平面，不过这时的解有无穷多个，<br>线性可分支持向量机利用间隔最大化求最优分离超平面，这时，解时唯一的。</p>
 <p><strong>定义7.1（线性可分支持向量机）</strong></p>
 <p>超平面</p>
-<center><br><span>$w^* \dot x+b^*=0$</span><!-- Has MathJax --><br></center>
+<center><br><span>$w^{*} \cdot x+b^{*}=0$</span><!-- Has MathJax --><br></center>
 
 <p>决策函数</p>
-<center><br><span>$f(x)=sign(w^* \dot x +b^*)$</span><!-- Has MathJax --><br></center>
+<center><br><span>$f(x)=sign(w^{*} \cdot x +b^{*})$</span><!-- Has MathJax --><br></center>
 
 <h3 id="7-1-2-函数间隔和几何间隔"><a href="#7-1-2-函数间隔和几何间隔" class="headerlink" title="7.1.2 函数间隔和几何间隔"></a>7.1.2 函数间隔和几何间隔</h3><p>定义函数间隔</p>
-<center><br><span>$\hat{\gamma_i}=y_i(w \dot x_i+b)$</span><!-- Has MathJax --><br></center><br>超平面(w,b)关于训练数据集T的函数间隔为超平面(w,b)关于T中所有样本点的函数间隔的最小值。为了统一标准，引入几何间隔概念。<br><br><center><br><span>$\gamma_i=y_i(\frac{w}{||w||} \dot x_i+\frac{b}{||w||})$</span><!-- Has MathJax --><br></center>
+<center><br><span>$\hat{\gamma_i}=y_i(w \cdot x_i+b)$</span><!-- Has MathJax --><br></center><br>超平面(w,b)关于训练数据集T的函数间隔为超平面(w,b)关于T中所有样本点的函数间隔的最小值。为了统一标准，引入几何间隔概念。<br><br><center><br><span>$\gamma_i=y_i(\frac{w}{||w||} \cdot x_i+\frac{b}{||w||})$</span><!-- Has MathJax --><br></center>
+
+<h3 id="7-1-3-间隔最大化"><a href="#7-1-3-间隔最大化" class="headerlink" title="7.1.3 间隔最大化"></a>7.1.3 间隔最大化</h3><p>支持向量机学习的基本思想是求解能够正确划分训练数据集并且几何间隔最大的分离超平面。这里的间隔最大化又称为硬间隔最大化。</p>
+<p>这个问题可以表述为下面的约束最优化问题</p>
+<center><br><span>$$\max_{w,b} \gamma \\
+s.t. y_i(\frac{w}{||w||} \cdot x_i+\frac{b}{||w||}) \geq \gamma,i=1,2,...,N$$</span><!-- Has MathJax --><br></center>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/06/12/支持向量机/" data-id="cipcl00lr002b8jgekvzz32sg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/06/12/支持向量机/" data-id="cipcse6s4001zk7gee7st4zzo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
