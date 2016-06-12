@@ -3,23 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>安装libsvm和gnuplot | JackYip</title>
+    <title>支持向量机 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="libsvm,gnuplot" />
+        <meta name="keywords" content="Support Vector Machine,Machine Learning" />
     
-    <meta name="description" content="安装libsvm以及牵扯出来的安装gnuplot问题">
+    <meta name="description" content="参考教材：李航博士的统计学习方法第七章 支持向量机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装libsvm和gnuplot">
-<meta property="og:url" content="http://yezhejack.github.io/2016/03/28/安装libsvm和gnuplot/index.html">
+<meta property="og:title" content="支持向量机">
+<meta property="og:url" content="http://yezhejack.github.io/2016/06/12/支持向量机/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="安装libsvm以及牵扯出来的安装gnuplot问题">
-<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
-<meta property="og:updated_time" content="2016-05-04T14:10:32.000Z">
+<meta property="og:description" content="参考教材：李航博士的统计学习方法第七章 支持向量机">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-06-12T12:11:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装libsvm和gnuplot">
-<meta name="twitter:description" content="安装libsvm以及牵扯出来的安装gnuplot问题">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:title" content="支持向量机">
+<meta name="twitter:description" content="参考教材：李航博士的统计学习方法第七章 支持向量机">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,51 +153,40 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-安装libsvm和gnuplot" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-支持向量机" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        安装libsvm和gnuplot
+        支持向量机
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/03/28/安装libsvm和gnuplot/" class="article-date">
-    <time datetime="2016-03-28T09:07:22.000Z" itemprop="datePublished">2016-03-28</time>
+            <a href="/2016/06/12/支持向量机/" class="article-date">
+    <time datetime="2016-06-12T12:10:00.000Z" itemprop="datePublished">2016-06-12</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gnuplot/">gnuplot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/libsvm/">libsvm</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/">Machine Learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Support-Vector-Machine/">Support Vector Machine</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="安装libsvm"><a href="#安装libsvm" class="headerlink" title="安装libsvm"></a>安装libsvm</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
-<li>直接下载源码，然后进入目录make</li>
-</ul>
-<h2 id="安装gnuplot"><a href="#安装gnuplot" class="headerlink" title="安装gnuplot"></a>安装gnuplot</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><ul>
-<li>下载源码</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cd</span> 目录</span><br><span class="line">./configure</span><br><span class="line"><span class="keyword">make</span></span><br><span class="line">sudo <span class="keyword">make</span> install</span><br></pre></td></tr></table></figure>
-<h3 id="可能遇到的问题"><a href="#可能遇到的问题" class="headerlink" title="可能遇到的问题"></a>可能遇到的问题</h3><ul>
-<li>我是在使用libsvm的easy.py来测试的时候遇到无法检测出gnuplot存在，查其原因，可能是因为在<code>/usr/bin</code>目录下没有看到gnuplot，而是在<code>/usr/local/bin</code>中有。因此需要找到方法让别的程序能找到安装的gnuplot。</li>
-<li>解决方案：将<code>/usr/local/bin/gnuplot</code>拷贝到<code>/usr/bin</code>下。或者，将easy.py中的关于gnuplot的路径改为<code>/usr/local/bin</code>。 </li>
-</ul>
-
+            
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/03/28/安装libsvm和gnuplot/" data-id="cipcjwnya00286zgerkbt2szn" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/06/12/支持向量机/" data-id="cipcjwnyd002b6zgevqneqskz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -317,20 +306,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/04/09/STL学习笔记-1.1~2.2/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            STL学习笔记-1.1~2.2
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2015/12/22/nginx/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/06/11/NLPofStanford/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">nginx</p>
+        <p class="article-nav-title">Stanford NLP 笔记</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -526,7 +505,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2016/03/28/安装libsvm和gnuplot/';
+    var disqus_url = 'http://yezhejack.github.io/2016/06/12/支持向量机/';
     
     (function() {
     var dsq = document.createElement('script');
