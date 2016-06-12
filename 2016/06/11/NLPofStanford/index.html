@@ -3,19 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>JackYip</title>
+    <title>Stanford NLP 笔记 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="对不起很对不起今天早上没有回你信息，看到你的信息的时候我和几个人在一起走，所以就没回，回去之后到了实验室就去看书，推公式推着推着就忘记了。以为我已经回过了，然后你没有发信息过来，我就以为是在忙着预答辩了。我希望我给你带来的是更多的依靠和快乐，而不是这种生气，对不起，下次一定会陪你的。真的很爱你，每次你晚睡、不吃饭我都很心疼的，只是说不出来。我希望我加班的时候你可以早睡觉，不希望你等我，因为我会一直">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackYip">
-<meta property="og:url" content="http://yezhejack.github.io/about/sorry.html">
+        <meta name="keywords" content="Natural Language Processing,Coursera" />
+    
+    <meta name="description" content="斯坦福在Coursera上的公开课中所记的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stanford NLP 笔记">
+<meta property="og:url" content="http://yezhejack.github.io/2016/06/11/NLPofStanford/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="对不起很对不起今天早上没有回你信息，看到你的信息的时候我和几个人在一起走，所以就没回，回去之后到了实验室就去看书，推公式推着推着就忘记了。以为我已经回过了，然后你没有发信息过来，我就以为是在忙着预答辩了。我希望我给你带来的是更多的依靠和快乐，而不是这种生气，对不起，下次一定会陪你的。真的很爱你，每次你晚睡、不吃饭我都很心疼的，只是说不出来。我希望我加班的时候你可以早睡觉，不希望你等我，因为我会一直">
-<meta property="og:updated_time" content="2016-05-31T15:05:46.000Z">
+<meta property="og:description" content="斯坦福在Coursera上的公开课中所记的笔记">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2016-06-11T15:36:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackYip">
-<meta name="twitter:description" content="对不起很对不起今天早上没有回你信息，看到你的信息的时候我和几个人在一起走，所以就没回，回去之后到了实验室就去看书，推公式推着推着就忘记了。以为我已经回过了，然后你没有发信息过来，我就以为是在忙着预答辩了。我希望我给你带来的是更多的依靠和快乐，而不是这种生气，对不起，下次一定会陪你的。真的很爱你，每次你晚睡、不吃饭我都很心疼的，只是说不出来。我希望我加班的时候你可以早睡觉，不希望你等我，因为我会一直">
+<meta name="twitter:title" content="Stanford NLP 笔记">
+<meta name="twitter:description" content="斯坦福在Coursera上的公开课中所记的笔记">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -149,22 +153,34 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    JackYip
+    <a class="page-title-link" href="/categories/NLP/">NLP</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-NLPofStanford" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Stanford NLP 笔记
+        </h1>
+    
+
+            </header>
+        
         <div class="article-subtitle">
-            <a href="/about/sorry.html" class="article-date">
-    <time datetime="2016-05-31T15:05:46.000Z" itemprop="datePublished">2016-05-31</time>
+            <a href="/2016/06/11/NLPofStanford/" class="article-date">
+    <time datetime="2016-06-11T10:00:00.000Z" itemprop="datePublished">2016-06-11</time>
 </a>
             
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coursera/">Coursera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Natural-Language-Processing/">Natural Language Processing</a></li></ul>
+
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="对不起"><a href="#对不起" class="headerlink" title="对不起"></a>对不起</h1><p>很对不起今天早上没有回你信息，看到你的信息的时候我和几个人在一起走，所以就没回，回去之后到了实验室就去看书，推公式推着推着就忘记了。以为我已经回过了，然后你没有发信息过来，我就以为是在忙着预答辩了。我希望我给你带来的是更多的依靠和快乐，而不是这种生气，对不起，下次一定会陪你的。真的很爱你，每次你晚睡、不吃饭我都很心疼的，只是说不出来。我希望我加班的时候你可以早睡觉，不希望你等我，因为我会一直想你。想你还没睡觉，想你要熬夜了。所以还是希望你能按时睡觉，按时吃饭。</p>
-<p> 爱你</p>
+            <h2 id="Generative-vs-Discrimnative-Models"><a href="#Generative-vs-Discrimnative-Models" class="headerlink" title="Generative vs Discrimnative Models"></a>Generative vs Discrimnative Models</h2><p>这是两种模型，分别是使用了Joint Prob. 和 Conditional Prob.</p>
+<p>也就是实用<code>P(class,data)</code>和<code>P(class|data)</code>的区别。</p>
 
         </div>
         <footer class="article-footer">
@@ -172,7 +188,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/about/sorry.html" data-id="cipc5zgk70003pvgede4b9s1m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/06/11/NLPofStanford/" data-id="cipc5zgkf0009pvgeqvij8iwg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -288,6 +304,19 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/05/29/第五章－神经网络学习/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">第五章－神经网络学习</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -478,7 +507,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/about/sorry.html';
+    var disqus_url = 'http://yezhejack.github.io/2016/06/11/NLPofStanford/';
     
     (function() {
     var dsq = document.createElement('script');
