@@ -171,17 +171,113 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2016/06/23/hadoop学习/" class="thumbnail">
+        <a href="/2016/06/26/Hadoop I:O/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/linux.jpg)" alt="hadoop学习" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/linux.jpg)" alt="Hadoop I/O" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/06/23/hadoop学习/">0</span>
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/06/26/Hadoop I:O/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-06-25T19:07:30.000Z" itemprop="datePublished">2016-06-26</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/06/26/Hadoop I:O/">Hadoop I/O</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Hadoop I/Ohadoop提供了多种的解压缩方式，但是由于license的问题，得单独下载。
+hadoop同时也对文件读写有校验，一旦出现文件错误，就会报告给namenode，namenode则不会再给别的任务派送这个文件块，同时调度其他的replica来恢复。
+每个datanode会定期地检查自己的数据。
+使用本地的库来进行压缩或解压可以节省很多时间，相对于通过Java实现的来说。几乎所有
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/06/24/YARN/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="YARN" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/06/24/YARN/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-06-24T08:19:33.000Z" itemprop="datePublished">2016-06-24</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/06/24/YARN/">YARN</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            YARN简介YARN在hadoop 2中被引入，用于改善MapReduce，但是它也被用于支持别的计算框架。YARN提供API用于请求和使用集群资源，但这些不是直接被用户的代码使用的。
+如何工作的YARN通过两种守护进程来提供它的核心服务，一个是resource manager，另一个是node managers。后者会启动和监控containers。一个container会执行一个特定程序的进程
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/06/23/HDFS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="HDFS" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/06/23/HDFS/">0</span>
     
 </span>
 
@@ -197,13 +293,13 @@ var _hmt = _hmt || [];
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/06/23/hadoop学习/">hadoop学习</a>
+        <a href="/2016/06/23/HDFS/">HDFS</a>
         </h1>
     
 
         <p class="article-excerpt">
-            hadoop 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。
-datanode自身因为会把block复制几遍
+            HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。
+datanode自身因为会把block复制几遍，所
         </p>
     </div>
 </article>
@@ -212,6 +308,54 @@ datanode自身因为会把block复制几遍
     
     
     
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -249,54 +393,6 @@ datanode自身因为会把block复制几遍
         <p class="article-excerpt">
             多个进程监听一个socket对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。
 扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
         </p>
     </div>
 </article>
@@ -544,120 +640,14 @@ CGI(Common Gateway Interface)服务器接收到动态请求的时候，请求CGI
         </div>
     
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/04/12/STL学习笔记-2-3内存基本处理工具/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="STL学习笔记-2.3内存基本处理工具" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/04/12/STL学习笔记-2-3内存基本处理工具/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-04-12T08:15:20.000Z" itemprop="datePublished">2016-04-12</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/04/12/STL学习笔记-2-3内存基本处理工具/">STL学习笔记-2.3内存基本处理工具</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            2.3 内存基本处理工具这里面主要包括了三个函数
-
-uninitialized_copy()
-uninitialized_fill()
-uninitialized_fill_n()
-
-对应着高层次的函数
-
-copy()
-fill()
-fill_n()
-
-这些都是STL算法。
-uninitialized_copy()讲某一区间的内容复制到另一个区间：
-
-配置内存区块，足以包含范围内的所有元素
-使用该
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/04/09/STL学习笔记-1.1~2.2/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="STL学习笔记-1.1~2.2" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/04/09/STL学习笔记-1.1~2.2/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-04-09T14:20:32.000Z" itemprop="datePublished">2016-04-09</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/04/09/STL学习笔记-1.1~2.2/">STL学习笔记-1.1~2.2</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            笔记p45出现了::operator new和::operator delete，这个地方比较难理解。首先，先把new和delete当作一个操作符，因此要重载它的时候需要加个operator。
-1::operator new
-这个语句的意思是在全局命名空间下的new操作符。
-重要概念模版特化函数模版特化比如设置了一个带有模版的函数，但是我想对其中的某种类型参数的函数进行单独定义。如果不含有这个机制
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
 
     </div></section>
 
+
+    <nav id="page-nav">
+        <span class="pages">第 1 页，共 2 页</span>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/Learning/page/2/">2</a><a class="extend next" rel="next" href="/categories/Learning/page/2/">&raquo;</a>
+    </nav>
 
 
 
@@ -716,10 +706,10 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/06/23/hadoop学习/" class="thumbnail">
+                            <a href="/2016/06/26/Hadoop I:O/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/linux.jpg)" alt="hadoop学习" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/linux.jpg)" alt="Hadoop I/O" class="thumbnail-image"></span>
     
     
 </a>
@@ -727,7 +717,45 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/06/23/hadoop学习/" class="title">hadoop学习</a></p>
+                            <p class="item-title"><a href="/2016/06/26/Hadoop I:O/" class="title">Hadoop I/O</a></p>
+                            <p class="item-date"><time datetime="2016-06-25T19:07:30.000Z" itemprop="datePublished">2016-06-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/06/24/YARN/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="YARN" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/06/24/YARN/" class="title">YARN</a></p>
+                            <p class="item-date"><time datetime="2016-06-24T08:19:33.000Z" itemprop="datePublished">2016-06-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/06/23/HDFS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="HDFS" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/06/23/HDFS/" class="title">HDFS</a></p>
                             <p class="item-date"><time datetime="2016-06-23T02:49:58.000Z" itemprop="datePublished">2016-06-23</time></p>
                         </div>
                     </li>
@@ -770,44 +798,6 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/06/11/NLPofStanford/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="Stanford NLP 笔记" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/06/11/NLPofStanford/" class="title">Stanford NLP 笔记</a></p>
-                            <p class="item-date"><time datetime="2016-06-11T10:00:00.000Z" itemprop="datePublished">2016-06-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/05/29/第五章－神经网络学习/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="第五章－神经网络学习" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/05/29/第五章－神经网络学习/" class="title">第五章－神经网络学习</a></p>
-                            <p class="item-date"><time datetime="2016-05-29T14:16:00.000Z" itemprop="datePublished">2016-05-29</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -817,7 +807,7 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -827,7 +817,7 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -837,7 +827,7 @@ uninitialized_copy()讲某一区间的内容复制到另一个区间：
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 12px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Netural-Network/" style="font-size: 10px;">Netural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 10px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 12px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Netural-Network/" style="font-size: 10px;">Netural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 

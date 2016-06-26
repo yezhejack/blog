@@ -171,6 +171,105 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="论文笔记：A Practical Part-of-Speech Tagger" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/NLP/">NLP</a>
+            </p>
+            <p class="date"><time datetime="2016-05-24T14:16:00.000Z" itemprop="datePublished">2016-05-24</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/24/论文笔记：A Practical Part-of-Speech Tagger/">论文笔记：A Practical Part-of-Speech Tagger</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            摘要实现了基于隐马尔可夫模型的词性标注器。这个方法只用很少的资源就可以实现鲁棒的准确的词性标注。只需要一个词表和未标注的文本。准确率超过96%。
+必要条件自动化的文本标注是在更大的语料库中发现语言结果的重要的第一步。词性标注为更高层次的分析提供基础。例如识别名词和其他文本中的模式。
+一个标注器得具备的几个特性：
+
+Robust鲁棒性
+Efficient高效性
+Accurate 准确性
+Tunabl
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -268,51 +367,6 @@ virtualenv它提供了分离运行环境的功能。
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/10/Minimal Height Tree/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
-            </p>
-            <p class="date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/10/Minimal Height Tree/">Minimal Height Tree</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Minimal Height Tree尝试了用暴力解法，无奈超时了，于是用了比较巧妙的解法。题目中提示答案的顶点数是有范围的，可以通过不断地删除度为1的点，调整每个节点的度，来求最后的答案。
-
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/2016/05/10/正则表达式/" class="thumbnail">
     
     
@@ -352,6 +406,51 @@ virtualenv它提供了分离运行环境的功能。
 简介略过。讲讲我的心路历程吧
 正则表达式这个我真的是拖了很久才开始接触的东西，现在终于避不过去了，现在有个要探测字符串中是否含有QQ表情和emoji表情的任务。目标语言是python
 简单模式2.1 匹配字符必须要掌握的是元符号metacharacter。这里有一个完
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/10/Minimal Height Tree/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
+            </p>
+            <p class="date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/10/Minimal Height Tree/">Minimal Height Tree</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Minimal Height Tree尝试了用暴力解法，无奈超时了，于是用了比较巧妙的解法。题目中提示答案的顶点数是有范围的，可以通过不断地删除度为1的点，调整每个节点的度，来求最后的答案。
+
         </p>
     </div>
 </article>
@@ -558,115 +657,6 @@ virtualenv它提供了分离运行环境的功能。
         </div>
     
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="机器翻译" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/NLP/">NLP</a>
-            </p>
-            <p class="date"><time datetime="2016-04-17T06:22:00.000Z" itemprop="datePublished">2016-04-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/04/17/统计自然语言处理基础-第十三章-机器翻译/">机器翻译</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            第十三章 机器翻译存在问题
-词的歧义
-词序
-句法歧义
-
-几种常见的翻译模式
-
-直接翻译法：词对词的对齐翻译方式。从源语言的表层句子出发，将词或固定词组直接置换成目标语言的对应成分，这种方式的最大缺陷就在于语言和语言之间可能不存在一一对应关系。同时词的歧义也是一个问题。这个需要参照上下文才能确定这个词改如何翻译。词序也有问题，句法转换可以解决这个问题，将其用手工定义的规则转换成一颗树，然后在这棵树上
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/04/17/NLP入门/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="NLP入门" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/04/17/NLP入门/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/NLP/">NLP</a>
-            </p>
-            <p class="date"><time datetime="2016-04-17T05:37:47.000Z" itemprop="datePublished">2016-04-17</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/04/17/NLP入门/">NLP入门</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            入门书籍比较古老的两本
-
-统计自然语言处理基础
-自然语言处理基础 第一版
-自然语言处理基础 第二版
-
-这个是CMU的老师王威廉在微博上推荐的书籍，图侵删
-
-前两本都极其古老，但是据说不错，在看的是统计自然语言处理基础。
-论文集ACL
-
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
 
     </div></section>
 
@@ -732,10 +722,10 @@ virtualenv它提供了分离运行环境的功能。
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/06/23/hadoop学习/" class="thumbnail">
+                            <a href="/2016/06/26/Hadoop I:O/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/linux.jpg)" alt="hadoop学习" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/linux.jpg)" alt="Hadoop I/O" class="thumbnail-image"></span>
     
     
 </a>
@@ -743,7 +733,45 @@ virtualenv它提供了分离运行环境的功能。
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/06/23/hadoop学习/" class="title">hadoop学习</a></p>
+                            <p class="item-title"><a href="/2016/06/26/Hadoop I:O/" class="title">Hadoop I/O</a></p>
+                            <p class="item-date"><time datetime="2016-06-25T19:07:30.000Z" itemprop="datePublished">2016-06-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/06/24/YARN/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="YARN" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/06/24/YARN/" class="title">YARN</a></p>
+                            <p class="item-date"><time datetime="2016-06-24T08:19:33.000Z" itemprop="datePublished">2016-06-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/06/23/HDFS/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="HDFS" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/06/23/HDFS/" class="title">HDFS</a></p>
                             <p class="item-date"><time datetime="2016-06-23T02:49:58.000Z" itemprop="datePublished">2016-06-23</time></p>
                         </div>
                     </li>
@@ -786,44 +814,6 @@ virtualenv它提供了分离运行环境的功能。
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/06/11/NLPofStanford/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="Stanford NLP 笔记" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/06/11/NLPofStanford/" class="title">Stanford NLP 笔记</a></p>
-                            <p class="item-date"><time datetime="2016-06-11T10:00:00.000Z" itemprop="datePublished">2016-06-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/05/29/第五章－神经网络学习/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="第五章－神经网络学习" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/05/29/第五章－神经网络学习/" class="title">第五章－神经网络学习</a></p>
-                            <p class="item-date"><time datetime="2016-05-29T14:16:00.000Z" itemprop="datePublished">2016-05-29</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -833,7 +823,7 @@ virtualenv它提供了分离运行环境的功能。
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -843,7 +833,7 @@ virtualenv它提供了分离运行环境的功能。
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -853,7 +843,7 @@ virtualenv它提供了分离运行环境的功能。
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 12px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Netural-Network/" style="font-size: 10px;">Netural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 10px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 12px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Netural-Network/" style="font-size: 10px;">Netural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 
