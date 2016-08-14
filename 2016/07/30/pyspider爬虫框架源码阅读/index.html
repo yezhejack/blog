@@ -3,18 +3,23 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>标签：: js | JackYip</title>
+    <title>pyspider爬虫框架源码阅读 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="JackYip">
-<meta property="og:url" content="http://yezhejack.github.io/tags/js/index.html">
+        <meta name="keywords" content="爬虫,pyspider" />
+    
+    <meta name="description" content="阅读pyspider所做的记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pyspider爬虫框架源码阅读">
+<meta property="og:url" content="http://yezhejack.github.io/2016/07/30/pyspider爬虫框架源码阅读/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description">
+<meta property="og:description" content="阅读pyspider所做的记录">
+<meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
+<meta property="og:updated_time" content="2016-08-02T12:19:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JackYip">
-<meta name="twitter:description">
+<meta name="twitter:title" content="pyspider爬虫框架源码阅读">
+<meta name="twitter:description" content="阅读pyspider所做的记录">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/Learning.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -148,74 +153,142 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>标签：: <em>js</em>
+    <a class="page-title-link" href="/categories/Learning/">Learning</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-pyspider爬虫框架源码阅读" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/07/28/前端/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/learning.jpg)" alt="前端" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/07/28/前端/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-07-28T03:58:32.000Z" itemprop="datePublished">2016-07-28</time></p>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/07/28/前端/">前端</a>
+        pyspider爬虫框架源码阅读
         </h1>
     
 
-        <p class="article-excerpt">
-            isLogin:function({})这个是在函数前加上一个函数名，实际上就是定义一个叫做isLogin的函数。
-多个class在html中，给一个对象附上多个class的方法是，在class=””中用空格隔开，比如class=”a b”，那么它就有两个class的标签了，一个是a，一个是b。
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/07/30/pyspider爬虫框架源码阅读/" class="article-date">
+    <time datetime="2016-07-30T13:53:58.000Z" itemprop="datePublished">2016-07-30</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pyspider/">pyspider</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>
 
-        </p>
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="pyspider爬虫框架源码阅读"><a href="#pyspider爬虫框架源码阅读" class="headerlink" title="pyspider爬虫框架源码阅读"></a>pyspider爬虫框架源码阅读</h1><h2 id="主要使用的组件"><a href="#主要使用的组件" class="headerlink" title="主要使用的组件"></a>主要使用的组件</h2><h3 id="tornado"><a href="#tornado" class="headerlink" title="tornado"></a>tornado</h3><p>一个异步可并发的网络库</p>
+<p>有4个部分组成</p>
+<ul>
+<li>Web Framework，RequestHandler</li>
+<li>HTTP的客户端和服务端 HTTPServer AsyncHTTPClient</li>
+<li>一个异步的网络库 IOLoop IOStream</li>
+<li>一个协程库 tornado.gen</li>
+</ul>
+<h3 id="flask"><a href="#flask" class="headerlink" title="flask"></a>flask</h3><p>用于搭建web server</p>
+<h3 id="phantomjs"><a href="#phantomjs" class="headerlink" title="phantomjs"></a>phantomjs</h3><p>用于爬取js页面</p>
+<h3 id="click"><a href="#click" class="headerlink" title="click"></a>click</h3><p>用于建立一个好的命令行接口的库</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">click</span>.<span class="keyword">command</span>()</span><br></pre></td></tr></table></figure>
+<p>表示这是一个子命令。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">click</span>.<span class="keyword">option</span></span><br></pre></td></tr></table></figure>
+<p>表示一个命令行的option</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">click</span>.<span class="keyword">option</span>('--<span class="keyword">shout</span>/--<span class="keyword">no</span>-<span class="keyword">chout</span>',<span class="keyword">default</span>=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>表示这是一个boolean flag</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@click</span>.command()</span><br><span class="line"><span class="variable">@click</span>.option(<span class="string">'--hash-type'</span>,type=click.Choice([<span class="string">'md5'</span>,<span class="string">'sha1'</span>]))</span><br></pre></td></tr></table></figure>
+<p>这两个装饰器会对hash-type这个参数进行检查，如果不是<figure class="highlight plain"><figcaption><span>之一的话，会报错。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### prompt ####</span><br><span class="line">当用户没有指定一些参数的时候，让程序去追问用户，叫做prompt parameters</span><br><span class="line"></span><br><span class="line">#### 从环境变量中读取值 ####</span><br><span class="line">有两种方式，一种是从环境变量中读取自定义的</span><br></pre></td></tr></table></figure></p>
+<p>@click.command()<br>@click.option(‘–username’)<br>def greet(username):<br>    click.echo(‘hello %s!’ % username)</p>
+<p>if <strong>name</strong>==’<strong>main</strong>‘:<br>    greet(auto_envvar_prefix=’GREETER’)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后在命令行中</span><br></pre></td></tr></table></figure></p>
+<p>$ export GREETER_USERNAME=john<br>$ greet<br>hello john<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#### 可变参数 ###</span><span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
+<p>@click.command()<br>@click.argument(‘src’,nargs=-1)<br>@click.argument(‘dst’,nargs=1)<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这样子src就拥有了可变参数的特性，可以吃掉任意多的参数。但是只能有一个可变参数存在。</span><br><span class="line"></span><br><span class="line">如果想要至少提供一个参数的可变参数的话，需要设置```requeired=<span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="文件安全"><a href="#文件安全" class="headerlink" title="文件安全"></a>文件安全</h4><p>提供了lazy mode和atomic mode来保证文件的读写安全，lazy模式下，读文件会得到立即的反应，而写文件则会到第一次IO操作的时候才有反应。</p>
+<h4 id="复杂应用"><a href="#复杂应用" class="headerlink" title="复杂应用"></a>复杂应用</h4><h5 id="上下文环境-context"><a href="#上下文环境-context" class="headerlink" title="上下文环境 context"></a>上下文环境 context</h5><p>当一个click命令执行的时候，一个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">环境对象建立一个链接表，直到他们到达了最上面的一个。每个环境都会和它的父环境链接。这样子，每个环境对象都能够保存自己的信息，而不用担心会影响到其他命令的状态了。同时也保证了当父环境的数据需要读取的时候，可以到达。</span><br></pre></td></tr></table></figure></p>
+<p>@click.pass_context<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以将上下文传输过来</span><br></pre></td></tr></table></figure></p>
+<p>@click.pass_obj<br><code>则是只传递</code>Context.obj```字段过来。</p>
+<p>当使用了这两个装饰器之后，被装饰的函数的第一个参数就是对应的Context或Context.obj</p>
+<h2 id="run-py"><a href="#run-py" class="headerlink" title="run.py"></a>run.py</h2><p>在<code>./pyspider/run.py</code>中从<code>cli()</code>函数开始运行,看之前最好看一下click的使用，因为整个结构是基于click的。</p>
+<h3 id="lambda-匿名函数"><a href="#lambda-匿名函数" class="headerlink" title="lambda 匿名函数"></a>lambda 匿名函数</h3><p>这个是用来绑定一个匿名函数的</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhejack.github.io/2016/07/30/pyspider爬虫框架源码阅读/" data-id="ciruda5p4001p56gemrdxbo0t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
 </article>
+
+    <section id="comments">
     
-        </div>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
     
-
-
-    </div></section>
-
-
+    </section>
 
                         </div>
                     </section>
@@ -259,6 +332,19 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2016/07/28/前端/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">前端</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -449,11 +535,13 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
+    var disqus_url = 'http://yezhejack.github.io/2016/07/30/pyspider爬虫框架源码阅读/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
@@ -473,6 +561,23 @@ var _hmt = _hmt || [];
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
