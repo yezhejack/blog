@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-08-15T13:44:19.000Z">
+<meta property="og:updated_time" content="2016-08-15T13:46:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -235,7 +235,8 @@ var _hmt = _hmt || [];
 <h3 id="supervisor"><a href="#supervisor" class="headerlink" title="supervisor"></a>supervisor</h3><p>supervisor是一个进程管理，在我们远程登录server的时候会启动一个bash，但是这个bash我们退出ssh之后就消失了，里面的进程也就消失了。于是我们需要一个进程管理，我们将想要启动的进程扔给它，由它来管理即可。screen可以是一个不错的进程管理，可以用来debug，因为它可以前端显示，但是本质也还是后台启动。</p>
 <p>但是最近在使用一个开源工具，这个工具的crash的频率比较高，因此需要一个能够自动重启carsh进程的进程管理，那就是supervisor</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">easy_install</span> supervisor</span><br></pre></td></tr></table></figure>
-<p>这个命令可以在屏幕上打印出配置信息<br>echo_supervisord_conf</p>
+<p>这个命令可以在屏幕上打印出配置信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supervisord_conf</span><br></pre></td></tr></table></figure>
 <p>然后将配置输入到<code>/etc</code>路径中，这个需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supservisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
 <h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>如果supdervirod的二进制文件是安装在系统的PATH下的话，是可以直接启动的</p>
 <p>新建一个文件夹<code>/etc/supervisor/</code><br>然后在<code>/etc/supervisord.conf</code>中的include项中加入</p>
@@ -248,7 +249,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cirw3dig1001kulgeqs7d3hii" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cirw3fzp7001jv8ge1didsmog" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
