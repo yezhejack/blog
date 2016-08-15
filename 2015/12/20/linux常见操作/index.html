@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-08-15T13:42:46.000Z">
+<meta property="og:updated_time" content="2016-08-15T13:44:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -235,13 +235,12 @@ var _hmt = _hmt || [];
 <h3 id="supervisor"><a href="#supervisor" class="headerlink" title="supervisor"></a>supervisor</h3><p>supervisor是一个进程管理，在我们远程登录server的时候会启动一个bash，但是这个bash我们退出ssh之后就消失了，里面的进程也就消失了。于是我们需要一个进程管理，我们将想要启动的进程扔给它，由它来管理即可。screen可以是一个不错的进程管理，可以用来debug，因为它可以前端显示，但是本质也还是后台启动。</p>
 <p>但是最近在使用一个开源工具，这个工具的crash的频率比较高，因此需要一个能够自动重启carsh进程的进程管理，那就是supervisor</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">easy_install</span> supervisor</span><br></pre></td></tr></table></figure>
-<p>这个命令可以在屏幕上打印出配置信息<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supervisord_conf</span><br></pre></td></tr></table></figure></p>
-<p>然后将配置输入到<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">echo_supservisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
+<p>这个命令可以在屏幕上打印出配置信息<br>echo_supervisord_conf</p>
+<p>然后将配置输入到<code>/etc</code>路径中，这个需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supservisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
 <h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>如果supdervirod的二进制文件是安装在系统的PATH下的话，是可以直接启动的</p>
-<p>新建一个文件夹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后在```/etc/supervisord.conf```中的include项中加入</span><br></pre></td></tr></table></figure></p>
-<p>[include]<br>files = /etc/supervisor/*.conf<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后填写一个需要启动的程序的配置文件</span><br></pre></td></tr></table></figure></p>
-<p>[program:phantomjs]<br>directory = /data/pyspider ; 程序的启动目录<br>command = pyspider -c ./config/pyspider.json phantomjs   ; 启动命令，可以看出与手动在命令行启动的命令是一样的<br>autostart = true     ; 在 supervisord 启动的时候也自动启动<br>startsecs = 5        ; 启动 5 秒后没有异常退出，就当作已经正常启动了<br>autorestart = true   ; 程序异常退出后自动重启<br>startretries = 3     ; 启动失败自动重试次数，默认是 3<br>user = yezhe          ; 用哪个用户启动<br>redirect_stderr = true  ; 把 stderr 重定向到 stdout，默认 false<br>stdout_logfile_maxbytes = 20MB  ; stdout 日志文件大小，默认 50MB<br>stdout_logfile_backups = 20     ; stdout 日志文件备份数<br>; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）<br>stdout_logfile = /data/pyspider/log/phantomjs.log</p>
-<p>; 可以通过 environment 来添加需要的环境变量，一种常见的用法是修改 PYTHONPATH<br>; environment=PYTHONPATH=$PYTHONPATH:/path/to/somewhere<br>```</p>
+<p>新建一个文件夹<code>/etc/supervisor/</code><br>然后在<code>/etc/supervisord.conf</code>中的include项中加入</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[include]</span></span><br><span class="line"><span class="attr">files</span> = /etc/supervisor/*.conf</span><br></pre></td></tr></table></figure>
+<p>然后填写一个需要启动的程序的配置文件<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:phantomjs]</span></span><br><span class="line"><span class="attr">directory</span> = /data/pyspider ; 程序的启动目录</span><br><span class="line"><span class="attr">command</span> = pyspider -c ./config/pyspider.json phantomjs   ; 启动命令，可以看出与手动在命令行启动的命令是一样的</span><br><span class="line"><span class="attr">autostart</span> = <span class="literal">true</span>     ; 在 supervisord 启动的时候也自动启动</span><br><span class="line"><span class="attr">startsecs</span> = <span class="number">5</span>        ; 启动 <span class="number">5</span> 秒后没有异常退出，就当作已经正常启动了</span><br><span class="line"><span class="attr">autorestart</span> = <span class="literal">true</span>   ; 程序异常退出后自动重启</span><br><span class="line"><span class="attr">startretries</span> = <span class="number">3</span>     ; 启动失败自动重试次数，默认是 <span class="number">3</span></span><br><span class="line"><span class="attr">user</span> = yezhe          ; 用哪个用户启动</span><br><span class="line"><span class="attr">redirect_stderr</span> = <span class="literal">true</span>  ; 把 stderr 重定向到 stdout，默认 <span class="literal">false</span></span><br><span class="line"><span class="attr">stdout_logfile_maxbytes</span> = <span class="number">20</span>MB  ; stdout 日志文件大小，默认 <span class="number">50</span>MB</span><br><span class="line"><span class="attr">stdout_logfile_backups</span> = <span class="number">20</span>     ; stdout 日志文件备份数</span><br><span class="line"><span class="comment">; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span></span><br><span class="line"><span class="attr">stdout_logfile</span> = /data/pyspider/log/phantomjs.log</span><br><span class="line"></span><br><span class="line"><span class="comment">; 可以通过 environment 来添加需要的环境变量，一种常见的用法是修改 PYTHONPATH</span></span><br><span class="line"><span class="comment">; environment=PYTHONPATH=$PYTHONPATH:/path/to/somewhere</span></span><br></pre></td></tr></table></figure></p>
 
         </div>
         <footer class="article-footer">
@@ -249,7 +248,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cirw3bj81001htqgeok1wyx5x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cirw3dig1001kulgeqs7d3hii" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
