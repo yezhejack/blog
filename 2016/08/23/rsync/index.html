@@ -8,17 +8,23 @@
     
         <meta name="keywords" content="Linux,rsync" />
     
-    <meta name="description" content="rsync我的使用方法12rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial zye@202.118.250.16:/data/ltp/ltp-models backup/rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial backup rsync@180.168.92.130:/volume1/h">
+    <meta name="description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
+如果上述链接失效，则需要到https://rsync.samba.org上
+我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rsync">
 <meta property="og:url" content="http://yezhejack.github.io/2016/08/23/rsync/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="rsync我的使用方法12rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial zye@202.118.250.16:/data/ltp/ltp-models backup/rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial backup rsync@180.168.92.130:/volume1/h">
+<meta property="og:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
+如果上述链接失效，则需要到https://rsync.samba.org上
+我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-08-25T02:47:52.000Z">
+<meta property="og:updated_time" content="2016-08-25T17:20:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rsync">
-<meta name="twitter:description" content="rsync我的使用方法12rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial zye@202.118.250.16:/data/ltp/ltp-models backup/rsync -a --progress -h -e &apos;ssh -p 55555&apos; --partial backup rsync@180.168.92.130:/volume1/h">
+<meta name="twitter:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
+如果上述链接失效，则需要到https://rsync.samba.org上
+我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/linux.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -179,7 +185,10 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="我的使用方法"><a href="#我的使用方法" class="headerlink" title="我的使用方法"></a>我的使用方法</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial zye<span class="variable">@202</span>.<span class="number">118.250</span>.<span class="number">16</span><span class="symbol">:/data/ltp/ltp-models</span> backup/</span><br><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial backup rsync<span class="variable">@180</span>.<span class="number">168.92</span>.<span class="number">130</span><span class="symbol">:/volume1/hpc_data/backup</span></span><br></pre></td></tr></table></figure>
+            <h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="安装3-1-0版本的rsync"><a href="#安装3-1-0版本的rsync" class="headerlink" title="安装3.1.0版本的rsync"></a>安装3.1.0版本的rsync</h2><p>为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="symbol">https:</span>/<span class="regexp">/download.samba.org/pub</span><span class="regexp">/rsync/src</span><span class="regexp">/rsync-3.1.2.tar.gz</span></span><br></pre></td></tr></table></figure></p>
+<p>如果上述链接失效，则需要到<code>https://rsync.samba.org</code>上</p>
+<h2 id="我的使用方法"><a href="#我的使用方法" class="headerlink" title="我的使用方法"></a>我的使用方法</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial zye<span class="variable">@202</span>.<span class="number">118.250</span>.<span class="number">16</span><span class="symbol">:/data/ltp/ltp-models</span> backup/</span><br><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial backup rsync<span class="variable">@180</span>.<span class="number">168.92</span>.<span class="number">130</span><span class="symbol">:/volume1/hpc_data</span></span><br></pre></td></tr></table></figure>
+<p>如果在源地址后面加上斜杠的话，就只是表示拷贝下面的内容</p>
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>rsync是一个快速的、多用途的文件拷贝工具。它可以实现本地的、远程的。两种远程方式，一个是通过rsync服务，一个是通过ssh服务。它提供了很多的选项来控制它的每一种行为和定义需要拷贝的文件。它因为它的增量拷贝算法而著名。广泛用于备份和镜像，并且作为一个改进的拷贝命令作为日常使用。</p>
 <p>rsync可以找得到需要传输的文件，这是基于一个快速的检查算法（默认），它检查那些大小和最后修改时间有变化的文件。其他有变化的被保留的属性也会作用到目标文件上，如果快速检查表明文件的数据并不需要更新。</p>
 <h2 id="一些特点"><a href="#一些特点" class="headerlink" title="一些特点"></a>一些特点</h2><ul>
@@ -259,7 +268,7 @@ var _hmt = _hmt || [];
 <li><code>-u,--update</code>这个会跳过所有已经存在的并且修改时间更新的。</li>
 <li><code>--inplace</code> 可以将数据直接写到文件的位置上，但它有几个影像，一个是硬连接会被保留，二是在使用的二进制包不能被改写，三是文件容易出现不一致。一个rsync无法写的文件将不会被更新。</li>
 <li><code>--append</code> 这个会用追加的方式来更新文件，但是对于那些可能不是从尾部更新的文件，这个会导致错误。</li>
-<li><code>--append-verity</code>会校验一下追加更新的文件，如果校验失败，则回退。</li>
+<li><code>--append-verity</code>会校验一下追加更新的文件，如果校验失败，则回退。<br>*</li>
 <li><code>--chmod</code>可以用来修改文件的读写权限。</li>
 <li><code>--owner</code>这个选项可以用来保证传过去的文件的所有者和源文件是一样的</li>
 <li><code>--super</code>这个选项会告诉接收端尝试使用超级用户权限。</li>
@@ -278,7 +287,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/08/23/rsync/" data-id="cis9qbx6a001y2bge2fwgte78" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/08/23/rsync/" data-id="cisalhof2001zu2gefs6ymuu5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
