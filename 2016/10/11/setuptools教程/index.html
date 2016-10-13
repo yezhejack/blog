@@ -3,23 +3,26 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>HTTP学习以及push机制 | JackYip</title>
+    <title>setuptools教程 | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="HTTP,push,长连接,短连接" />
+        <meta name="keywords" content="python" />
     
-    <meta name="description" content="因为实验室项目，所以需要搞清楚一下HTTP协议，之前的网络课程似乎这个没有学的很好。">
+    <meta name="description" content="setuptools 教程基本使用在project目录下创建一个setup.py的文件，其中的内容是
+1234567891011121314from setuptools import setup, find_packages setup(    name = &quot;ConvertSubToUTF8&quot;,    version = &quot;0.0.1&quot;,    packages = find_packages">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP学习以及push机制">
-<meta property="og:url" content="http://yezhejack.github.io/2016/05/07/HTTP学习以及push机制/index.html">
+<meta property="og:title" content="setuptools教程">
+<meta property="og:url" content="http://yezhejack.github.io/2016/10/11/setuptools教程/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="因为实验室项目，所以需要搞清楚一下HTTP协议，之前的网络课程似乎这个没有学的很好。">
-<meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-05-07T13:40:28.000Z">
+<meta property="og:description" content="setuptools 教程基本使用在project目录下创建一个setup.py的文件，其中的内容是
+1234567891011121314from setuptools import setup, find_packages setup(    name = &quot;ConvertSubToUTF8&quot;,    version = &quot;0.0.1&quot;,    packages = find_packages">
+<meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
+<meta property="og:updated_time" content="2016-10-11T13:09:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP学习以及push机制">
-<meta name="twitter:description" content="因为实验室项目，所以需要搞清楚一下HTTP协议，之前的网络课程似乎这个没有学的很好。">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Learning.PNG">
+<meta name="twitter:title" content="setuptools教程">
+<meta name="twitter:description" content="setuptools 教程基本使用在project目录下创建一个setup.py的文件，其中的内容是
+1234567891011121314from setuptools import setup, find_packages setup(    name = &quot;ConvertSubToUTF8&quot;,    version = &quot;0.0.1&quot;,    packages = find_packages">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/linux.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,34 +156,36 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Learning/">Learning</a>
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-HTTP学习以及push机制" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-setuptools教程" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        HTTP学习以及push机制
+        setuptools教程
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/05/07/HTTP学习以及push机制/" class="article-date">
-    <time datetime="2016-05-07T13:19:00.000Z" itemprop="datePublished">2016-05-07</time>
+            <a href="/2016/10/11/setuptools教程/" class="article-date">
+    <time datetime="2016-10-11T13:08:36.000Z" itemprop="datePublished">2016-10-11</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/push/">push</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/短连接/">短连接</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/长连接/">长连接</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="什么是长连接"><a href="#什么是长连接" class="headerlink" title="什么是长连接"></a>什么是长连接</h2><p>当客户端用TCP/IP协议从服务器上获取数据的时候，都需要一个连通客户端和服务器的<code>连接</code>，<code>连接</code>通过<code>三次握手</code>建立，通过<code>四次握手</code>释放。如果每次获取数据都创建一个独占的<code>连接</code>，并在数据传输完毕后释放，这种<code>连接</code>叫做<code>短连接</code>。而一个能够供多个请求多次传输数据，并在数据传输后保活一段时间的<code>连接</code>，我们称之为<code>长连接</code>。（转载自<a href="http://www.chanpin100.com/archives/58040）。" target="_blank" rel="external">http://www.chanpin100.com/archives/58040）。</a></p>
-<p>push机制利用的就是长连接，因为ios只要和官方的推送服务器发送<code>心跳</code>，因此很省电，但是国内的android无法使用google的推送服务器，因此各个app得自己建立推送管道，同时这些管道还不能被各种<code>管家</code>杀死。</p>
+            <h1 id="setuptools-教程"><a href="#setuptools-教程" class="headerlink" title="setuptools 教程"></a>setuptools 教程</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>在project目录下创建一个setup.py的文件，其中的内容是</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from setuptools <span class="built_in">import</span> setup, find_packages </span><br><span class="line">setup(</span><br><span class="line">    <span class="attr">name</span> = <span class="string">"ConvertSubToUTF8"</span>,</span><br><span class="line">    <span class="attr">version</span> = <span class="string">"0.0.1"</span>,</span><br><span class="line">    <span class="attr">packages</span> = find_packages(),</span><br><span class="line">    <span class="attr">scripts=['ConvertSubToUTF8.py'],</span></span><br><span class="line">    <span class="attr">install_requires=['chardet&gt;0'],</span></span><br><span class="line">    <span class="attr">author='Zhe</span> Ye',</span><br><span class="line">    <span class="attr">author_email='yezhejack@gmail.com',</span></span><br><span class="line">    <span class="attr">description='This</span> is a useful tool for convert sub file code format',</span><br><span class="line">    <span class="attr">keywords='convert</span> sub subtitles files utf8',</span><br><span class="line">    <span class="attr">url='http://yezhejack.github.io/2016/10/11/ConvertToUTF8/',</span></span><br><span class="line">    <span class="attr">license='PSF',</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>然后在目录下运行<code>python setup.py sdist</code></p>
+<p>然后就可以看到目录出现了新的东西</p>
 
         </div>
         <footer class="article-footer">
@@ -188,7 +193,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/05/07/HTTP学习以及push机制/" data-id="ciu83hw11000c2qge8jufxj4k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/11/setuptools教程/" data-id="ciu83hw2r00292qge297qr5ey" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -308,20 +313,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/05/10/正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            如何在python中使用正则表达式
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/05/05/统计自然语言处理基础-第九章-马尔可夫模型/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/10/11/ConvertToUTF8/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">马尔可夫模型</p>
+        <p class="article-nav-title">ConvertToUTF8</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -517,7 +512,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2016/05/07/HTTP学习以及push机制/';
+    var disqus_url = 'http://yezhejack.github.io/2016/10/11/setuptools教程/';
     
     (function() {
     var dsq = document.createElement('script');
