@@ -19,7 +19,7 @@
 同步与异步网络正确设计一个递归神经网络的问题在于所有计算元素之间的充分的同步。在MP模型的网络中，我们假设每个计算元素被激活都需要消耗一定的时间。这里将要讨论的是没有全局同步的神经网络。计算节点会在不同的时间被激活，并且会在一定的时间后提供计算，这个网络是随机自动的。
 双向联想记忆在循环神经网络">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-10-18T13:23:40.000Z">
+<meta property="og:updated_time" content="2016-10-18T13:26:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hopefield Neural Network">
 <meta name="twitter:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。
@@ -187,7 +187,7 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h1 id="Hopefield网络"><a href="#Hopefield网络" class="headerlink" title="Hopefield网络"></a>Hopefield网络</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。</p>
 <h2 id="同步与异步网络"><a href="#同步与异步网络" class="headerlink" title="同步与异步网络"></a>同步与异步网络</h2><p>正确设计一个递归神经网络的问题在于所有计算元素之间的充分的同步。在MP模型的网络中，我们假设每个计算元素被激活都需要消耗一定的时间。这里将要讨论的是没有全局同步的神经网络。计算节点会在不同的时间被激活，并且会在一定的时间后提供计算，这个网络是随机自动的。</p>
-<h2 id="双向联想记忆"><a href="#双向联想记忆" class="headerlink" title="双向联想记忆"></a>双向联想记忆</h2><p>在循环神经网络中(recurrent neural network)，第一层的输出的除了传到第二层之外，还会从第二层再传回自己，从而作为自己的输入。在这个联想记忆的模型中，我们可能会问这个网络在经过了多次迭代之后，是否会达到一个稳定的状态。这样的一个网络叫做<code>谐振网络(resonance network)</code>或者是<code>双向联想记忆(bidirectional associative memory, BAM)</code>。单元的激活函数是符号函数，并且信息被编码成二值。</p>
+<h2 id="双向联想记忆"><a href="#双向联想记忆" class="headerlink" title="双向联想记忆"></a>双向联想记忆</h2><p>在循环神经网络中(recurrent neural network)，第一层的输出的除了传到第二层之外，还会从第二层再传回自己，从而作为自己的输入。在这个联想记忆的模型中，我们可能会问这个网络在经过了多次迭代之后，是否会达到一个稳定的状态。这样的一个网络叫做<code>谐振网络(resonance network)</code>或者是<code>双向联想记忆(bidirectional associative memory, BAM)</code>。单元的激活函数是符号函数，并且信息被编码成二值。下图的这个网络将一个n维的行向量<span>$x_0$</span><!-- Has MathJax -->映射到一个k维的行向量<span>$y_0$</span><!-- Has MathJax -->。</p>
 <p><img src="/img/hopefield1.jpg" alt="谐振网络"></p>
 <h2 id="Energy-Function-能量函数"><a href="#Energy-Function-能量函数" class="headerlink" title="Energy Function 能量函数"></a>Energy Function 能量函数</h2>
         </div>
@@ -196,7 +196,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/18/Hopefield Neural Network/" data-id="ciufithrj000ejfgey0749uky" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/18/Hopefield Neural Network/" data-id="ciufiwi1l000eylgeikb6q2d3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
