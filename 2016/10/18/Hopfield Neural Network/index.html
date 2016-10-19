@@ -17,7 +17,7 @@
 <meta property="og:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
 同步与异步网络正确设计一个递归神经网络的问题在于所有计算元素之间的充分的同步。在MP模型的网络中，我们假设每个计算元素被激活都需要消耗一定的时间。这里将要讨论的是没有全局同步的神经网络。计算节点会在不同的时间被激活，并且会在一定的时间后提供计算，这个网络是随机">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-10-19T11:14:42.000Z">
+<meta property="og:updated_time" content="2016-10-19T12:23:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hopfield Neural Network">
 <meta name="twitter:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
@@ -191,7 +191,7 @@ var _hmt = _hmt || [];
 <center><br><span>$x_1^T=sgn(Wy_0^T)$</span><!-- Has MathJax --><br></center>
 
 
-<p><img src="/img/hopefield1.jpg" alt="谐振网络"></p>
+<p><img src="/img/hopfield1.jpg" alt="谐振网络"></p>
 <h2 id="Energy-Function-能量函数"><a href="#Energy-Function-能量函数" class="headerlink" title="Energy Function 能量函数"></a>Energy Function 能量函数</h2><h2 id="动力学行为"><a href="#动力学行为" class="headerlink" title="动力学行为"></a>动力学行为</h2><p>前馈网络具备了很强的非线性映射能力，从计算的观点看，前馈型神经元网络大部分是学习网络而不具有动力学行为。反馈式网络是通过网络神经元状态的变迁而最终稳定于某一状态，从而得到联想存储或者神经计算的结果。</p>
 <p>在反馈式网络中，所有节点（单元）都是一样的，它们之间可以相互连接，所以反馈式神经元网络可以用一个无向的完备图来表示。</p>
 <p>网络接受一个输入，然后网络将不断演化，最终趋于一个定态，称为状态空间中的<code>不动点吸引子</code>，这个定态便是网络的输出图形（矢量）。</p>
@@ -217,33 +217,12 @@ var _hmt = _hmt || [];
 <center><br><span>$\Delta w_{ij}=\alpha x_i x_j,\alpha &gt; 0$</span><!-- Has MathJax --><br></center>
 
 <p>具体实现是<code>外积规则</code>，对于多个模式的学习，对给定的一组向量<span>$M={U_1,U_2,...,U_m}$</span><!-- Has MathJax -->，外积规则可写为</p>
-<center><br><span>$W=\sum_{k=1}^{m}(U_k U_k^T-I),I是n \times n单位阵$</span><!-- Has MathJax --><br></center>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p><center><br><span>$W=\sum_{k=1}^{m}(U_k U_k^T-I),I是n \times n单位阵$</span><!-- Has MathJax --><br></center><br>需要注意的是这事不带自环的Hopfield网络的情况，就是<span>$w_{ij}=0$</span><!-- Has MathJax -->。若网络连接强度<span>$w_{ij} \neq 0$</span><!-- Has MathJax -->，则称为有自环的网络。由于不带自环的Hopfield网络稳定性易于保证。</p>
+<p>对于特定的网络规模，存在模式数目的上限，当学习的模式数大于这个上限的时候，网络不但无力记忆以后输入的模式，而且对以前的记忆也渐渐遗忘了。</p>
+<h2 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h2><h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><p>旅行商问题是一个最优路径问题（简称为TSP问题），是人工智能中的一个典型问题。假定有m个城市的集合<span>${C_1,C_2,...,C_n}$</span><!-- Has MathJax -->，它们之间的相互距离分别是<span>$d_{ij}(d_{ij}=d_{ji})$</span><!-- Has MathJax -->。试找出一条经过每个城市仅一次的最短而且回到开始的出发地的路径。传统的穷举法会导致传统的串行计算机难以在有限时间内得到圆满解决的方案。</p>
+<p>用Hopfield网来解决TSP问题避免了计算复杂性太大的问题，因为它解决这种问题时体现了人脑的一些特征。使用一个<span>$n \times n$</span><!-- Has MathJax -->神经元，用神经元的状态来表示某一个城市在某一条有效路径中的位置，例如神经元<span>$x_i$</span><!-- Has MathJax -->的状态用<span>$v_{x_i}$</span><!-- Has MathJax -->表示，用<span>$C_i$</span><!-- Has MathJax -->表示在路径中的第i个城市。如果<span>$v_{x_i}=1$</span><!-- Has MathJax -->则说明<span>$C_x$</span><!-- Has MathJax -->在路径中第i个位置出现，如果这个值为0则说明在路径中的第i个位置不出现，也就是说明此时第i个位置上是其他城市</p>
+<p>可见v矩阵可以表示n个城市的TSP问题，它的大小是<span>$n \times n$</span><!-- Has MathJax -->。为了保证每个城市只去一次（当然不包括初识出发城市），那么关联矩阵v上每一行只能有一个为1，其他为0。列上的限制也是一样的。</p>
+<p><img src="/img/hopfield2.png" alt="关联矩阵"></p>
 
         </div>
         <footer class="article-footer">
@@ -251,7 +230,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciugtnh75000exlgeir7cczbl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciugw48gf000eq4gebbbnnwzs" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
