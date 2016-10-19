@@ -17,7 +17,7 @@
 <meta property="og:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
 同步与异步网络正确设计一个递归神经网络的问题在于所有计算元素之间的充分的同步。在MP模型的网络中，我们假设每个计算元素被激活都需要消耗一定的时间。这里将要讨论的是没有全局同步的神经网络。计算节点会在不同的时间被激活，并且会在一定的时间后提供计算，这个网络是随机">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-10-19T11:05:12.000Z">
+<meta property="og:updated_time" content="2016-10-19T11:08:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hopfield Neural Network">
 <meta name="twitter:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
@@ -214,7 +214,7 @@ var _hmt = _hmt || [];
 <li>稳定输出 <span>$v=x^k$</span><!-- Has MathJax --></li>
 </ul>
 <h2 id="学习规则"><a href="#学习规则" class="headerlink" title="学习规则"></a>学习规则</h2><p>有很多的学习方法，最常见的是Hebb学习规则：设有n个神经元互相连接，每个神经元的激活状态<span>$x_i$</span><!-- Has MathJax -->只能取0或1，分别表示抑制和兴奋，学习过程中<span>$w_{ij}$</span><!-- Has MathJax -->调节原则是，若i与j两个神经元同时处于兴奋状态，那么它们之间的连接应加强，即</p>
-<center><br><span>$\Delta w_{ij}=\alpha x_i x_j      \alpha \greater 0$</span><!-- Has MathJax --><br></center>
+<center><br><span>$\Delta w_{ij}=\alpha x_i x_j,\alpha \textgreater 0$</span><!-- Has MathJax --><br></center>
 
 
 
@@ -250,7 +250,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciugtbavb000c8nger716a5kw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciugtfxoy000hvsge10d71kqf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
