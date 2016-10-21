@@ -17,7 +17,7 @@
 <meta property="og:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
 同步与异步网络正确设计一个递归神经网络的问题在于所有计算元素之间的充分的同步。在MP模型的网络中，我们假设每个计算元素被激活都需要消耗一定的时间。这里将要讨论的是没有全局同步的神经网络。计算节点会在不同的时间被激活，并且会在一定的时间后提供计算，这个网络是随机">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-10-19T12:23:40.000Z">
+<meta property="og:updated_time" content="2016-10-21T08:27:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hopfield Neural Network">
 <meta name="twitter:description" content="Hopefield网络简介Hopefield网络是一个非同步的神经网络，是一个异步的，跟BP网络不同。同时它分为两种类型，离散型和连续型。
@@ -217,12 +217,16 @@ var _hmt = _hmt || [];
 <center><br><span>$\Delta w_{ij}=\alpha x_i x_j,\alpha &gt; 0$</span><!-- Has MathJax --><br></center>
 
 <p>具体实现是<code>外积规则</code>，对于多个模式的学习，对给定的一组向量<span>$M={U_1,U_2,...,U_m}$</span><!-- Has MathJax -->，外积规则可写为</p>
-<p><center><br><span>$W=\sum_{k=1}^{m}(U_k U_k^T-I),I是n \times n单位阵$</span><!-- Has MathJax --><br></center><br>需要注意的是这事不带自环的Hopfield网络的情况，就是<span>$w_{ij}=0$</span><!-- Has MathJax -->。若网络连接强度<span>$w_{ij} \neq 0$</span><!-- Has MathJax -->，则称为有自环的网络。由于不带自环的Hopfield网络稳定性易于保证。</p>
-<p>对于特定的网络规模，存在模式数目的上限，当学习的模式数大于这个上限的时候，网络不但无力记忆以后输入的模式，而且对以前的记忆也渐渐遗忘了。</p>
-<h2 id="旅行商问题"><a href="#旅行商问题" class="headerlink" title="旅行商问题"></a>旅行商问题</h2><h3 id="问题介绍"><a href="#问题介绍" class="headerlink" title="问题介绍"></a>问题介绍</h3><p>旅行商问题是一个最优路径问题（简称为TSP问题），是人工智能中的一个典型问题。假定有m个城市的集合<span>${C_1,C_2,...,C_n}$</span><!-- Has MathJax -->，它们之间的相互距离分别是<span>$d_{ij}(d_{ij}=d_{ji})$</span><!-- Has MathJax -->。试找出一条经过每个城市仅一次的最短而且回到开始的出发地的路径。传统的穷举法会导致传统的串行计算机难以在有限时间内得到圆满解决的方案。</p>
-<p>用Hopfield网来解决TSP问题避免了计算复杂性太大的问题，因为它解决这种问题时体现了人脑的一些特征。使用一个<span>$n \times n$</span><!-- Has MathJax -->神经元，用神经元的状态来表示某一个城市在某一条有效路径中的位置，例如神经元<span>$x_i$</span><!-- Has MathJax -->的状态用<span>$v_{x_i}$</span><!-- Has MathJax -->表示，用<span>$C_i$</span><!-- Has MathJax -->表示在路径中的第i个城市。如果<span>$v_{x_i}=1$</span><!-- Has MathJax -->则说明<span>$C_x$</span><!-- Has MathJax -->在路径中第i个位置出现，如果这个值为0则说明在路径中的第i个位置不出现，也就是说明此时第i个位置上是其他城市</p>
-<p>可见v矩阵可以表示n个城市的TSP问题，它的大小是<span>$n \times n$</span><!-- Has MathJax -->。为了保证每个城市只去一次（当然不包括初识出发城市），那么关联矩阵v上每一行只能有一个为1，其他为0。列上的限制也是一样的。</p>
-<p><img src="/img/hopfield2.png" alt="关联矩阵"></p>
+<center><br><span>$W=\sum_{k=1}^{m}(U_k U_k^T-I),I是n \times n单位阵$</span><!-- Has MathJax --><br></center><br>需要注意的是这事不带自环的Hopfield网络的情况，就是<span>$w_{ij}=0$</span><!-- Has MathJax -->。若网络连接强度<span>$w_{ij} \neq 0$</span><!-- Has MathJax -->，则称为有自环的网络。由于不带自环的Hopfield网络稳定性易于保证。<br><br>对于特定的网络规模，存在模式数目的上限，当学习的模式数大于这个上限的时候，网络不但无力记忆以后输入的模式，而且对以前的记忆也渐渐遗忘了。<br><br>## 旅行商问题 ##<br>### 问题介绍 ###<br>旅行商问题是一个最优路径问题（简称为TSP问题），是人工智能中的一个典型问题。假定有m个城市的集合<span>${C_1,C_2,...,C_n}$</span><!-- Has MathJax -->，它们之间的相互距离分别是<span>$d_{ij}(d_{ij}=d_{ji})$</span><!-- Has MathJax -->。试找出一条经过每个城市仅一次的最短而且回到开始的出发地的路径。传统的穷举法会导致传统的串行计算机难以在有限时间内得到圆满解决的方案。<br><br>用Hopfield网来解决TSP问题避免了计算复杂性太大的问题，因为它解决这种问题时体现了人脑的一些特征。使用一个<span>$n \times n$</span><!-- Has MathJax -->神经元，用神经元的状态来表示某一个城市在某一条有效路径中的位置，例如神经元<span>$x_i$</span><!-- Has MathJax -->的状态用<span>$v_{x_i}$</span><!-- Has MathJax -->表示，用<span>$C_i$</span><!-- Has MathJax -->表示在路径中的第i个城市。如果<span>$v_{x_i}=1$</span><!-- Has MathJax -->则说明<span>$C_x$</span><!-- Has MathJax -->在路径中第i个位置出现，如果这个值为0则说明在路径中的第i个位置不出现，也就是说明此时第i个位置上是其他城市<br><br>可见v矩阵可以表示n个城市的TSP问题，它的大小是<span>$n \times n$</span><!-- Has MathJax -->。为了保证每个城市只去一次（当然不包括初识出发城市），那么关联矩阵v上每一行只能有一个为1，其他为0。列上的限制也是一样的。<br><br><img src="/img/hopfield2.png" alt="关联矩阵"><br><br>为了解决TSP问题，必须构成这样的网络：在网络运行时，计算能量降低。网络稳定后其输出状态代表城市被访问的次序，即构成上图所示的换位阵。网络能量的极小点对应于最佳或者较佳路径的形成。<br><br>为了保证输出换位阵，因此有行约束条件<br><br><center><br><span>$E_1=\frac{A}{2}\sum_x\sum_i\sum_{j \neq i}v_{x_i}v_{x_j}$</span><!-- Has MathJax --><br></center>
+
+<p>其中A&gt;0为常数。<span>$E_1$</span><!-- Has MathJax -->保证当矩阵v的每一行不多于一个1时，<span>$E_1$</span><!-- Has MathJax -->达到最小<span>$E_1min=0$</span><!-- Has MathJax -->。</p>
+<p>同理构成列约束条件</p>
+<center><br><span>$E_2=\frac{B}{2}\sum_i\sum_x\sum_{y \neq x}v_{x_i}v_{y_i}$</span><!-- Has MathJax --><br></center>
+
+<p>其中B&gt;0为常数，也保证了当矩阵v的每一列不多于一个1时，<span>$E_2$</span><!-- Has MathJax -->达到最小<span>$E_2min=0$</span><!-- Has MathJax -->。</p>
+<p>构成全局约束</p>
+<p><center><br><span>$E_3=\frac{C}{2}(\sum_x\sum_iv_{xi}-n)^2$</span><!-- Has MathJax --><br></center><br>其中C&gt;0为常数。<span>$E_3$</span><!-- Has MathJax -->保证当矩阵v中的1的个数恰好为n时即整个矩阵有n个1时，<span>$E_3$</span><!-- Has MathJax -->达到最小<span>$E_3min=0$</span><!-- Has MathJax --></p>
+<p><span>$E_1,E_2和E_3$</span><!-- Has MathJax -->只和达到最小时，能保证网络输出状态矩阵v构成换位阵。</p>
 
         </div>
         <footer class="article-footer">
@@ -230,7 +234,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciugw48gf000eq4gebbbnnwzs" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/18/Hopfield Neural Network/" data-id="ciuk2x1a8000ehmgesuczoryt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -350,6 +354,16 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
+        <a href="/2016/10/21/Deep Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Deep Learning
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2016/10/11/setuptools教程/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
@@ -368,6 +382,25 @@ var _hmt = _hmt || [];
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/21/Deep Learning/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.PNG)" alt="Deep Learning" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/10/21/Deep Learning/" class="title">Deep Learning</a></p>
+                            <p class="item-date"><time datetime="2016-10-21T09:11:00.000Z" itemprop="datePublished">2016-10-21</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -445,25 +478,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/08/23/rsync/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="rsync" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2016/08/23/rsync/" class="title">rsync</a></p>
-                            <p class="item-date"><time datetime="2016-08-23T11:23:36.000Z" itemprop="datePublished">2016-08-23</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -473,7 +487,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -483,7 +497,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -493,7 +507,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Deep-Learning/" style="font-size: 10px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 
