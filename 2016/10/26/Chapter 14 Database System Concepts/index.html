@@ -8,17 +8,26 @@
     
         <meta name="keywords" content="Database" />
     
-    <meta name="description" content="Chapter 14 Database System Concepts">
+    <meta name="description" content="14.1 事务概念构成单一逻辑工作单元的操作集合称作事务。
+数据库系统必须以一种能够避免引入不一致性的方式来管理实务的并发执行。
+因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作原子性(Atomicity)。
+数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为隔离性(Isolation)。尽管多个事务可能并发执行，但系统保证，对于任何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chapter 14 Database System Concepts">
 <meta property="og:url" content="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="Chapter 14 Database System Concepts">
+<meta property="og:description" content="14.1 事务概念构成单一逻辑工作单元的操作集合称作事务。
+数据库系统必须以一种能够避免引入不一致性的方式来管理实务的并发执行。
+因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作原子性(Atomicity)。
+数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为隔离性(Isolation)。尽管多个事务可能并发执行，但系统保证，对于任何">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-26T13:19:10.000Z">
+<meta property="og:updated_time" content="2016-10-26T14:50:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Database System Concepts">
-<meta name="twitter:description" content="Chapter 14 Database System Concepts">
+<meta name="twitter:description" content="14.1 事务概念构成单一逻辑工作单元的操作集合称作事务。
+数据库系统必须以一种能够避免引入不一致性的方式来管理实务的并发执行。
+因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作原子性(Atomicity)。
+数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为隔离性(Isolation)。尽管多个事务可能并发执行，但系统保证，对于任何">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/Learning.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -179,14 +188,47 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="Chapter-14-Database-System-Concepts"><a href="#Chapter-14-Database-System-Concepts" class="headerlink" title="Chapter 14 Database System Concepts"></a>Chapter 14 Database System Concepts</h1>
+            <h1 id="14-1-事务概念"><a href="#14-1-事务概念" class="headerlink" title="14.1 事务概念"></a>14.1 事务概念</h1><p>构成单一逻辑工作单元的操作集合称作<code>事务</code>。</p>
+<p>数据库系统必须以一种能够避免引入不一致性的方式来管理实务的并发执行。</p>
+<p>因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作<code>原子性(Atomicity)</code>。</p>
+<p>数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为<code>隔离性(Isolation)</code>。尽管多个事务可能并发执行，但系统保证，对于任何一对事务<span>$T_i$</span><!-- Has MathJax -->和<span>$T_j$</span><!-- Has MathJax -->，在<span>$T_i$</span><!-- Has MathJax -->看来，<span>$T_j$</span><!-- Has MathJax -->或者在<span>$T_i$</span><!-- Has MathJax -->开始之前已经完成执行，或者在<span>$T_j$</span><!-- Has MathJax -->完成之后开始执行。因此，每个事务都感觉不到系统中有其他事务在并发执行。</p>
+<p>即使系统能保证一个事务的正确执行，如果此后系统崩溃，结果系统“忘记”了该事务，那么这项工作的意义也不大了。因此，即使崩溃后事务的操作也必须是持久的。这种特性称为<code>持久性(Durability)</code>。</p>
+<p>这三个构成了构造与数据库的交互的一种理想方式。还有一个特性叫做<code>一致性(Consistency)</code>。如何实现这个则是编写事务的程序员的职责。</p>
+<h1 id="14-2-一个简单的事务模型"><a href="#14-2-一个简单的事务模型" class="headerlink" title="14.2 一个简单的事务模型"></a>14.2 一个简单的事务模型</h1><p>保证<code>原子性</code>的基本思路如下：对于事务要执行写操作的数据项，数据库系统在磁盘上记录其旧值。这个信息记录在一个称为<code>日志</code>的文件中。如果事务没能完成它的执行，在数据库系统从日志中恢复旧值，使得看上去事务从未执行过。保证<code>原子性</code>是数据库系统本身的责任。</p>
+<p><code>持久性</code>的保证可以使用下面的两条中的任何一条来保证：</p>
+<ul>
+<li>事务做的更新在事务结束前已经写入磁盘</li>
+<li>有关事务已执行的更新信息已写到磁盘上，并且此类信息必须充分，能让数据库在系统出现故障后重新启动时重新构造更新。</li>
+</ul>
+<p>事务的并发执行是有可能导致数据库系统的不一致的。一种避免事务并发执行而产生问题的途径是串行地执行事务–一个接一个地执行。但是这个方法不符合性能要求。事务的<code>隔离性</code>确保事务并发执行后的系统状态与这些事务以某种次序一个接一个地执行后的状态是等价的。确保<code>隔离性</code>是数据库系统中称作<code>并发控制系统</code>的部件的责任。</p>
+<h1 id="14-3-存储结构"><a href="#14-3-存储结构" class="headerlink" title="14.3 存储结构"></a>14.3 存储结构</h1><h2 id="易失性存储器"><a href="#易失性存储器" class="headerlink" title="易失性存储器"></a>易失性存储器</h2><p>比如主存储器和高速缓冲存储器。</p>
+<h2 id="非易失性存储器"><a href="#非易失性存储器" class="headerlink" title="非易失性存储器"></a>非易失性存储器</h2><p>比如二级存储设别磁盘和闪存，三级存储设备光介质和磁带。</p>
+<h2 id="稳定性存储器"><a href="#稳定性存储器" class="headerlink" title="稳定性存储器"></a>稳定性存储器</h2><p>理论上是一个永远不会丢失的存储设备。可以通过复制非易失性存储器来组成。为了一个事务能够持久，它的修改应该写入稳定性存储器。同样，为了一个事务是原子的。日志记录需要在对磁盘上的数据库做任何改变之前写入稳定性存储器。</p>
+<h1 id="14-4-事务原子性和持久性"><a href="#14-4-事务原子性和持久性" class="headerlink" title="14.4 事务原子性和持久性"></a>14.4 事务原子性和持久性</h1><p>事务并不是总能成功，没有成功的事务的状态，叫做事务的<code>终止</code>状态。一旦中止事务造成的变更被撤销，我们就说事务<code>已回滚</code>。恢复机制负责事务中止，典型的方法是维护一个日志。每个事务对数据库的修改都首先会记录到日志中。我们记录执行修改的事务标识符、修改的数据项标识符以及数据项的旧值和新值。然后数据库才会修改。成功完成执行的事务称为<code>已提交</code>。一个对数据库进行过更新的已提交事务使数据库进入一个新的一致状态，即使出现故障，这个状态也得保持。</p>
+<p><code>补偿事务</code>用来撤销一个<code>已提交</code>事务。这个是由用户来控制的。</p>
+<ul>
+<li><code>活动的</code>：初始状态，事务执行时处于这个状态。</li>
+<li><code>部分提交的</code>：最后一条语句执行后</li>
+<li><code>失败的</code>：发现正常的执行不能继续后</li>
+<li><code>中止的</code>：事务回滚并且数据库已恢复到事务开始执行前的状态后</li>
+<li><code>提交的</code>：成功完成之后</li>
+</ul>
+<h2 id="部分提交和已提交的区别"><a href="#部分提交和已提交的区别" class="headerlink" title="部分提交和已提交的区别"></a><code>部分提交</code>和<code>已提交</code>的区别</h2><p>事务从活动状态开始。当事务完成它的最后一个条语句后就进入了部分提交状态。此刻，事务已经完成它的最后一条语句后就进入了部分提交状态。此刻，事务已经完成执行，但由于实际输出可能仍临时驻留在主存储器中，因此一个硬件故障可能阻止其成功完成。于是事务仍有可能不得不中止。接着数据库系统往磁盘上写入足够的信息，确保即使出现故障时事务所做的更新也能在系统重启后重新创建。</p>
+<h2 id="外部可见的写"><a href="#外部可见的写" class="headerlink" title="外部可见的写"></a>外部可见的写</h2><p>在处理外部可见的写的时候，大多数系统只允许这种写操作在事务进入提交状态后发生。实现这种模式的一种方法是在非易失性存储设备中临时写下与外部写相关的所有数据，然后在事务进入提交状态后再执行真正的写操作。如果在事务进入提交状态后而外部写操作尚未完成之前，系统出现了故障，数据库系统就可以在重启后执行外部写操作了。有的时候重启应该执行一个补偿操作，比如外部写是支付现金，因为人可能已经走了。</p>
+<h1 id="14-5-事务隔离性"><a href="#14-5-事务隔离性" class="headerlink" title="14.5 事务隔离性"></a>14.5 事务隔离性</h1><p>两个允许并发的理由：</p>
+<ul>
+<li>提高吞吐量和资源利用率</li>
+<li>减少等待时间，可以减少平均响应时间。</li>
+</ul>
+<p>数据库必须控制事务之间的交互，以防止它们破坏数据库的一致性。系统通过称为<code>并发控制机制</code>的一系列机制来保证这一点。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="ciuqy6jya0000k5gerzwhx6xb" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="ciur1fu9w0000hdgecu2vm6zw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
