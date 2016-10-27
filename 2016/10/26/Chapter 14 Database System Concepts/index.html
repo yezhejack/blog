@@ -21,7 +21,7 @@
 因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作原子性(Atomicity)。
 数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为隔离性(Isolation)。尽管多个事务可能并发执行，但系统保证，对于任何">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-27T11:55:58.000Z">
+<meta property="og:updated_time" content="2016-10-27T14:03:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Database System Concepts">
 <meta name="twitter:description" content="14.1 事务概念构成单一逻辑工作单元的操作集合称作事务。
@@ -231,9 +231,10 @@ var _hmt = _hmt || [];
 <li><span>$I=write(Q)$</span><!-- Has MathJax -->,<span>$J=read(Q)$</span><!-- Has MathJax -->。那么它们的次序是有关系的。</li>
 <li><span>$I=write(Q)$</span><!-- Has MathJax -->,<span>$J=write(Q)$</span><!-- Has MathJax -->。那么它们的次序是有关系的。</li>
 </ul>
-<p>只有当两个操作都为read(Q)的时候或者引用不同的数据项，它们的次序才是没有关系的。也就是它们是无冲突的。当一个调度S可以经过调换一系列无冲突的连续指令（属于不同事务）的执行顺序后得到了一个新的调度<span>$S^&apos;$</span><!-- Has MathJax -->，那么这两个调度之间是<code>冲突等价</code>的。</p>
+<p>只有当两个操作都为read(Q)的时候或者引用不同的数据项，它们的次序才是没有关系的。也就是它们是无冲突的。当一个调度S可以经过调换一系列无冲突的连续指令（属于不同事务）的执行顺序后得到了一个新的调度<span>$S \prime$</span><!-- Has MathJax -->，那么这两个调度之间是<code>冲突等价</code>的。</p>
 <p>并不是所有的串行调度之间都是<code>冲突等价</code>的。将两个事务完全调换顺序，就有可能不是<code>冲突等价</code>的。</p>
-<h3 id="如何判断一个调度是冲突等价的"><a href="#如何判断一个调度是冲突等价的" class="headerlink" title="如何判断一个调度是冲突等价的"></a>如何判断一个调度是冲突等价的</h3><p>考虑下表中的一个调度</p>
+<p>如果一个调度S与一个串行调度是<code>冲突等价</code>的，那么调度S是<code>冲突可串行化的</code>。</p>
+<h3 id="如何判断一个调度是冲突可串行化的"><a href="#如何判断一个调度是冲突可串行化的" class="headerlink" title="如何判断一个调度是冲突可串行化的"></a>如何判断一个调度是<code>冲突可串行化</code>的</h3><p>考虑下表中的一个调度7</p>
 <table>
 <thead>
 <tr>
@@ -255,6 +256,38 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<p>可以由调度构造一个有向图，称为<code>优先图</code>。</p>
+<p>边<span>$T_i \rightarrow T_j$</span><!-- Has MathJax -->的存在只有在下列三个条件中的一个成立了：</p>
+<ul>
+<li>在<span>$T_j$</span><!-- Has MathJax -->执行read(Q)之前，<span>$T_i$</span><!-- Has MathJax -->执行了write(Q)</li>
+<li>在<span>$T_j$</span><!-- Has MathJax -->执行write(Q)之前，<span>$T_i$</span><!-- Has MathJax -->执行read(Q)</li>
+<li>在<span>$T_j$</span><!-- Has MathJax -->执行write(Q)之前，<span>$T_i$</span><!-- Has MathJax -->执行了write(Q)</li>
+</ul>
+<p>也就是有冲突的指令，都是<span>$T_i$</span><!-- Has MathJax -->先执行时。如果优先图有环，则这个调度是<code>非冲突可串行化</code>，如果优先图无环，则这个调度是<code>冲突可串行化</code>。</p>
+<p>存在比<code>冲突等价</code>定义限制松一些的调度等家定义。</p>
+<h1 id="14-7-事务隔离性和原子性"><a href="#14-7-事务隔离性和原子性" class="headerlink" title="14.7 事务隔离性和原子性"></a>14.7 事务隔离性和原子性</h1><p>调度除了要考虑一致性以外，还要考虑事务的故障恢复。</p>
+<h2 id="14-7-1-可恢复调度"><a href="#14-7-1-可恢复调度" class="headerlink" title="14.7.1 可恢复调度"></a>14.7.1 可恢复调度</h2><p>一个事务在读取了另一个在活跃状态写入的一个值之后，提交了自己。则说明前者<code>依赖</code>后者。如果活跃状态的事务进入了<code>中止</code>状态，而这个事务已经提交了，无法恢复了。这就是一个不可恢复的调度。</p>
+<p>一个<code>可恢复调度</code>应该满足：对于每对事务<span>$T_i$</span><!-- Has MathJax -->和<span>$T_j$</span><!-- Has MathJax -->，如果<span>$T_j$</span><!-- Has MathJax -->读取了<span>$T_i$</span><!-- Has MathJax -->所写的数据项，则<span>$T_i$</span><!-- Has MathJax -->要优先于<span>$T_j$</span><!-- Has MathJax -->提交。</p>
+<h2 id="14-7-2-无级联调度"><a href="#14-7-2-无级联调度" class="headerlink" title="14.7.2 无级联调度"></a>14.7.2 无级联调度</h2><p>即使一个调度是可恢复的，要从事务<span>$T_i$</span><!-- Has MathJax -->的故障中正确恢复，可能需要回滚若干事务。</p>
+<p>比如事务<span>$T_8$</span><!-- Has MathJax -->写入A的值，事务<span>$T_9$</span><!-- Has MathJax -->读取了A的值。事务<span>$T_9$</span><!-- Has MathJax -->写入A的值，事务<span>$T_10$</span><!-- Has MathJax -->读取了A的值。如果<span>$T_8$</span><!-- Has MathJax -->事务失败，<span>$T_8$</span><!-- Has MathJax -->则必须回滚，由于<span>$T_9$</span><!-- Has MathJax -->依赖于<span>$T_8$</span><!-- Has MathJax -->，因此事务<span>$T_9$</span><!-- Has MathJax -->必须回滚。同样<span>$T_10$</span><!-- Has MathJax -->也因为<span>$T_9$</span><!-- Has MathJax -->而回滚了。这种因单个事务故障导致一系列事务回滚的现象称为<code>级联回滚</code>。</p>
+<p>但是<code>级联回滚</code>会导致大量的撤销工作，因此我们希望避免级联回滚发生。这样的调度称为<code>无级联调度</code>。</p>
+<p>一个<code>无级联调度</code>应满足：对于每对事务<span>$T_i$</span><!-- Has MathJax -->和<span>$T_j$</span><!-- Has MathJax -->，如果<span>$T_j$</span><!-- Has MathJax -->读取了先前由<span>$T_i$</span><!-- Has MathJax -->所写的数据项，那么<span>$T_i$</span><!-- Has MathJax -->必须在<span>$T_j$</span><!-- Has MathJax -->这一读操作前提交。这个调度也必然是可恢复调度。</p>
+<h1 id="14-8-事务隔离性级别"><a href="#14-8-事务隔离性级别" class="headerlink" title="14.8 事务隔离性级别"></a>14.8 事务隔离性级别</h1><p>对于某些应用，保证可串行性的那些协议可能只允许极小的并发度。在这种情况下，我们采用较弱级别的一致性。为了保证数据库的正确性，使用弱级别一致性给程序员增加了额外的负担。</p>
+<p>SQL标准也允许一个事务以一种与其他事务部可串行化的方式执行。例如一个事务可能在<code>未提交读</code>级别上操作，这里允许事务读取甚至还未提交的记录。SQL为那些不要求精确结果的长事务提供这种特征。如果这些事务要在可串行化的方式下执行，它们就会干扰其他事务，造成事务执行的延迟。</p>
+<p>SQL标准规定的隔离性级别如下。</p>
+<ul>
+<li><code>可串行化</code>：通常保证可串行化调度。</li>
+<li><code>可重复读</code>：只允许读取已提交数据，而且在一个事务两次读取一个数据项期间，其他事务不得更新该数据。例如，当一个事务在查找满足某些条件的数据时，它可能找到一个已提交事务插入的一些数据，但可能找不到该事务插入的其他数据。</li>
+<li><code>已提交读</code>：只允许读取已提交数据，但不要求可重复读。</li>
+<li><code>未提交读</code>：允许读取未提交数据。这是SQL允许的最低一致性级别。</li>
+</ul>
+<p>以上所有隔离性级别都不允许<code>脏写</code>，即如果一个数据项已经被另外一个尚未提交或中止的事务写入，则不允许对该数据项执行写操作。</p>
+<p>许多数据库系统运行时的默认隔离性级别时已提交读。有些数据库虽然在隔离性上设置为<code>可串行化</code>，但实际上数据库可能仍然采用了较弱的隔离性。</p>
+<h1 id="隔离性级别的实现"><a href="#隔离性级别的实现" class="headerlink" title="隔离性级别的实现"></a>隔离性级别的实现</h1><p>并发控制机制的目的是获得高度的<code>并发性</code>、同时保证所产生的调度是<code>冲突可串行化</code>或<code>视图可串行化的</code>、<code>可恢复的</code>，并且是<code>无级联的</code>。</p>
+<h2 id="并发控制的实现"><a href="#并发控制的实现" class="headerlink" title="并发控制的实现"></a>并发控制的实现</h2><h3 id="14-9-1-锁"><a href="#14-9-1-锁" class="headerlink" title="14.9.1 锁"></a>14.9.1 锁</h3><p>共享锁和排他锁。共享锁用于读事务，排他锁用于事务写的数据项。许多事务可以同时持有一个数据项上的共享锁。当且只有当其他事务在一个数据项上不持有任何锁时，一个事务才能持有它的排他锁。这两种锁结合两阶段锁封锁协议在保证可串行化的前提下允许数据的并发读。</p>
+<h3 id="14-9-3-时间戳"><a href="#14-9-3-时间戳" class="headerlink" title="14.9.3 时间戳"></a>14.9.3 时间戳</h3><p>通常在事务开始的时候为它分配一个时间戳，对于数据项，系统维护两个时间戳。数据项的读时间戳记录该数据项的事务的最大（最近的）时间戳。数据项的写时间戳记录写入该数据项当前值的事务的时间戳。</p>
+<h3 id="14-9-3-多版本和快照隔离"><a href="#14-9-3-多版本和快照隔离" class="headerlink" title="14.9.3 多版本和快照隔离"></a>14.9.3 多版本和快照隔离</h3><p>通过维护数据项的多个版本，一个事务允许读取一个旧版本的数据项。有许多多版本并发控制技术，其中一个是实际中广泛应用的称为<code>快照隔离</code>的技术。不会让写操作等待。</p>
+<h1 id="14-10-事务的SQL语句表示"><a href="#14-10-事务的SQL语句表示" class="headerlink" title="14.10 事务的SQL语句表示"></a>14.10 事务的SQL语句表示</h1><p>比如<code>select ID,name from instructor where salary &gt; 90000;</code>，如果有人插入了一个新的人，那么查询的结果就会取决于插入和查询的执行顺序了。这称为<code>幻象</code>。简单模型是无法发现这个冲突的。因为它要求提供一个具体的数据项作为操作的参数。还有一个是谓词锁，封锁一些具体的更新动作。</p>
 
         </div>
         <footer class="article-footer">
@@ -262,7 +295,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="ciusand7o0002wege0f4zmvt5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="ciusf9m0d0006ofge9kwqc1zw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -382,6 +415,16 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
+        <a href="/2016/10/26/Chapter 15 Database System Concepts/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Chapter 15 Database System Concepts
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2016/10/24/Deep Learning 参考资料/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
@@ -400,6 +443,25 @@ var _hmt = _hmt || [];
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/26/Chapter 15 Database System Concepts/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 15 Database System Concepts" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/10/26/Chapter 15 Database System Concepts/" class="title">Chapter 15 Database System Concepts</a></p>
+                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -477,25 +539,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/11/setuptools教程/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="setuptools教程" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2016/10/11/setuptools教程/" class="title">setuptools教程</a></p>
-                            <p class="item-date"><time datetime="2016-10-11T13:08:36.000Z" itemprop="datePublished">2016-10-11</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -505,7 +548,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -515,7 +558,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -525,7 +568,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Database/" style="font-size: 10px;">Database</a> <a href="/tags/Deep-Learning/" style="font-size: 12px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Database/" style="font-size: 12px;">Database</a> <a href="/tags/Deep-Learning/" style="font-size: 12px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 
