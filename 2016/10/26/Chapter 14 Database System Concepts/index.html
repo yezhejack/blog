@@ -21,7 +21,7 @@
 因为事务是不可分割的，所以要么执行其全部内容，要么就根本不执行。这个称作原子性(Atomicity)。
 数据库必须采取特殊处理来确保事务正常执行而不被来自并发执行的数据库语句所干扰。这种特性称为隔离性(Isolation)。尽管多个事务可能并发执行，但系统保证，对于任何">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-26T14:50:02.000Z">
+<meta property="og:updated_time" content="2016-10-27T11:32:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Database System Concepts">
 <meta name="twitter:description" content="14.1 事务概念构成单一逻辑工作单元的操作集合称作事务。
@@ -221,6 +221,10 @@ var _hmt = _hmt || [];
 <li>减少等待时间，可以减少平均响应时间。</li>
 </ul>
 <p>数据库必须控制事务之间的交互，以防止它们破坏数据库的一致性。系统通过称为<code>并发控制机制</code>的一系列机制来保证这一点。</p>
+<p>一个由n个指令组成的事务，有n!个调度方案。并发情况下并不是所有的调度组合都可以正确执行从而得到一个最终一致的状态。</p>
+<p>如果让操作系统来控制事务的并发执行，那么许多调度都是可能的，那么就可能会让数据库处于不一致的状态。因此保证所执行的任何调度都能使数据库处于一致状态，这是数据库系统的任务，数据库中完成此任务的是<code>并发控制</code>部件。</p>
+<p>在并发执行中，通过保证所执行的任何调度的效果都与没有并发执行的调度效果一样，我们可以确保数据库的一致性。也就是说调度应该在某种意义上等价于一个串行调度。这种调度称为<code>可串行化调度</code>。</p>
+<h1 id="14-6-可串行化"><a href="#14-6-可串行化" class="headerlink" title="14.6 可串行化"></a>14.6 可串行化</h1><h2 id="冲突可串行化"><a href="#冲突可串行化" class="headerlink" title="冲突可串行化"></a>冲突可串行化</h2><p>对于一个调度S，其中有分别属于I和J的两条指令<span>$I_i$</span><!-- Has MathJax -->和<span>$J_j$</span><!-- Has MathJax --></p>
 
         </div>
         <footer class="article-footer">
@@ -228,7 +232,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="ciur1fu9w0000hdgecu2vm6zw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 14 Database System Concepts/" data-id="cius9so680003dmgejk3carjp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
