@@ -8,17 +8,26 @@
     
         <meta name="keywords" content="Database" />
     
-    <meta name="description">
+    <meta name="description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
+15.1.1 锁共享型锁和排他型锁
+过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
+我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chapter 15 Database System Concepts">
 <meta property="og:url" content="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description">
+<meta property="og:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
+15.1.1 锁共享型锁和排他型锁
+过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
+我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-27T14:04:11.000Z">
+<meta property="og:updated_time" content="2016-10-29T12:58:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 Database System Concepts">
-<meta name="twitter:description">
+<meta name="twitter:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
+15.1.1 锁共享型锁和排他型锁
+过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
+我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/Learning.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -179,14 +188,99 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            
+            <h1 id="15-1-基于锁的协议"><a href="#15-1-基于锁的协议" class="headerlink" title="15.1 基于锁的协议"></a>15.1 基于锁的协议</h1><p>确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。</p>
+<h2 id="15-1-1-锁"><a href="#15-1-1-锁" class="headerlink" title="15.1.1 锁"></a>15.1.1 锁</h2><p><code>共享型锁</code>和<code>排他型锁</code></p>
+<p>过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。</p>
+<p>我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之前如果我们不对当前锁住的数据项解锁，则可能会发生死锁。如果采用封锁，那么死锁是肯定会发生的，但总比发生不一致要好。因为可以通过回滚事务来解决死锁问题。</p>
+<p>两个事务<span>$T_i$</span><!-- Has MathJax -->和<span>$T_j$</span><!-- Has MathJax -->对于一个事务持有不相容的锁。如果有不相容的锁，并且在调度中<span>$T_i$</span><!-- Has MathJax -->会先持有锁，那么说<span>$T_i$</span><!-- Has MathJax -->先于<span>$T_j$</span><!-- Has MathJax -->，同时拥有一个从<span>$T_i$</span><!-- Has MathJax -->到<span>$T_j$</span><!-- Has MathJax -->的箭头。跟优先图类似，如果存在环的话，就说明这个调度不是合法的。</p>
+<h2 id="15-1-2-锁的授予"><a href="#15-1-2-锁的授予" class="headerlink" title="15.1.2 锁的授予"></a>15.1.2 锁的授予</h2><p>按照如下方式来授权锁可以避免事务饿死，当事务<span>$T_i$</span><!-- Has MathJax -->对数据项Q加M型锁时，并发控制管理器授权加锁的条件：</p>
+<ul>
+<li>不存在在数据项Q上持有与M型锁冲突的锁的其他事务</li>
+<li>不存在等待对数据项Q加锁且先于<span>$T_i$</span><!-- Has MathJax -->申请加锁的事务。</li>
+</ul>
+<h2 id="15-1-3-两阶段封锁协议"><a href="#15-1-3-两阶段封锁协议" class="headerlink" title="15.1.3 两阶段封锁协议"></a>15.1.3 两阶段封锁协议</h2><p>该协议要求每个事务分两个阶段提出加锁和解锁申请。</p>
+<ul>
+<li><code>增长阶段</code>：事务可以获得锁，但不能释放锁</li>
+<li><code>缩减阶段</code>：事务可以释放锁，但是不能获得新锁</li>
+</ul>
+<p>一个事务获得其最后加锁的位置（增长阶段结束点）称为事务的<code>封锁点</code>。多个事务可以根据它们的封锁点进行排序，实际上，这个顺序就是事务的一个可串行化顺序。</p>
+<p>这个协议并不保证不会发生死锁。同时也不保证时无级联的。</p>
+<p>级联回滚可以通过讲两阶段封锁修改为<code>严格两阶段封锁协议</code>加以避免。这个协议要求在两阶段封锁协议的基础上限制所有的<code>排他锁</code>的释放都必须在事务提交之后才能释放。这样可以让别的事务在他还没提交的时候是无法读取到他写的值。避免了级联回滚。</p>
+<p>另一个<code>两阶段封锁的变体</code>是<code>强两阶段封锁协议</code>，它要求事务提交之前不的释放任何锁，连共享锁都不释放了。</p>
+<p>为了更好的并发性，允许锁的转换，从共享锁到排他锁称为<code>升级</code>，反之则称为<code>降级</code>。<code>升级</code>只能发生在增长阶段，<code>降级</code>只能发生在缩减阶段。</p>
+<p><code>严格两阶段封锁</code>与<code>强两阶段封锁</code>包含锁转换，在商用数据库系统中广泛使用。</p>
+<p>这里介绍一种自动加锁、解锁的指令</p>
+<ul>
+<li>当事务<span>$T_i$</span><!-- Has MathJax -->进行read(Q)的操作时，系统就产生一条lock-S(Q)指令，该read(Q)指令紧跟其后。</li>
+<li>事务<span>$T_i$</span><!-- Has MathJax -->进行write(Q)操作时，系统检查<span>$T_i$</span><!-- Has MathJax -->是否已在Q上持有共享锁。若有，则系统发出upgrade(Q)指令，后接write(Q)指令。否则系统发出lock-X(Q)指令，后接write(Q)指令。</li>
+<li>当一个事务提交或中止后，该事务持有的所有锁都被释放。</li>
+</ul>
+<h2 id="15-1-4-封锁的实现"><a href="#15-1-4-封锁的实现" class="headerlink" title="15.1.4 封锁的实现"></a>15.1.4 封锁的实现</h2><p>锁管理器可以实现为一个过程，它从事务接受消息并反馈信息。锁管理器过程针对锁请求消息返回授予锁信息，或者要求事务回滚的消息（发生死锁时）。</p>
+<p>锁管理器为目前已加锁的每个数据项维护一个链表，每一个请求为链表中的一个记录，按请求到达的顺序排序。它使用一个以数据项名称为索引的散列表来查找链表中的数据项。这个表叫做<code>锁表</code>。锁表采用的溢出链。</p>
+<p>处理过程</p>
+<ul>
+<li><p>当一条锁请求消息到达时，如果相应数据项的链表存在，在该链表末尾增加一个记录；否则新建一个仅包含该请求记录的链表。在当前没有加锁的数据项上总是授予第一次加锁请求，但当事务向已被加锁的数据项加锁时，只有当该请求与当前持有的锁相容，并且所有先前的请求都已授予锁的条件下，锁管理器才为该请求授予锁，否则该请求只好等待。</p>
+</li>
+<li><p>当锁管理器收到一个事务的解锁信息时，它将与该事务相对应的数据项链表中的记录删除，然后检查随后的记录，如果有，如前所述，就看该请求能否被授权，如果能，锁管理器授权该请求并处理其后记录，如果还有，类似地一个接一个地处理。</p>
+</li>
+<li><p>如果一个事务中止，锁管理器删除该事务产生的正在等待加锁的所有请求。一旦数据库系统采取适当动作撤销该事务，该中止事务持有的所有锁将被释放。</p>
+</li>
+</ul>
+<p>这个算法保证了锁请求无饿死现象，因为在先前接收到的请求正在等待加锁时，后来者不可能获得授权。</p>
+<h2 id="15-1-5-基于图的协议"><a href="#15-1-5-基于图的协议" class="headerlink" title="15.1.5 基于图的协议"></a>15.1.5 基于图的协议</h2><p>如果要开发非两阶段协议，我们需要有关每个事务如何存取数据库的附加信息。最简单的模型要求我们事先知道访问数据项的顺序。</p>
+<p>为了获取这些事先的知识，我们要求所有数据项集合<span>$D={d_1,d_2,...,d_n}$</span><!-- Has MathJax -->满足偏序<span>$\rightarrow$</span><!-- Has MathJax -->：如果<span>$d_i \rightarrow d_j$</span><!-- Has MathJax -->，则任何既访问<span>$d_i$</span><!-- Has MathJax -->又访问<span>$d_j$</span><!-- Has MathJax -->的事务必须首先访问<span>$d_i$</span><!-- Has MathJax -->然后再访问<span>$d_j$</span><!-- Has MathJax -->。这种偏序可以是数据的逻辑或物理组织的结果，也可以只是为了并发控制而加上的。</p>
+<p>偏序意味着会是个无环图，称为<code>数据库图</code>。</p>
+<p>给出一个称为<code>树形协议</code>的简单协议，该协议只使用排他锁。在树形应协议中，可用的加锁指令只有<code>lock-X</code>。每个事务<span>$T_i$</span><!-- Has MathJax -->对一数据项最多能加一次锁，并且遵从以下规则：</p>
+<ul>
+<li><span>$T_i$</span><!-- Has MathJax -->首次加锁可以对任何数据进行</li>
+<li>此后，<span>$T_i$</span><!-- Has MathJax -->对数据项Q加锁的前提是<span>$T_i$</span><!-- Has MathJax -->当前持有Q的父项上的锁</li>
+<li>对数据项解锁可以随时进行</li>
+<li>数据项<span>$T_i$</span><!-- Has MathJax -->加锁并解锁后，<span>$T_i$</span><!-- Has MathJax -->不能再对数据项加锁。</li>
+</ul>
+<p>所有满足树形协议的调度是冲突可串行化的。并且保证不会产生死锁。但是不保证可恢复性和无级联回滚。为了保证可恢复性和无级联回滚，将协议修改为在事务结束前不允许释放排他锁。但是这就降低了并发度，有一个替代方案，但只保证了可恢复性：为每一个发生了提交写操作的数据项，我们记录是哪个事务最后对它执行了写操作，当事务<span>$T_i$</span><!-- Has MathJax -->执行了对未提交数据项的读操作，我们就在最后对该数据项执行了写操作的事务上记录一个<span>$T_i$</span><!-- Has MathJax -->的<code>提交依赖</code>，在有<span>$T_i$</span><!-- Has MathJax -->的提交依赖的所有事务提交完成之前，<span>$T_i$</span><!-- Has MathJax -->不得提交。如果其中任何一个事务中止，<span>$T_i$</span><!-- Has MathJax -->也必须中止。</p>
+<p>树形协议不产生死锁，所以不需要回滚。树形封锁协议的另一个优点是可以在较早时候释放锁，但是它封锁了一些额外的数据，会对并发性造成影响。</p>
+<h1 id="15-2-死锁处理"><a href="#15-2-死锁处理" class="headerlink" title="15.2 死锁处理"></a>15.2 死锁处理</h1><p>死锁处理主要有两种方式</p>
+<ul>
+<li>死锁预防，不让系统出现任何死锁的状况</li>
+<li>死锁的检测和恢复</li>
+</ul>
+<p>两种方法都会导致事务的回滚。</p>
+<h2 id="15-2-1-死锁预防"><a href="#15-2-1-死锁预防" class="headerlink" title="15.2.1 死锁预防"></a>15.2.1 死锁预防</h2><p>一种方式是通过对加锁请求进行排序或要求同时获得所有的锁来保证不会发生循环等待。另一种方法比较接近死锁恢复，每当等待有可能导致死锁，进行事务回滚而不是等待加锁。</p>
+<p>防止死锁的第一种方法是要求事务在开始之前就把所有需要使用到的数据项加上锁。另一个机制是对所有的数据项加上一个次序，同时要求事务只能按次序规定的顺序封锁数据项。比如使用全序关系，一旦一个事务锁住了某个特定的数据项，它就不能申请顺序中位于该数据项前面的数据项上的锁了。</p>
+<p>第二种方法就是使用抢占和事务回滚。系统通过时间戳来判断是否允许强占。若一个事务回滚，则使用它原先的时间戳。</p>
+<p>已提出的利用时间戳的两种不同的死锁预防机制。</p>
+<ul>
+<li><p>wait-die机制基于非强占。当一个事务<span>$T_i$</span><!-- Has MathJax -->想要获得的锁被比他新的事务所占据的时候，允许<span>$T_i$</span><!-- Has MathJax -->等待，否则就让它自己滚（回滚）！</p>
+</li>
+<li><p>wound-wait机制是基于抢占的技术。当事务<span>$T_i$</span><!-- Has MathJax -->申请的数据项被<span>$T_j$</span><!-- Has MathJax -->持有，仅当<span>$T_i$</span><!-- Has MathJax -->比<span>$T_j$</span><!-- Has MathJax -->年轻，允许<span>$T_i$</span><!-- Has MathJax -->等待，否则就让<span>$T_j$</span><!-- Has MathJax -->滚。</p>
+</li>
+</ul>
+<p>这两种机制都需要面临不必要的回滚。</p>
+<p>还有一个基于锁超时的方法。但是超时的阈值难以判断，因此使用不多。</p>
+<h2 id="15-2-2-死锁检测与恢复"><a href="#15-2-2-死锁检测与恢复" class="headerlink" title="15.2.2 死锁检测与恢复"></a>15.2.2 死锁检测与恢复</h2><p>系统想要破解一个死锁的状况的话，系统必须</p>
+<ul>
+<li>维护当前数据项分配给事务的有关信息，以及任何尚未解决的数据项请求信息</li>
+<li>提供一个使用这些信息判断系统是否进入死锁状态的算法</li>
+<li>当检测算法判定存在死锁时，从死锁中恢复</li>
+</ul>
+<h3 id="15-2-2-1-死锁检测"><a href="#15-2-2-1-死锁检测" class="headerlink" title="15.2.2.1 死锁检测"></a>15.2.2.1 死锁检测</h3><p>死锁可以用称为<code>等待图</code>的有向图来精确描述。<span>$T_i \rightarrow T_j$</span><!-- Has MathJax -->表示事务<span>$T_i$</span><!-- Has MathJax -->在等待<span>$T_j$</span><!-- Has MathJax -->释放所需要的数据项。这个图是动态变化的。一旦出现环，说明存在死锁，环上的所有事务都是处在死锁的状态下。</p>
+<h3 id="15-2-2-2-从死锁中恢复"><a href="#15-2-2-2-从死锁中恢复" class="headerlink" title="15.2.2.2 从死锁中恢复"></a>15.2.2.2 从死锁中恢复</h3><p>解除死锁最通常的做法是回滚一个或多个事务。</p>
+<p>需要解决三个问题</p>
+<ul>
+<li>一个是选择谁来回滚，通常是选择系统认为代价小的事务来回滚</li>
+<li>回滚的距离，是彻底回滚还是部分回滚</li>
+<li>要避免有些事务不断被回滚而饿死。</li>
+</ul>
+<h1 id="15-3-多粒度"><a href="#15-3-多粒度" class="headerlink" title="15.3 多粒度"></a>15.3 多粒度</h1><p>通过允许各种大小的数据项并定义数据粒度的层次结构，其中小粒度数据项嵌套在大粒度数据项中来实现。当事务对一个结点加锁，或为共享锁或为排他锁，该事务也以同样类型的锁隐式地封锁这个结点的全部后代结点。加锁的时候要延路径查看，当路径上所有结点的锁有一个出现互斥的话，就无法加锁。</p>
+<p>意向锁来解决当要大粒度封锁的时候，检查小粒度是否上锁了。如果一个结点加了意向锁，则说明它在树的较低层次进行显示加锁了。在一个结点显示加锁之前，要对它的所有祖先结点加上意向锁。共享型意向锁(IS)、排他型意向锁（IX）。若一个结点加上了共享排他型意向锁(SIX)，则说明以该结点为根的子树显式地加了共享锁，并且在树的更低层显示地加了排他锁。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciusfdg950003e8gerxs1mawm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuv9sqb70007jtge8n407nl3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -306,20 +400,20 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/10/26/Chapter 14 Database System Concepts/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/10/29/Understanding-Short-Texts/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            Chapter 14 Database System Concepts
+            Understanding-Short-Texts
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2016/10/24/Deep Learning 参考资料/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/10/26/Chapter 14 Database System Concepts/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Deep Learning 参考资料</p>
+        <p class="article-nav-title">Chapter 14 Database System Concepts</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -338,19 +432,19 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/10/26/Chapter 14 Database System Concepts/" class="thumbnail">
+                            <a href="/2016/10/29/Understanding-Short-Texts/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 14 Database System Concepts" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.PNG)" alt="Understanding-Short-Texts" class="thumbnail-image"></span>
     
     
 </a>
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/10/26/Chapter 14 Database System Concepts/" class="title">Chapter 14 Database System Concepts</a></p>
-                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2016/10/29/Understanding-Short-Texts/" class="title">Understanding-Short-Texts</a></p>
+                            <p class="item-date"><time datetime="2016-10-29T13:06:00.000Z" itemprop="datePublished">2016-10-29</time></p>
                         </div>
                     </li>
                 
@@ -369,6 +463,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/10/26/Chapter 15 Database System Concepts/" class="title">Chapter 15 Database System Concepts</a></p>
+                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/26/Chapter 14 Database System Concepts/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 14 Database System Concepts" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/10/26/Chapter 14 Database System Concepts/" class="title">Chapter 14 Database System Concepts</a></p>
                             <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
                         </div>
                     </li>
@@ -411,25 +524,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/18/Hopfield Neural Network/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="Hopfield Neural Network" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/10/18/Hopfield Neural Network/" class="title">Hopfield Neural Network</a></p>
-                            <p class="item-date"><time datetime="2016-10-18T03:17:00.000Z" itemprop="datePublished">2016-10-18</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -439,7 +533,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -449,7 +543,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -459,7 +553,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Database/" style="font-size: 12px;">Database</a> <a href="/tags/Deep-Learning/" style="font-size: 12px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+            <a href="/tags/C/" style="font-size: 16px;">C++</a> <a href="/tags/Coursera/" style="font-size: 10px;">Coursera</a> <a href="/tags/Database/" style="font-size: 12px;">Database</a> <a href="/tags/Deep-Learning/" style="font-size: 12px;">Deep Learning</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 12px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 18px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MacBook-Pro/" style="font-size: 10px;">MacBook Pro</a> <a href="/tags/Machine-Learning/" style="font-size: 14px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/NLP/" style="font-size: 10px;">NLP</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 20px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 12px;">OS X</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/STL/" style="font-size: 16px;">STL</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Tutorial/" style="font-size: 10px;">Tutorial</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Word-Vector/" style="font-size: 10px;">Word Vector</a> <a href="/tags/big-data/" style="font-size: 14px;">big data</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gnuplot/" style="font-size: 10px;">gnuplot</a> <a href="/tags/hadoop/" style="font-size: 14px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/libsvm/" style="font-size: 10px;">libsvm</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 12px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/unix/" style="font-size: 12px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 14px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 14px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 12px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/词性标注/" style="font-size: 14px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
         </div>
     </div>
 
