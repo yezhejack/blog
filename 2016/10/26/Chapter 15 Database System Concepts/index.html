@@ -21,7 +21,7 @@
 过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
 我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-30T09:49:22.000Z">
+<meta property="og:updated_time" content="2016-10-30T10:31:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 Database System Concepts">
 <meta name="twitter:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
@@ -287,7 +287,20 @@ var _hmt = _hmt || [];
 <li>若<span>$TS(T_i) \leq W-timestamp(Q)$</span><!-- Has MathJax --></li>
 </ul>
 </li>
+<li>假设事务发出了write(Q)：<ul>
+<li>若<span>$TS(T_i) \le R-timestamp(Q)$</span><!-- Has MathJax -->，则<span>$T_i(Q)$</span><!-- Has MathJax -->产生的Q值是先前所需要的，且系统已经假定该值不会再产生。因此write被拒绝，并且事务被回滚</li>
+<li>若<span>$TS(T_i) \le W-timestamp(Q)$</span><!-- Has MathJax -->，则<span>$T_i$</span><!-- Has MathJax -->试图写入的Q值已过时。因此，write操作被拒绝，事务回滚</li>
+<li>其他情况下，系统执行write操作，将W-timestamp(Q)设置为<span>$TS(T_i)$</span><!-- Has MathJax --></li>
 </ul>
+</li>
+</ul>
+<p>被回滚的事务都会有一个新的时间戳。该协议保证无死锁，因为不存在等待的事务。但是有可能会饿死。该协议还会产生不可恢复的调度，但可以用下面的任何一个方法来保证可恢复性。</p>
+<ul>
+<li>在事务末尾执行所有的写操作，并且在写的时候不允许访问已写完的任何数据项</li>
+<li>可恢复性和无级联性也可通过使用一个受限的封锁形式来保证，由此，对未提交数据项的读操作被推迟到更新该数据项的事务提交之后</li>
+<li>可恢复性可以通过跟踪未提交写操作来单独保证。一个事务读取了别的事务所写的数据后，只能等别的事务也提交了之后他才能提交。</li>
+</ul>
+<h2 id="15-4-3-Thomas写规则"><a href="#15-4-3-Thomas写规则" class="headerlink" title="15.4.3 Thomas写规则"></a>15.4.3 Thomas写规则</h2><p>这里提供一个例子<br>| <span>$T_{27}$</span><!-- Has MathJax --> | <span>$T_{28}$</span><!-- Has MathJax --> |<br>|:———————-:|:———————-:|<br>|read(Q)                 |                        |<br>|                        |write(Q)                |<br>|write(Q)                |                        |</p>
 
         </div>
         <footer class="article-footer">
@@ -295,7 +308,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwgg3ch00027cgew99xn5lw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwhy81f0001xxgepr5b9u8j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
