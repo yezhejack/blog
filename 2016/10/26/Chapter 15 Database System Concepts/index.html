@@ -21,7 +21,7 @@
 过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
 我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-30T10:45:43.000Z">
+<meta property="og:updated_time" content="2016-10-30T12:06:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 Database System Concepts">
 <meta name="twitter:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
@@ -322,6 +322,52 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<p>当<span>$T_{27}$</span><!-- Has MathJax -->执行write(Q)是，发现已经被<span>$T_{28}$</span><!-- Has MathJax -->写了，就会被回滚。但这是不必要的。</p>
+<p>可以修改一下时间戳协议，其中关于读的不变，对于写的部分做了修改。对于其中的第二条</p>
+<ul>
+<li>若<span>$TS(T_i) \le W-timestamp(Q)$</span><!-- Has MathJax -->，则<span>$T_i$</span><!-- Has MathJax -->试图写入的Q值已过时。因此，write操作被拒绝，事务回滚</li>
+</ul>
+<p>修改为</p>
+<ul>
+<li>若<span>$TS(T_i) \le W-timestamp(Q)$</span><!-- Has MathJax -->，则<span>$T_i$</span><!-- Has MathJax -->试图写入的Q值已过时。则将write忽略。</li>
+</ul>
+<p>这样就避免了回滚。当然也要首先检查第一条规则。</p>
+<p>他产生视图可串行化调度。</p>
+<h2 id="视图可串行化"><a href="#视图可串行化" class="headerlink" title="视图可串行化"></a>视图可串行化</h2><p>每个冲突可串行化调度都是视图可串行化调度，但存在非冲突可串行化的视图可串行化调度。</p>
+<h1 id="基于有效性检查的协议"><a href="#基于有效性检查的协议" class="headerlink" title="基于有效性检查的协议"></a>基于有效性检查的协议</h1><p>要求每个事务<span>$T_i$</span><!-- Has MathJax -->在其生命周期中按两个或三个阶段执行，这取决于该事务是一个只读事务还是一个更新事务。</p>
+<ol>
+<li><code>读阶段</code>：在这一阶段中，系统执行事务<span>$T_i$</span><!-- Has MathJax -->。各数据项值被读入并保存在事务<span>$T_i$</span><!-- Has MathJax -->的局部变量中。所有write操作都是对局部临时变量进行的，并不对数据库进行真正的更新。</li>
+<li><code>有效性检查阶段</code>：对事务<span>$T_i$</span><!-- Has MathJax -->进行有效性测试。判定是否可以执行write操作而不违反可串行性。如果事务有效性测试失败，则系统终止这个事务。</li>
+<li><code>写阶段</code>：若事务<span>$T_i$</span><!-- Has MathJax -->已通过有效性检查，则保存<span>$T_i$</span><!-- Has MathJax -->任何写操作结果的临时局部变量值都被复制到数据库中。</li>
+</ol>
+<p>只读事务只有前面两个阶段。</p>
+<p>给事务定义另外三个时间</p>
+<ol>
+<li>Start(<span>$T_i$</span><!-- Has MathJax -->)</li>
+<li>Validation(<span>$T_i$</span><!-- Has MathJax -->)</li>
+<li>Stop(<span>$T_i$</span><!-- Has MathJax -->)</li>
+</ol>
+<p>其中将Validation(<span>$T_i$</span><!-- Has MathJax -->)作为事务本省的时间戳TS(<span>$T_i$</span><!-- Has MathJax -->)。并利用时间戳排序技术决定可串行性顺序。选择Validation(<span>$T_i$</span><!-- Has MathJax -->)来作为TS，是我因为在冲突频率很低的读阶段可以获得更快的响应时间。</p>
+<p><code>有效性测试</code>：对于任何满足TS(<span>$T_k$</span><!-- Has MathJax -->) &lt; TS(<span>$T_i$</span><!-- Has MathJax -->)的事务TS(<span>$T_k$</span><!-- Has MathJax -->)必须满足下面条件之一：</p>
+<ol>
+<li>Finish(<span>$T_k$</span><!-- Has MathJax -->) &lt; Start(<span>$T_i$</span><!-- Has MathJax -->)</li>
+<li><span>$T_k$</span><!-- Has MathJax -->所写的数据项集与<span>$T_i$</span><!-- Has MathJax -->所读数据项集不相交。并且<span>$T_k$</span><!-- Has MathJax -->的写阶段在<span>$T_i$</span><!-- Has MathJax -->开始有效性检查之前就开始了。即<span>$Start(T_i) \le Finish(T_k) \le Validation(T_i)$</span><!-- Has MathJax -->。这个条件保证了二者写不重叠。</li>
+</ol>
+<h1 id="15-6-多版本机制"><a href="#15-6-多版本机制" class="headerlink" title="15.6 多版本机制"></a>15.6 多版本机制</h1><p>前面的并发控制机制要么延迟一项操作要么中止发出该操作的事务来保证可串行性。在<code>多版本并发控制</code>机制中，每个write(Q)操作创建Q的一个新版本。当事务发出一个read(Q)操作时，并发控制管理器选择Q的一个版本进行读取。并发控制机制必须保证用于读取的版本的选择能保持可串行性。</p>
+<h2 id="15-6-1-多版本时间戳排序"><a href="#15-6-1-多版本时间戳排序" class="headerlink" title="15.6.1 多版本时间戳排序"></a>15.6.1 多版本时间戳排序</h2><p>对于每个数据项Q，有一个版本序列<span>$Q_1,Q_2,Q_3,...,Q_k$</span><!-- Has MathJax -->。每个版本都包含三个数据字段：</p>
+<ul>
+<li>Content(Q)</li>
+<li>W-timestamp(Q)</li>
+<li>R-timestamp(Q)<br>如果事务通过发出write(Q)操作创建了一个Q的新版本，那么它的两个读写时间都用事务的时间戳来初始化。</li>
+</ul>
+<p>事务读取离现在最近的一个版本<br>当事务发出写请求的时候，如果事务时间戳小于W-timestamp(Q)的话，则事务回滚，若等于则覆盖，若大于则创建新的版本。（针对最近的一个版本的时间戳）</p>
+<p>除此之外还多了一个需要删除无用的版本。当<span>$Q_k$</span><!-- Has MathJax -->和<span>$Q_j$</span><!-- Has MathJax -->的时间戳都小于系统中最老的事务的时间戳，则其中的较老的一个需要删除。</p>
+<p>读请求从不失败且不需要等待。但是读请求需要写时间戳，产生磁盘操作。</p>
+<p>通过扩展来获得可恢复性和无级联性。</p>
+<h2 id="15-6-2-多版本两阶段锁"><a href="#15-6-2-多版本两阶段锁" class="headerlink" title="15.6.2 多版本两阶段锁"></a>15.6.2 多版本两阶段锁</h2><p>该协议对<code>只读事务</code>和<code>更新事务</code>加以区分。</p>
+<p><code>更新事务</code>执行两阶段封锁协议；即它们持有全部锁到事务结束。因此它们可以按提交顺序进行串行化。用计数器作为时间戳。</p>
+<p><code>只读事务</code>在执行读操作时遵从<code>多版本时间戳</code>协议。</p>
+<p>当<code>更新事务</code>读取一个数据项时，它在获得该数据项上的共享锁后读取该数据项最新版本的值。当更新事务想写一个数据项时，它首先要获得该数据项上的排他锁，然后为此数据项创建一个新版本。新版本的时间戳初始化为无穷大。当更新事务完成后，再设置成计数器加1的值。这个协议保证了调度是可恢复的和无级联的。版本删除同<code>多版本时间戳协议</code>一样。</p>
 
         </div>
         <footer class="article-footer">
@@ -329,7 +375,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwigkb300017vgedp9pbgu3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwlc4ji0001qxgei1ed9fja" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
