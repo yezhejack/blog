@@ -21,7 +21,7 @@
 过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
 我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-30T09:38:34.000Z">
+<meta property="og:updated_time" content="2016-10-30T09:40:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 Database System Concepts">
 <meta name="twitter:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
@@ -283,7 +283,7 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="15-4-2-时间戳排序协议"><a href="#15-4-2-时间戳排序协议" class="headerlink" title="15.4.2 时间戳排序协议"></a>15.4.2 时间戳排序协议</h2><ul>
 <li>假设事务<span>$T_i$</span><!-- Has MathJax -->发出read(Q)。<ul>
-<li>若<span>$TS(T_i) \g W-timestamp(Q)$</span><!-- Has MathJax -->，则说明<span>$TS(T_i)$</span><!-- Has MathJax -->需要读入的Q值已被覆盖。因此read操作被拒绝，<span>$TS(T_i)$</span><!-- Has MathJax -->回滚</li>
+<li>若<span>$TS(T_i) \greater W-timestamp(Q)$</span><!-- Has MathJax -->，则说明<span>$TS(T_i)$</span><!-- Has MathJax -->需要读入的Q值已被覆盖。因此read操作被拒绝，<span>$TS(T_i)$</span><!-- Has MathJax -->回滚</li>
 <li>若<span>$TS(T_i) \leq W-timestamp(Q)$</span><!-- Has MathJax --></li>
 </ul>
 </li>
@@ -295,7 +295,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwg29a10003m5gexv96gtrr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwg52px000360gerym5zov9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
