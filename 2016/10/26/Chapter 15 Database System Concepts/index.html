@@ -21,7 +21,7 @@
 过早释放数据项可能会导致别的事务看到一个不一致的状态。还可能会导致事务的死锁和饿死状态。
 我们如果不使用封锁，或者我们对数据项进行读写之后立即解锁，那么我们可能会进入不一致的状态。另一方面，如果在申请对另一数据项加锁之">
 <meta property="og:image" content="http://yezhejack.github.io/img/Learning.PNG">
-<meta property="og:updated_time" content="2016-10-29T12:58:57.000Z">
+<meta property="og:updated_time" content="2016-10-30T09:38:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 15 Database System Concepts">
 <meta name="twitter:description" content="15.1 基于锁的协议确保隔离性的方法之一是要求对数据项以互斥的方式进行访问。实现该需求的最常用的方法是只允许事务访问当前该事务持有锁的数据项。
@@ -273,6 +273,21 @@ var _hmt = _hmt || [];
 </ul>
 <h1 id="15-3-多粒度"><a href="#15-3-多粒度" class="headerlink" title="15.3 多粒度"></a>15.3 多粒度</h1><p>通过允许各种大小的数据项并定义数据粒度的层次结构，其中小粒度数据项嵌套在大粒度数据项中来实现。当事务对一个结点加锁，或为共享锁或为排他锁，该事务也以同样类型的锁隐式地封锁这个结点的全部后代结点。加锁的时候要延路径查看，当路径上所有结点的锁有一个出现互斥的话，就无法加锁。</p>
 <p>意向锁来解决当要大粒度封锁的时候，检查小粒度是否上锁了。如果一个结点加了意向锁，则说明它在树的较低层次进行显示加锁了。在一个结点显示加锁之前，要对它的所有祖先结点加上意向锁。共享型意向锁(IS)、排他型意向锁（IX）。若一个结点加上了共享排他型意向锁(SIX)，则说明以该结点为根的子树显式地加了共享锁，并且在树的更低层显示地加了排他锁。</p>
+<h1 id="15-4-基于时间戳的协议"><a href="#15-4-基于时间戳的协议" class="headerlink" title="15.4 基于时间戳的协议"></a>15.4 基于时间戳的协议</h1><p>前面所说的所有的封锁协议中，每一对冲突事务的次序是在执行时由二者都申请的，但类型不相容的第一个锁决定的。另一种决定事务可串行化次序的方法是事先选定事务的次序。其中最常用的方法就是<code>时间戳排序</code>机制。</p>
+<h2 id="15-4-1-时间戳"><a href="#15-4-1-时间戳" class="headerlink" title="15.4.1 时间戳"></a>15.4.1 时间戳</h2><p>对于一个事务<span>$T_i$</span><!-- Has MathJax -->，把唯一一个时间戳<span>$TS(T_i)$</span><!-- Has MathJax -->和它联系起来。</p>
+<p>时间戳可以是<code>系统时钟</code>或<code>逻辑计数器</code>，其中<code>逻辑计数器</code>在每赋予一个时间戳之后自加1。</p>
+<p>还需要两个时间戳：</p>
+<ul>
+<li>W-timestamp(Q)表示成功执行write(Q)的所有事务的最大时间戳</li>
+<li>R-timestamp(Q)表示成功执行read(Q)的所有事务的最大时间戳</li>
+</ul>
+<h2 id="15-4-2-时间戳排序协议"><a href="#15-4-2-时间戳排序协议" class="headerlink" title="15.4.2 时间戳排序协议"></a>15.4.2 时间戳排序协议</h2><ul>
+<li>假设事务<span>$T_i$</span><!-- Has MathJax -->发出read(Q)。<ul>
+<li>若<span>$TS(T_i) \g W-timestamp(Q)$</span><!-- Has MathJax -->，则说明<span>$TS(T_i)$</span><!-- Has MathJax -->需要读入的Q值已被覆盖。因此read操作被拒绝，<span>$TS(T_i)$</span><!-- Has MathJax -->回滚</li>
+<li>若<span>$TS(T_i) \leq W-timestamp(Q)$</span><!-- Has MathJax --></li>
+</ul>
+</li>
+</ul>
 
         </div>
         <footer class="article-footer">
@@ -280,7 +295,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuv9sqb70007jtge8n407nl3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/10/26/Chapter 15 Database System Concepts/" data-id="ciuwg29a10003m5gexv96gtrr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -400,20 +415,20 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/10/29/Understanding-Short-Texts/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2016/10/26/Chapter 14 Database System Concepts/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            Understanding-Short-Texts
+            Chapter 14 Database System Concepts
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2016/10/26/Chapter 14 Database System Concepts/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2016/10/24/Deep Learning 参考资料/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Chapter 14 Database System Concepts</p>
+        <p class="article-nav-title">Deep Learning 参考资料</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -451,25 +466,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/10/26/Chapter 15 Database System Concepts/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 15 Database System Concepts" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/10/26/Chapter 15 Database System Concepts/" class="title">Chapter 15 Database System Concepts</a></p>
-                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/10/26/Chapter 14 Database System Concepts/" class="thumbnail">
     
     
@@ -482,6 +478,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/10/26/Chapter 14 Database System Concepts/" class="title">Chapter 14 Database System Concepts</a></p>
+                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/26/Chapter 15 Database System Concepts/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 15 Database System Concepts" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/10/26/Chapter 15 Database System Concepts/" class="title">Chapter 15 Database System Concepts</a></p>
                             <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
                         </div>
                     </li>
