@@ -9,19 +9,25 @@
         <meta name="keywords" content="Machine Learning" />
     
     <meta name="description" content="Ridge Regression 岭回归式子3.41
-$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$">
+$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$
+
+其中的$\lambda$是用来控制shrinkage的量的。这种用参数的二次型来控制预测出来的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shrinkage Methods">
 <meta property="og:url" content="http://yezhejack.github.io/2016/11/23/Shrinkage Methods/index.html">
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="Ridge Regression 岭回归式子3.41
-$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$">
+$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$
+
+其中的$\lambda$是用来控制shrinkage的量的。这种用参数的二次型来控制预测出来的">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2016-11-23T11:34:19.000Z">
+<meta property="og:updated_time" content="2016-11-23T11:36:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shrinkage Methods">
 <meta name="twitter:description" content="Ridge Regression 岭回归式子3.41
-$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$">
+$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$
+
+其中的$\lambda$是用来控制shrinkage的量的。这种用参数的二次型来控制预测出来的">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -184,13 +190,16 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h1 id="Ridge-Regression-岭回归"><a href="#Ridge-Regression-岭回归" class="headerlink" title="Ridge Regression 岭回归"></a>Ridge Regression 岭回归</h1><p>式子3.41</p>
 <center><br><span>$\hat{\beta^{ridge}}=argmin_{\beta}\{\sum_1^N (y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j)^2 + \lambda \sum_{j=1}^p \beta_j^2\}$</span><!-- Has MathJax --><br></center>
+
+<p>其中的<span>$\lambda$</span><!-- Has MathJax -->是用来控制shrinkage的量的。这种用参数的二次型来控制预测出来的参数的方法在神经网络中也有用到，比如<code>weight decay</code>。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/11/23/Shrinkage Methods/" data-id="civuurkke001ujzgem7cmiysw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2016/11/23/Shrinkage Methods/" data-id="civuuu2wz0022ntgeviduog1k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -389,25 +398,6 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2016/10/26/Chapter 14 Database System Concepts/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 14 Database System Concepts" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
-                            <p class="item-title"><a href="/2016/10/26/Chapter 14 Database System Concepts/" class="title">Chapter 14 Database System Concepts</a></p>
-                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2016/10/26/Chapter 15 Database System Concepts/" class="thumbnail">
     
     
@@ -420,6 +410,25 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
                             <p class="item-title"><a href="/2016/10/26/Chapter 15 Database System Concepts/" class="title">Chapter 15 Database System Concepts</a></p>
+                            <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/26/Chapter 14 Database System Concepts/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Chapter 14 Database System Concepts" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Learning/">Learning</a></p>
+                            <p class="item-title"><a href="/2016/10/26/Chapter 14 Database System Concepts/" class="title">Chapter 14 Database System Concepts</a></p>
                             <p class="item-date"><time datetime="2016-10-26T13:18:00.000Z" itemprop="datePublished">2016-10-26</time></p>
                         </div>
                     </li>
