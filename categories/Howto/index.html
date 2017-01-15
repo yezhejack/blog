@@ -171,6 +171,52 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2017/01/15/iptables/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="iptables" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2017/01/15/iptables/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Howto/">Howto</a>
+            </p>
+            <p class="date"><time datetime="2017-01-15T08:58:34.000Z" itemprop="datePublished">2017-01-15</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2017/01/15/iptables/">iptables</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000
+这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000
+这里是为了解决一个问题，就是一个NA
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2017/01/15/ffmpeg用于视频转换/" class="thumbnail">
     
     
@@ -207,6 +253,8 @@ var _hmt = _hmt || [];
         </p>
     </div>
 </article>
+    
+        </div>
     
 
     
@@ -259,9 +307,9 @@ var _hmt = _hmt || [];
     
 
         <p class="article-excerpt">
-            我在实验室的内网里有一个工作站，安装的Linux系统，具体版本是Ubuntu 16.04。此外，我还有一个aliyun的ECS主机，这样我就有了一个公网IP。现在需要做的就是让我们的22端口能够绑定到aliyun主机的2221端口上。22端口是默认的ssh登陆端口。
+            使用ssh进行反向代理我在实验室的内网里有一个工作站，安装的Linux系统，具体版本是Ubuntu 16.04。此外，我还有一个aliyun的ECS主机，这样我就有了一个公网IP。现在需要做的就是让我们的22端口能够绑定到aliyun主机的2221端口上。22端口是默认的ssh登陆端口。
 1ssh -v -N -R 2221:127.0.0.1:22 aliyun.ip
-12iptables -A INPUT -p t
+使用autossh进行反向
         </p>
     </div>
 </article>
@@ -369,56 +417,6 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2016/08/23/iptables/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="iptables" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/08/23/iptables/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Howto/">Howto</a>
-            </p>
-            <p class="date"><time datetime="2016-08-22T17:10:23.000Z" itemprop="datePublished">2016-08-23</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/08/23/iptables/">iptables</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000
-这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000
-这里是为了解决一个问题，就是一个NA
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/2016/05/26/普通linux用户如何安装程序/" class="thumbnail">
     
     
@@ -460,10 +458,14 @@ var _hmt = _hmt || [];
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -511,14 +513,10 @@ var _hmt = _hmt || [];
     </div>
 </article>
     
-        </div>
-    
 
     
     
     
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -562,10 +560,14 @@ var _hmt = _hmt || [];
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -615,14 +617,10 @@ var _hmt = _hmt || [];
     </div>
 </article>
     
-        </div>
-    
 
     
     
     
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -670,6 +668,8 @@ var _hmt = _hmt || [];
         </p>
     </div>
 </article>
+    
+        </div>
     
 
 
@@ -734,6 +734,25 @@ var _hmt = _hmt || [];
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/01/15/iptables/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="iptables" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2017/01/15/iptables/" class="title">iptables</a></p>
+                            <p class="item-date"><time datetime="2017-01-15T08:58:34.000Z" itemprop="datePublished">2017-01-15</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -811,25 +830,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/10/30/Efficient Estimation of Word Representations in Vector Space/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/NLP.PNG)" alt="Efficient Estimation of Word Representations in Vector Space" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
-                            <p class="item-title"><a href="/2016/10/30/Efficient Estimation of Word Representations in Vector Space/" class="title">Efficient Estimation of Word Representations in Vector Space</a></p>
-                            <p class="item-date"><time datetime="2016-10-30T13:27:00.000Z" itemprop="datePublished">2016-10-30</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -849,7 +849,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
