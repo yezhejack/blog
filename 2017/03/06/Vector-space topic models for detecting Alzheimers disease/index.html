@@ -19,7 +19,7 @@ IntroductionAD在病情发展的过程中会出现语言的转变，并且这是
 IntroductionAD在病情发展的过程中会出现语言的转变，并且这是可以检测得到的。这些变化包括句法复杂度的下降、找词困难和语义内容缺失，信息密度低（有语义的词在所有词中的比例），效率低。
 结合上lexicosynta">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-03-08T02:33:03.000Z">
+<meta property="og:updated_time" content="2017-03-20T06:22:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vector-space topic models for detecting Alzheimers's disease">
 <meta name="twitter:description" content="Abstract本文主要是想检测老年痴呆症，因为语义的缺失是一大症状。获得了96.8%的召回率。通过训练随机森林的分类器获得了0.74的F值（二元分类）。并且仅用了12个特征。
@@ -190,7 +190,12 @@ var _hmt = _hmt || [];
 <p>结合上lexicosyntactic和acoustic features会获得81.9%的准确率。之前的文章没有会自动生成ICUs（information content unit)。这篇文章将会自动生成。</p>
 <p>在正常的诊断过程中，医生会给出一幅图片，让患者口头描述，而每一幅图片都有对应的hsICUs（human-supplied information content units），根据患者描述中覆盖的hsICUs的数量来给它打分。</p>
 <h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h3><p>DementiaBank</p>
-<h3 id="自动生成ICUs"><a href="#自动生成ICUs" class="headerlink" title="自动生成ICUs"></a>自动生成ICUs</h3><p>首先训练一般的word vector。这里使用的是GloVe v1.2模型训练，使用的数据是Wikipedia 2014+Gigaword 5。分词使用NLTK v3.1。<br>只保留了名词和动词。将出现在CT数据集中的词的词向量用上下文扩充，同样的出现在痴呆症数据集中的也用相同的方法扩充。于是各形成了不同的分布，在这些分布上做k-means聚类，当k=10的时候实验结果最好。</p>
+<h3 id="自动生成ICUs"><a href="#自动生成ICUs" class="headerlink" title="自动生成ICUs"></a>自动生成ICUs</h3><p>用recall来衡量自动生成的ICUs的性能。</p>
+<p>首先训练一般的word vector。这里使用的是GloVe v1.2模型训练，使用的数据是Wikipedia 2014+Gigaword 5。分词使用NLTK v3.1。</p>
+<p>只保留了名词和动词。</p>
+<p>将出现在CT数据集中的词的词向量用上下文扩充，同样的出现在痴呆症数据集中的也用相同的方法扩充。于是各形成了不同的分布。<br>在这些分布上做k-means聚类，当k=10的时候实验结果最好，获得两个聚类模型Control cluster model和demential cluster model.</p>
+<h3 id="hsICUs的召回率"><a href="#hsICUs的召回率" class="headerlink" title="hsICUs的召回率"></a>hsICUs的召回率</h3><p>为了衡量自动生成的ICUs和人工标注的ICUs的匹配程度</p>
+<p>为了衡量</p>
 <h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>计算hsICUs的召回率，文章中定义了标注的hsICU的距离分数（不是简单的欧几里得距离）。有些不同的hsICUs会被关联到同一个类中。在C<em>和D</em>中各生成了10个类，然后这之间要做对齐。</p>
 <h3 id="Local-context-weighted-vectors"><a href="#Local-context-weighted-vectors" class="headerlink" title="Local context weighted vectors"></a>Local context weighted vectors</h3><p><center><br><span>$\phi_w = v_w+\sum_{i=-N}^{-1}\alpha_i \times v_i + \sum_{i=1}^{N} \alpha_i \times v_i$</span><!-- Has MathJax --></center></p>
 <center>
@@ -210,7 +215,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/03/06/Vector-space topic models for detecting Alzheimers disease/" data-id="cj0c8r60e002273geu4zcgx8p" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/03/06/Vector-space topic models for detecting Alzheimers disease/" data-id="cj0hq57vs001viigelq4pw4v7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
