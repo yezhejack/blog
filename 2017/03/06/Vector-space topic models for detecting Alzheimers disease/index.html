@@ -19,7 +19,7 @@ IntroductionAD在病情发展的过程中会出现语言的转变，并且这是
 IntroductionAD在病情发展的过程中会出现语言的转变，并且这是可以检测得到的。这些变化包括句法复杂度的下降、找词困难和语义内容缺失，信息密度低（有语义的词在所有词中的比例），效率低。
 结合上lexicosynta">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-03-20T06:22:19.000Z">
+<meta property="og:updated_time" content="2017-03-20T06:23:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vector-space topic models for detecting Alzheimers's disease">
 <meta name="twitter:description" content="Abstract本文主要是想检测老年痴呆症，因为语义的缺失是一大症状。获得了96.8%的召回率。通过训练随机森林的分类器获得了0.74的F值（二元分类）。并且仅用了12个特征。
@@ -197,8 +197,7 @@ var _hmt = _hmt || [];
 <h3 id="hsICUs的召回率"><a href="#hsICUs的召回率" class="headerlink" title="hsICUs的召回率"></a>hsICUs的召回率</h3><p>为了衡量自动生成的ICUs和人工标注的ICUs的匹配程度</p>
 <p>为了衡量</p>
 <h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>计算hsICUs的召回率，文章中定义了标注的hsICU的距离分数（不是简单的欧几里得距离）。有些不同的hsICUs会被关联到同一个类中。在C<em>和D</em>中各生成了10个类，然后这之间要做对齐。</p>
-<h3 id="Local-context-weighted-vectors"><a href="#Local-context-weighted-vectors" class="headerlink" title="Local context weighted vectors"></a>Local context weighted vectors</h3><p><center><br><span>$\phi_w = v_w+\sum_{i=-N}^{-1}\alpha_i \times v_i + \sum_{i=1}^{N} \alpha_i \times v_i$</span><!-- Has MathJax --></center></p>
-<center>
+<h3 id="Local-context-weighted-vectors"><a href="#Local-context-weighted-vectors" class="headerlink" title="Local context weighted vectors"></a>Local context weighted vectors</h3><center><br><span>$\phi_w = v_w+\sum_{i=-N}^{-1}\alpha_i \times v_i + \sum_{i=1}^{N} \alpha_i \times v_i$</span><!-- Has MathJax --><br></center>
 
 <p>对于两个数据集中的word vector需要进行扩充，使用的公式就是上面的这个公式，将前后若干个词按照距离权重加到中心词的general word vector上。从而形成新的word vector。作者用这个方法来说明词在两个数据集中的上下文是差不多的。于是在最后的方法中是没有讲上下文加入到词向量中的。</p>
 <h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><p>最后的分类的特征有</p>
@@ -208,14 +207,14 @@ var _hmt = _hmt || [];
 <li>idea密度</li>
 <li>idea效率</li>
 </ul>
-</center>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/03/06/Vector-space topic models for detecting Alzheimers disease/" data-id="cj0hq57vs001viigelq4pw4v7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/03/06/Vector-space topic models for detecting Alzheimers disease/" data-id="cj0hq6oby0025k9geirmrjuqc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
