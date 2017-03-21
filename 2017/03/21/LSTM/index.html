@@ -17,7 +17,7 @@ Sequence Modeling: Recurrent and Recursive Nets从multi-layer networks到recurre
 <meta property="og:description" content="参考资料DeepLearning Bengio Chapter 10
 Sequence Modeling: Recurrent and Recursive Nets从multi-layer networks到recurrent network需要用到早期在机器学习中发现的想法：共享参数。共享参数使得网络可以运用到多种形式的数据上，并且在它们之间产生泛化。卷积网络也是一个共享参数的网络，只是它的共享">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-03-21T05:24:41.000Z">
+<meta property="og:updated_time" content="2017-03-21T05:31:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM">
 <meta name="twitter:description" content="参考资料DeepLearning Bengio Chapter 10
@@ -184,14 +184,16 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>DeepLearning Bengio Chapter 10</p>
 <h1 id="Sequence-Modeling-Recurrent-and-Recursive-Nets"><a href="#Sequence-Modeling-Recurrent-and-Recursive-Nets" class="headerlink" title="Sequence Modeling: Recurrent and Recursive Nets"></a>Sequence Modeling: Recurrent and Recursive Nets</h1><p>从<code>multi-layer networks</code>到<code>recurrent network</code>需要用到早期在机器学习中发现的想法：共享参数。共享参数使得网络可以运用到多种形式的数据上，并且在它们之间产生泛化。<br>卷积网络也是一个共享参数的网络，只是它的共享方式是通过共享input中相邻的输入，而RNN则是与之前的输入共享参数。</p>
-<h1 id="Unfolding-Computational-Graphs"><a href="#Unfolding-Computational-Graphs" class="headerlink" title="Unfolding Computational Graphs"></a>Unfolding Computational Graphs</h1><center><br><span>$s^{(t)}=f(s^{(t-1)};\theta)$</span><!-- Has MathJax --><br></center>
+<h1 id="Unfolding-Computational-Graphs"><a href="#Unfolding-Computational-Graphs" class="headerlink" title="Unfolding Computational Graphs"></a>Unfolding Computational Graphs</h1><p>下面的公式是简化版的RNN公式，这也是一次unfold操作。</p>
+<center><br><span>$s^{(t)}=f(s^{(t-1)};\theta)$</span><!-- Has MathJax --><br></center><br>当系统收到外部信号<span>$x^{(t)}$</span><!-- Has MathJax --> 驱动时，式子就变成了<br><br><center><br><span>$s^{(t)}=f(s^{(t-1)},x^{(t);\theta })$</span><!-- Has MathJax --><br></center>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/03/21/LSTM/" data-id="cj0j3iomz0013cygeb11ckz9e" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/03/21/LSTM/" data-id="cj0j3rn090014jhgexuu6lr5g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
