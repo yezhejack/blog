@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2017-01-15T16:08:49.000Z">
+<meta property="og:updated_time" content="2017-03-23T13:59:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -218,7 +218,7 @@ var _hmt = _hmt || [];
 <h3 id="查看cpu信息"><a href="#查看cpu信息" class="headerlink" title="查看cpu信息"></a>查看cpu信息</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/cpuinfo</span><br></pre></td></tr></table></figure>
 <h3 id="使用nologin运行程序"><a href="#使用nologin运行程序" class="headerlink" title="使用nologin运行程序"></a>使用nologin运行程序</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u nologin <span class="tag">&lt;<span class="name">cmd</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h3><h4 id="改变RES（实际占用的物理内存大小）"><a href="#改变RES（实际占用的物理内存大小）" class="headerlink" title="改变RES（实际占用的物理内存大小）"></a>改变RES（实际占用的物理内存大小）</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">e</span> 是切换任务区域的</span><br><span class="line"><span class="keyword">E</span> 切换总结区域的</span><br></pre></td></tr></table></figure>
-<h3 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h3><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h <span class="comment">--max_depth=1</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h3><figure class="highlight rsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --<span class="built_in">max</span>-<span class="built_in">depth</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <h3 id="公钥登录"><a href="#公钥登录" class="headerlink" title="公钥登录"></a>公钥登录</h3><p>生成本地的公钥<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></p>
 <p>然后将其复制到远程主机上<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-<span class="built_in">id</span> -p port username@remotehost</span><br></pre></td></tr></table></figure></p>
 <p>如果有问题的话，可能是<code>.ssh</code>和<code>authorized_keys</code>这两个东西的权限的有问题，正常情况下分别是700和600的权限。</p>
@@ -274,7 +274,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj0j47m0w002ssrgevtzj3qd7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj0mgsdio002hskgexv2lmvvi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {

@@ -17,7 +17,7 @@ Sequence Modeling: Recurrent and Recursive Nets从multi-layer networks到recurre
 <meta property="og:description" content="参考资料DeepLearning Bengio Chapter 10
 Sequence Modeling: Recurrent and Recursive Nets从multi-layer networks到recurrent network需要用到早期在机器学习中发现的想法：共享参数。共享参数使得网络可以运用到多种形式的数据上，并且在它们之间产生泛化。卷积网络也是一个共享参数的网络，只是它的共享">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-03-21T05:44:03.000Z">
+<meta property="og:updated_time" content="2017-03-21T13:20:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LSTM">
 <meta name="twitter:description" content="参考资料DeepLearning Bengio Chapter 10
@@ -192,6 +192,20 @@ var _hmt = _hmt || [];
 
 <p>而输出层就是靠着读取隐含层来作出预测的。</p>
 <h1 id="Recurrent-Neural-Networks"><a href="#Recurrent-Neural-Networks" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h1><p><img src="/img/lstm_unfold.png" alt="unfold"></p>
+<p>前向过程是</p>
+<center><br><span>$a^{(t)}=b+Wh^{(t-1)}+Ux^{(t)}$</span><!-- Has MathJax --><br></center>
+
+<p>那些有从输出层到隐含层的模型是可以使用<code>teacher forcing</code>，也就是在训练过程中不是把前一时间的网络输出输入到后一时刻的网络输入中，而是将<code>ground truth y</code>输入到后一层中。</p>
+<p>训练RNN的一个方法是BPTT，其实就是<code>Back Propagation Through Time</code>。只要把这些网络按照时间展开，就可以看作是一个前馈网络。</p>
+<h1 id="Bidirectional-RNNs"><a href="#Bidirectional-RNNs" class="headerlink" title="Bidirectional RNNs"></a>Bidirectional RNNs</h1><p>双向RNN网络可以使用未来的信息来帮助确定当前的状态。双向RNN网络实际上是结合了两个网络，一个是从序列头开始的，另一个是从序列尾部开始的。</p>
+<h1 id="Encoder-Decoder-Sequence-to-Sequence-Architectures"><a href="#Encoder-Decoder-Sequence-to-Sequence-Architectures" class="headerlink" title="Encoder-Decoder Sequence-to-Sequence Architectures"></a>Encoder-Decoder Sequence-to-Sequence Architectures</h1><p>这个网络是用于将一个序列转换成另一个序列。</p>
+<p>通常RNN将输入称作context。</p>
+<p>2014年才提出了可用于可变长的序列转换的RNN网络。</p>
+<p>一个RNN叫做encoder，它产生context，另一个RNN叫做decoder，它消费context。其中的context是固定长度的。</p>
+<p>2015年的时候，有人提出了可变context长度的RNN网络。</p>
+<h1 id="Deep-Recurrent-Networks"><a href="#Deep-Recurrent-Networks" class="headerlink" title="Deep Recurrent Networks"></a>Deep Recurrent Networks</h1><p>有三种变得deeper的方式。</p>
+<h1 id="Recursive-Neural-Networks"><a href="#Recursive-Neural-Networks" class="headerlink" title="Recursive Neural Networks"></a>Recursive Neural Networks</h1><p>RNN一般都值的是recurrent neural network。</p>
+<h1 id="Challenge-of-long-term-dependencies"><a href="#Challenge-of-long-term-dependencies" class="headerlink" title="Challenge of long-term dependencies"></a>Challenge of long-term dependencies</h1><p>学习这样的网络的时候，传回去的梯度要没会消失要么会变得过大。</p>
 
         </div>
         <footer class="article-footer">
@@ -199,7 +213,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/03/21/LSTM/" data-id="cj0j47lz40010srgee4mesu3j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/03/21/LSTM/" data-id="cj0mgsdhh0011skgeiyhu22eh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
