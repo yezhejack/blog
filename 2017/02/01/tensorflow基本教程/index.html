@@ -17,7 +17,7 @@ Deep MNIST for Experts1tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf
 <meta property="og:description" content="Tensorflow 是什么Tensorflow是Google开源的一个深度学习库，可以建立计算的图模型和利用tensor结构在途中流动，这大概也是叫做tensorflow的主要原因。
 Deep MNIST for Experts1tf.truncated_normal(shape, mean=0.0, stddev=1.0, dtype=tf.float32, seed=None, name=N">
 <meta property="og:image" content="http://yezhejack.github.io/img/tensorflow.png">
-<meta property="og:updated_time" content="2017-03-24T05:30:48.000Z">
+<meta property="og:updated_time" content="2017-03-26T09:33:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tensorflow 基本教程">
 <meta name="twitter:description" content="Tensorflow 是什么Tensorflow是Google开源的一个深度学习库，可以建立计算的图模型和利用tensor结构在途中流动，这大概也是叫做tensorflow的主要原因。
@@ -189,6 +189,10 @@ var _hmt = _hmt || [];
 <p>其中的最后一行让程序不会一次性把GPU所有的内存全部占用掉。</p>
 <p>启动构建好的tensorflow计算图<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf<span class="selector-class">.app</span><span class="selector-class">.run</span>(main=main, argv=[sys<span class="selector-class">.argv</span>[<span class="number">0</span>]] + unparsed)</span><br></pre></td></tr></table></figure></p>
 <h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><p>先从tensorflow封装好的库中载入mnist的数据，然后建立两个placeholder来放置数据，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)</span><br><span class="line">x = tf.placeholder(tf.float32, [None, 784])</span><br><span class="line">y_ = tf.placeholder(tf.float32, [None, 10])</span><br></pre></td></tr></table></figure></p>
+<p>然后我们要构建第一个卷积层，跟着卷积层的就是pool</p>
+<h3 id="tf-nn-conv2d"><a href="#tf-nn-conv2d" class="headerlink" title="tf.nn.conv2d"></a>tf.nn.conv2d</h3><p>Computes a 2-D convolution given 4-D input and filter tensors.</p>
+<p>Flattens the filter to a 2-D matrix with shape [filter_height <em> filter_width </em> in_channels, output_channels].</p>
+<h3 id="tf-nn-max-pool-value-ksize-strides-padding-data-format-’NHWC’-name-None"><a href="#tf-nn-max-pool-value-ksize-strides-padding-data-format-’NHWC’-name-None" class="headerlink" title="tf.nn.max_pool(value, ksize, strides, padding, data_format=’NHWC’, name=None)"></a>tf.nn.max_pool(value, ksize, strides, padding, data_format=’NHWC’, name=None)</h3><p>执行pool操作，ksize表示滑动窗口的大小，是一个4d的窗口，而strides表示这个窗口在所有维度上的滑动步长。</p>
 
         </div>
         <footer class="article-footer">
@@ -196,7 +200,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/02/01/tensorflow基本教程/" data-id="cj0ne2bdk003t10ge8fmm0nb8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/02/01/tensorflow基本教程/" data-id="cj0qhmmy3003rxpge165pc9j7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
