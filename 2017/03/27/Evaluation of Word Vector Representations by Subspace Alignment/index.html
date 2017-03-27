@@ -3,23 +3,29 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>goroutines以及channel | JackYip</title>
+    <title>Evaluation of Word Vector Representations by Subspace Alignment | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Golang,信号量" />
+        <meta name="keywords" content="Papers,Word Embedding" />
     
-    <meta name="description" content="管程goroutines以及channel的一些应用，是GoLang中比较重要的部分">
+    <meta name="description" content="Abstract无监督学习的词向量的评价通常与下游应用没有很大的关联，本文将提出QVEC的评价方法。
+Introduction缺乏标准化的对比方式是因为词向量的每个维度依然是无法解释的，如何去给一个无法解释的表示打分依然是不明确的。
+本文通过将distribution word vector和人工标注的word vector对其，然后计算每一维的相关度，相加之后就得到了distribution w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="goroutines以及channel">
-<meta property="og:url" content="http://yezhejack.github.io/2015/07/28/goroutines以及channel/index.html">
+<meta property="og:title" content="Evaluation of Word Vector Representations by Subspace Alignment">
+<meta property="og:url" content="http://yezhejack.github.io/2017/03/27/Evaluation of Word Vector Representations by Subspace Alignment/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="管程goroutines以及channel的一些应用，是GoLang中比较重要的部分">
-<meta property="og:image" content="http://yezhejack.github.io/img/Programmer.jpg">
-<meta property="og:updated_time" content="2016-05-04T14:14:21.000Z">
+<meta property="og:description" content="Abstract无监督学习的词向量的评价通常与下游应用没有很大的关联，本文将提出QVEC的评价方法。
+Introduction缺乏标准化的对比方式是因为词向量的每个维度依然是无法解释的，如何去给一个无法解释的表示打分依然是不明确的。
+本文通过将distribution word vector和人工标注的word vector对其，然后计算每一维的相关度，相加之后就得到了distribution w">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2017-03-27T14:09:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="goroutines以及channel">
-<meta name="twitter:description" content="管程goroutines以及channel的一些应用，是GoLang中比较重要的部分">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Programmer.jpg">
+<meta name="twitter:title" content="Evaluation of Word Vector Representations by Subspace Alignment">
+<meta name="twitter:description" content="Abstract无监督学习的词向量的评价通常与下游应用没有很大的关联，本文将提出QVEC的评价方法。
+Introduction缺乏标准化的对比方式是因为词向量的每个维度依然是无法解释的，如何去给一个无法解释的表示打分依然是不明确的。
+本文通过将distribution word vector和人工标注的word vector对其，然后计算每一维的相关度，相加之后就得到了distribution w">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,58 +159,36 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Programmer/">Programmer</a>
+    <a class="page-title-link" href="/categories/Papers/">Papers</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-goroutines以及channel" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Evaluation of Word Vector Representations by Subspace Alignment" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        goroutines以及channel
+        Evaluation of Word Vector Representations by Subspace Alignment
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2015/07/28/goroutines以及channel/" class="article-date">
-    <time datetime="2015-07-28T07:20:46.000Z" itemprop="datePublished">2015-07-28</time>
+            <a href="/2017/03/27/Evaluation of Word Vector Representations by Subspace Alignment/" class="article-date">
+    <time datetime="2017-03-27T11:54:00.000Z" itemprop="datePublished">2017-03-27</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/">Golang</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信号量/">信号量</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Papers/">Papers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Word-Embedding/">Word Embedding</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="goroutines"><a href="#goroutines" class="headerlink" title="goroutines"></a>goroutines</h2><p>goroutines并不对应着操作系统中的线程，它可以由多个线程来执行 gorouinte 之间又不像进程之间那样，使用独立的内存空间，它们使用共享的内存空间，因此它们存在读写同步的问题，使用go的channel。</p>
-<p>gc-compiler对应着是真正的goroutines，每个都对应着一个或若干个线程，而gccgo则是为每一个goroutine建立一个线程。<br>不要试图用print语句来显示多个进程间的真实顺序，因为print的延迟会导致显示的不是真正的顺序</p>
-<h2 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h2><ul>
-<li>非缓存的channel<br>channel是无法暂时混存数据，因此发送端会被阻塞，除非接受端从channel中接收数据<br>非缓存的channel很适合用于多个goroutines之间同步<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">      <span class="keyword">import</span> (</span><br><span class="line">“<span class="keyword">fmt</span>” )</span><br><span class="line">      func f1(<span class="keyword">in</span> chan <span class="built_in">int</span>) &#123;</span><br><span class="line">               <span class="keyword">fmt</span>.Println(&lt;-<span class="keyword">in</span>)</span><br><span class="line">&#125;</span><br><span class="line">      func main() &#123;</span><br><span class="line">               <span class="keyword">out</span> := make(chan <span class="built_in">int</span>)</span><br><span class="line">               <span class="keyword">out</span> &lt;- <span class="number">2</span></span><br><span class="line">               go f1(<span class="keyword">out</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这段代码中总会出现deadlock作用。因为main这个goroutine运行到out&lt;-2时，因为是非缓存的，所以阻塞了，后面的f1还没有启动，因此所有的goroutine都进入了死亡状态</p>
-<ul>
-<li>select和channel的使用</li>
-</ul>
-<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      <span class="keyword">select</span> &#123;</span><br><span class="line">      <span class="keyword">case</span> u:= &lt;- ch1:</span><br><span class="line">               <span class="attr">...</span></span><br><span class="line">      <span class="keyword">case</span> v:= &lt;- ch2:</span><br><span class="line"><span class="attr">...</span></span><br><span class="line">               <span class="attr">...</span></span><br><span class="line">      default: <span class="comment">// no value ready to be received</span></span><br><span class="line"><span class="attr">...</span> &#125;</span><br></pre></td></tr></table></figure>
-<p>相当于是在从几个goroutine中选择已经有结果了的进行处理，如果外面加上一个无限循环的话，就能够达到不断处理的效果了<br><strong><em>针对以上这个代码</em></strong><br>如果有多个通道已经ready了的话，就随机从中选出一个<br>如果没有ready的话它会等待<br>如果添加了default的话，在没有一个是ready的情况下将会执行default的代码</p>
-<ul>
-<li><p>缓存的channel<br>cap函数可以得到buffe的大小<br>发送端当且仅当channel满了的时候阻塞，接受端当且仅当channel空了的时候阻塞</p>
-</li>
-<li><p>利用goroutines和channel来进行并行编程<br>可以讲channel当作一个信号量，用于锁住资源<br>利用for循环的并行化</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="selector-tag">i</span>, v := range data &#123;</span><br><span class="line">       go func (<span class="selector-tag">i</span> int, v float64) &#123;</span><br><span class="line">&#125;</span><br><span class="line">       doSomething(<span class="selector-tag">i</span>, v)</span><br><span class="line">... &#125; (<span class="selector-tag">i</span>, v)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>利用缓存的channel来实现信号量<br>channel的容量是我们想要进行同步的资源个数<br>channel的现有长度是现在被占用的资源个数<br>channel的容量－长度是现在可用的资源的个数</p>
-</li>
-<li><p>channel factory 模式<br>可以在主goroutine中创建channel然后传入函数中，也可以在函数中创建channel然后返回到调用它的goroutine中来实现同步</p>
-</li>
-<li><p>指定channel的类型只发送或只接收</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> send_only <span class="keyword">chan</span>&lt;- <span class="keyword">int</span> <span class="comment">// channel can only receive data </span></span><br><span class="line"><span class="keyword">var</span> recv_only &lt;-<span class="keyword">chan</span> <span class="keyword">int</span> <span class="comment">// channel can only send data</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+            <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>无监督学习的词向量的评价通常与下游应用没有很大的关联，本文将提出QVEC的评价方法。</p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>缺乏标准化的对比方式是因为词向量的每个维度依然是无法解释的，如何去给一个无法解释的表示打分依然是不明确的。</p>
+<p>本文通过将distribution word vector和人工标注的word vector对其，然后计算每一维的相关度，相加之后就得到了distribution word vector的分数。</p>
+<p>人工标注的word vector每一维都是可以解释的，比如fish的第一维是作为NN.ANIMAL的分数。</p>
 
         </div>
         <footer class="article-footer">
@@ -212,7 +196,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/07/28/goroutines以及channel/" data-id="cj0s6wta3002o5tgegpsw6g3x" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/03/27/Evaluation of Word Vector Representations by Subspace Alignment/" data-id="cj0s6wt7o00085tgekc6texws" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -332,20 +316,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/07/29/Go语言的方法以及结构体/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Go语言的方法以及结构体  接口
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2015/07/10/MAC OS X使用常见问题解决日志/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/03/21/LSTM/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">MAC OS X使用常见问题解决日志</p>
+        <p class="article-nav-title">LSTM</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -541,7 +515,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2015/07/28/goroutines以及channel/';
+    var disqus_url = 'http://yezhejack.github.io/2017/03/27/Evaluation of Word Vector Representations by Subspace Alignment/';
     
     (function() {
     var dsq = document.createElement('script');
