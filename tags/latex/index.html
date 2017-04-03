@@ -3,23 +3,18 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>redis | JackYip</title>
+    <title>标签：: latex | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="python,redis,内存,内存型数据库" />
-    
-    <meta name="description" content="redis学习笔记">
-<meta property="og:type" content="article">
-<meta property="og:title" content="redis">
-<meta property="og:url" content="http://yezhejack.github.io/2015/12/20/redis/index.html">
+    <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JackYip">
+<meta property="og:url" content="http://yezhejack.github.io/tags/latex/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="redis学习笔记">
-<meta property="og:image" content="http://yezhejack.github.io/img/Programmer.jpg">
-<meta property="og:updated_time" content="2016-05-27T06:01:13.000Z">
+<meta property="og:description">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis">
-<meta name="twitter:description" content="redis学习笔记">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Programmer.jpg">
+<meta name="twitter:title" content="JackYip">
+<meta name="twitter:description">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,141 +148,75 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Programmer/">Programmer</a>
+    <i class="icon fa fa-tag"></i>标签：: <em>latex</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-redis" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2017" class="archive-year"><i class="icon fa fa-calendar-o"></i>2017</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2017/04/03/latex使用教程/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Howto.PNG)" alt="latex使用教程" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2017/04/03/latex使用教程/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Howto/">Howto</a>
+            </p>
+            <p class="date"><time datetime="2017-04-03T09:36:59.000Z" itemprop="datePublished">2017-04-03</time></p>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        redis
+        <a href="/2017/04/03/latex使用教程/">latex使用教程</a>
         </h1>
     
 
-            </header>
-        
-        <div class="article-subtitle">
-            <a href="/2015/12/20/redis/" class="article-date">
-    <time datetime="2015-12-20T08:23:15.000Z" itemprop="datePublished">2015-12-20</time>
-</a>
-            
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存/">内存</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内存型数据库/">内存型数据库</a></li></ul>
-
-        </div>
-        <div class="article-entry" itemprop="articleBody">
-            <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http:<span class="comment">//download.redis.io/releases/redis-3.0.6.tar.gz</span></span><br><span class="line">tar xzf redis-<span class="number">3.0</span>.<span class="number">6</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br><span class="line">cd redis-<span class="number">3.0</span>.<span class="number">6</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<h3 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-<p>会在前台启动，然后再启动客户端来进行测试<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure></p>
-<p>可以在测试端里写<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> foo <span class="comment">bar</span></span><br></pre></td></tr></table></figure></p>
-<p>然后再写<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> foo bar</span><br></pre></td></tr></table></figure></p>
-<p>分别对应着存取操作</p>
-<h3 id="安装redis-py"><a href="#安装redis-py" class="headerlink" title="安装redis-py"></a>安装redis-py</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> easy_install redis</span><br></pre></td></tr></table></figure>
-<h3 id="安装hiredis"><a href="#安装hiredis" class="headerlink" title="安装hiredis"></a>安装hiredis</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> hiredis</span><br></pre></td></tr></table></figure>
-<p>这个parser的效率比较高</p>
-<h3 id="后台启动redis"><a href="#后台启动redis" class="headerlink" title="后台启动redis"></a>后台启动redis</h3><p>修改redis目录下的redis.conf文件，将其中的<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">daemonize</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">daemonize</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure></p>
-<p>然后关闭刚才在前台启动的redis-server，进入到redis的目录<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">server</span> ./redis.conf</span><br></pre></td></tr></table></figure></p>
-<p>即可启动redis</p>
-<h3 id="关闭后台redis"><a href="#关闭后台redis" class="headerlink" title="关闭后台redis"></a>关闭后台redis</h3><p>打开redis-cli，输入<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shutdown</span> save</span><br></pre></td></tr></table></figure></p>
-<p>即可安全退出redis，后面的save表示会保存之后再退出，如果是nosace则是马上退出，有可能会存在数据丢失</p>
-<h3 id="配置redis安全选项"><a href="#配置redis安全选项" class="headerlink" title="配置redis安全选项"></a>配置redis安全选项</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rename</span>-<span class="keyword">command</span> <span class="title">FLUSHALL</span> <span class="title">BENBENREDISFLUSHALL</span></span><br><span class="line"><span class="built_in">rename</span>-<span class="keyword">command</span> <span class="title">FLUSHDB</span> <span class="title">BENBENREDISFLUSHDB</span></span><br></pre></td></tr></table></figure>
-<p>将FLUSHALL操作变为BENBENREDISFLUSHALL,将FLUSHDB变为BENBENREDISFLUSHDB,以降低开发过程中不小心将数据全部清空的概率</p>
-<h3 id="python-操作"><a href="#python-操作" class="headerlink" title="python 操作"></a>python 操作</h3><p>初始化<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> redis</span><br><span class="line"></span><br><span class="line"><span class="title">r</span>=redis.<span class="type">StrictRedis</span>(host='localhost',<span class="keyword">port</span>=6379,db=0)</span><br></pre></td></tr></table></figure></p>
-<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><h4 id="lpush-amp-amp-rpush"><a href="#lpush-amp-amp-rpush" class="headerlink" title="lpush &amp;&amp; rpush"></a>lpush &amp;&amp; rpush</h4><p>lpush对应在list头加入元素，rpush对应在list尾加入元素<br>lrange可以取出对应范围的元素<br>比如要往一个叫做alist的list里append一个数据，可以直接用<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.rpush(<span class="string">'alist'</span>,<span class="keyword">value</span><span class="number">1</span>,<span class="keyword">value</span><span class="number">2</span>...)</span><br></pre></td></tr></table></figure></p>
-<p>后面跟至少一个参数<br>运行<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.<span class="keyword">lrange</span>(<span class="string">'alist'</span>,<span class="number">0</span>,<span class="number">-1</span>)</span><br></pre></td></tr></table></figure></p>
-<p>取出alist中的所有数据，返回类型是一个string类型的list<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r.<span class="keyword">lindex</span>(<span class="string">'alist'</span>,pos)</span><br></pre></td></tr></table></figure></p>
-<p>等价于alist[pos]</p>
-<h3 id="dict"><a href="#dict" class="headerlink" title="dict"></a>dict</h3><h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><p>python中的dict类型对应在redis中的类型是hash</p>
-<h4 id="hmset"><a href="#hmset" class="headerlink" title="hmset"></a>hmset</h4><p>这是可以直接把python中的dict一次性存入redis的命令<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dict_a=&#123;<span class="string">'a'</span>:<span class="number">1</span>,<span class="string">'b'</span>:<span class="number">2</span>&#125;</span><br><span class="line">r.hmset(<span class="string">'dict_a'</span>,dict_a)</span><br></pre></td></tr></table></figure></p>
-<p>这就直接把一个叫做dict_a的dict存入了redis中，并且这个名字保持一致</p>
-<h4 id="hgetall"><a href="#hgetall" class="headerlink" title="hgetall"></a>hgetall</h4><p>想要一次性把dict_a全部取出来<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dict_a</span>=r.hgetall(<span class="string">'dict_a'</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="hget"><a href="#hget" class="headerlink" title="hget"></a>hget</h4><p>读取key对应的value<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">value</span>=r.hget(<span class="string">'dict_a'</span>,<span class="string">'a'</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="hdel"><a href="#hdel" class="headerlink" title="hdel"></a>hdel</h4><p>用来删除dict中对应的键值<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r<span class="selector-class">.hdel</span>(<span class="string">'dict_a'</span>,<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="mset-mget"><a href="#mset-mget" class="headerlink" title="mset mget"></a>mset mget</h4><p>```<br>r.mset({‘name1’:value1,’name2’:value2})<br>r.mget(‘name1’,’name2’)</p>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://yezhejack.github.io/2015/12/20/redis/" data-id="cj11zvylf003oxigeexczz0cp" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+        <p class="article-excerpt">
+            取消图片浮动latex会根据文字排版来调整图片或者表格的位置，但是有些作业的排版需要取消这个功能。可以使用
+123\usepackage&#123;float&#125;\begin&#123;table&#125;[H]\end&#123;table&#125;
+这样便可取消浮动，按照原始顺序排版。
+写表格12345678910111213\begin&#123;table&#125;[H]	\
+        </p>
     </div>
 </article>
-
-    <section id="comments">
     
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
+        </div>
     
-    </section>
+
+
+    </div></section>
+
+
 
                         </div>
                     </section>
@@ -331,29 +260,6 @@ var _hmt = _hmt || [];
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2015/12/22/nginx/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            nginx
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2015/12/20/linux常见操作/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">linux常见操作</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -544,13 +450,11 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2015/12/20/redis/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
@@ -570,23 +474,6 @@ var _hmt = _hmt || [];
 <!-- Custom Scripts -->
 <script src="/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
