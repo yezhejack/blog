@@ -21,7 +21,7 @@
 这样便可取消浮动，按照原始顺序排版。
 写表格12345678910111213\begin&amp;#123;table&amp;#125;[H]	\">
 <meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
-<meta property="og:updated_time" content="2017-04-04T07:40:13.000Z">
+<meta property="og:updated_time" content="2017-04-04T07:54:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="latex使用教程">
 <meta name="twitter:description" content="取消图片浮动latex会根据文字排版来调整图片或者表格的位置，但是有些作业的排版需要取消这个功能。可以使用
@@ -195,7 +195,9 @@ var _hmt = _hmt || [];
 <h1 id="公式下标位置"><a href="#公式下标位置" class="headerlink" title="公式下标位置"></a>公式下标位置</h1><p>在equation模式下，有的时候我们希望下标的位置能在正下方，可以使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>\max \limits_{x}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果是自定义的符号想要添加下表的话，可以先将这个符号声明为一个数学符号</span><br></pre></td></tr></table></figure></p>
 <p>\DeclareMathOperator*{\argmax}{argmax}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后就可以使用</span><br></pre></td></tr></table></figure></p>
-<p>\argmax \limits_{x}<br>```</p>
+<p>\argmax \limits_{x}<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 取消公式的标号 #</span><br><span class="line">可以在后面加上```\nonumber```来跳过当前公式的标号。</span><br></pre></td></tr></table></figure></p>
+<p>\begin{equation}<br>l(f(x),y)=\mathbf{1}{f(x) \neq y}\nonumber<br>\end{equation}<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># 带有左括号的方程组 #</span></span><br></pre></td></tr></table></figure></p>
+<p>\begin{equation}<br>\begin{split}<br>f(x)=\left{<br>\begin{aligned}<br>1 &amp;\qquad \beta P(y=1|x) \geq \alpha P(y=0|x) \<br>0 &amp;\qquad \alpha P(y=0|x) &gt; \beta P(y=1|x) \<br>\end{aligned}<br>\right.\nonumber<br>\end{split}<br>\end{equation}<br>```</p>
 
         </div>
         <footer class="article-footer">
@@ -203,7 +205,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/04/03/latex使用教程/" data-id="cj138iyps002qooge7h58cqr3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/03/latex使用教程/" data-id="cj139runs002v0wgeaxz71nz1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
