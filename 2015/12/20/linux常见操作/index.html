@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2017-04-08T15:16:18.000Z">
+<meta property="og:updated_time" content="2017-04-08T17:04:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -273,7 +273,12 @@ var _hmt = _hmt || [];
 <p>安装完成之后还需要添加环境变量<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <p>在文件的最后添加两行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}<br>export LD_LIBRARY_PATH=/usr/local/cuda-8.0.61/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后在当前的bash中执行会让修改生效，或者可以打开新的bash</span><br></pre></td></tr></table></figure></p>
-<p>source ~/.bashrc<br>```</p>
+<p>source ~/.bashrc<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta"># 建立http代理服务器 #</span></span><br></pre></td></tr></table></figure></p>
+<p>sudo pip install shadowsocks<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后建立新的json文件</span><br></pre></td></tr></table></figure></p>
+<p>{<br>    “server”:”my_server_ip”,<br>    “server_port”:8388,<br>    “local_port”:1080,<br>    “password”:”barfoo!”,<br>    “timeout”:600,<br>    “method”:”rc4-md5”<br>}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">启动sslocal</span><br></pre></td></tr></table></figure></p>
+<p>sudo sslocal -c yezhe.json -d start<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>sudo apt-get install polipo<br>sudo service polipo stop<br>sudo polipo socksParentProxy=localhost:1080<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后就可以在命令前面加上代理的信息`<span class="javascript">http_proxy=http:<span class="comment">//localhost:8123</span></span>`</span><br></pre></td></tr></table></figure></p>
+<p>http_proxy=<a href="http://localhost:8123" target="_blank" rel="external">http://localhost:8123</a> apt-get update<br>```</p>
 
         </div>
         <footer class="article-footer">
@@ -281,7 +286,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj19evl86002xdqgekzo3vojz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj19ifra5002y2bgey8ll3wk3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -401,20 +406,20 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            redis
+            mpv播放器使用指南
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2015/12/10/git以及github的用法/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2015/12/20/redis/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Git以及GitHub的用法</p>
+        <p class="article-nav-title">redis</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
