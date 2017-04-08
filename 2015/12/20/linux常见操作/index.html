@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2017-04-08T13:22:12.000Z">
+<meta property="og:updated_time" content="2017-04-08T15:16:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -269,13 +269,19 @@ var _hmt = _hmt || [];
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127<span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-class">.1</span>    &lt;主机名字&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="查看正在使用的端口"><a href="#查看正在使用的端口" class="headerlink" title="查看正在使用的端口"></a>查看正在使用的端口</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -anltp <span class="string">| grep "</span>LISTEN<span class="string">"</span></span><br></pre></td></tr></table></figure>
 <h1 id="安装nvidia-GTX1080驱动"><a href="#安装nvidia-GTX1080驱动" class="headerlink" title="安装nvidia GTX1080驱动"></a>安装nvidia GTX1080驱动</h1><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge nvidia-*</span><br><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:graphics-drivers/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nvidia-375</span><br></pre></td></tr></table></figure>
+<h1 id="cuda-8-0-安装"><a href="#cuda-8-0-安装" class="headerlink" title="cuda 8.0 安装"></a>cuda 8.0 安装</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http<span class="variable">s:</span>//developer.nvidia.<span class="keyword">com</span>/compute/cuda/<span class="number">8.0</span>/Prod2/local_installers/cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-ga2_8.<span class="number">0.61</span>-<span class="number">1</span>_amd64-<span class="keyword">deb</span></span><br><span class="line">sudo dpkg -i cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-ga2_8.<span class="number">0.61</span>-<span class="number">1</span>_amd64.<span class="keyword">deb</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install cuda</span><br></pre></td></tr></table></figure>
+<p>安装完成之后还需要添加环境变量<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>在文件的最后添加两行<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}<br>export LD_LIBRARY_PATH=/usr/local/cuda-8.0.61/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后在当前的bash中执行会让修改生效，或者可以打开新的bash</span><br></pre></td></tr></table></figure></p>
+<p>source ~/.bashrc<br>```</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj19ai5rp002xrpge4pspdpx8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj19evl86002xdqgekzo3vojz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -406,9 +412,9 @@ var _hmt = _hmt || [];
     </a>
     
     
-        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2015/12/10/git以及github的用法/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">mpv播放器使用指南</p>
+        <p class="article-nav-title">Git以及GitHub的用法</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
