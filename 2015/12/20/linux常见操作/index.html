@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="基于ubuntu的linux以及screen配置">
 <meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2017-04-11T09:30:09.000Z">
+<meta property="og:updated_time" content="2017-04-11T11:42:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常见操作">
 <meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
@@ -274,6 +274,9 @@ var _hmt = _hmt || [];
 <p>在文件的最后添加两行</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="regexp">/usr/local</span><span class="regexp">/cuda-8.0/bin</span><span class="variable">$&#123;</span><span class="symbol">PATH:</span>+<span class="symbol">:</span><span class="variable">$&#123;</span>PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH=<span class="regexp">/usr/local</span><span class="regexp">/cuda-8.0.61/lib</span>64<span class="variable">$&#123;</span><span class="symbol">LD_LIBRARY_PATH:</span>+<span class="symbol">:</span><span class="variable">$&#123;</span>LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>然后在当前的bash中执行会让修改生效，或者可以打开新的bash<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>cuda的下载链接<br>cuda 7.5 for ubuntu 14.04<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/developer.download.nvidia.com/compute</span><span class="regexp">/cuda/</span><span class="number">7.5</span>/Prod/local_installers/cuda-repo-ubuntu1404-<span class="number">7</span>-<span class="number">5</span>-local_7.<span class="number">5</span>-<span class="number">18</span>_amd64.deb</span><br></pre></td></tr></table></figure></p>
+<p>cudnn 5.0 for cuda 7.5<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http</span>://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/<span class="built_in">v5</span>/prod/cudnn-<span class="number">7</span>.<span class="number">5</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">0</span>-ga.tgz?autho<span class="number">=1491911109</span>_39b0ac86b2d9e816a24be1fb8148a31c&amp;file<span class="symbol">=cudnn</span>-<span class="number">7</span>.<span class="number">5</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">0</span>-ga.tgz</span><br></pre></td></tr></table></figure></p>
+<p>cudnn 5.1 for cude 8.0<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http</span>://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/<span class="built_in">v5</span>.<span class="number">1</span>/prod_20161129/<span class="number">8</span>.<span class="number">0</span>/cudnn-<span class="number">8</span>.<span class="number">0</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">1</span>.tgz?autho<span class="number">=1491911192</span>_c4362e4d2c81a2d3c463a819201b25e6&amp;file<span class="symbol">=cudnn</span>-<span class="number">8</span>.<span class="number">0</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">1</span>.tgz</span><br></pre></td></tr></table></figure></p>
 <h1 id="建立http代理服务器"><a href="#建立http代理服务器" class="headerlink" title="建立http代理服务器"></a>建立http代理服务器</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
 <p>然后建立新的json文件<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"my_server_ip"</span>,</span><br><span class="line">    <span class="attr">"server_port"</span>:<span class="number">8388</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"password"</span>:<span class="string">"barfoo!"</span>,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">600</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"rc4-md5"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>启动sslocal<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sslocal -c yezhe<span class="selector-class">.json</span> -d start</span><br></pre></td></tr></table></figure></p>
@@ -286,7 +289,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj1dcji1g002pqfger6320mbt" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2015/12/20/linux常见操作/" data-id="cj1dh99vu002p2nge5liufkw7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -406,11 +409,11 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            redis
+            mpv播放器使用指南
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
