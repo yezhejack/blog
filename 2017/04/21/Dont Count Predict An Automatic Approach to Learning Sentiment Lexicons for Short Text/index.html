@@ -17,7 +17,7 @@ Introduction在所有的自动化方法中，Mohamm">
 <meta property="og:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
 Introduction在所有的自动化方法中，Mohamm">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-04-21T12:15:09.000Z">
+<meta property="og:updated_time" content="2017-04-21T12:16:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
 <meta name="twitter:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
@@ -193,6 +193,8 @@ var _hmt = _hmt || [];
 <h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p><code>Mohammad</code>将推特的表情和相关<code>hashtags</code>作为推特的情感标签。而情感分数则如下所示</p>
 <center><br><span>$SS(w)=\mathbf{PMI}(w,pos)-\mathbf{PMI}(w,neg)$</span><!-- Has MathJax --><br></center>
 
+<center><br><span>$\mathbf{PMI}(w,pos)=log_2 \frac{freq(w,pos) \times N}{freq(w)*freq(pos)}$</span><!-- Has MathJax --><br></center>
+
 
 
 
@@ -207,7 +209,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj1rsubzo0008yagexwovauy6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj1rsvs18000azdgeux42khgg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
