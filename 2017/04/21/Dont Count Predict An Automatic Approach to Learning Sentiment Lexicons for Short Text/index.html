@@ -17,7 +17,7 @@ Introduction在所有的自动化方法中，Mohamm">
 <meta property="og:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
 Introduction在所有的自动化方法中，Mohamm">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-04-21T12:16:31.000Z">
+<meta property="og:updated_time" content="2017-04-21T12:50:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
 <meta name="twitter:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
@@ -193,15 +193,23 @@ var _hmt = _hmt || [];
 <h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p><code>Mohammad</code>将推特的表情和相关<code>hashtags</code>作为推特的情感标签。而情感分数则如下所示</p>
 <center><br><span>$SS(w)=\mathbf{PMI}(w,pos)-\mathbf{PMI}(w,neg)$</span><!-- Has MathJax --><br></center>
 
-<center><br><span>$\mathbf{PMI}(w,pos)=log_2 \frac{freq(w,pos) \times N}{freq(w)*freq(pos)}$</span><!-- Has MathJax --><br></center>
+<center><br><span>$\mathbf{PMI}(w,pos)=log_2 \frac{freq(w,pos) \times N}{freq(w) \times freq(pos)}$</span><!-- Has MathJax --><br></center>
 
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>每个词都转换成<span>$w=(n,p)$</span><!-- Has MathJax -->。其中<span>$n$</span><!-- Has MathJax -->表示的是正面性，而<span>$p$</span><!-- Has MathJax -->则表示负面性。一个推特可以表示为</p>
+<center><br><span>$tw=w_1,w_2,...,w_n$</span><!-- Has MathJax --><br></center><br>然后用一个简单的神经网络来预测这个推特是正面还是负面。主要计算过程是<br><center><br><span>$h=\sum_i(w_i)$</span><!-- Has MathJax --><br><span>$y=softmax(hW)$</span><!-- Has MathJax --><br></center>
 
-
-
-
-
-
-
+<p>每个<code>token</code>的初始值都是在[-0.25,0.25]，然后通过有监督的学习方式来学习每个<code>token</code>的值。优化方法用的是<code>stochasti gradient descent</code>。更新规则使用的是<code>AdaDelta</code>。所有的模型都设定了<code>batch size</code>为50，运行5个<code>epoch</code>。</p>
+<h2 id="Sentiment-Classification"><a href="#Sentiment-Classification" class="headerlink" title="Sentiment Classification"></a>Sentiment Classification</h2><p>训练好了之后，这些信息可以用于无监督和有监督的情感分类。在无监督的情感分类中，可以使用<span>$p-n$</span><!-- Has MathJax -->作为词的情感分数，然后把一个文档中的所有词的情感分数都加起来，如果大于0这个文档就可以预测称正面。</p>
+<p>有监督的方法则将情感词汇表当作特征。给定一个文档抽取如下的特征</p>
+<ul>
+<li>情感词的数量，也就是在情感词汇表中情感分数不为0的。</li>
+<li>文档的累计情感分数</li>
+<li>最大的单词情感分数</li>
+<li>正面情感词的总分数，负面情感词的总分数</li>
+<li>最后一个词的情感分数</li>
+</ul>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>在除掉中性情感的数据后，本文只做对正负情感判断的分类器，结果表明了本文自动生成的情感词汇表比通过<code>counting</code>生成的<code>NRC</code>情感词汇表效果要好得多。</p>
+<p>将<code>Hu and Liu(2004)</code>的手工标注的情感词表作为<code>gold standard</code>，计算本文的方法生成的情感词汇表的准确率为<code>78.2%</code>，而<code>Mohammad(2013)</code>方法生成的词表的准确率为<code>76.9%</code>。</p>
 
         </div>
         <footer class="article-footer">
@@ -209,7 +217,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj1rsvs18000azdgeux42khgg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj1rue8ai000hb7ge4e9lxi1b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
