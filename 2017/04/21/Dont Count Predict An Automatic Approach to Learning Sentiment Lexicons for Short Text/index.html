@@ -3,23 +3,26 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>python学习 | JackYip</title>
+    <title>Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="python,编程语言" />
+        <meta name="keywords" content="Papers,Sentiment Analysis" />
     
-    <meta name="description" content="记录python的一些用法">
+    <meta name="description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
+Introduction在所有的自动化方法中，Mohamm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python学习">
-<meta property="og:url" content="http://yezhejack.github.io/2015/12/10/python学习/index.html">
+<meta property="og:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
+<meta property="og:url" content="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="记录python的一些用法">
-<meta property="og:image" content="http://yezhejack.github.io/img/Programmer.jpg">
-<meta property="og:updated_time" content="2017-04-16T11:55:24.000Z">
+<meta property="og:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
+Introduction在所有的自动化方法中，Mohamm">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2017-04-21T12:15:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python学习">
-<meta name="twitter:description" content="记录python的一些用法">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Programmer.jpg">
+<meta name="twitter:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
+<meta name="twitter:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
+Introduction在所有的自动化方法中，Mohamm">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,72 +156,50 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Programmer/">Programmer</a>
+    <a class="page-title-link" href="/categories/Papers/">Papers</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-python学习" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        python学习
+        Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2015/12/10/python学习/" class="article-date">
-    <time datetime="2015-12-10T09:22:36.000Z" itemprop="datePublished">2015-12-10</time>
+            <a href="/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" class="article-date">
+    <time datetime="2017-04-21T11:31:00.000Z" itemprop="datePublished">2017-04-21</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程语言/">编程语言</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Papers/">Papers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sentiment-Analysis/">Sentiment Analysis</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h3 id="xrange"><a href="#xrange" class="headerlink" title="xrange"></a>xrange</h3><p>xrange和range函数的区别只在于节省空间，而且xrange是一个不透明的序列结构，range在使用的时候就已经创建了所有的序列，而xrange在使用到的时候才会有真正的值，常用于loop结构。它实际上只支持了索引，迭代和长度函数。</p>
-<h3 id="strip"><a href="#strip" class="headerlink" title="strip"></a>strip</h3><p>string类型对应的函数，用于去除一些特殊符号，例如 \n \t 等，没有参数的话会去除多个，如果有参数的话则会根据参数去除。但是按照2.7版本的官方文档来说只是去除了空格，但是实际上还去除了换行符等，不知道是不是版本的问题。</p>
-<h3 id="argument-parse"><a href="#argument-parse" class="headerlink" title="argument parse"></a>argument parse</h3><ol>
-<li>getopt(C stytle)</li>
-<li><p>argparse</p>
-<ol>
-<li><p>初始化</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line"><span class="meta">#新建一个解析器（应该是这么翻译的）</span></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line"><span class="meta">#增加一个开关变量</span></span><br><span class="line">parser.add_argument(<span class="string">"-v"</span>,<span class="string">"--verbose"</span>,help=<span class="string">"increate output verbosity"</span>,action=<span class="string">"store_true"</span>)</span><br><span class="line"><span class="meta">#获得变量</span></span><br><span class="line">args=parser.parse_args()</span><br></pre></td></tr></table></figure>
-<p>这个变量有一个缩写的名字-v，完整的名字是–verbose,并且是个开关变量，即标志，这里因为’action=”store_true”‘，因此有这个参数出现的时候，就代表了args.vebosity=True,当’action=count’时，会是一个计数器</p>
-</li>
-<li><p>使用<br>args是一个带有所有参数变量的结构体（类）</p>
-</li>
-<li><p>限定输入参数的类型</p>
-<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">parser</span>.add_argument(<span class="string">"-v"</span>,<span class="string">"--verbosity"</span>,<span class="keyword">type</span>=<span class="built_in">int</span>,help=<span class="string">"balabalabala"</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>位置参数和可选参数<br>暂时还没搞懂这个区别，甚至是翻译是否正确也不知道(positional argument and optional argument)</p>
-</li>
-<li><p>默认参数<br>可以用一个默认的和args相同尺寸的结构体来代替</p>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">parser=argparse.<span class="symbol">ArgumentParser</span>(argument_default=argparse.<span class="symbol">SUPPRESS</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'bar'</span>,nargs=<span class="string">'?'</span>)</span><br><span class="line">parser.parse_args([<span class="string">'--fool'</span>,<span class="string">'1'</span>,<span class="string">'BAR'</span>])</span><br><span class="line">parser.parse_args([])</span><br></pre></td></tr></table></figure>
-<p>还没实验，有问题<br>还有另外一个方法，就是在parser.add_argument的最后加一个dafault=默认值</p>
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="获得路径"><a href="#获得路径" class="headerlink" title="获得路径"></a>获得路径</h3><ol>
-<li>获得当前工作路径<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="built_in">os</span></span><br><span class="line"><span class="built_in">os</span>.getcwd()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="编码错误"><a href="#编码错误" class="headerlink" title="编码错误"></a>编码错误</h3><p>如果碰到这个问题<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="built_in">ascii</span>' codec can't encode characters <span class="keyword">in</span> <span class="built_in">position</span> <span class="number">0</span>-<span class="number">15</span>: ordinal <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">128</span>)</span><br></pre></td></tr></table></figure></p>
-<p>可以用下面的代码来解决<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"><span class="function"><span class="title">reload</span><span class="params">(sys)</span></span></span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure></p>
-<h3 id="修改开源组件"><a href="#修改开源组件" class="headerlink" title="修改开源组件"></a>修改开源组件</h3><p>因为项目需要加打log，所以需要修改开源组件webpy来进行纪录log。默认情况下webpy会被安装在’/usr/local/lib/python2.7/dist-packages’这个目录下，你需要删除webpy相关的几个东西，看名字就可以知道了，如果只是重新编译并安装的话是没有用的，有些地方无法覆盖</p>
-<h3 id="内存分析工具meliae"><a href="#内存分析工具meliae" class="headerlink" title="内存分析工具meliae"></a>内存分析工具meliae</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> Cython</span><br><span class="line">sudo pip <span class="keyword">install</span> meliae</span><br></pre></td></tr></table></figure>
-<h4 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> meliae <span class="keyword">import</span> scanner</span><br><span class="line">scanner.dump_all_objects(<span class="string">'/opt/log/dump.txt'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="分析内存"><a href="#分析内存" class="headerlink" title="分析内存"></a>分析内存</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from meliae import loader</span><br><span class="line"><span class="keyword">om</span> = loader.load(<span class="string">'/opt/log/dump.txt'</span>)</span><br><span class="line"><span class="keyword">om</span>.compute_parents()</span><br><span class="line"><span class="keyword">om</span>.collapse_instance_dicts()</span><br><span class="line"><span class="keyword">om</span>.summarize()</span><br></pre></td></tr></table></figure>
-<h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h2 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h2><p>最近遇到一个问题，我需要跑N个进程的训练程序，然后我想有序地输出结果到文件中，并且是以追加的形式，因此我要在打开文件之前就</p>
-<h2 id="非root安装third-party-modules"><a href="#非root安装third-party-modules" class="headerlink" title="非root安装third party modules"></a>非root安装third party modules</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --<span class="keyword">user</span> <span class="title">&lt;包名&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="和-的用法"><a href="#和-的用法" class="headerlink" title="和*的用法"></a><em>和*</em>的用法</h2><p>这是两种方便的做法，比如</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a,b)</span>:</span></span><br><span class="line">    print(a)</span><br><span class="line">    print(b)</span><br><span class="line"></span><br><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">foo(*a)</span><br></pre></td></tr></table></figure>
-<p>这里把<code>a</code>中的两个分开，分别给了<code>a</code>和<code>b</code>。</p>
-<p>而<code>**</code>则可以把<code>dict</code>中的<code>value</code>赋给<code>key</code>，然后传到函数中。</p>
+            <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于<code>NRC</code>方法，<code>NRC</code>方法在<code>SemEval13</code>中利用了大量推特中的<code>emoticons</code>来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在所有的自动化方法中，<code>Mohammad</code>在2013年提出了使用推特的情感符号或者<code>hashtags</code>来作为训练数据。这个方法的主要优点在于这样的训练数据的数量是很巨大的，并且可以避免人工标注。尽管这样会引入噪声，但是很多研究表明这个方法是有效的。<code>Mohammad</code>在2013计算了词和表情符号之间的互信息，然后使用的词表获得了<code>SemEval2013</code>的最好结果。这篇文章中，他们将展示可以通过直接优化预测准确率来获得更好的情感词表，这个过程中将情感词表作为输入，表情作为输出。这个方法和<code>Mohammad</code>的方法的区别在于一个是<code>predicting</code>，一个是<code>counting</code>。</p>
+<h2 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h2><p>自动学习情感词表主要有三种方法</p>
+<ul>
+<li>将现有的词表用情感信息扩展。这种方法严重依赖现有词表，并且有语言限制。</li>
+<li>第二种方法是扩展现有的人工标注的词表。例如2014年<code>Tang</code>应用了神经网络来学习面对情感的词向量，所用的数据是少量的标注好的推特，然后将种子情感词集通过测量词之间的距离来扩展变大。<code>Bravo-Marquez</code>在2015年通过对词进行分类，来扩展一个已有的词表，使用了人工抽取的特征。这些方法也都受限于人工资源的领域和语言。</li>
+<li>第三种方法则是通过累计大数据中的统计特征来从头构建词表。<code>Turney</code>在2002年提出了通过计算种子词和搜索点击之间的<code>PMI</code>来估计词的情感极性。2013年<code>Mohammad</code>就使用了<code>distance-supervised</code>的数据来代替种子词来改进这个方法。这个方法摆脱了语言和人工标注资源的限制，作为本文的<code>baseline</code>。</li>
+</ul>
+<h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p><code>Mohammad</code>将推特的表情和相关<code>hashtags</code>作为推特的情感标签。而情感分数则如下所示</p>
+<center><br><span>$SS(w)=\mathbf{PMI}(w,pos)-\mathbf{PMI}(w,neg)$</span><!-- Has MathJax --><br></center>
+
+
+
+
+
+
+
+
 
         </div>
         <footer class="article-footer">
@@ -226,7 +207,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2015/12/10/python学习/" data-id="cj1rsuc30003oyagev4jx9zpy" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj1rsubzo0008yagexwovauy6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -346,20 +327,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/10/git以及github的用法/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Git以及GitHub的用法
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2015/11/28/OS-X中安装虚拟linux服务器/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/04/14/MXNet入门/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">OS_X中安装虚拟linux服务器</p>
+        <p class="article-nav-title">MXNet入门</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -555,7 +526,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2015/12/10/python学习/';
+    var disqus_url = 'http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/';
     
     (function() {
     var dsq = document.createElement('script');
