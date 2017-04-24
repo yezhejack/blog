@@ -3,23 +3,26 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>SSH Reversal Tunnel 反向隧道 | JackYip</title>
+    <title>Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="SSH" />
+        <meta name="keywords" content="Papers,Word Embedding" />
     
-    <meta name="description" content="词性标注">
+    <meta name="description" content="Introduction这篇论文主要是要解决英文短语的词向量表示问题，英语的词向量可以分成两种，一种是compositional，另一种是non-compositional。前者的短语语义就是组成单词的叠加，而后者则会产生完全不同的意思。本文引入了一个score function来度量一个短语的compositional的程度。
+完全依赖non-compositional embedding会产生">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH Reversal Tunnel 反向隧道">
-<meta property="og:url" content="http://yezhejack.github.io/2016/12/23/SSH Reversal Tunnel 反向隧道/index.html">
+<meta property="og:title" content="Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings">
+<meta property="og:url" content="http://yezhejack.github.io/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="词性标注">
-<meta property="og:image" content="http://yezhejack.github.io/img/Howto.PNG">
-<meta property="og:updated_time" content="2017-04-08T13:08:19.000Z">
+<meta property="og:description" content="Introduction这篇论文主要是要解决英文短语的词向量表示问题，英语的词向量可以分成两种，一种是compositional，另一种是non-compositional。前者的短语语义就是组成单词的叠加，而后者则会产生完全不同的意思。本文引入了一个score function来度量一个短语的compositional的程度。
+完全依赖non-compositional embedding会产生">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2017-04-24T12:58:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH Reversal Tunnel 反向隧道">
-<meta name="twitter:description" content="词性标注">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/Howto.PNG">
+<meta name="twitter:title" content="Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings">
+<meta name="twitter:description" content="Introduction这篇论文主要是要解决英文短语的词向量表示问题，英语的词向量可以分成两种，一种是compositional，另一种是non-compositional。前者的短语语义就是组成单词的叠加，而后者则会产生完全不同的意思。本文引入了一个score function来度量一个短语的compositional的程度。
+完全依赖non-compositional embedding会产生">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -153,49 +156,61 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    <a class="page-title-link" href="/categories/Papers/">Papers</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-SSH Reversal Tunnel 反向隧道" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        SSH Reversal Tunnel 反向隧道
+        Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/12/23/SSH Reversal Tunnel 反向隧道/" class="article-date">
-    <time datetime="2016-12-23T07:13:00.000Z" itemprop="datePublished">2016-12-23</time>
+            <a href="/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/" class="article-date">
+    <time datetime="2017-04-23T12:21:00.000Z" itemprop="datePublished">2017-04-23</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSH/">SSH</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Papers/">Papers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Word-Embedding/">Word Embedding</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="使用ssh进行反向代理"><a href="#使用ssh进行反向代理" class="headerlink" title="使用ssh进行反向代理"></a>使用ssh进行反向代理</h2><p>我在实验室的内网里有一个工作站，安装的Linux系统，具体版本是Ubuntu 16.04。此外，我还有一个aliyun的ECS主机，这样我就有了一个公网IP。现在需要做的就是让我们的22端口能够绑定到aliyun主机的2221端口上。22端口是默认的ssh登陆端口。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">-v</span> <span class="selector-tag">-N</span> <span class="selector-tag">-R</span> 2221<span class="selector-pseudo">:127.0.0.1</span><span class="selector-pseudo">:22</span> <span class="selector-tag">aliyun</span><span class="selector-class">.ip</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用autossh进行反向代理"><a href="#使用autossh进行反向代理" class="headerlink" title="使用autossh进行反向代理"></a>使用autossh进行反向代理</h2><p>上网看了一下，似乎很多人都是使用autossh来进行反向代理，给出的理由是autossh会自动重连，但是我并没有尝试过。这里给出后台运行的命令</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">autossh</span> <span class="selector-tag">-M</span> 55551 <span class="selector-tag">-f</span> <span class="selector-tag">-v</span> <span class="selector-tag">-gNR</span> *<span class="selector-pseudo">:2221</span><span class="selector-pseudo">:127.0.0.1</span><span class="selector-pseudo">:22</span> <span class="selector-tag">root</span>@<span class="keyword">aliyun</span>.<span class="keyword">ip</span> &gt; /home/yezhe/log/autossh.log <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="自动启动"><a href="#自动启动" class="headerlink" title="自动启动"></a>自动启动</h2><h3 id="写-etc-init-d-脚本"><a href="#写-etc-init-d-脚本" class="headerlink" title="写/etc/init.d/脚本"></a>写/etc/init.d/脚本</h3><p>在ubuntu系统中，可以在/etc/init.d下编写一个脚本来让指定的程序来自动运行。将下面的内容存储到<code>/etc/init.d</code>目录下，命名为autossh，然后再为其增加一执行权限<code>sudo chmod +x autossh</code>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">### BEGIN INIT INFO</span></span><br><span class="line"><span class="comment"># Provides:          autossh</span></span><br><span class="line"><span class="comment"># Required-Start:    $remote_fs</span></span><br><span class="line"><span class="comment"># Required-Stop:     $remote_fs</span></span><br><span class="line"><span class="comment"># Default-Start:     2 3 4 5</span></span><br><span class="line"><span class="comment"># Default-Stop:      0 1 6</span></span><br><span class="line"><span class="comment"># Short-Description: Start or stop the autossh.</span></span><br><span class="line"><span class="comment">### END INIT INFO</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        start-stop-daemon --start --exec /home/yezhe/Workspace/autossh.sh</span><br><span class="line">;;</span><br><span class="line">    stop)</span><br><span class="line">        start-stop-daemon --stop --name autossh</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
-<h3 id="写执行shell脚本"><a href="#写执行shell脚本" class="headerlink" title="写执行shell脚本"></a>写执行shell脚本</h3><p>如果你仔细看这个代码，可以看到在后面有一个<br><code>/home/yezhe/Workspace/autossh.sh</code>脚本，这个脚本里面实际包含了真正的autossh命令。下面贴出里面的内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">autossh -M 55551 <span class="_">-f</span> -v -gNR *:2221:127.0.0.1:22 root@hostip1 &gt; /home/yezhe/<span class="built_in">log</span>/autossh.log 2&gt;&amp;1</span><br><span class="line">autossh -M 55552 <span class="_">-f</span> -v -gNR *:2221:127.0.0.1:22 root@hostip2 &gt; /home/yezhe/<span class="built_in">log</span>/autossh.log 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
-<p>将其中的root、hostip1和hostip2都可以改成具体的情况，我这里是配置了可以通过公钥登录hostip1和hostip2。按照<code>/etc/init.d/autossh</code>中写的，我把这个命令存成<code>autossh.sh</code>，放到了<code>/home/yezhe/Workspace/</code>下。</p>
-<p>同样的还需要给这个sh脚本增加可执行权限<br><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +<span class="keyword">x</span> autossh.sh</span><br></pre></td></tr></table></figure></p>
-<h3 id="配置自动登录"><a href="#配置自动登录" class="headerlink" title="配置自动登录"></a>配置自动登录</h3><p>启动的时候机器执行上面的命令肯定使用root用户的，所以我就需要先切换到root用户来配置自动登录。</p>
-<p>下面是一个比较奇怪的地方，以后有时间再去尝试一下。我一般是按照下面的步骤来配置root的自动登录的<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">ssh-keygen</span><br><span class="line">ssh-copy-id root<span class="variable">@hostip1</span></span><br><span class="line">ssh-copy-id root<span class="variable">@hostip2</span></span><br></pre></td></tr></table></figure></p>
-<p>这种状况对于使用像<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> root<span class="variable">@hostip1</span></span><br></pre></td></tr></table></figure></p>
-<p>来登录是可以的，但是对于在非root用户的情况下使用<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> ssh root<span class="variable">@hostip1</span></span><br></pre></td></tr></table></figure></p>
-<p>来登录是不可行的。因此这里采用下面的配置方式，不需要切换到root<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ssh-keygen</span><br><span class="line">sudo ssh-copy-id root<span class="variable">@hotsip1</span></span><br><span class="line">sudo ssh-copy-id root<span class="variable">@hostip2</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="让-etc-init-d-autossh-开机启动"><a href="#让-etc-init-d-autossh-开机启动" class="headerlink" title="让/etc/init.d/autossh 开机启动"></a>让/etc/init.d/autossh 开机启动</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">update</span>-rc.d autossh <span class="keyword">defaults</span> <span class="number">99</span></span><br></pre></td></tr></table></figure>
-<p>到此，可以使用<code>sudo /etc/init.d/autossh start</code>来启动命令，也可以使用<code>sudo /etc/init.d/autossh stop</code>来停止。</p>
+            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这篇论文主要是要解决英文短语的词向量表示问题，英语的词向量可以分成两种，一种是<code>compositional</code>，另一种是<code>non-compositional</code>。前者的短语语义就是组成单词的叠加，而后者则会产生完全不同的意思。本文引入了一个<code>score function</code>来度量一个短语的<code>compositional</code>的程度。</p>
+<p>完全依赖<code>non-compositional embedding</code>会产生数据稀疏的问题。而使用<code>compositional embedding</code>的问题更明显，因为有些短语本质上就是一个<code>non-compositional embedding</code>。例如<code>bear fruits</code>表示的是<code>to yield results</code>，这很难通过单词本身推断出来。</p>
+<p>因此应该要将两种<code>embedding</code>结合起来。现在主要的学习方法有两种，一种就是都当作<code>compositional</code>的，另一种是两种都学习，然后选一个更好的。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><code>Score function</code></p>
+<center><br><span>$\alpha(p)=\sigma(\mathbf{W} \dot \phi (p))$</span><!-- Has MathJax --><br></center>
+
+<p><code>compositional embedding</code></p>
+<center><br><span>$\mathbf{c}(p)$</span><!-- Has MathJax --><br></center>
+
+<p><code>non-compositional embedding</code></p>
+<center><br><span>$\mathbf{n}(p)$</span><!-- Has MathJax --><br></center>
+
+<p>然后用下面的公式来得到我们要的最终的<code>embedding</code>。</p>
+<center><br><span>$\mathbf{v}(p)=\alpha(p)\mathbf{c}(p)+(1-\alpha(p))\mathbf{n}(p)$</span><!-- Has MathJax --><br></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
         <footer class="article-footer">
@@ -203,7 +218,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/12/23/SSH Reversal Tunnel 反向隧道/" data-id="cj1w4oz5r002bagge7ig9kx7v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/" data-id="cj1w4oz2t0000agge490hlmyf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -323,20 +338,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2017/01/15/ffmpeg用于视频转换/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            ffmpeg用于视频转换
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/11/23/Shrinkage Methods/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Shrinkage Methods</p>
+        <p class="article-nav-title">Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -532,7 +537,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2016/12/23/SSH Reversal Tunnel 反向隧道/';
+    var disqus_url = 'http://yezhejack.github.io/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/';
     
     (function() {
     var dsq = document.createElement('script');
