@@ -17,7 +17,7 @@ Introduction让计算机能够理解情感一直是AI的核心任务，有许多
 <meta property="og:description" content="Abstract本文主要目的是为了产生linguistically coherent representations，其中使用了sentiment lexicons, negation words, 和intensity words。
 Introduction让计算机能够理解情感一直是AI的核心任务，有许多方法来实现，比如lexicon-based classification以及早期的machi">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-04-26T13:44:37.000Z">
+<meta property="og:updated_time" content="2017-04-26T13:51:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linguistically Regularized LSTMs for Sentiment Classification">
 <meta name="twitter:description" content="Abstract本文主要目的是为了产生linguistically coherent representations，其中使用了sentiment lexicons, negation words, 和intensity words。
@@ -212,13 +212,16 @@ var _hmt = _hmt || [];
 <li><code>Intensity Regularizer</code>遇到<code>intensity</code>让情感加深。</li>
 </ul>
 <h3 id="Modified-Loss-function"><a href="#Modified-Loss-function" class="headerlink" title="Modified Loss function"></a>Modified Loss function</h3><center><br><span>$E(\theta)=-\sum_i y^i log p^i + \alpha \sum_i \sum_j L_t^i + \beta ||\theta||^2$</span><!-- Has MathJax --><br></center>
+
+<p>在<code>Sentiment Regularizer</code>中，所有的同一类型的情感词共用<code>drifting distribution</code>。这里也可以根据大规模的训练集来学习不同的词的情感漂移。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/" data-id="cj1z18d6s00194kgejp64z70d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/" data-id="cj1z3mkfo001horgewggfqftc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
