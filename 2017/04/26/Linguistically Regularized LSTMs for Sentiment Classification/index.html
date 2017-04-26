@@ -3,26 +3,26 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>YARN | JackYip</title>
+    <title>Linguistically Regularized LSTMs for Sentiment Classification | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="hadoop,big data" />
+        <meta name="keywords" content="Papers,Word Embedding" />
     
-    <meta name="description" content="YARN简介YARN在hadoop 2中被引入，用于改善MapReduce，但是它也被用于支持别的计算框架。YARN提供API用于请求和使用集群资源，但这些不是直接被用户的代码使用的。
-如何工作的YARN通过两种守护进程来提供它的核心服务，一个是resource manager，另一个是node managers。后者会启动和监控containers。一个container会执行一个特定程序的进程">
+    <meta name="description" content="Abstract本文主要目的是为了产生linguistically coherent representations，其中使用了sentiment lexicons, negation words, 和intensity words。
+Introduction让计算机能够理解情感一直是AI的核心任务，有许多方法来实现，比如lexicon-based classification以及早期的machi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="YARN">
-<meta property="og:url" content="http://yezhejack.github.io/2016/06/24/YARN/index.html">
+<meta property="og:title" content="Linguistically Regularized LSTMs for Sentiment Classification">
+<meta property="og:url" content="http://yezhejack.github.io/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="YARN简介YARN在hadoop 2中被引入，用于改善MapReduce，但是它也被用于支持别的计算框架。YARN提供API用于请求和使用集群资源，但这些不是直接被用户的代码使用的。
-如何工作的YARN通过两种守护进程来提供它的核心服务，一个是resource manager，另一个是node managers。后者会启动和监控containers。一个container会执行一个特定程序的进程">
-<meta property="og:image" content="http://yezhejack.github.io/img/linux.jpg">
-<meta property="og:updated_time" content="2016-06-25T19:06:52.000Z">
+<meta property="og:description" content="Abstract本文主要目的是为了产生linguistically coherent representations，其中使用了sentiment lexicons, negation words, 和intensity words。
+Introduction让计算机能够理解情感一直是AI的核心任务，有许多方法来实现，比如lexicon-based classification以及早期的machi">
+<meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
+<meta property="og:updated_time" content="2017-04-26T13:44:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YARN">
-<meta name="twitter:description" content="YARN简介YARN在hadoop 2中被引入，用于改善MapReduce，但是它也被用于支持别的计算框架。YARN提供API用于请求和使用集群资源，但这些不是直接被用户的代码使用的。
-如何工作的YARN通过两种守护进程来提供它的核心服务，一个是resource manager，另一个是node managers。后者会启动和监控containers。一个container会执行一个特定程序的进程">
-<meta name="twitter:image" content="http://yezhejack.github.io/img/linux.jpg">
+<meta name="twitter:title" content="Linguistically Regularized LSTMs for Sentiment Classification">
+<meta name="twitter:description" content="Abstract本文主要目的是为了产生linguistically coherent representations，其中使用了sentiment lexicons, negation words, 和intensity words。
+Introduction让计算机能够理解情感一直是AI的核心任务，有许多方法来实现，比如lexicon-based classification以及早期的machi">
+<meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -156,64 +156,69 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Learning/">Learning</a>
+    <a class="page-title-link" href="/categories/Papers/">Papers</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-YARN" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Linguistically Regularized LSTMs for Sentiment Classification" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        YARN
+        Linguistically Regularized LSTMs for Sentiment Classification
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2016/06/24/YARN/" class="article-date">
-    <time datetime="2016-06-24T08:19:33.000Z" itemprop="datePublished">2016-06-24</time>
+            <a href="/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/" class="article-date">
+    <time datetime="2017-04-26T06:17:00.000Z" itemprop="datePublished">2017-04-26</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/big-data/">big data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Papers/">Papers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Word-Embedding/">Word Embedding</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>YARN在hadoop 2中被引入，用于改善MapReduce，但是它也被用于支持别的计算框架。YARN提供API用于请求和使用集群资源，但这些不是直接被用户的代码使用的。</p>
-<h2 id="如何工作的"><a href="#如何工作的" class="headerlink" title="如何工作的"></a>如何工作的</h2><p>YARN通过两种守护进程来提供它的核心服务，一个是<code>resource manager</code>，另一个是<code>node managers</code>。后者会启动和监控<code>containers</code>。一个container会执行一个特定程序的进程，同时包括一系列的受限制的计算资源。一个container可以是一个unix的进程，或者是linux的cgroup。</p>
-<p><img src="/img/yarn1.png" alt="YARN工作图"></p>
-<p>本地化是可以让集群的带宽的利用率达到最大。通常情况下，会在存有数据的node上启动，再不行就在同一个rack上启动，再不行就随机任意一个node。</p>
-<p>Spark是事先就申请好固定的资源用于计算，而MapReduce则是动态地，先为map申请资源，然后再为reduce申请资源。</p>
-<h2 id="应用生命周期"><a href="#应用生命周期" class="headerlink" title="应用生命周期"></a>应用生命周期</h2><ul>
-<li>一种模型是每个用户job一个应用，MapReduce采用的就是这样</li>
-<li>第二个是每个流程或用户对话一个应用，这个更高效，因为container可以复用，Spark采用的是这种。</li>
-<li>第三种模型是长期运行的、被用户共享的应用。这种应用的好处在于反应快。</li>
-</ul>
-<h2 id="建立YARN应用"><a href="#建立YARN应用" class="headerlink" title="建立YARN应用"></a>建立YARN应用</h2><p><code>Slider</code>可以用来直接启动已有的应用在YARN上。</p>
-<p><code>Apache Twill</code>也是类似于<code>Slider</code>。</p>
-<p>MapReduce 1中有jobtracker和多个tasktracker来控制job的执行，其中jobtracker负责任务的调度以及任务的监控（失效重启等）。</p>
-<p>MapReduce 1中的jobtracker对应着yarn中的 Resource Manager、application master和timeline server，而tasktracker对应着node manager，slot对应着Container</p>
-<p>YARN最大的好处在于它不再只为MapReduce使用，它可以为很多别的计算框架提供服务。</p>
-<h2 id="YARN调度"><a href="#YARN调度" class="headerlink" title="YARN调度"></a>YARN调度</h2><p>提供了三种scheduler</p>
+            <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文主要目的是为了产生<code>linguistically coherent representations</code>，其中使用了<code>sentiment lexicons</code>, <code>negation words</code>, 和<code>intensity words</code>。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>让计算机能够理解情感一直是<code>AI</code>的核心任务，有许多方法来实现，比如<code>lexicon-based classification</code>以及早期的<code>machine learning based methods</code>，最新的还有<code>CNN</code>，<code>recursive autoencoders</code>和<code>LSTM</code>。</p>
 <ul>
-<li>FIFO</li>
-<li>Capacity</li>
-<li>Fair Scheduler</li>
+<li>树形结构的模型，例如<code>recursive autoencoder</code>和<code>Tree-LSTM</code>都是需要短语级的标注语料信息，如果只使用句子级的标注信息的话，它们的性能将会大大下降。</li>
+<li>序列模型，例如<code>CNN</code>和<code>RNN</code>难以产生在论文中记载的很好的效果。</li>
+<li>很多的语言学知识没有应用到神经网络模型中。</li>
 </ul>
-<p>但是FIFO会导致小任务被大任务阻挡，Capacity Scheduler有专用队列，每个队列有它的容量，这个容量表示它所能给队列中的任务分配的最大计算资源。但是在有空余资源的情况下，系统是有可能给队列中等待的资源分配一个大于它的容量的计算资源。它不会通过杀死其他Container来抢占资源，所以当自己的计算资源被弹性队列机制拿走的时候，它也只能等着别的队列用完之后换给它。为了避免这个情况，是可以配置一个最大容量，如果没配置则有可能会用光这一级的所有资源。</p>
-<p>Fair Scheduler则是让每次新来的任务都从前一个任务中分出一半的资源。</p>
-<h3 id="延迟调度"><a href="#延迟调度" class="headerlink" title="延迟调度"></a>延迟调度</h3><p>为的是能够增大在本地运行的机会</p>
-
+<p>这个工作的目标是设计一个简单的序列模型，然后使用语言学资源来帮助情感分类。</p>
+<ul>
+<li>不用树形结构的模型，避免人工标注短语级语料</li>
+<li>使用三种语言学信息：<code>sentiment lexicon</code>,<code>negation words</code>,<code>intensity words</code>。</li>
+</ul>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><ul>
+<li>Neural Networks for Sentiment Classification</li>
+<li>Applying Linguistic Knowledge for Sentiment Classification</li>
+</ul>
+<p>否定词在修改文本情感中扮演关键角色。因为每个单独的否定词会影响情感词，<code>shifting hypothesis</code>被提出来，假定否定动作对情感值的影响是一个常量。</p>
+<p><code>intensity words</code>可以改变情感的强度。这对于<code>fine-grained</code>的情感分析是很有用的。</p>
+<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><ul>
+<li>Long Short-Term Memory(LSTM)</li>
+<li>Bidirectional LSTM</li>
+</ul>
+<h2 id="Linguistically-Regularized-LSTM"><a href="#Linguistically-Regularized-LSTM" class="headerlink" title="Linguistically Regularized LSTM"></a>Linguistically Regularized LSTM</h2><p>当遇到情感词之后，句子的情感应该跟遇到之前有很大的不同。比如<code>this movie is interesting</code>，从左往右走<code>this*</code>，<code>this movie*</code>和<code>this moive is*</code>应该是几乎一样的，而<code>this movie is very interesting*</code>应该和前面几个完全不同（<code>*</code>代表当前的位置）。因为<code>interesting</code>已经被看到了。</p>
+<ul>
+<li><code>Non-Sentiment Regularizer</code>如果两个相邻的词是<code>non-opinion</code>的词，那么两个情感分布应该是尽可能相近的。</li>
+<li><code>Sentiment Regularizer</code>如果词是情感词，那么情感分布应该和前后位置的情感分布不同</li>
+<li><code>Negation Regularizer</code>碰到否定词会让情感飘逸。</li>
+<li><code>Intensity Regularizer</code>遇到<code>intensity</code>让情感加深。</li>
+</ul>
+<h3 id="Modified-Loss-function"><a href="#Modified-Loss-function" class="headerlink" title="Modified Loss function"></a>Modified Loss function</h3><center><br><span>$E(\theta)=-\sum_i y^i log p^i + \alpha \sum_i \sum_j L_t^i + \beta ||\theta||^2$</span><!-- Has MathJax --><br></center>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2016/06/24/YARN/" data-id="cj1z18d8j002v4kge7vvpje0t" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/" data-id="cj1z18d6s00194kgejp64z70d" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -333,20 +338,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2016/07/30/pyspider爬虫框架源码阅读/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            pyspider爬虫框架源码阅读
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2016/06/23/HDFS/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">HDFS</p>
+        <p class="article-nav-title">Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -542,7 +537,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2016/06/24/YARN/';
+    var disqus_url = 'http://yezhejack.github.io/2017/04/26/Linguistically Regularized LSTMs for Sentiment Classification/';
     
     (function() {
     var dsq = document.createElement('script');
