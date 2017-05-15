@@ -23,7 +23,7 @@ Related Work大多数的词向量改进工作都是将焦点集中在将已知�
 现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。
 与本文相近的一个工作Learning s">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.PNG">
-<meta property="og:updated_time" content="2017-05-15T05:52:48.000Z">
+<meta property="og:updated_time" content="2017-05-15T06:05:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="Introduction这是一篇出自剑桥大学和苹果公司的论文。
@@ -196,8 +196,15 @@ var _hmt = _hmt || [];
 <h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p>大多数的词向量改进工作都是将焦点集中在将已知语义相近的词对的空间表示的距离拉近的方法上。</p>
 <p>现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。</p>
 <p>与本文相近的一个工作<code>Learning semantic word embeddings based on ordinal knowledge constraints</code>。</p>
-<h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程</p>
-<center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tao(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
+<h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
+<center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
+
+<center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
+
+<center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
+
+<p>然后讲三个优化目标进行线性组合</p>
+<center><br>    <span>$$C(V,V^\prime) = k_1 AR(V^\prime) + k_2 SA(V^\prime) + k_3 VSP(V,V^\prime)$$</span><!-- Has MathJax --><br></center>
 
         </div>
         <footer class="article-footer">
@@ -205,7 +212,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj2ppw1yn000a2agecvj0jsgw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj2pq6sqx00095fge82agniw3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
