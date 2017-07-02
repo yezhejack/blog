@@ -622,17 +622,17 @@ datanode自身因为会把block复制几遍，所
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/Learning.PNG)" alt="socket编程的一些问题" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/socket编程的一些问题/">0</span>
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
     
 </span>
 
@@ -648,13 +648,12 @@ datanode自身因为会把block复制几遍，所
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/19/socket编程的一些问题/">socket编程的一些问题</a>
+        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
         </h1>
     
 
         <p class="article-excerpt">
-            多个进程监听一个socket对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。
-扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一
+            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
         </p>
     </div>
 </article>
@@ -729,14 +728,14 @@ datanode自身因为会把block复制几遍，所
                             <a href="/2017/07/02/ACL 2014-2015 情感分析和词向量论文整理/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/NLP2.png)" alt="ACL 2014-2015 情感分析和词向量论文整理" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.png)" alt="ACL 2014-2015 情感分析和词向量论文整理" class="thumbnail-image"></span>
     
     
 </a>
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
                             <p class="item-title"><a href="/2017/07/02/ACL 2014-2015 情感分析和词向量论文整理/" class="title">ACL 2014-2015 情感分析和词向量论文整理</a></p>
                             <p class="item-date"><time datetime="2017-07-02T08:08:47.000Z" itemprop="datePublished">2017-07-02</time></p>
                         </div>
@@ -827,7 +826,7 @@ datanode自身因为会把block复制几遍，所
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
