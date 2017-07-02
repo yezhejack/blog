@@ -171,50 +171,6 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -248,6 +204,50 @@ var _hmt = _hmt || [];
         <p class="article-excerpt">
             多个进程监听一个socket对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。
 扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
         </p>
     </div>
 </article>
@@ -356,7 +356,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/05/27/mxnet笔记/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/NLP.PNG)" alt="mxnet笔记" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.png)" alt="mxnet笔记" class="thumbnail-image"></span>
     
     
 </a>
@@ -375,7 +375,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/NLP.PNG)" alt="Counter-fitting Word Vectors to Linguistic Constraints" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.png)" alt="Counter-fitting Word Vectors to Linguistic Constraints" class="thumbnail-image"></span>
     
     
 </a>
@@ -394,7 +394,7 @@ var _hmt = _hmt || [];
                             <a href="/2017/05/03/Decision Theory PRML/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/NLP.PNG)" alt="Decision Theory PRML" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/NLP.png)" alt="Decision Theory PRML" class="thumbnail-image"></span>
     
     
 </a>
