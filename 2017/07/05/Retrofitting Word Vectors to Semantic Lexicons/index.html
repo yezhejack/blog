@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-05T08:53:13.000Z">
+<meta property="og:updated_time" content="2017-07-05T08:54:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofitting Word Vectors to Semantic Lexicons">
 <meta name="twitter:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
@@ -189,7 +189,8 @@ var _hmt = _hmt || [];
 <li>similar to their purely distributional representation</li>
 </ol>
 <p>They show that retrofitting gives consistent improvement in performance on evaluation benchmarks with different word vectors lengths.</p>
-<h2 id="Retrofitting-with-Semantic-Lexicons"><a href="#Retrofitting-with-Semantic-Lexicons" class="headerlink" title="Retrofitting with Semantic Lexicons"></a>Retrofitting with Semantic Lexicons</h2><center><br>{$ math $}<br>\phi(Q)=\sum_{i=1}^{n}[\alpha_i||q_i-\hat{q<em>i}||^2 + \sum</em>{(i,j)\in E} \beta_{ij} ||q_i-q_j||^2]<br>{$ endmath $}<br></center>
+<h2 id="Retrofitting-with-Semantic-Lexicons"><a href="#Retrofitting-with-Semantic-Lexicons" class="headerlink" title="Retrofitting with Semantic Lexicons"></a>Retrofitting with Semantic Lexicons</h2><p>$\hat{Q}$ is the original word vectors and the $Q$ is the objective word vectors.</p>
+<center><br>{$ math $}<br>\phi(Q)=\sum_{i=1}^{n}[\alpha_i||q_i-\hat{q<em>i}||^2 + \sum</em>{(i,j)\in E} \beta_{ij} ||q_i-q_j||^2]<br>{$ endmath $}<br></center>
 
         </div>
         <footer class="article-footer">
@@ -197,7 +198,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4qrn6xn002db4gemcowxcw6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4qroiil002fc3ge326jtc9b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
