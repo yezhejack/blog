@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/My-Projects/">My Projects</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Papers/">Papers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tensorflow/">Tensorflow</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/leetcode/">leetcode</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/My-Projects/">My Projects</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Papers/">Papers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tensorflow/">Tensorflow</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -421,6 +421,54 @@ The neural word embedding approach的优势相比于LSA方法，neural word embe
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Learning/">Learning</a>
+            </p>
+            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2016/05/19/socket编程的一些问题/" class="thumbnail">
     
     
@@ -454,54 +502,6 @@ The neural word embedding approach的优势相比于LSA方法，neural word embe
         <p class="article-excerpt">
             多个进程监听一个socket对于监听一个socket来说，多个进程同时在accept处阻塞，当有一个连接进入，多个进程同时被唤醒，但之间只有一个进程能成功accept，而不会同时有多个进程能拿到该连接对象，操作系统保证了进程操作这个连接的安全性。
 扩展：上述过程，多个进程同时被唤醒，去抢占accept到的资源，这个现象叫“惊群”，而根据网上资料，Linux 内核2.6以下，accept响应时只有一
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/05/19/spawn-fcgi源码阅读/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="spawn-fcgi源码阅读" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/19/spawn-fcgi源码阅读/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Learning/">Learning</a>
-            </p>
-            <p class="date"><time datetime="2016-05-18T23:33:00.000Z" itemprop="datePublished">2016-05-19</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/19/spawn-fcgi源码阅读/">spawn-fcgi源码阅读</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            spawn-fcgi源码阅读收获可以解除到socket编程，在unix系统下的一些特性，比如一切皆文件。连socket也是一个文件描述符，这也是为什么在提升服务器并发性的时候需要增加文件描述符的数量，因为有些系统的文件描述符的上限只有1024个，大大限制了可以接收的请求数量。而且其实我的本意是要看一下并发模型的，结果发现这个spawn-fcgi根本没有实现任何的并发代码，感觉只是用了内核自带的并发
         </p>
     </div>
 </article>
@@ -566,6 +566,51 @@ virtualenv它提供了分离运行环境的功能。
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/10/Minimal Height Tree/">0</span>
+    
+</span>
+
+    
+</a>
+        
+        <div class="article-meta">
+            <p class="category">
+            <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
+            </p>
+            <p class="date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2016/05/10/Minimal Height Tree/">Minimal Height Tree</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Minimal Height Tree尝试了用暴力解法，无奈超时了，于是用了比较巧妙的解法。题目中提示答案的顶点数是有范围的，可以通过不断地删除度为1的点，调整每个节点的度，来求最后的答案。
+
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2016/05/10/正则表达式/" class="thumbnail">
     
     
@@ -605,51 +650,6 @@ virtualenv它提供了分离运行环境的功能。
 简介略过。讲讲我的心路历程吧
 正则表达式这个我真的是拖了很久才开始接触的东西，现在终于避不过去了，现在有个要探测字符串中是否含有QQ表情和emoji表情的任务。目标语言是python
 简单模式2.1 匹配字符必须要掌握的是元符号metacharacter。这里有一个完
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2016/05/10/Minimal Height Tree/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/Learning.PNG)" alt="Minimal Height Tree" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-url="http://yezhejack.github.io/2016/05/10/Minimal Height Tree/">0</span>
-    
-</span>
-
-    
-</a>
-        
-        <div class="article-meta">
-            <p class="category">
-            <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
-            </p>
-            <p class="date"><time datetime="2016-05-10T07:51:00.000Z" itemprop="datePublished">2016-05-10</time></p>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2016/05/10/Minimal Height Tree/">Minimal Height Tree</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Minimal Height Tree尝试了用暴力解法，无奈超时了，于是用了比较巧妙的解法。题目中提示答案的顶点数是有范围的，可以通过不断地删除度为1的点，调整每个节点的度，来求最后的答案。
-
         </p>
     </div>
 </article>
@@ -823,7 +823,7 @@ virtualenv它提供了分离运行环境的功能。
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
