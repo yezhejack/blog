@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-05T12:31:57.000Z">
+<meta property="og:updated_time" content="2017-07-05T12:49:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofitting Word Vectors to Semantic Lexicons">
 <meta name="twitter:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
@@ -204,15 +204,17 @@ var _hmt = _hmt || [];
 <h3 id="Syntactic-Relations-SYN-REL"><a href="#Syntactic-Relations-SYN-REL" class="headerlink" title="Syntactic Relations (SYN-REL)"></a>Syntactic Relations (SYN-REL)</h3><p>The task is to find a word $d$ that best fits the following relationship: “$a$ is to $b$ as $c$ is to $d$”, given $a$, $b$, and $c$. </p>
 <h3 id="Synonym-Selection-TOEFL"><a href="#Synonym-Selection-TOEFL" class="headerlink" title="Synonym Selection (TOEFL)"></a>Synonym Selection (TOEFL)</h3><h3 id="Sentiment-Analysis-SA"><a href="#Sentiment-Analysis-SA" class="headerlink" title="Sentiment Analysis (SA)"></a>Sentiment Analysis (SA)</h3><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>using retrofitting method, PPDB is best</p>
 <p>compared <code>LBL</code>, <code>LBL+lazy</code>, <code>LBL+periodic</code> and <code>LBL+retrofitting</code>, <code>LBL+lazy</code> and <code>LBL+periodic</code> are incorporating lexicon prior during training. </p>
-<p><code>lazy</code>方法指的是一次性算出k个词的log-likelihood和log-prior的梯度的和。<br><code>LBL</code>的目标公式和<code>word2vec</code>的差别在于后者使用了<code>softmax</code>。</p>
-
+<p><code>lazy</code>方法指的是一次性算出k个词的log-likelihood和log-prior的梯度的和。</p>
+<p><code>periodic</code>的方法则是每隔一段时间，利用公式1来更新所有的词向量</p>
+<p><code>LBL</code>的目标公式和<code>word2vec</code>的差别在于后者使用了<code>softmax</code>。</p>
+<h2 id="analysis"><a href="#analysis" class="headerlink" title="analysis"></a>analysis</h2>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4qzgj7g002bwzgevcs2uabe" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4r037ta002g2lge39ed9j4l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
