@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-05T10:07:36.000Z">
+<meta property="og:updated_time" content="2017-07-05T12:31:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Retrofitting Word Vectors to Semantic Lexicons">
 <meta name="twitter:description" content="IntroductionThis paper proposes a method for refining vector space representations using relational information from semantic lexicons by encouraging linked words to have similar vector representation">
@@ -189,8 +189,22 @@ var _hmt = _hmt || [];
 <li>similar to their purely distributional representation</li>
 </ol>
 <p>They show that retrofitting gives consistent improvement in performance on evaluation benchmarks with different word vectors lengths.</p>
-<h2 id="Retrofitting-with-Semantic-Lexicons"><a href="#Retrofitting-with-Semantic-Lexicons" class="headerlink" title="Retrofitting with Semantic Lexicons"></a>Retrofitting with Semantic Lexicons</h2><span>$\hat{Q}$</span><!-- Has MathJax --> is the original word vectors. The object is to learn the matrix <span>$Q=(q_1,...,q_n)$</span><!-- Has MathJax --> such that the columns are both close (under a distance metric) to their counterparts in <span>$\hat{Q}$</span><!-- Has MathJax --> and to adjacent vertices in $\omega$.<br><center><br><span>$\phi(Q)=\sum_{i=1}^{n}[\alpha_i||q_i-\hat{q_i}||^2 + \sum_{(i,j)\in E} \beta_{ij} ||q_i-q_j||^2]$</span><!-- Has MathJax -->
-<p></p></center><p></p>
+<h2 id="Retrofitting-with-Semantic-Lexicons"><a href="#Retrofitting-with-Semantic-Lexicons" class="headerlink" title="Retrofitting with Semantic Lexicons"></a>Retrofitting with Semantic Lexicons</h2><span>$\hat{Q}$</span><!-- Has MathJax --> is the original word vectors. The object is to learn the matrix <span>$Q=(q_1,...,q_n)$</span><!-- Has MathJax --> such that the columns are both close (under a distance metric) to their counterparts in <span>$\hat{Q}$</span><!-- Has MathJax --> and to adjacent vertices in $\omega$.<br><center><br><span>$\Psi(Q)=\sum_{i=1}^{n}[\alpha_i||q_i-\hat{q_i}||^2 + \sum_{(i,j)\in E} \beta_{ij} ||q_i-q_j||^2]$</span><!-- Has MathJax -->
+<p></p></center><br>Take the first derivative of $\Psi$ with respect to one $q_i$ vector, and by equating it to zero arrive at the following online update:<p></p>
+<center><br><span>$q_i=\frac{\sum_{j:(i,j) \in E} \beta_{ij}q_j+\alpha_i \hat{q_i}}{\sum_{j:(i,j) \in E} \beta_{ij}+\alpha_i}$</span><!-- Has MathJax --><br></center>
+
+<h3 id="Semantic-Lexicons-during-Learning"><a href="#Semantic-Lexicons-during-Learning" class="headerlink" title="Semantic Lexicons during Learning"></a>Semantic Lexicons during Learning</h3><p>The approach is applied as a second stage of learning. In the prior approach, semantic lexicons play the role of a prior on $Q$ which is defined as follows:</p>
+<center><br><span>$p(Q) \propto exp(-\gamma \sum_{i=1}^n \sum_{j:(i,j)\in E} \beta_{ij}||q_i-q_j||^2)$</span><!-- Has MathJax --><br></center>
+
+<h2 id="Evaluation-Benchmarks"><a href="#Evaluation-Benchmarks" class="headerlink" title="Evaluation Benchmarks"></a>Evaluation Benchmarks</h2><h3 id="Word-Similarity"><a href="#Word-Similarity" class="headerlink" title="Word Similarity"></a>Word Similarity</h3><ul>
+<li>WS-353</li>
+<li>RG-65</li>
+<li>MEN<br>They calculate cosine similarity between the vectors of two words forming a test item, and report <code>Spearman&#39;s rank correlation coefficient</code> between the rankings produced by our model against the human rankings</li>
+</ul>
+<h3 id="Syntactic-Relations-SYN-REL"><a href="#Syntactic-Relations-SYN-REL" class="headerlink" title="Syntactic Relations (SYN-REL)"></a>Syntactic Relations (SYN-REL)</h3><p>The task is to find a word $d$ that best fits the following relationship: “$a$ is to $b$ as $c$ is to $d$”, given $a$, $b$, and $c$. </p>
+<h3 id="Synonym-Selection-TOEFL"><a href="#Synonym-Selection-TOEFL" class="headerlink" title="Synonym Selection (TOEFL)"></a>Synonym Selection (TOEFL)</h3><h3 id="Sentiment-Analysis-SA"><a href="#Sentiment-Analysis-SA" class="headerlink" title="Sentiment Analysis (SA)"></a>Sentiment Analysis (SA)</h3><h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>using retrofitting method, PPDB is best</p>
+<p>compared <code>LBL</code>, <code>LBL+lazy</code>, <code>LBL+periodic</code> and <code>LBL+retrofitting</code>, <code>LBL+lazy</code> and <code>LBL+periodic</code> are incorporating lexicon prior during training. </p>
+<p><code>lazy</code>方法指的是一次性算出k个词的log-likelihood和log-prior的梯度的和。<br><code>LBL</code>的目标公式和<code>word2vec</code>的差别在于后者使用了<code>softmax</code>。</p>
 
         </div>
         <footer class="article-footer">
@@ -198,7 +212,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4qu9yke002dpzgelp59ax85" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/05/Retrofitting Word Vectors to Semantic Lexicons/" data-id="cj4qzgj7g002bwzgevcs2uabe" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
