@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T05:52:17.000Z">
+<meta property="og:updated_time" content="2017-07-06T05:53:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -181,7 +181,7 @@ var _hmt = _hmt || [];
         
         <div class="article-subtitle">
             <a href="/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" class="article-date">
-    <time datetime="2017-05-15T05:20:00.000Z" itemprop="datePublished">2017-05-15</time>
+    <time datetime="2017-05-15T05:21:20.000Z" itemprop="datePublished">2017-05-15</time>
 </a>
             
     <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper/">Paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Word-Vector/">Word Vector</a></li></ul>
@@ -210,11 +210,11 @@ var _hmt = _hmt || [];
 <h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p>the original word vectors: $V=(\mathbf{v}_1,\mathbf{v}_2,…,\mathbf{v}_N)$</p>
 <p>new word vectors: $V\prime=(\mathbf{v}\prime_1,\mathbf{v}\prime_2,…,\mathbf{v}\prime_N)$</p>
 <p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
-<center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
+<h3 id="Antonym-Repel-AR"><a href="#Antonym-Repel-AR" class="headerlink" title="Antonym Repel (AR)"></a>Antonym Repel (AR)</h3><center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
 
-<center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
+<h3 id="Synonym-Attract-SA"><a href="#Synonym-Attract-SA" class="headerlink" title="Synonym Attract (SA)"></a>Synonym Attract (SA)</h3><center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
 
-<center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
+<h3 id="Vector-Space-Preservation-VSP"><a href="#Vector-Space-Preservation-VSP" class="headerlink" title="Vector Space Preservation (VSP)"></a>Vector Space Preservation (VSP)</h3><center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
 
 <p>然后讲三个优化目标进行线性组合</p>
 <center><br>    <span>$$C(V,V^\prime) = k_1 AR(V^\prime) + k_2 SA(V^\prime) + k_3 VSP(V,V^\prime)$$</span><!-- Has MathJax --><br></center>
@@ -232,7 +232,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0mb7q000aisge560rzfbc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0objb000ajnge53c9p6a9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -472,7 +472,7 @@ var _hmt = _hmt || [];
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
                             <p class="item-title"><a href="/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" class="title">Counter-fitting Word Vectors to Linguistic Constraints</a></p>
-                            <p class="item-date"><time datetime="2017-05-15T05:20:00.000Z" itemprop="datePublished">2017-05-15</time></p>
+                            <p class="item-date"><time datetime="2017-05-15T05:21:20.000Z" itemprop="datePublished">2017-05-15</time></p>
                         </div>
                     </li>
                 
