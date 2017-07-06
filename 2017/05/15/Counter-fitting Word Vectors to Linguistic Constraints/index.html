@@ -8,29 +8,26 @@
     
         <meta name="keywords" content="Paper,Word Vector" />
     
-    <meta name="description" content="Introduction这是一篇出自剑桥大学和苹果公司的论文。
-传统的词向量，例如Glove会有两个缺点，需要注入一些额外的知识特征来解决。
-Related Work大多数的词向量改进工作都是将焦点集中在将已知语义相近的词对的空间表示的距离拉近的方法上。
-现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。
-与本文相近的一个工作Learning s">
+    <meta name="description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
+aimimprove the vectors’ capability for judging semantic similarity
+result
+lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta property="og:url" content="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="Introduction这是一篇出自剑桥大学和苹果公司的论文。
-传统的词向量，例如Glove会有两个缺点，需要注入一些额外的知识特征来解决。
-Related Work大多数的词向量改进工作都是将焦点集中在将已知语义相近的词对的空间表示的距离拉近的方法上。
-现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。
-与本文相近的一个工作Learning s">
+<meta property="og:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
+aimimprove the vectors’ capability for judging semantic similarity
+result
+lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-05T06:46:51.000Z">
+<meta property="og:updated_time" content="2017-07-06T05:49:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
-<meta name="twitter:description" content="Introduction这是一篇出自剑桥大学和苹果公司的论文。
-传统的词向量，例如Glove会有两个缺点，需要注入一些额外的知识特征来解决。
-Related Work大多数的词向量改进工作都是将焦点集中在将已知语义相近的词对的空间表示的距离拉近的方法上。
-现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。
-与本文相近的一个工作Learning s">
+<meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
+aimimprove the vectors’ capability for judging semantic similarity
+result
+lead to a new state of the art performance on the SimLex-999 da">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.png">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -191,11 +188,25 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这是一篇出自剑桥大学和苹果公司的论文。</p>
+            <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><p><code>antonymy</code>:反义关系<br><code>synonymy</code>:同义关系<br><code>DST</code>:dialogue state tracking task</p>
+<h2 id="aim"><a href="#aim" class="headerlink" title="aim"></a>aim</h2><p>improve the vectors’ capability for judging semantic similarity</p>
+<h2 id="result"><a href="#result" class="headerlink" title="result"></a>result</h2><ul>
+<li>lead to a new state of the art performance on the <code>SimLex-999</code> dataset</li>
+<li>result in robust improvements across different dialogue domains</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这是一篇出自剑桥大学和苹果公司的论文。</p>
 <p>传统的词向量，例如<code>Glove</code>会有两个缺点，需要注入一些额外的知识特征来解决。</p>
-<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p>大多数的词向量改进工作都是将焦点集中在将已知语义相近的词对的空间表示的距离拉近的方法上。</p>
-<p>现在出现了一些使用轻量化的“后处理”过程来修改现成的词向量，而不是用大量的语料库来训练或重训练词向量。</p>
-<p>与本文相近的一个工作<code>Learning semantic word embeddings based on ordinal knowledge constraints</code>。</p>
+<p>Drawbacks of learning word embeddings from co-occurrence information in corpora:</p>
+<ul>
+<li>coalesce the notions of <code>semantic similarity</code> and <code>conceptual association</code></li>
+<li>similarity and antonymy can be application- or domain-specific</li>
+</ul>
+<p>A method that addresse these two drawbacks by using synonymy and antonymy relations drawn from either a general lexical resource or an application-specific ontology to fine-tune distributional word vectors.</p>
+<p>It’s a lightweight post-processing procedure in the spirit of <code>retrofitting</code>.</p>
+<h2 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h2><p>Most work on improving word vector representation using lexical resources has focused on bringing words which are known to be semantically related closer together in the vector space.</p>
+<p>Some methods modify the prior or the regularization of the original training procedure.</p>
+<p>Those word vectors which achieve the current state-of-the-art performance on the <code>SimLex-999</code> are used as input for counter-fitting in the experiment of this paper.</p>
+<p>The modelling work closest to this one is Qun Liu’s<code>Learning semantic word embeddings based on ordinal knowledge constraints</code>。He use antonymy and WordNet hierarchy information to modify the heavyweight Word2Vec training objective</p>
 <h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
 <center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
 
@@ -219,7 +230,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4r07kkv000a3zge3c3gwx6i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0ig2g0005h6gemkhlcg3y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
