@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T06:09:56.000Z">
+<meta property="og:updated_time" content="2017-07-06T06:49:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -217,18 +217,21 @@ var _hmt = _hmt || [];
 <p>The $\delta$ is the “ideal” minimum distance between antonymous words. In this paper $\delta=1$. The $d(v_i,v_j) \in [0,2]$. So when $d(v_i,v_j) \in [0,1]$ there is a cost. When $d(v_i,v_j) \in [1,2]$ the cost is zero because they are far enough. </p>
 <h3 id="Synonym-Attract-SA"><a href="#Synonym-Attract-SA" class="headerlink" title="Synonym Attract (SA)"></a>Synonym Attract (SA)</h3><center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
 
-<p>This is similar to the AR. Just set the ideal distance $\gamma=0$. But I think it’s too strange. Because $d(\mathbf{v}_u^\prime,\mathbf{v}_w^\prime)-\gamma)\geq0$. </p>
+<p>This is similar to the AR. Just set the ideal distance $\gamma=0$. But I think it’s too strange. Because $d(\mathbf{v}_u^\prime,\mathbf{v}_w^\prime)-\gamma)\geq0$. Maybe $\gamma=1$ is reasonable. </p>
 <h3 id="Vector-Space-Preservation-VSP"><a href="#Vector-Space-Preservation-VSP" class="headerlink" title="Vector Space Preservation (VSP)"></a>Vector Space Preservation (VSP)</h3><center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
 
+<p>This formula is also strange. This means if we pull the two word closer, the cost will not increase. </p>
 <p>然后讲三个优化目标进行线性组合</p>
 <center><br>    <span>$$C(V,V^\prime) = k_1 AR(V^\prime) + k_2 SA(V^\prime) + k_3 VSP(V,V^\prime)$$</span><!-- Has MathJax --><br></center>
 
-<p>但是不知道这个是用什么模型来学习的？？？</p>
-<h3 id="词表"><a href="#词表" class="headerlink" title="词表"></a>词表</h3><p>用了两个词库 </p>
+<h3 id="Injecting-Dialogue-Domain-Ontologies-into-Vector-Space-Representations"><a href="#Injecting-Dialogue-Domain-Ontologies-into-Vector-Space-Representations" class="headerlink" title="Injecting Dialogue Domain Ontologies into Vector Space Representations"></a>Injecting Dialogue Domain Ontologies into Vector Space Representations</h3><p>They use RNN framework directly on the n-gram features extracted from the automated speech recognition hypotheses. A </p>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Word-Vectors-and-Semantic-Lexicons"><a href="#Word-Vectors-and-Semantic-Lexicons" class="headerlink" title="Word Vectors and Semantic Lexicons"></a>Word Vectors and Semantic Lexicons</h3><p>Glove and Paragram-SL999 are publicly availiable. </p>
+<p>用了两个词库的约束</p>
 <ul>
 <li><code>PPDB 2.0</code> 只使用其中的<code>Equivalence</code>关系和<code>Exclusion</code>关系，并且只用了<code>single-token</code>的项</li>
 <li><code>WordNet</code>没有使用其中的同义词</li>
 </ul>
+<p>most frequent words: <a href="http://invokeit.wordpress.com/frequency-word-lists/" target="_blank" rel="external">frequent word list</a></p>
 
         </div>
         <footer class="article-footer">
@@ -236,7 +239,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s190df000gq3gegcqvhpm2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s2o0hb000a33geem19bfwf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
