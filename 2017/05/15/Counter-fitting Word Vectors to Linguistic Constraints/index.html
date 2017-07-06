@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T06:49:30.000Z">
+<meta property="og:updated_time" content="2017-07-06T07:19:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -232,6 +232,17 @@ var _hmt = _hmt || [];
 <li><code>WordNet</code>没有使用其中的同义词</li>
 </ul>
 <p>most frequent words: <a href="http://invokeit.wordpress.com/frequency-word-lists/" target="_blank" rel="external">frequent word list</a></p>
+<h3 id="Improving-Lexical-Similarity-Predictions"><a href="#Improving-Lexical-Similarity-Predictions" class="headerlink" title="Improving Lexical Similarity Predictions"></a>Improving Lexical Similarity Predictions</h3><p>Use <code>Spearman&#39;s rank correlation coefficient</code> with the <code>SimLex-999</code> dataset, which contains word pairs ranked by a large number of annotators instructed to consider only semantic similarity.</p>
+<p><code>Retrofitting</code> pre-trained word vectors improves GloVe vectors, but not the already semantically specialised <code>Paragram-SL999</code>. <code>Counter-fitting</code> substantially improves both sets of vectors, showing that injecting antonymy relations goes a long way towards improving word vectors for the purpose of making semantic similarity judegements. </p>
+<p>Table 3 shows the effect of injecting different categories of linguistic constraints. There are three kinds of linguistics:</p>
+<ol>
+<li>PPDB- (PPDB antonyms)</li>
+<li>PPDB+ (PPDB synonyms)</li>
+<li>WordNet- (WordNet antonyms)</li>
+</ol>
+<p>GloVe vectors benefit from all three sets of constraints. Paragram vectors which already exposed to PPDB, only improves with the injection of WordNet antonyms. </p>
+<p>Table 4 shows counter-fitting correct 8 pairs in <code>SimLex-999</code>. Five of the eight pairs do not appear in the sets of linguistics constraints. This shows that secondary (i.e. indirect) interactions through the three terms of the cost function do contribute to the semantic context of the transformed vector space. </p>
+<h3 id="Improving-Dialogue-State-Tracking"><a href="#Improving-Dialogue-State-Tracking" class="headerlink" title="Improving Dialogue State Tracking"></a>Improving Dialogue State Tracking</h3><p>In this section, starting from Paragram vectors did not lead to superior performance, which shows that injecting the application-specific ontology is at least as important as the quality of the initial word vectors. </p>
 
         </div>
         <footer class="article-footer">
@@ -239,7 +250,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s2o0hb000a33geem19bfwf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s3quqj0006cjgejklme8h0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
