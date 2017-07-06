@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T05:57:08.000Z">
+<meta property="og:updated_time" content="2017-07-06T06:01:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -212,6 +212,8 @@ var _hmt = _hmt || [];
 <p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
 <h3 id="Antonym-Repel-AR"><a href="#Antonym-Repel-AR" class="headerlink" title="Antonym Repel (AR)"></a>Antonym Repel (AR)</h3><center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
 
+<p>$d(v_i,v_j)=1-cos(v_i,v_j)$ is a distance derived from cosine similarity</p>
+<p>$\tau(x) \triangleq max(0,x)$</p>
 <h3 id="Synonym-Attract-SA"><a href="#Synonym-Attract-SA" class="headerlink" title="Synonym Attract (SA)"></a>Synonym Attract (SA)</h3><center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
 
 <h3 id="Vector-Space-Preservation-VSP"><a href="#Vector-Space-Preservation-VSP" class="headerlink" title="Vector Space Preservation (VSP)"></a>Vector Space Preservation (VSP)</h3><center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
@@ -232,7 +234,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0slnx000al1gehvh33th5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0yn9s0009n2gewxmhe1wo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
