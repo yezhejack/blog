@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T05:49:09.000Z">
+<meta property="og:updated_time" content="2017-07-06T05:52:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -207,7 +207,9 @@ var _hmt = _hmt || [];
 <p>Some methods modify the prior or the regularization of the original training procedure.</p>
 <p>Those word vectors which achieve the current state-of-the-art performance on the <code>SimLex-999</code> are used as input for counter-fitting in the experiment of this paper.</p>
 <p>The modelling work closest to this one is Qun Liu’s<code>Learning semantic word embeddings based on ordinal knowledge constraints</code>。He use antonymy and WordNet hierarchy information to modify the heavyweight Word2Vec training objective</p>
-<h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
+<h2 id="Counter-fitting-Word-Vectors-to-Linguistic-Constraints"><a href="#Counter-fitting-Word-Vectors-to-Linguistic-Constraints" class="headerlink" title="Counter-fitting Word Vectors to Linguistic Constraints"></a>Counter-fitting Word Vectors to Linguistic Constraints</h2><p>the original word vectors: $V=(\mathbf{v}_1,\mathbf{v}_2,…,\mathbf{v}_N)$</p>
+<p>new word vectors: $V\prime=(\mathbf{v}\prime_1,\mathbf{v}\prime_2,…,\mathbf{v}\prime_N)$</p>
+<p><code>A</code>和<code>S</code>是两个带有限制的集合，有多个对组成<code>(i,j)</code>。然后可以有三个约束方程。前两个是让同义词更近，让反义词更远。<br>第三个则是让原有空间的分布式信息尽可能地保留下来。</p>
 <center><br>    <span>$$AR(V^\prime) = \sum_{(u,w) \in A} \tau(\delta-d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w})))$$</span><!-- Has MathJax --><br></center> 
 
 <center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
@@ -230,7 +232,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0ig2g0005h6gemkhlcg3y" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s0mb7q000aisge560rzfbc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
