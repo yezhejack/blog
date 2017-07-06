@@ -21,7 +21,7 @@ aimimprove the vectors’ capability for judging semantic similarity
 result
 lead to a new state of the art performance on the SimLex-999 da">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-06T06:05:22.000Z">
+<meta property="og:updated_time" content="2017-07-06T06:09:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Counter-fitting Word Vectors to Linguistic Constraints">
 <meta name="twitter:description" content="名词解释antonymy:反义关系synonymy:同义关系DST:dialogue state tracking task
@@ -217,6 +217,7 @@ var _hmt = _hmt || [];
 <p>The $\delta$ is the “ideal” minimum distance between antonymous words. In this paper $\delta=1$. The $d(v_i,v_j) \in [0,2]$. So when $d(v_i,v_j) \in [0,1]$ there is a cost. When $d(v_i,v_j) \in [1,2]$ the cost is zero because they are far enough. </p>
 <h3 id="Synonym-Attract-SA"><a href="#Synonym-Attract-SA" class="headerlink" title="Synonym Attract (SA)"></a>Synonym Attract (SA)</h3><center><br>    <span>$$SA(V^\prime) = \sum_{(u,w) \in A} \tau(d(\mathbf(v^{\prime}_{\mu},v^{\prime}_{w}))-\gamma)$$</span><!-- Has MathJax --><br></center> 
 
+<p>This is similar to the AR. Just set the ideal distance $\gamma=0$. But I think it’s too strange. Because $d(\mathbf{v}_u^\prime,\mathbf{v}_w^\prime)-\gamma)\geq0$. </p>
 <h3 id="Vector-Space-Preservation-VSP"><a href="#Vector-Space-Preservation-VSP" class="headerlink" title="Vector Space Preservation (VSP)"></a>Vector Space Preservation (VSP)</h3><center><br>    <span>$$VSP(V,V^\prime) = \sum_{i=1}^{N} \sum_{j in N(i)} \tau (d(\mathbf{v}_i^\prime, \mathbf{v}_j^\prime) - d(\mathbf{v}_i, \mathbf{v}_j))$$</span><!-- Has MathJax --><br></center> 
 
 <p>然后讲三个优化目标进行线性组合</p>
@@ -235,7 +236,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s13hd6000aokgewnxwijr8" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/05/15/Counter-fitting Word Vectors to Linguistic Constraints/" data-id="cj4s190df000gq3gegcqvhpm2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
