@@ -19,7 +19,7 @@ They propose models to:">
 AbstractThe paraphrase Database (PPDB) consists of a list of phrase pairs with heuristic confidence estimates. Its coverage is also necessarily incomplete. 
 They propose models to:">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-09T08:59:30.000Z">
+<meta property="og:updated_time" content="2017-07-09T16:52:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From Paraphrase Database to Compositional Paraphrase Model and Back">
 <meta name="twitter:description" content="wordscongruent:全等
@@ -236,13 +236,19 @@ var _hmt = _hmt || [];
 \lambda_W(||W||^2+||b||^2)+\lambda_{W_w}||W_{w_{initial}}-W_w||^2$$</span><!-- Has MathJax --><br></center><br>where $\delta$ is the <code>margin</code> (set to 1 in all of the experiments), and $t_1$ and $t_2$ are carefully-selected <code>negative examples</code> taken from a mini-batch during optimization.<br><br>The intuition for this objective is that we want the two phrases to be more similar to each other ($g(x_1)\cdot g(x_2)$) than either is to their respective negative examples $t_1$ and $t_2$, by a margin of at least $\delta$.<br><br>### Selecting Negative Examples ###<br>To select $t_1$ and $t_2$, the most similar phrase in the mini-batch is chosen.<br><center><br><span>$t_1 = argmax_{t:&lt;t,\cdot&gt; \in X_b \ \{&lt;x_1,x_2&gt;\}} g(x_1) \cdot g(t)$</span><!-- Has MathJax --><br></center><br>where $X_b \subseteq X$ is the current mini-batch.<br><br>### Training Word Paraphrase Models ###<br>To train just word vectors on word paraphrase pairs:<br><center><br><span>$$min_{W_w}=\frac{1}{|X|}(\sum_{&lt;x_1,x_2&gt;\in X} max(0,\delta-W_w^{(x_1)} \cdot W_w^{(x_2)} + W_w^{(x_1)} \cdot W_w^{(t_1)}) \\
 + max(0,\delta-W_w^{(x_1)} \cdot W_w^{(x_2)} + W_w^{(x_2)} \cdot W_w^{(t_2)})+ \\
 \lambda_{W_w}||W_{w_{initial}}-W_w||^2$$</span><!-- Has MathJax --><br></center>
+
+<h2 id="Experiments-Word-Paraphrasing"><a href="#Experiments-Word-Paraphrasing" class="headerlink" title="Experiments-Word Paraphrasing"></a>Experiments-Word Paraphrasing</h2><h3 id="Training-Procedure"><a href="#Training-Procedure" class="headerlink" title="Training Procedure"></a>Training Procedure</h3><p>They did a coarse grid search over a parameter space for $\lambda_{W_w}$ and the mini-batch size. They trained for 20 epoches for each set of hyperparameters using AdaGrad. </p>
+<h3 id="Tunning-and-Evaluation"><a href="#Tunning-and-Evaluation" class="headerlink" title="Tunning and Evaluation"></a>Tunning and Evaluation</h3><p>Maximum $2\times$ WS-S correlation minus the WS-R correlation. The idea was to reward vectors with high similarity and relatively low relatedness, in order to target the paraphrase relationship. They choose SL999 as their primary test set as it most closely evaluates the paraphrase relationship. Note for all experiments they used cosine similarity as their similarity metric and evaluated the statistical significance of dependent correlations using the one-tailed method of (Steiger, 1980).</p>
+<p>这里有一个问题，WS-S数据集作为一个用于调试的数据，是否保证和SL999没有交集。</p>
+<h2 id="Experiments-Compositional-Paraphrasing"><a href="#Experiments-Compositional-Paraphrasing" class="headerlink" title="Experiments-Compositional Paraphrasing"></a>Experiments-Compositional Paraphrasing</h2><p>Using a support vector regression model (epsilon-SVR) on the 33 features that are included for each phrase pair in PPDB. The parameters are tuned using 5-fold cross validation on our dev set. Then, the model was trained on the entire dev set after finding the best performing $C$ and $\epsilon$ combionation and evaluated on the test set of Annotated-PPDB.</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4whmn5m0010qvgeabro3a69" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4wyk0dp00116ugef0ylw6iz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
