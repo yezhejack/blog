@@ -19,7 +19,7 @@ They propose models to:">
 AbstractThe paraphrase Database (PPDB) consists of a list of phrase pairs with heuristic confidence estimates. Its coverage is also necessarily incomplete. 
 They propose models to:">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-09T08:28:21.000Z">
+<meta property="og:updated_time" content="2017-07-09T08:30:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From Paraphrase Database to Compositional Paraphrase Model and Back">
 <meta name="twitter:description" content="wordscongruent:全等
@@ -231,7 +231,9 @@ var _hmt = _hmt || [];
 <center><br><span>$g(p)=W_w^{(p)}$</span><!-- Has MathJax --><br></center>
 
 <p>The objective function follows:</p>
-<center><br><span>$min_{W,b,W_w}=\frac{1}{|X|}(\sum_{&lt;x_1,x_2&gt;\inX} max(0,\delta-g(x_1) \cdot g(x_2) + g(x_1) \cdot g(t_1)) + max(0,\delta-g(x_1) \cdot g(x_2) + g(x_2) \cdot g(t_2)))+\lambda_W(||W||^2+||b||^2)+\lambda_{W_w}||W_{w_{initial}}-W_w||^2$</span><!-- Has MathJax --><br></center>
+<center><br><span>$$min_{W,b,W_w}=\frac{1}{|X|}(\sum_{&lt;x_1,x_2&gt;\in X} max(0,\delta-g(x_1) \cdot g(x_2) + g(x_1) \cdot g(t_1)) \\
++ max(0,\delta-g(x_1) \cdot g(x_2) + g(x_2) \cdot g(t_2)))+ \\
+\lambda_W(||W||^2+||b||^2)+\lambda_{W_w}||W_{w_{initial}}-W_w||^2$$</span><!-- Has MathJax --><br></center>
 
         </div>
         <footer class="article-footer">
@@ -239,7 +241,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4wgil3u0011g2gelrizk8nv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4wgl0r10010h7ge628l1ecx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
