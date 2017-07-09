@@ -19,7 +19,7 @@ They propose models to:">
 AbstractThe paraphrase Database (PPDB) consists of a list of phrase pairs with heuristic confidence estimates. Its coverage is also necessarily incomplete. 
 They propose models to:">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-09T08:22:52.000Z">
+<meta property="og:updated_time" content="2017-07-09T08:28:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="From Paraphrase Database to Compositional Paraphrase Model and Back">
 <meta name="twitter:description" content="wordscongruent:全等
@@ -225,14 +225,21 @@ var _hmt = _hmt || [];
 <h3 id="ML-Paraphrase"><a href="#ML-Paraphrase" class="headerlink" title="ML-Paraphrase"></a>ML-Paraphrase</h3><p>The second newly-annotated dataset is based on the bigram similarity task. They found that the annotations were not consisten with the notion of similarity central to paraphrase tasks. For instance, <code>television set</code> and <code>television programme</code> were the highest rated phrases in the NN section. <code>older man</code> and <code>elderly woman</code> also is one of the highest ranked JN pairs. </p>
 <h2 id="Paraphrase-Models"><a href="#Paraphrase-Models" class="headerlink" title="Paraphrase Models"></a>Paraphrase Models</h2><p>The goal is to embed phrases into a low-dimensional space such that cosine similarity in the space corresponds to the strength of the paraphrase relationship between phrases. Recursive neural network was usde. </p>
 <p>For phrase $p$, they compute its vector $g(p)$ through recursive computation on the parse. If $p$ is parent node and $c_1$ and $c_2$ are its child nodes:</p>
-<center><br><span>$g(p)=f(W[g(c_1);g(c_2)]+b)$</span><!-- Has MathJax --><br></center><br>If $p$ does not have child nodes:<br><center><br><span>$g(p)=W_w^{(p)}$</span><!-- Has MathJax --><br></center>
+<center><br><span>$g(p)=f(W[g(c_1);g(c_2)]+b)$</span><!-- Has MathJax --><br></center>
+
+<p>The $W$ is not word embeddings. It’s weight matrix.<br>If $p$ does not have child nodes:</p>
+<center><br><span>$g(p)=W_w^{(p)}$</span><!-- Has MathJax --><br></center>
+
+<p>The objective function follows:</p>
+<center><br><span>$min_{W,b,W_w}=\frac{1}{|X|}(\sum_{&lt;x_1,x_2&gt;\inX} max(0,\delta-g(x_1) \cdot g(x_2) + g(x_1) \cdot g(t_1)) + max(0,\delta-g(x_1) \cdot g(x_2) + g(x_2) \cdot g(t_2)))+\lambda_W(||W||^2+||b||^2)+\lambda_{W_w}||W_{w_{initial}}-W_w||^2$</span><!-- Has MathJax --><br></center>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4wgbpnk000ndqgeg6cimsux" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/07/From Paraphrase Database to Compositional Paraphrase Model and Back/" data-id="cj4wgil3u0011g2gelrizk8nv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
