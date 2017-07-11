@@ -3,25 +3,22 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text | JackYip</title>
+    <title>Improving Distributional Similarity with Lessons Learned from Word Embeddings | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Papers,Sentiment Analysis" />
+        <meta name="keywords" content="Paper,Word Vector" />
     
-    <meta name="description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
-Introduction在所有的自动化方法中，Mohamm">
+    <meta name="description" content="AbstractThey reveal that much of the performance gains of word embeddings are due to certain system design choices, rather than the embedding algorithms themselves. Furthermore, they show that these m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
-<meta property="og:url" content="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/index.html">
+<meta property="og:title" content="Improving Distributional Similarity with Lessons Learned from Word Embeddings">
+<meta property="og:url" content="http://yezhejack.github.io/2017/07/11/Improving Distributional Similarity with Lessons Learned from Word Embeddings/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
-Introduction在所有的自动化方法中，Mohamm">
+<meta property="og:description" content="AbstractThey reveal that much of the performance gains of word embeddings are due to certain system design choices, rather than the embedding algorithms themselves. Furthermore, they show that these m">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-02T08:20:55.000Z">
+<meta property="og:updated_time" content="2017-07-11T11:28:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text">
-<meta name="twitter:description" content="Abstract这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于NRC方法，NRC方法在SemEval13中利用了大量推特中的emoticons来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。
-Introduction在所有的自动化方法中，Mohamm">
+<meta name="twitter:title" content="Improving Distributional Similarity with Lessons Learned from Word Embeddings">
+<meta name="twitter:description" content="AbstractThey reveal that much of the performance gains of word embeddings are due to certain system design choices, rather than the embedding algorithms themselves. Furthermore, they show that these m">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.png">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -160,56 +157,88 @@ var _hmt = _hmt || [];
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Improving Distributional Similarity with Lessons Learned from Word Embeddings" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text
+        Improving Distributional Similarity with Lessons Learned from Word Embeddings
         </h1>
     
 
             </header>
         
         <div class="article-subtitle">
-            <a href="/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" class="article-date">
-    <time datetime="2017-04-21T11:31:00.000Z" itemprop="datePublished">2017-04-21</time>
+            <a href="/2017/07/11/Improving Distributional Similarity with Lessons Learned from Word Embeddings/" class="article-date">
+    <time datetime="2017-07-11T02:04:30.000Z" itemprop="datePublished">2017-07-11</time>
 </a>
             
-    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Papers/">Papers</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sentiment-Analysis/">Sentiment Analysis</a></li></ul>
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper/">Paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Word-Vector/">Word Vector</a></li></ul>
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>这是一片发表在ACL2016上的短文，看名字就知道是关于如何自动化构建情感词表的文章。使用了一个神经网络的方法，并且不使用任何人工标注的资源。这个方法的灵感来自于<code>NRC</code>方法，<code>NRC</code>方法在<code>SemEval13</code>中利用了大量推特中的<code>emoticons</code>来获得了最好的结果，这个文章中的方法使用了词和推特情感的互信息来定义词的情感属性。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>在所有的自动化方法中，<code>Mohammad</code>在2013年提出了使用推特的情感符号或者<code>hashtags</code>来作为训练数据。这个方法的主要优点在于这样的训练数据的数量是很巨大的，并且可以避免人工标注。尽管这样会引入噪声，但是很多研究表明这个方法是有效的。<code>Mohammad</code>在2013计算了词和表情符号之间的互信息，然后使用的词表获得了<code>SemEval2013</code>的最好结果。这篇文章中，他们将展示可以通过直接优化预测准确率来获得更好的情感词表，这个过程中将情感词表作为输入，表情作为输出。这个方法和<code>Mohammad</code>的方法的区别在于一个是<code>predicting</code>，一个是<code>counting</code>。</p>
-<h2 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h2><p>自动学习情感词表主要有三种方法</p>
-<ul>
-<li>将现有的词表用情感信息扩展。这种方法严重依赖现有词表，并且有语言限制。</li>
-<li>第二种方法是扩展现有的人工标注的词表。例如2014年<code>Tang</code>应用了神经网络来学习面对情感的词向量，所用的数据是少量的标注好的推特，然后将种子情感词集通过测量词之间的距离来扩展变大。<code>Bravo-Marquez</code>在2015年通过对词进行分类，来扩展一个已有的词表，使用了人工抽取的特征。这些方法也都受限于人工资源的领域和语言。</li>
-<li>第三种方法则是通过累计大数据中的统计特征来从头构建词表。<code>Turney</code>在2002年提出了通过计算种子词和搜索点击之间的<code>PMI</code>来估计词的情感极性。2013年<code>Mohammad</code>就使用了<code>distance-supervised</code>的数据来代替种子词来改进这个方法。这个方法摆脱了语言和人工标注资源的限制，作为本文的<code>baseline</code>。</li>
-</ul>
-<h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p><code>Mohammad</code>将推特的表情和相关<code>hashtags</code>作为推特的情感标签。而情感分数则如下所示</p>
-<center><br><span>$SS(w)=\mathbf{PMI}(w,pos)-\mathbf{PMI}(w,neg)$</span><!-- Has MathJax --><br></center>
+            <h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>They reveal that much of the performance gains of word embeddings are due to certain system design choices, rather than the embedding algorithms themselves. Furthermore, they show that these modifications can be transferred to traditional distributional models, yielding similart gains. A recent study by Baroni et al. (2014) shows that new embedding methods consistently outperform the traditional methods by a non-trivial margin on many similarity-oriented tasks. But analysis by Levy and Goldberg shows that word2vec’s SGNS is implicitly factorizing a word-context PMI matrix. </p>
+<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Four word representation methods are considered:</p>
+<ol>
+<li>the explicit PPMI matrix</li>
+<li>SVD factorization of said matrix</li>
+<li>SGNS</li>
+<li>GloVe</li>
+</ol>
+<h3 id="PPMI-Matrix"><a href="#PPMI-Matrix" class="headerlink" title="PPMI Matrix"></a>PPMI Matrix</h3><center><br><span>$PMI(w,c)=log \frac{\hat{P}(w,c)}{\hat{P}(w)\hat{P}(c)}=log\frac{\#(w,c)\cdot |D| }{\#(w) \cdot \#(c)}$</span><!-- Has MathJax --><br></center>
 
-<center><br><span>$\mathbf{PMI}(w,pos)=log_2 \frac{freq(w,pos) \times N}{freq(w) \times freq(pos)}$</span><!-- Has MathJax --><br></center>
+<center><br><span>$PPMI(w,c)=max(PMI(w,c),0)$</span><!-- Has MathJax --><br></center>
 
-<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h2><p>每个词都转换成<span>$w=(n,p)$</span><!-- Has MathJax -->。其中<span>$n$</span><!-- Has MathJax -->表示的是正面性，而<span>$p$</span><!-- Has MathJax -->则表示负面性。一个推特可以表示为</p>
-<center><br><span>$tw=w_1,w_2,...,w_n$</span><!-- Has MathJax --><br></center><br>然后用一个简单的神经网络来预测这个推特是正面还是负面。主要计算过程是<br><center><br><span>$h=\sum_i(w_i)$</span><!-- Has MathJax --><br><span>$y=softmax(hW)$</span><!-- Has MathJax --><br></center>
-
-<p>每个<code>token</code>的初始值都是在[-0.25,0.25]，然后通过有监督的学习方式来学习每个<code>token</code>的值。优化方法用的是<code>stochasti gradient descent</code>。更新规则使用的是<code>AdaDelta</code>。所有的模型都设定了<code>batch size</code>为50，运行5个<code>epoch</code>。</p>
-<h2 id="Sentiment-Classification"><a href="#Sentiment-Classification" class="headerlink" title="Sentiment Classification"></a>Sentiment Classification</h2><p>训练好了之后，这些信息可以用于无监督和有监督的情感分类。在无监督的情感分类中，可以使用<span>$p-n$</span><!-- Has MathJax -->作为词的情感分数，然后把一个文档中的所有词的情感分数都加起来，如果大于0这个文档就可以预测称正面。</p>
-<p>有监督的方法则将情感词汇表当作特征。给定一个文档抽取如下的特征</p>
-<ul>
-<li>情感词的数量，也就是在情感词汇表中情感分数不为0的。</li>
-<li>文档的累计情感分数</li>
-<li>最大的单词情感分数</li>
-<li>正面情感词的总分数，负面情感词的总分数</li>
-<li>最后一个词的情感分数</li>
-</ul>
-<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><p>在除掉中性情感的数据后，本文只做对正负情感判断的分类器，结果表明了本文自动生成的情感词汇表比通过<code>counting</code>生成的<code>NRC</code>情感词汇表效果要好得多。</p>
-<p>将<code>Hu and Liu(2004)</code>的手工标注的情感词表作为<code>gold standard</code>，计算本文的方法生成的情感词汇表的准确率为<code>78.2%</code>，而<code>Mohammad(2013)</code>方法生成的词表的准确率为<code>76.9%</code>。</p>
+<p>A well-known shortcoming of PMI, which persists in PPMI, is its bias towards infrequent events. </p>
+<h2 id="Transferable-Hyperparameters"><a href="#Transferable-Hyperparameters" class="headerlink" title="Transferable Hyperparameters"></a>Transferable Hyperparameters</h2><p>Adapt and apply the hyperparameters to count-based methods. </p>
+<ol>
+<li>pre-processing hyperparameters</li>
+<li>association metric hyperparameters</li>
+<li>post-processing hyperparameters</li>
+</ol>
+<h3 id="Pre-processing-hyperparameters"><a href="#Pre-processing-hyperparameters" class="headerlink" title="Pre-processing hyperparameters"></a>Pre-processing hyperparameters</h3><h4 id="Dynamic-Context-Windows-dyn"><a href="#Dynamic-Context-Windows-dyn" class="headerlink" title="Dynamic Context Windows (dyn)"></a>Dynamic Context Windows (dyn)</h4><p>context words can be weighted according to their distance from the focus word.</p>
+<h4 id="Subsampling"><a href="#Subsampling" class="headerlink" title="Subsampling"></a>Subsampling</h4><p>Subsampling is a method of diluting very frequent words, akin to removing stop-words.</p>
+<h4 id="Deleting-Rare-Words-del"><a href="#Deleting-Rare-Words-del" class="headerlink" title="Deleting Rare Words (del)"></a>Deleting Rare Words (del)</h4><p>Delete rare words before creating context windows. </p>
+<h3 id="Association-Metric-Hyperparameters"><a href="#Association-Metric-Hyperparameters" class="headerlink" title="Association Metric Hyperparameters"></a>Association Metric Hyperparameters</h3><ol>
+<li>Shifted PMI(neg)</li>
+<li>Context distribution smoothing</li>
+</ol>
+<h3 id="Post-processing-hyperparameters"><a href="#Post-processing-hyperparameters" class="headerlink" title="Post-processing hyperparameters"></a>Post-processing hyperparameters</h3><ol>
+<li>Adding context vector</li>
+<li>Eigenvalue Weighting</li>
+<li>Vector Normalization: the standard L2 normalization of $W$’s rows is consistently superior.</li>
+</ol>
+<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Word-Similarity"><a href="#Word-Similarity" class="headerlink" title="Word Similarity"></a>Word Similarity</h3><p>Six datasets:</p>
+<ol>
+<li>WordSim-353: divided into two datasets: <code>WordSim Similarity</code> and <code>WordSim Relatedness</code></li>
+<li>MEN dataset</li>
+<li>Mechanical Turk dataset</li>
+<li>Rare Words dataset</li>
+<li>SimLex-999 dataset</li>
+</ol>
+<h3 id="Analogy"><a href="#Analogy" class="headerlink" title="Analogy"></a>Analogy</h3><ol>
+<li>MSR’s analogy dataset</li>
+<li>Google’s analogy dataset</li>
+</ol>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p>At times, changing hyperparameters can bring bigger improvement than changing to different representation method. In some tasks, careful hyperparameters tunning can also outweigh the importance of adding more data. </p>
+<p>SVD is very useful. word2vec outperforms GloVe. </p>
+<p>The prediction-based word embeddings are not superior to count-based approaches. The contradictory results in stem from creating word2vec embeddings with somewhat pre-tunned hyperparameters (recommended by word2vec), and comparing them to “vanilla” PPMI and SVD representations. </p>
+<p>3CosMul dominates 3CosAdd in every case. </p>
+<p>There are a few works show that <code>CBOW</code> has s slight advantage compared to others. But in the paper of word2vec, it shows SGNS performs better. </p>
+<h2 id="Hyperparameter-Analysis"><a href="#Hyperparameter-Analysis" class="headerlink" title="Hyperparameter Analysis"></a>Hyperparameter Analysis</h2><h3 id="Harmful-Configurations"><a href="#Harmful-Configurations" class="headerlink" title="Harmful Configurations"></a>Harmful Configurations</h3><ol>
+<li>SVD does not benefit from shifted PPMI</li>
+<li>Using SVD “correctly” is bad</li>
+</ol>
+<h3 id="Beneficial-Configurations"><a href="#Beneficial-Configurations" class="headerlink" title="Beneficial Configurations"></a>Beneficial Configurations</h3><p><code>PPMI</code> and <code>SVD</code>‘s preference towards shorter context windows (win=2). <code>SGNS</code> always prefers numerous negative samples (neg&gt;1). Only hyperparameter that can be “blindly” applied in any situation is context distribution smoothing (cds=0.75).</p>
+<h2 id="Practical-Recommendations"><a href="#Practical-Recommendations" class="headerlink" title="Practical Recommendations"></a>Practical Recommendations</h2><ol>
+<li>Always use context distribution smoothing to modify PMI. </li>
+<li>Do not use SVD “correctly” (eig=1). </li>
+<li>SGNS is a robust baseline. While it might not be the best method for every task, it does not significantly underperform in any scenario. Moreover, SGNS is the fastest method to train, and cheapest (by far) in terms of disk space and memory consumption. </li>
+<li>With SGNS, prefer many negative samples. </li>
+<li>For both SGNS and GloVe, it is worthwhile to experiment with $w+c$ variant. </li>
+</ol>
 
         </div>
         <footer class="article-footer">
@@ -217,7 +246,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/" data-id="cj4zhsvw0000jbegevxsowopq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/11/Improving Distributional Similarity with Lessons Learned from Word Embeddings/" data-id="cj4zhsvwp001lbegeet51vmwc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -337,20 +366,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2017/04/23/Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            Adaptive Joint Learning of Compositional and Non-Compositional Phrase Embeddings
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2017/04/14/MXNet入门/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/07/10/Morph fitting Fine Tuning Word Vector Spaces with Simple Language Specific Rules/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">MXNet入门</p>
+        <p class="article-nav-title">Morph-fitting Fine-Tuning Word Vector Spaces with Simple Language-Specific Rules</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -546,7 +565,7 @@ var _hmt = _hmt || [];
     var disqus_shortname = 'yezhejack';
     
     
-    var disqus_url = 'http://yezhejack.github.io/2017/04/21/Dont Count Predict An Automatic Approach to Learning Sentiment Lexicons for Short Text/';
+    var disqus_url = 'http://yezhejack.github.io/2017/07/11/Improving Distributional Similarity with Lessons Learned from Word Embeddings/';
     
     (function() {
     var dsq = document.createElement('script');
