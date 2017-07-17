@@ -6,7 +6,7 @@
     <title>Polarity Inducing Latent Semantic Analysis | JackYip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Word Vector,Paper" />
+        <meta name="keywords" content="Paper,Word Vector" />
     
     <meta name="description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
 <meta property="og:type" content="article">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="JackYip">
 <meta property="og:description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-17T13:26:52.000Z">
+<meta property="og:updated_time" content="2017-07-17T15:06:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Polarity Inducing Latent Semantic Analysis">
 <meta name="twitter:description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
@@ -186,7 +186,7 @@ var _hmt = _hmt || [];
 <h2 id="Limitation-of-LSA"><a href="#Limitation-of-LSA" class="headerlink" title="Limitation of LSA"></a>Limitation of LSA</h2><p>LSA is also confuse antonyms and synonyms. This paper want to make the least-similar words to a given a word be its opposites instead of words without relationship at all. </p>
 <h1 id="Polarity-Inducing-LSA"><a href="#Polarity-Inducing-LSA" class="headerlink" title="Polarity Inducing LSA"></a>Polarity Inducing LSA</h1><p>Words with opposite meaning will lie at opposite axes.</p>
 <p>First, some lexical analysis are conducted to try to match an unknown word to one or more in-thesaurus words in their lemmatized forms. If now such match can be found, we then attempt to find semantically related inthesaurus words by leveraging co-occurrence statistics from general text data. </p>
-<h1 id="Discriminative-Training"><a href="#Discriminative-Training" class="headerlink" title="Discriminative Training"></a>Discriminative Training</h1><p>They propose a discriminvative training method to obtain a model used as a matrix $A$. The neural network transforms a $d \time 1$ vector $f$ into $k \times 1$ vector $g$.</p>
+<h1 id="Discriminative-Training"><a href="#Discriminative-Training" class="headerlink" title="Discriminative Training"></a>Discriminative Training</h1><p>They propose a discriminvative training method to obtain a model used as a matrix $A$. The neural network transforms a $d \time 1$ vector $f$ into $k \times 1$ vector $g$. </p>
 <h2 id="Matching-via-Lexical-Analysis"><a href="#Matching-via-Lexical-Analysis" class="headerlink" title="Matching via Lexical Analysis"></a>Matching via Lexical Analysis</h2><p>When a target word is not included in a thesaurus, it is quite often that some of its morphological variations are covered. </p>
 <p>First, apply a morphological analyzer for English developed by Minnen. It not match, apply Porter’s stemmer.  If both fails, removing hyphens is considered. </p>
 <p>If there are more than one matched words, the centroid of their PILSA vectors is used to represent the target word. </p>
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/16/Polarity Inducing Latent Semantic Analysis/" data-id="cj586qind002owdgezv25gxu2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/16/Polarity Inducing Latent Semantic Analysis/" data-id="cj58a9ei3002vnhgekgxn9g0r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
