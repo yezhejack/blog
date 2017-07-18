@@ -8,17 +8,17 @@
     
         <meta name="keywords" content="Paper,Word Vector" />
     
-    <meta name="description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
+    <meta name="description" content="Abstract and IntroductionThey introduce a new vector space representation where antonyms lie on opposite sides of a sphere: in the word vector space, synonyms have cosine similarities close to one, wh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Polarity Inducing Latent Semantic Analysis">
 <meta property="og:url" content="http://yezhejack.github.io/2017/07/16/Polarity Inducing Latent Semantic Analysis/index.html">
 <meta property="og:site_name" content="JackYip">
-<meta property="og:description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
+<meta property="og:description" content="Abstract and IntroductionThey introduce a new vector space representation where antonyms lie on opposite sides of a sphere: in the word vector space, synonyms have cosine similarities close to one, wh">
 <meta property="og:image" content="http://yezhejack.github.io/img/NLP.png">
-<meta property="og:updated_time" content="2017-07-17T15:06:22.000Z">
+<meta property="og:updated_time" content="2017-07-18T05:17:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Polarity Inducing Latent Semantic Analysis">
-<meta name="twitter:description" content="Laten Semantic AnalysisThis is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matr">
+<meta name="twitter:description" content="Abstract and IntroductionThey introduce a new vector space representation where antonyms lie on opposite sides of a sphere: in the word vector space, synonyms have cosine similarities close to one, wh">
 <meta name="twitter:image" content="http://yezhejack.github.io/img/NLP.png">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -179,7 +179,22 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="Laten-Semantic-Analysis"><a href="#Laten-Semantic-Analysis" class="headerlink" title="Laten Semantic Analysis"></a>Laten Semantic Analysis</h1><p>This is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matrix $W$ which indicates the occurrence of words in documents. A $d\times n$ document-term matrix $W$ is formed. Its $ij^{th}$ entry can be term frequency or a TF-IDF weighting. The similarity between two documents can be computed using the cosine similarity of their corresponding row vectors. The similarity between two words can be computed using the cosine similarity of their corresponding column vectors. Finally, to obtain a subspace representation of dimension $k$, $W$ is decomposed as </p>
+            <h1 id="Abstract-and-Introduction"><a href="#Abstract-and-Introduction" class="headerlink" title="Abstract and Introduction"></a>Abstract and Introduction</h1><p>They introduce a new vector space representation where antonyms lie on opposite sides of a sphere: in the word vector space, synonyms have cosine similarities close to one, while antonyms are close to minus one. </p>
+<p>This representation is derived with the aid of a thesaurus and LSA. Each entry in the thesaurus - a word sense along with its synonyms and antonyms - is treated as a “document”, and the resulting document collection is subjected to LSA. The key contribution of this work is to show how to assign signs to the entries in the co-occurrence matrix on which LSA operates, so as to induce a subspace with the despired property. </p>
+<p>Futrher improvements result from refining the subspace representation with discriminative training, and augumenting the training data with general newspaper text. </p>
+<p>They want to solve the problem that LSA might assign a high degree of similarity to opposites as well as synonyms. </p>
+<ul>
+<li>Able to discover new synonyms and antonyms</li>
+<li>The representation provides a natural starting point for gradient-descent based optimization</li>
+<li>It is straightforward to embed new words into the derived subspace by using information from a large unsupervised text corpus such as Wikipedia. </li>
+</ul>
+<h1 id="Related-Woirk"><a href="#Related-Woirk" class="headerlink" title="Related Woirk"></a>Related Woirk</h1><p>The detextion of antonymy has been studied in a number of previous papers. These methods consist of two main steps:</p>
+<ol>
+<li>Detecting contrasting word categories and then determining the degree of antonymy. </li>
+<li>Determining the degree of antonymy</li>
+</ol>
+<p>The automatic detecting of synonyms has been more extensively studied. </p>
+<h1 id="Laten-Semantic-Analysis"><a href="#Laten-Semantic-Analysis" class="headerlink" title="Laten Semantic Analysis"></a>Laten Semantic Analysis</h1><p>This is a widely used method for representing words and documents in a low dimensional vector space. The method is based on applying singular value decomposition (SVD) to a matrix $W$ which indicates the occurrence of words in documents. A $d\times n$ document-term matrix $W$ is formed. Its $ij^{th}$ entry can be term frequency or a TF-IDF weighting. The similarity between two documents can be computed using the cosine similarity of their corresponding row vectors. The similarity between two words can be computed using the cosine similarity of their corresponding column vectors. Finally, to obtain a subspace representation of dimension $k$, $W$ is decomposed as </p>
 <center><br><span>$W \approx USV^T$</span><!-- Has MathJax --><br></center>
 
 <p>where $U$ is $x\times k$, $V^T$ is $k \times n$, and  $S$ is a $k \times k$ diagonal matrix. In applications, $k \ll n$ and $k \ll d$. </p>
@@ -200,7 +215,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhejack.github.io/2017/07/16/Polarity Inducing Latent Semantic Analysis/" data-id="cj58a9ei3002vnhgekgxn9g0r" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhejack.github.io/2017/07/16/Polarity Inducing Latent Semantic Analysis/" data-id="cj594nkzg002ph6gev0puw688" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
