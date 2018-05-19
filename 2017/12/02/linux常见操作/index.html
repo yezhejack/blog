@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    
+    <title>linux常见操作 | Zhe Ye - Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Linux,服务器" />
+    
+    <meta name="description" content="基于ubuntu的linux以及screen配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux常见操作">
+<meta property="og:url" content="http://yezhe.org/2017/12/02/linux常见操作/index.html">
+<meta property="og:site_name" content="Zhe Ye - Home Page">
+<meta property="og:description" content="基于ubuntu的linux以及screen配置">
+<meta property="og:image" content="http://yezhe.org/img/linux.jpg">
+<meta property="og:updated_time" content="2018-04-17T12:59:50.059Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux常见操作">
+<meta name="twitter:description" content="基于ubuntu的linux以及screen配置">
+<meta name="twitter:image" content="http://yezhe.org/img/linux.jpg">
+<meta name="twitter:creator" content="@JackYezhe">
+<link rel="publisher" href="yezhejack@gmail.com">
+    
+
+    
+
+    
+        <link rel="icon" href="/img/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css">
+    
+    
+        <script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ ga('create', 'UA-77290061-2', 'auto');
+ ga('send', 'pageview');
+
+</script>
+
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?diE3krA1NOXASEry";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+</head>
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Blog</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Howto/">Howto</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Learning/">Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Leetcode/">Leetcode</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/My-Projects/">My Projects</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Papers/">Papers</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programmer/">Programmer</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Tensorflow/">Tensorflow</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Howto/">Howto</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-linux常见操作" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        linux常见操作
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2017/12/02/linux常见操作/" class="article-date">
+    <time datetime="2017-12-02T12:29:39.000Z" itemprop="datePublished">2017-12-02</time>
+</a>
+            
+    <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="测试磁盘性能"><a href="#测试磁盘性能" class="headerlink" title="测试磁盘性能"></a>测试磁盘性能</h3><h4 id="测试写性能"><a href="#测试写性能" class="headerlink" title="测试写性能"></a>测试写性能</h4><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">time</span> <span class="selector-tag">dd</span> <span class="keyword">if</span>=/dev/zero of=test<span class="selector-class">.dbf</span> bs=<span class="number">8</span>k count=<span class="number">300000</span> oflag=direct</span><br></pre></td></tr></table></figure>
+<h4 id="测试读性能"><a href="#测试读性能" class="headerlink" title="测试读性能"></a>测试读性能</h4><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="attr">if=test.dbf</span> <span class="attr">of=/dev/null</span> <span class="attr">bs=8k</span> <span class="attr">count=300000</span> <span class="attr">iflag=direct</span></span><br></pre></td></tr></table></figure>
+<h3 id="GPU管理"><a href="#GPU管理" class="headerlink" title="GPU管理"></a>GPU管理</h3><p>如果出现在<code>nvidia-smi</code>的界面下没有进程运行，但是显存不为0，那么可能是有些程序没有正常关闭。一般是python程序或者是jupyter下的程序，可以查看一下，然后杀掉。一般就可以让显存正常释放。</p>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><h4 id="增加一个用户"><a href="#增加一个用户" class="headerlink" title="增加一个用户"></a>增加一个用户</h4><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -g <span class="params">&lt;初始组名称&gt;</span> -G <span class="params">&lt;附属组名称&gt;</span> -m -d <span class="meta-keyword">/home/</span><span class="params">&lt;username&gt;</span> -s <span class="meta-keyword">/bin/</span>bash <span class="params">&lt;username&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">g</span> benben -<span class="keyword">G</span> sudo -<span class="keyword">m</span> -<span class="keyword">d</span> /home/zhangsan -s /bin/bash zhangsan</span><br><span class="line">passwd zhangsan</span><br></pre></td></tr></table></figure>
+<p>上面新建了一个用户，属于笨笨组的，同时也属于sudo组，拥有sudo权限，是个拥有很高权限的管理员，仅次于root。同时他的目录定义在了<code>/home/zhangsan</code>，同时将shell指定为/bin/bash，第二句话会设置一个密码。 </p>
+<p>如果只是一个普通的用户，不希望让他拥有sudo权限的话，将<code>-G</code>参数去掉，只让他属于benben组即可。这样这个帐户就无法安装东西，必须联系管理员才能进行安装。</p>
+<h4 id="公共工作空间"><a href="#公共工作空间" class="headerlink" title="公共工作空间"></a>公共工作空间</h4><p>为了让大家共同合作，可以利用管理员账户建立一个目录，这个目录的组别属于benben，也就是需要合作的人的共同组别。然后将这个目录的属于组修改为benben。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">chgrp</span> -R <span class="keyword">benben </span>/mnt/<span class="keyword">benben</span></span><br></pre></td></tr></table></figure>
+<p>然后再修改这个目录的权限为775，也就是rwx rwx r_x，拥有者和组成员拥有读、写、执行权限，而其他人只拥有读、执行权限。</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">775</span> <span class="meta-keyword">/mnt/</span>benben</span><br></pre></td></tr></table></figure>
+<h4 id="为用户增加sudo权限"><a href="#为用户增加sudo权限" class="headerlink" title="为用户增加sudo权限"></a>为用户增加sudo权限</h4><p>登陆到root账号，然后输入下面的命令，以<code>zhangsan</code>这个用户为例</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo zhangsan</span><br></pre></td></tr></table></figure>
+<p>也可以在<code>/etc/group</code>中在sudo后面加上<code>zhangsan</code></p>
+<h3 id="增加用户到另一个用户组中"><a href="#增加用户到另一个用户组中" class="headerlink" title="增加用户到另一个用户组中"></a>增加用户到另一个用户组中</h3><p>我新建了一个用户yezhe，然后想要把它增加到用户组sudo中，以便于使用sudo命令，这里需要使用root用户</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">usermod</span> -G sudo yezhe</span><br></pre></td></tr></table></figure>
+<h3 id="更改用户的工作目录"><a href="#更改用户的工作目录" class="headerlink" title="更改用户的工作目录"></a>更改用户的工作目录</h3><p>需要用root权限</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -d /<span class="built_in">home</span>/yezhe yezhe</span><br></pre></td></tr></table></figure>
+<h3 id="如果出现一个用户在命令行无法显示名字和路径"><a href="#如果出现一个用户在命令行无法显示名字和路径" class="headerlink" title="如果出现一个用户在命令行无法显示名字和路径"></a>如果出现一个用户在命令行无法显示名字和路径</h3><p>这个情况下我在更改了<code>/etc/passwd</code>之后就可以了，也就是给它添加一个shell，一般默认是和root一样用同一个shell:<code>/bin/bash</code></p>
+<h3 id="screen设置"><a href="#screen设置" class="headerlink" title="screen设置"></a>screen设置</h3><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">Set</span> default <span class="comment">encoding using utf8</span></span><br><span class="line">defutf8 <span class="comment">on</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 解决中文乱码,这个要按需配置</span><br><span class="line">defencoding <span class="comment">utf8</span></span><br><span class="line">encoding <span class="comment">utf8 utf8</span></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">#兼容shell 使得<span class="comment">.bashrc .profile</span> /etc/<span class="comment">profile</span>等里面的别名等设置生效</span><br><span class="line">shell <span class="comment">-$SHELL</span></span><br><span class="line"></span><br><span class="line">#<span class="keyword">set</span> <span class="comment">the startup message</span></span><br><span class="line">startup_message <span class="comment">off</span></span><br><span class="line">term <span class="comment">linux</span></span><br><span class="line"></span><br><span class="line">## 解决无法滚动</span><br><span class="line">termcapinfo <span class="comment">xterm</span>|<span class="comment">xterms</span>|<span class="comment">xs ti@:te=\E[2J</span></span><br><span class="line"> </span><br><span class="line"># 屏幕缓冲区行数</span><br><span class="line">defscrollback <span class="comment">10000</span></span><br><span class="line"> </span><br><span class="line"># 下标签设置</span><br><span class="line">hardstatus <span class="comment">on</span></span><br><span class="line">caption <span class="comment">always</span> <span class="comment">"%&#123;= kw&#125;%-w%&#123;= kG&#125;%&#123;+b&#125;[%n %t]%&#123;-b&#125;%&#123;= kw&#125;%+w %=%d %M %0c %&#123;g&#125;%H%&#123;-&#125;"</span></span><br><span class="line"> </span><br><span class="line">#关闭闪屏</span><br><span class="line">vbell <span class="comment">off</span></span><br><span class="line"> </span><br><span class="line">#Keboard <span class="comment">binding</span></span><br><span class="line"># bind <span class="comment">Alt+z to move to previous window</span></span><br><span class="line">bindkey <span class="comment">^[z prev</span></span><br><span class="line"># bind <span class="comment">Alt+x to move to next window</span></span><br><span class="line">bindkey <span class="comment">^[x next</span></span><br><span class="line"></span><br><span class="line"># bind <span class="comment">Alt</span>`~<span class="comment">= to screen0</span>~<span class="comment">12</span></span><br><span class="line">bindkey <span class="comment">"^[`"</span><span class="comment"> select 0</span></span><br><span class="line">bindkey <span class="comment">"^[1"</span><span class="comment"> select 1</span></span><br><span class="line">bindkey <span class="comment">"^[2"</span><span class="comment"> select 2</span></span><br><span class="line">bindkey <span class="comment">"^[3"</span><span class="comment"> select 3</span></span><br><span class="line">bindkey <span class="comment">"^[4"</span><span class="comment"> select 4</span></span><br><span class="line">bindkey <span class="comment">"^[5"</span><span class="comment"> select 5</span></span><br><span class="line">bindkey <span class="comment">"^[6"</span><span class="comment"> select 6</span></span><br><span class="line">bindkey <span class="comment">"^[7"</span><span class="comment"> select 7</span></span><br><span class="line">bindkey <span class="comment">"^[8"</span><span class="comment"> select 8</span></span><br><span class="line">bindkey <span class="comment">"^[9"</span><span class="comment"> select 9</span></span><br><span class="line">bindkey <span class="comment">"^[0"</span><span class="comment"> select 10</span></span><br><span class="line">bindkey <span class="comment">"^[-"</span><span class="comment"> select 11</span></span><br><span class="line">bindkey <span class="comment">"^[="</span><span class="comment"> select 12</span></span><br><span class="line"># bind <span class="comment">F5 to create a new screen</span></span><br><span class="line">bindkey <span class="comment">-k k5 screen</span></span><br><span class="line"># bind <span class="comment">F6 to detach screen session (to background)</span></span><br><span class="line">bindkey <span class="comment">-k k6 detach</span></span><br><span class="line"># bind <span class="comment">F7 to kill current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k7 kill</span>``</span><br><span class="line"># bind <span class="comment">F8 to rename current screen window</span></span><br><span class="line">bindkey <span class="comment">-k k8 title</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在screen中，一个session中可以包含多个windows</li>
+<li><code>C-a A</code> 用于修改当前标签的名字</li>
+<li><code>C-a k</code> 关闭当前windows</li>
+</ul>
+<h2 id="运维方案"><a href="#运维方案" class="headerlink" title="运维方案"></a>运维方案</h2><ul>
+<li>这个方案以ubuntu 14.04 为例，并且是使用vultr的服务器。</li>
+</ul>
+<h3 id="修改root账号的密码"><a href="#修改root账号的密码" class="headerlink" title="修改root账号的密码"></a>修改root账号的密码</h3><ul>
+<li>登录root账号</li>
+<li>使用 <code>passwd root</code>命令，即可根据提示修改密码</li>
+</ul>
+<h3 id="增加个人用户，并使其拥有sudo权限"><a href="#增加个人用户，并使其拥有sudo权限" class="headerlink" title="增加个人用户，并使其拥有sudo权限"></a>增加个人用户，并使其拥有sudo权限</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd -<span class="keyword">d</span> /home/zhangsan -<span class="keyword">m</span> zhangsan</span><br><span class="line">passwd zhangsan</span><br><span class="line">usermod -<span class="keyword">G</span> sudo zhangsan</span><br></pre></td></tr></table></figure>
+<p>第一行的命令同时为<code>zhangsan</code>这个账户增加了一个工作目录，第二行为修改密码，第三行为修改这个账户的权限，将其加入到sudo的组中，到此为止一个简单的linxu远程服务器的用户部分就已经配置好了。</p>
+<h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ps</span> aux|<span class="keyword">grep</span> <span class="symbol">&lt;name&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="查看主机最近一次的启动时间"><a href="#查看主机最近一次的启动时间" class="headerlink" title="查看主机最近一次的启动时间"></a>查看主机最近一次的启动时间</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">who</span> -b</span><br></pre></td></tr></table></figure>
+<h2 id="在高性能服务器上跑训练"><a href="#在高性能服务器上跑训练" class="headerlink" title="在高性能服务器上跑训练"></a>在高性能服务器上跑训练</h2><h3 id="标准输出重定向"><a href="#标准输出重定向" class="headerlink" title="标准输出重定向"></a>标准输出重定向</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">command</span> &gt; <span class="title">out</span>.<span class="title">put</span> <span class="title">2</span>&gt;&amp;<span class="title">1</span></span><br></pre></td></tr></table></figure>
+<p><code>command</code>就是我们要跑的程序。<code>out.put</code>就是我们希望把屏幕上输出的内容存入的文件，比如我希望明天一早起来看到一个程序的结尾，但是我又不想改这个程序让其把最后的算法结果存入某个程序（其实就是懒）。<code>2</code>表示标准输出，而<code>1</code>表示标准错误输出。另外提一句<code>0</code>就是表示标准输入，这些都是一个进程的默认的文件描述符，unix中一切皆文件。</p>
+<p>如果中间的符号改为<code>&gt;&gt;</code>的话，是以追加的方式写文件。</p>
+<h3 id="查看cpu信息"><a href="#查看cpu信息" class="headerlink" title="查看cpu信息"></a>查看cpu信息</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">cat</span> /<span class="meta">proc</span>/cpuinfo</span><br></pre></td></tr></table></figure>
+<h3 id="使用nologin运行程序"><a href="#使用nologin运行程序" class="headerlink" title="使用nologin运行程序"></a>使用nologin运行程序</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u nologin <span class="tag">&lt;<span class="name">cmd</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="top命令"><a href="#top命令" class="headerlink" title="top命令"></a>top命令</h3><h4 id="改变RES（实际占用的物理内存大小）"><a href="#改变RES（实际占用的物理内存大小）" class="headerlink" title="改变RES（实际占用的物理内存大小）"></a>改变RES（实际占用的物理内存大小）</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">e</span> 是切换任务区域的</span><br><span class="line"><span class="keyword">E</span> 切换总结区域的</span><br></pre></td></tr></table></figure>
+<h3 id="查看文件夹大小"><a href="#查看文件夹大小" class="headerlink" title="查看文件夹大小"></a>查看文件夹大小</h3><figure class="highlight rsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -h --<span class="built_in">max</span>-<span class="built_in">depth</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="公钥登录"><a href="#公钥登录" class="headerlink" title="公钥登录"></a>公钥登录</h3><p>生成本地的公钥<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure></p>
+<p>然后将其复制到远程主机上<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-<span class="built_in">id</span> -p port username@remotehost</span><br></pre></td></tr></table></figure></p>
+<p>如果有问题的话，可能是<code>.ssh</code>和<code>authorized_keys</code>这两个东西的权限的有问题，正常情况下分别是700和600的权限。</p>
+<p>可以在linux远程主机上的<code>~/.profile</code>里加上一句话<code>screen -r &lt;name&gt;</code>这样子可以一登录就重启之前启动好的screen。千万不能变成<code>screen -R &lt;name&gt;</code>。否则会陷入死循环。 </p>
+<h3 id="alias-命令别名"><a href="#alias-命令别名" class="headerlink" title="alias 命令别名"></a>alias 命令别名</h3><p>在实际使用中，需要登录的机器的名字太长了，所以可以设置一些别名，用这些别名来代替真正的命令行。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>然后输入</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alias</span> <span class="title">to_host</span>=<span class="string">"ssh yezhe@remotehost"</span></span><br></pre></td></tr></table></figure>
+<p>保存退出后让其生效 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>这时候使用<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">to_host</span><br></pre></td></tr></table></figure></p>
+<p>就可以直接登录了，而且还支持补全代码，也就是<code>tab</code>。</p>
+<h3 id="locale-设置"><a href="#locale-设置" class="headerlink" title="locale 设置"></a>locale 设置</h3><h3 id="生成空白文件"><a href="#生成空白文件" class="headerlink" title="生成空白文件"></a>生成空白文件</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">dd</span> <span class="keyword">if</span>=/dev/zero of=hello<span class="selector-class">.txt</span> bs=<span class="number">100</span>M count=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="supervisor"><a href="#supervisor" class="headerlink" title="supervisor"></a>supervisor</h3><p>supervisor是一个进程管理，在我们远程登录server的时候会启动一个bash，但是这个bash我们退出ssh之后就消失了，里面的进程也就消失了。于是我们需要一个进程管理，我们将想要启动的进程扔给它，由它来管理即可。screen可以是一个不错的进程管理，可以用来debug，因为它可以前端显示，但是本质也还是后台启动。</p>
+<p>但是最近在使用一个开源工具，这个工具的crash的频率比较高，因此需要一个能够自动重启carsh进程的进程管理，那就是supervisor</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">easy_install</span> supervisor</span><br></pre></td></tr></table></figure>
+<p>这个命令可以在屏幕上打印出配置信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supervisord_conf</span><br></pre></td></tr></table></figure>
+<p>然后将配置输入到<code>/etc</code>路径中，这个需要root权限<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supservisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>如果supdervirod的二进制文件是安装在系统的PATH下的话，是可以直接启动的</p>
+<p>新建一个文件夹<code>/etc/supervisor/</code><br>然后在<code>/etc/supervisord.conf</code>中的include项中加入</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[include]</span></span><br><span class="line"><span class="attr">files</span> = /etc/supervisor/*.conf</span><br></pre></td></tr></table></figure>
+<p>然后填写一个需要启动的程序的配置文件<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[program:phantomjs]</span></span><br><span class="line"><span class="attr">directory</span> = /data/pyspider ; 程序的启动目录</span><br><span class="line"><span class="attr">command</span> = pyspider -c ./config/pyspider.json phantomjs   ; 启动命令，可以看出与手动在命令行启动的命令是一样的</span><br><span class="line"><span class="attr">autostart</span> = <span class="literal">true</span>     ; 在 supervisord 启动的时候也自动启动</span><br><span class="line"><span class="attr">startsecs</span> = <span class="number">5</span>        ; 启动 <span class="number">5</span> 秒后没有异常退出，就当作已经正常启动了</span><br><span class="line"><span class="attr">autorestart</span> = <span class="literal">true</span>   ; 程序异常退出后自动重启</span><br><span class="line"><span class="attr">startretries</span> = <span class="number">3</span>     ; 启动失败自动重试次数，默认是 <span class="number">3</span></span><br><span class="line"><span class="attr">user</span> = yezhe          ; 用哪个用户启动</span><br><span class="line"><span class="attr">redirect_stderr</span> = <span class="literal">true</span>  ; 把 stderr 重定向到 stdout，默认 <span class="literal">false</span></span><br><span class="line"><span class="attr">stdout_logfile_maxbytes</span> = <span class="number">20</span>MB  ; stdout 日志文件大小，默认 <span class="number">50</span>MB</span><br><span class="line"><span class="attr">stdout_logfile_backups</span> = <span class="number">20</span>     ; stdout 日志文件备份数</span><br><span class="line"><span class="comment">; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span></span><br><span class="line"><span class="attr">stdout_logfile</span> = /data/pyspider/log/phantomjs.log</span><br><span class="line"></span><br><span class="line"><span class="comment">; 可以通过 environment 来添加需要的环境变量，一种常见的用法是修改 PYTHONPATH</span></span><br><span class="line"><span class="comment">; environment=PYTHONPATH=$PYTHONPATH:/path/to/somewhere</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="输出日期"><a href="#输出日期" class="headerlink" title="输出日期"></a>输出日期</h3><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> `<span class="built_in">date</span>`</span><br><span class="line"><span class="built_in">echo</span> `<span class="built_in">date</span> +<span class="variable">%Y-%</span>m-<span class="variable">%d-%</span>H-<span class="variable">%M-%</span>S`</span><br></pre></td></tr></table></figure>
+<h3 id="cron-command-not-found"><a href="#cron-command-not-found" class="headerlink" title="cron command not found"></a>cron command not found</h3><p>这个问题的原因在于cron在运行时的环境变量不一样，其中的$PATH会被</p>
+<h3 id="查看当前文件夹下的文件个数和文件夹个数"><a href="#查看当前文件夹下的文件个数和文件夹个数" class="headerlink" title="查看当前文件夹下的文件个数和文件夹个数"></a>查看当前文件夹下的文件个数和文件夹个数</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> |grep <span class="string">"^-"</span>|wc -<span class="keyword">l</span></span><br></pre></td></tr></table></figure>
+<p>转载自<code>http://blog.sina.com.cn/s/blog_464f6dba01012vwv.html</code><br>统计某文件夹下文件的个数</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> |grep <span class="string">"^-"</span>|wc -<span class="keyword">l</span></span><br></pre></td></tr></table></figure>
+<p>统计某文件夹下目录的个数</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -<span class="keyword">l</span> |grep <span class="string">"^ｄ"</span>|wc -<span class="keyword">l</span></span><br></pre></td></tr></table></figure>
+<p>统计文件夹下文件的个数，包括子文件夹里的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls <span class="_">-l</span>R|grep <span class="string">"^-"</span>|wc <span class="_">-l</span></span><br></pre></td></tr></table></figure>
+<p>如统计/home/han目录(包含子目录)下的所有js文件则：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ls</span> -lR /home/han|grep js|wc -<span class="keyword">l</span> 或 <span class="keyword">ls</span> -<span class="keyword">l</span> <span class="string">"/home/han"</span>|grep <span class="string">"js"</span>|wc -<span class="keyword">l</span></span><br></pre></td></tr></table></figure>
+<p>统计文件夹下目录的个数，包括子文件夹里的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls <span class="_">-l</span>R|grep <span class="string">"^d"</span>|wc <span class="_">-l</span></span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">ls</span> -<span class="built_in">lR</span></span><br></pre></td></tr></table></figure>
+<p>长列表输出该目录下文件信息(R代表子目录注意这里的文件，不同于一般的文件，可能是目录、链接、设备文件等)</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> <span class="string">"^-"</span></span><br></pre></td></tr></table></figure>
+<p>这里将长列表输出信息过滤一部分，只保留一般文件，如果只保留目录就是 ^d</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc <span class="_">-l</span></span><br></pre></td></tr></table></figure>
+<p>统计输出信息的行数，因为已经过滤得只剩一般文件了，所以统计结果就是一般文件信息的行数，又由于一行信息对应一个文件，所以也就是文件的个数。</p>
+<p>＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝<br>如果只查看文件夹<br><code>ls -d</code>  只能显示一个.<br><code>find -type d</code>    可以看到子文件夹<br><code>ls -lF |grep /</code>    或 <code>ls -l |grep &#39;^d&#39;</code>  只看当前目录下的文件夹，不包括往下的文件夹</p>
+<h2 id="sudo无法解析主机名字"><a href="#sudo无法解析主机名字" class="headerlink" title="sudo无法解析主机名字"></a>sudo无法解析主机名字</h2><p>修改/etc/hosts中的一行</p>
+<p>先打开<code>/etc/hostname</code>，其中包括一个主机名字</p>
+<p>然后在<code>/etc/hosts</code>中保证有一行</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127<span class="selector-class">.0</span><span class="selector-class">.1</span><span class="selector-class">.1</span>    &lt;主机名字&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="查看正在使用的端口"><a href="#查看正在使用的端口" class="headerlink" title="查看正在使用的端口"></a>查看正在使用的端口</h2><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo netstat -anltp <span class="string">| grep "</span>LISTEN<span class="string">"</span></span><br></pre></td></tr></table></figure>
+<h1 id="安装nvidia-GTX1080驱动"><a href="#安装nvidia-GTX1080驱动" class="headerlink" title="安装nvidia GTX1080驱动"></a>安装nvidia GTX1080驱动</h1><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get purge nvidia-*</span><br><span class="line">sudo<span class="built_in"> add-apt-repository </span>ppa:graphics-drivers/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nvidia-375</span><br></pre></td></tr></table></figure>
+<h1 id="cuda-8-0-安装"><a href="#cuda-8-0-安装" class="headerlink" title="cuda 8.0 安装"></a>cuda 8.0 安装</h1><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http<span class="variable">s:</span>//developer.nvidia.<span class="keyword">com</span>/compute/cuda/<span class="number">8.0</span>/Prod2/local_installers/cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-ga2_8.<span class="number">0.61</span>-<span class="number">1</span>_amd64-<span class="keyword">deb</span></span><br><span class="line">sudo dpkg -i cuda-repo-ubuntu1604-<span class="number">8</span>-<span class="number">0</span>-local-ga2_8.<span class="number">0.61</span>-<span class="number">1</span>_amd64.<span class="keyword">deb</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">sudo apt-<span class="built_in">get</span> install cuda</span><br></pre></td></tr></table></figure>
+<p>安装完成之后还需要添加环境变量<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vim</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>在文件的最后添加两行</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="regexp">/usr/local</span><span class="regexp">/cuda-8.0/bin</span><span class="variable">$&#123;</span><span class="symbol">PATH:</span>+<span class="symbol">:</span><span class="variable">$&#123;</span>PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH=<span class="regexp">/usr/local</span><span class="regexp">/cuda-8.0.61/lib</span>64<span class="variable">$&#123;</span><span class="symbol">LD_LIBRARY_PATH:</span>+<span class="symbol">:</span><span class="variable">$&#123;</span>LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在当前的bash中执行会让修改生效，或者可以打开新的bash<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>cuda的下载链接<br>cuda 7.5 for ubuntu 14.04<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http:</span>/<span class="regexp">/developer.download.nvidia.com/compute</span><span class="regexp">/cuda/</span><span class="number">7.5</span>/Prod/local_installers/cuda-repo-ubuntu1404-<span class="number">7</span>-<span class="number">5</span>-local_7.<span class="number">5</span>-<span class="number">18</span>_amd64.deb</span><br></pre></td></tr></table></figure></p>
+<p>cudnn 5.0 for cuda 7.5<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http</span>://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/<span class="built_in">v5</span>/prod/cudnn-<span class="number">7</span>.<span class="number">5</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">0</span>-ga.tgz?autho<span class="number">=1491911109</span>_39b0ac86b2d9e816a24be1fb8148a31c&amp;file<span class="symbol">=cudnn</span>-<span class="number">7</span>.<span class="number">5</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">0</span>-ga.tgz</span><br></pre></td></tr></table></figure></p>
+<p>cudnn 5.1 for cude 8.0<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">http</span>://developer.download.nvidia.com/compute/machine-learning/cudnn/secure/<span class="built_in">v5</span>.<span class="number">1</span>/prod_20161129/<span class="number">8</span>.<span class="number">0</span>/cudnn-<span class="number">8</span>.<span class="number">0</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">1</span>.tgz?autho<span class="number">=1491911192</span>_c4362e4d2c81a2d3c463a819201b25e6&amp;file<span class="symbol">=cudnn</span>-<span class="number">8</span>.<span class="number">0</span>-linux-x64-<span class="built_in">v5</span>.<span class="number">1</span>.tgz</span><br></pre></td></tr></table></figure></p>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>如果出现了以下错误<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/ldconfig<span class="selector-class">.real</span>: /usr/lib32/nvidia-<span class="number">375</span>/libEGL<span class="selector-class">.so</span>.<span class="number">1</span> is not <span class="selector-tag">a</span> symbolic link</span><br></pre></td></tr></table></figure></p>
+<p>可以使用下面的命令来尝试解决<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">nvidia</span>-375/<span class="title">libEGL</span>.<span class="title">so</span>.1 /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">nvidia</span>-375/<span class="title">libEGL</span>.<span class="title">so</span>.1.<span class="title">org</span></span></span><br><span class="line">sudo mv /usr/lib32/nvidia-<span class="number">375</span>/libEGL.so.<span class="number">1</span> /usr/lib32/nvidia-<span class="number">375</span>/libEGL.so.<span class="number">1</span>.org</span><br><span class="line">sudo ln -s /usr/<span class="class"><span class="keyword">lib</span>/<span class="title">nvidia</span>-375/<span class="title">libEGL</span>.<span class="title">so</span>.375.39 /<span class="title">usr</span>/<span class="title">lib</span>/<span class="title">nvidia</span>-375/<span class="title">libEGL</span>.<span class="title">so</span>.1</span></span><br><span class="line">sudo ln -s /usr/lib32/nvidia-<span class="number">375</span>/libEGL.so.<span class="number">375.39</span> /usr/lib32/nvidia-<span class="number">375</span>/libEGL.so.<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="建立http代理服务器"><a href="#建立http代理服务器" class="headerlink" title="建立http代理服务器"></a>建立http代理服务器</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure>
+<p>然后建立新的json文件<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"my_server_ip"</span>,</span><br><span class="line">    <span class="attr">"server_port"</span>:<span class="number">8388</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"password"</span>:<span class="string">"barfoo!"</span>,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">600</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"rc4-md5"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>启动sslocal<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sslocal -c yezhe<span class="selector-class">.json</span> -d start</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install polipo</span><br><span class="line">sudo service polipo <span class="keyword">stop</span></span><br><span class="line">sudo polipo socksParentProxy=localhos<span class="variable">t:1080</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以在命令前面加上代理的信息<code>http_proxy=http://localhost:8123</code><br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http_proxy=http://localhos<span class="variable">t:8123</span> apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="解压-gz"><a href="#解压-gz" class="headerlink" title="解压 .gz"></a>解压 .gz</h1><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip -<span class="keyword">d</span> &lt;<span class="keyword">input</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="并行压缩软件"><a href="#并行压缩软件" class="headerlink" title="并行压缩软件"></a>并行压缩软件</h2><p><code>pigz</code><br>可以将<code>tar</code>并行地压缩成<code>tar.gz</code></p>
+<h2 id="统计文件内的文件个数"><a href="#统计文件内的文件个数" class="headerlink" title="统计文件内的文件个数"></a>统计文件内的文件个数</h2><p><code>ls -lR feat|grep &quot;^-&quot;|wc -l</code></p>
+<h1 id="NFS配置"><a href="#NFS配置" class="headerlink" title="NFS配置"></a>NFS配置</h1><p>我现在有多台GPU机器，为了能够方便地在各个机器上启动我的程序，我决定采用NFS的方式来共享我的数据。</p>
+<h2 id="Server端安装"><a href="#Server端安装" class="headerlink" title="Server端安装"></a>Server端安装</h2><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install <span class="built_in">nfs</span>-kernel-server</span><br></pre></td></tr></table></figure>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">sudo</span> apt install nfs-<span class="meta">common</span></span><br></pre></td></tr></table></figure>
+<h1 id="利用conda安装requirements"><a href="#利用conda安装requirements" class="headerlink" title="利用conda安装requirements"></a>利用conda安装requirements</h1><p>这个方法可以自动安装依赖<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> requirement; <span class="keyword">do</span> conda install --yes <span class="variable">$requirement</span>; <span class="keyword">done</span> &lt; requirements.txt</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yezhe.org/2017/12/02/linux常见操作/" data-id="cjhdfh8sh006bsjge5vawth3g" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/JackYezhe/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/zhe.ye.921/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/yezhejack" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="http://weibo.com/jacklouisyeah/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/24/Semantic Specialisation of Distributional Word Vector Spaces using Monolingual and Cross-Lingual Constraints/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Semantic Specialisation of Distributional Word Vector Spaces using Monolingual and Cross-Lingual Constraints
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/12/02/GitHub Projects Collection/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">GitHub Projects Collection</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/15/gensim topic model/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="gensim topic model" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2018/04/15/gensim topic model/" class="title">gensim topic model</a></p>
+                            <p class="item-date"><time datetime="2018-04-14T16:02:58.999Z" itemprop="datePublished">2018-04-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/26/windows常用命令/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/windows10.jpg)" alt="windows常用命令" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2018/03/26/windows常用命令/" class="title">windows常用命令</a></p>
+                            <p class="item-date"><time datetime="2018-03-26T07:23:00.000Z" itemprop="datePublished">2018-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/26/Conditional Random Fields Notes/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Conditional Random Fields Notes" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2018/03/26/Conditional Random Fields Notes/" class="title">Conditional Random Fields Notes</a></p>
+                            <p class="item-date"><time datetime="2018-03-26T03:36:00.000Z" itemprop="datePublished">2018-03-26</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
+                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
+                            <p class="item-date"><time datetime="2018-03-21T05:07:33.263Z" itemprop="datePublished">2018-03-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/19/Active Sentiment Domain Adaptation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Active Sentiment Domain Adaptation" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/03/19/Active Sentiment Domain Adaptation/" class="title">Active Sentiment Domain Adaptation</a></p>
+                            <p class="item-date"><time datetime="2018-03-19T08:13:00.000Z" itemprop="datePublished">2018-03-19</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ACL/" style="font-size: 10px;">ACL</a> <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/CNN/" style="font-size: 10px;">CNN</a> <a href="/tags/Database/" style="font-size: 11.11px;">Database</a> <a href="/tags/Deep-Learning/" style="font-size: 13.33px;">Deep Learning</a> <a href="/tags/EMNLP/" style="font-size: 10px;">EMNLP</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 11.11px;">GitHub</a> <a href="/tags/Golang/" style="font-size: 11.11px;">Golang</a> <a href="/tags/HMM/" style="font-size: 10px;">HMM</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/LIBSVM/" style="font-size: 10px;">LIBSVM</a> <a href="/tags/Leetcode/" style="font-size: 10px;">Leetcode</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MAC/" style="font-size: 10px;">MAC</a> <a href="/tags/MXNet/" style="font-size: 10px;">MXNet</a> <a href="/tags/Machine-Learning/" style="font-size: 14.44px;">Machine Learning</a> <a href="/tags/Maxent/" style="font-size: 10px;">Maxent</a> <a href="/tags/Maximum-Entropy-Method/" style="font-size: 10px;">Maximum Entropy Method</a> <a href="/tags/NLP/" style="font-size: 12.22px;">NLP</a> <a href="/tags/Natural-Language-Processing/" style="font-size: 16.67px;">Natural Language Processing</a> <a href="/tags/Neural-Network/" style="font-size: 12.22px;">Neural Network</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/OS-X/" style="font-size: 11.11px;">OS X</a> <a href="/tags/Paper/" style="font-size: 20px;">Paper</a> <a href="/tags/Papers/" style="font-size: 17.78px;">Papers</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Reading-Note/" style="font-size: 10px;">Reading Note</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/STL/" style="font-size: 13.33px;">STL</a> <a href="/tags/SemEval2017/" style="font-size: 10px;">SemEval2017</a> <a href="/tags/Sentiment-Analysis/" style="font-size: 11.11px;">Sentiment Analysis</a> <a href="/tags/Server/" style="font-size: 10px;">Server</a> <a href="/tags/Support-Vector-Machine/" style="font-size: 10px;">Support Vector Machine</a> <a href="/tags/Tool/" style="font-size: 10px;">Tool</a> <a href="/tags/Tree/" style="font-size: 10px;">Tree</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Web-Server/" style="font-size: 10px;">Web Server</a> <a href="/tags/Word-Embedding/" style="font-size: 15.56px;">Word Embedding</a> <a href="/tags/Word-Vector/" style="font-size: 18.89px;">Word Vector</a> <a href="/tags/big-data/" style="font-size: 12.22px;">big data</a> <a href="/tags/ffmpeg/" style="font-size: 10px;">ffmpeg</a> <a href="/tags/flask/" style="font-size: 10px;">flask</a> <a href="/tags/framework/" style="font-size: 10px;">framework</a> <a href="/tags/gensim/" style="font-size: 10px;">gensim</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hadoop/" style="font-size: 12.22px;">hadoop</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/iptables/" style="font-size: 10px;">iptables</a> <a href="/tags/latex/" style="font-size: 10px;">latex</a> <a href="/tags/linux/" style="font-size: 11.11px;">linux</a> <a href="/tags/macOS/" style="font-size: 11.11px;">macOS</a> <a href="/tags/machine-learning/" style="font-size: 10px;">machine learning</a> <a href="/tags/mpv/" style="font-size: 10px;">mpv</a> <a href="/tags/push/" style="font-size: 10px;">push</a> <a href="/tags/pyspider/" style="font-size: 10px;">pyspider</a> <a href="/tags/python/" style="font-size: 15.56px;">python</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/rsync/" style="font-size: 10px;">rsync</a> <a href="/tags/socket/" style="font-size: 11.11px;">socket</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/topic-model/" style="font-size: 10px;">topic model</a> <a href="/tags/unix/" style="font-size: 11.11px;">unix</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/wordpress/" style="font-size: 10px;">wordpress</a> <a href="/tags/信号量/" style="font-size: 10px;">信号量</a> <a href="/tags/入门计划/" style="font-size: 10px;">入门计划</a> <a href="/tags/内存/" style="font-size: 10px;">内存</a> <a href="/tags/内存型数据库/" style="font-size: 10px;">内存型数据库</a> <a href="/tags/学习笔记/" style="font-size: 12.22px;">学习笔记</a> <a href="/tags/服务器/" style="font-size: 12.22px;">服务器</a> <a href="/tags/机器翻译/" style="font-size: 10px;">机器翻译</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/版本管理/" style="font-size: 10px;">版本管理</a> <a href="/tags/短连接/" style="font-size: 10px;">短连接</a> <a href="/tags/站点维护/" style="font-size: 10px;">站点维护</a> <a href="/tags/统计自然语言处理基础/" style="font-size: 12.22px;">统计自然语言处理基础</a> <a href="/tags/编程语言/" style="font-size: 11.11px;">编程语言</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/视频播放器/" style="font-size: 10px;">视频播放器</a> <a href="/tags/视频转换/" style="font-size: 10px;">视频转换</a> <a href="/tags/词性标注/" style="font-size: 12.22px;">词性标注</a> <a href="/tags/长连接/" style="font-size: 10px;">长连接</a> <a href="/tags/题解/" style="font-size: 10px;">题解</a> <a href="/tags/马尔科夫/" style="font-size: 10px;">马尔科夫</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://www.google.com/ncr">Google</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/ppoffice/hexo-theme-hueman">hueman</a>
+                    </li>
+                
+                    <li>
+                        <a href="https://www.zybuluo.com/knight/note/96093">mathjax-guideline</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 yezhejack</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'yezhejack';
+    
+    
+    var disqus_url = 'http://yezhe.org/2017/12/02/linux常见操作/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js"></script>
+        <script src="/vendor/scrollLoading/main.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
