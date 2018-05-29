@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="记录Git和GitHub的一些用法">
 <meta property="og:image" content="http://yezhe.org/img/git-logo.jpg">
-<meta property="og:updated_time" content="2017-10-26T02:43:56.000Z">
+<meta property="og:updated_time" content="2018-05-29T07:52:15.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git以及GitHub的用法">
 <meta name="twitter:description" content="记录Git和GitHub的一些用法">
@@ -189,6 +189,8 @@ var _hmt = _hmt || [];
 <h4 id="重命名一个分支并且让这个作用到远程分支上"><a href="#重命名一个分支并且让这个作用到远程分支上" class="headerlink" title="重命名一个分支并且让这个作用到远程分支上"></a>重命名一个分支并且让这个作用到远程分支上</h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch -m simple dev</span><br><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span></span><br><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> :simple</span><br></pre></td></tr></table></figure>
 <h4 id="大于100MB的文件的处理方法"><a href="#大于100MB的文件的处理方法" class="headerlink" title="大于100MB的文件的处理方法"></a>大于100MB的文件的处理方法</h4><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git install <span class="keyword">lfs</span></span><br><span class="line">git <span class="keyword">lfs</span> track &lt;your_file&gt;</span><br></pre></td></tr></table></figure>
 <p>然后正常add和commit就可以了</p>
+<h4 id="branch-archive"><a href="#branch-archive" class="headerlink" title="branch archive"></a>branch archive</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> tag archive/&lt;<span class="keyword">branchname&gt; </span>&lt;<span class="keyword">branchname&gt;</span><br><span class="line"></span><span class="symbol">git</span> <span class="keyword">branch </span>-D &lt;<span class="keyword">branchname&gt;</span><br><span class="line"></span><span class="symbol">git</span> <span class="keyword">branch </span>-d -r origin/&lt;<span class="keyword">branchname&gt;</span><br><span class="line"></span><span class="symbol">git</span> <span class="keyword">push </span>--tags</span><br><span class="line"><span class="symbol">git</span> <span class="keyword">push </span>origin :&lt;<span class="keyword">branchname&gt;</span></span><br></pre></td></tr></table></figure>
+<p>恢复分支<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> checkout -<span class="keyword">b </span>&lt;<span class="keyword">branchname&gt; </span>archive/&lt;<span class="keyword">branchname&gt;</span></span><br></pre></td></tr></table></figure></p>
 
         </div>
         <footer class="article-footer">
@@ -196,7 +198,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2015/12/10/git以及github的用法/" data-id="cjhdfyyl7005v16gem6xs4w6w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2015/12/10/git以及github的用法/" data-id="cjhrdwbrl005sajge4h2kqbkg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -316,11 +318,11 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2015/12/20/mpv播放器使用指南/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2015/12/20/redis/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            mpv播放器使用指南
+            redis
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
