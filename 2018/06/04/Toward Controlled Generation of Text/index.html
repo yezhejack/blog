@@ -19,7 +19,7 @@ C">
 这篇文章的主要思路是用类似GAN的方式，互相促进，同时把这个学习信号嵌入到Generator的一个位上。
 C">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-06-04T08:41:20.414Z">
+<meta property="og:updated_time" content="2018-06-04T08:45:38.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Toward Controlled Generation of Text">
 <meta name="twitter:description" content="这篇paper是被Goldberg顺带怼过的一篇文章，也算是走红了。已有的文本生成工作具有不可控的属性，比如我不知道我下一句话生成的会是一个什么情感的句子。或者是什么时态的句子，这是机器人必须突破的限制。我的前端语义理解系统理解出来了用户可能需要一个positive的回复，但是我如何给呢？
@@ -194,7 +194,7 @@ var _hmt = _hmt || [];
 <li>文本天然是一个离散的数据，导致两个网络之间的结果不可导。</li>
 <li>另一个挑战是如何学习到一个disentangle representation。通过操作这个representation我们就可以操纵生成文本的某些特征。</li>
 </ol>
-<h2 id="Model-Overview"><a href="#Model-Overview" class="headerlink" title="Model Overview"></a>Model Overview</h2><p><img src="/img/Toward_Controlled_Generation_of_Text.png]" alt="image"><br>为了让representation没有指定语义和指定语义了的部分不纠缠在一起，于是</p>
+<h2 id="Model-Overview"><a href="#Model-Overview" class="headerlink" title="Model Overview"></a>Model Overview</h2><p><img src="/img/TowardControlledGenerationofText.png]" alt="image"><br>为了让representation没有指定语义和指定语义了的部分不纠缠在一起，于是将二者分开训练。</p>
 
         </div>
         <footer class="article-footer">
@@ -202,7 +202,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/06/04/Toward Controlled Generation of Text/" data-id="cji00aeko005hhuget4pzx2al" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/06/04/Toward Controlled Generation of Text/" data-id="cji00fy9h005hjcget4yd2a0o" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
