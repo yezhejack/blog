@@ -9,11 +9,13 @@
         <meta name="keywords" content="爬虫,pyspider" />
     
     <meta name="description" content="阅读pyspider所做的记录">
+<meta name="keywords" content="爬虫,pyspider">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pyspider爬虫框架源码阅读">
 <meta property="og:url" content="http://yezhe.org/2016/07/30/pyspider爬虫框架源码阅读/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="阅读pyspider所做的记录">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/Learning.PNG">
 <meta property="og:updated_time" content="2016-08-02T12:19:39.000Z">
 <meta name="twitter:card" content="summary">
@@ -202,13 +204,13 @@ var _hmt = _hmt || [];
 <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@click</span>.command()</span><br><span class="line"><span class="variable">@click</span>.option(<span class="string">'--hash-type'</span>,type=click.Choice([<span class="string">'md5'</span>,<span class="string">'sha1'</span>]))</span><br></pre></td></tr></table></figure>
 <p>这两个装饰器会对hash-type这个参数进行检查，如果不是<figure class="highlight plain"><figcaption><span>之一的话，会报错。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### prompt ####</span><br><span class="line">当用户没有指定一些参数的时候，让程序去追问用户，叫做prompt parameters</span><br><span class="line"></span><br><span class="line">#### 从环境变量中读取值 ####</span><br><span class="line">有两种方式，一种是从环境变量中读取自定义的</span><br></pre></td></tr></table></figure></p>
 <p>@click.command()<br>@click.option(‘–username’)<br>def greet(username):<br>    click.echo(‘hello %s!’ % username)</p>
-<p>if <strong>name</strong>==’<strong>main</strong>‘:<br>    greet(auto_envvar_prefix=’GREETER’)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后在命令行中</span><br></pre></td></tr></table></figure></p>
-<p>$ export GREETER_USERNAME=john<br>$ greet<br>hello john<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#### 可变参数 ###</span><span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
-<p>@click.command()<br>@click.argument(‘src’,nargs=-1)<br>@click.argument(‘dst’,nargs=1)<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这样子src就拥有了可变参数的特性，可以吃掉任意多的参数。但是只能有一个可变参数存在。</span><br><span class="line"></span><br><span class="line">如果想要至少提供一个参数的可变参数的话，需要设置```requeired=<span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<p>if <strong>name</strong>==’<strong>main</strong>‘:<br>    greet(auto_envvar_prefix=’GREETER’)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后在命令行中</span><br></pre></td></tr></table></figure></p>
+<p>$ export GREETER_USERNAME=john<br>$ greet<br>hello john<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#### 可变参数 ####</span><br></pre></td></tr></table></figure></p>
+<p>@click.command()<br>@click.argument(‘src’,nargs=-1)<br>@click.argument(‘dst’,nargs=1)<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这样子src就拥有了可变参数的特性，可以吃掉任意多的参数。但是只能有一个可变参数存在。</span><br><span class="line"></span><br><span class="line">如果想要至少提供一个参数的可变参数的话，需要设置```requeired=<span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
 <h4 id="文件安全"><a href="#文件安全" class="headerlink" title="文件安全"></a>文件安全</h4><p>提供了lazy mode和atomic mode来保证文件的读写安全，lazy模式下，读文件会得到立即的反应，而写文件则会到第一次IO操作的时候才有反应。</p>
 <h4 id="复杂应用"><a href="#复杂应用" class="headerlink" title="复杂应用"></a>复杂应用</h4><h5 id="上下文环境-context"><a href="#上下文环境-context" class="headerlink" title="上下文环境 context"></a>上下文环境 context</h5><p>当一个click命令执行的时候，一个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">环境对象建立一个链接表，直到他们到达了最上面的一个。每个环境都会和它的父环境链接。这样子，每个环境对象都能够保存自己的信息，而不用担心会影响到其他命令的状态了。同时也保证了当父环境的数据需要读取的时候，可以到达。</span><br></pre></td></tr></table></figure></p>
-<p>@click.pass_context<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以将上下文传输过来</span><br></pre></td></tr></table></figure></p>
-<p>@click.pass_obj<br><code>则是只传递</code>Context.obj```字段过来。</p>
+<p>@click.pass_context<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以将上下文传输过来</span><br></pre></td></tr></table></figure></p>
+<p>@click.pass_obj<br><code>则是只传递</code>Context.obj<code>`</code>字段过来。</p>
 <p>当使用了这两个装饰器之后，被装饰的函数的第一个参数就是对应的Context或Context.obj</p>
 <h2 id="run-py"><a href="#run-py" class="headerlink" title="run.py"></a>run.py</h2><p>在<code>./pyspider/run.py</code>中从<code>cli()</code>函数开始运行,看之前最好看一下click的使用，因为整个结构是基于click的。</p>
 <h3 id="lambda-匿名函数"><a href="#lambda-匿名函数" class="headerlink" title="lambda 匿名函数"></a>lambda 匿名函数</h3><p>这个是用来绑定一个匿名函数的</p>
@@ -219,7 +221,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2016/07/30/pyspider爬虫框架源码阅读/" data-id="cji01c5kx006xppgeum329tms" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2016/07/30/pyspider爬虫框架源码阅读/" data-id="cji5qzcwx006cc2geer9kgga9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -371,6 +373,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -444,25 +465,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -472,7 +474,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -482,7 +484,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

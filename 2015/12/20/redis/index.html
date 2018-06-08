@@ -9,11 +9,13 @@
         <meta name="keywords" content="python,redis,内存,内存型数据库" />
     
     <meta name="description" content="redis学习笔记">
+<meta name="keywords" content="python,redis,内存,内存型数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis">
 <meta property="og:url" content="http://yezhe.org/2015/12/20/redis/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="redis学习笔记">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/Programmer.jpg">
 <meta property="og:updated_time" content="2016-05-27T06:01:13.000Z">
 <meta name="twitter:card" content="summary">
@@ -186,14 +188,14 @@ var _hmt = _hmt || [];
 <h3 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h3><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
 <p>会在前台启动，然后再启动客户端来进行测试<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure></p>
 <p>可以在测试端里写<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> foo <span class="comment">bar</span></span><br></pre></td></tr></table></figure></p>
-<p>然后再写<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">get</span> foo bar</span><br></pre></td></tr></table></figure></p>
+<p>然后再写<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span> foo bar</span><br></pre></td></tr></table></figure></p>
 <p>分别对应着存取操作</p>
 <h3 id="安装redis-py"><a href="#安装redis-py" class="headerlink" title="安装redis-py"></a>安装redis-py</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> easy_install redis</span><br></pre></td></tr></table></figure>
 <h3 id="安装hiredis"><a href="#安装hiredis" class="headerlink" title="安装hiredis"></a>安装hiredis</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> hiredis</span><br></pre></td></tr></table></figure>
 <p>这个parser的效率比较高</p>
 <h3 id="后台启动redis"><a href="#后台启动redis" class="headerlink" title="后台启动redis"></a>后台启动redis</h3><p>修改redis目录下的redis.conf文件，将其中的<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">daemonize</span> <span class="literal">no</span></span><br></pre></td></tr></table></figure></p>
 <p>修改为<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">daemonize</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure></p>
-<p>然后关闭刚才在前台启动的redis-server，进入到redis的目录<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src/redis-<span class="keyword">server</span> ./redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>然后关闭刚才在前台启动的redis-server，进入到redis的目录<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src<span class="regexp">/redis-server ./</span>redis.conf</span><br></pre></td></tr></table></figure></p>
 <p>即可启动redis</p>
 <h3 id="关闭后台redis"><a href="#关闭后台redis" class="headerlink" title="关闭后台redis"></a>关闭后台redis</h3><p>打开redis-cli，输入<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">shutdown</span> save</span><br></pre></td></tr></table></figure></p>
 <p>即可安全退出redis，后面的save表示会保存之后再退出，如果是nosace则是马上退出，有可能会存在数据丢失</p>
@@ -209,8 +211,8 @@ var _hmt = _hmt || [];
 <p>这就直接把一个叫做dict_a的dict存入了redis中，并且这个名字保持一致</p>
 <h4 id="hgetall"><a href="#hgetall" class="headerlink" title="hgetall"></a>hgetall</h4><p>想要一次性把dict_a全部取出来<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dict_a</span>=r.hgetall(<span class="string">'dict_a'</span>)</span><br></pre></td></tr></table></figure></p>
 <h4 id="hget"><a href="#hget" class="headerlink" title="hget"></a>hget</h4><p>读取key对应的value<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">value</span>=r.hget(<span class="string">'dict_a'</span>,<span class="string">'a'</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="hdel"><a href="#hdel" class="headerlink" title="hdel"></a>hdel</h4><p>用来删除dict中对应的键值<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r<span class="selector-class">.hdel</span>(<span class="string">'dict_a'</span>,<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure></p>
-<h4 id="mset-mget"><a href="#mset-mget" class="headerlink" title="mset mget"></a>mset mget</h4><p>```<br>r.mset({‘name1’:value1,’name2’:value2})<br>r.mget(‘name1’,’name2’)</p>
+<h4 id="hdel"><a href="#hdel" class="headerlink" title="hdel"></a>hdel</h4><p>用来删除dict中对应的键值<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">r</span><span class="selector-class">.hdel</span>(<span class="string">'dict_a'</span>,<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure></p>
+<h4 id="mset-mget"><a href="#mset-mget" class="headerlink" title="mset mget"></a>mset mget</h4><p><code>`</code><br>r.mset({‘name1’:value1,’name2’:value2})<br>r.mget(‘name1’,’name2’)</p>
 
         </div>
         <footer class="article-footer">
@@ -218,7 +220,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2015/12/20/redis/" data-id="cji01c5l2007bppgetvt914q9" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2015/12/20/redis/" data-id="cji5qzcx2006qc2gefele5ixo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -370,6 +372,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -443,25 +464,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -471,7 +473,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -481,7 +483,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

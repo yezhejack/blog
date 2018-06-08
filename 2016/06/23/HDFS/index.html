@@ -8,20 +8,19 @@
     
         <meta name="keywords" content="hadoop,big data" />
     
-    <meta name="description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。
-datanode自身因为会把block复制几遍，所">
+    <meta name="description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。 datanode自身因为会把block复制几遍，所">
+<meta name="keywords" content="hadoop,big data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDFS">
 <meta property="og:url" content="http://yezhe.org/2016/06/23/HDFS/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。
-datanode自身因为会把block复制几遍，所">
+<meta property="og:description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。 datanode自身因为会把block复制几遍，所">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/linux.jpg">
 <meta property="og:updated_time" content="2016-06-25T19:06:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDFS">
-<meta name="twitter:description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。
-datanode自身因为会把block复制几遍，所">
+<meta name="twitter:description" content="HDFS 学习HDFS文件系统具有高容错率，每个block的size为128MB，为的是减少寻址时间。整个hadoop集群中分为了Namenode和Datanode，其中Namenode保存着metadata，也就是整个HDFS文件系统的树和块信息。而Datanode则负责具体block的存取，并且周期性地向Namenode报告它所拥有的数据块。 datanode自身因为会把block复制几遍，所">
 <meta name="twitter:image" content="http://yezhe.org/img/linux.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -201,10 +200,10 @@ var _hmt = _hmt || [];
 <h3 id="命令行接口"><a href="#命令行接口" class="headerlink" title="命令行接口"></a>命令行接口</h3><p>有两个属性需要设置</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.defaultFS=<span class="string">hdfs:</span><span class="comment">//localhost/</span></span><br></pre></td></tr></table></figure>
 <p>HDFS守护进程会使用这个东西去查找HDFS<code>namenode</code>的地址和端口。<code>HDFS clients</code>也会通过这个查找<code>namenode</code>。</p>
-<p>另一个属性是<br><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dfs.replication</span>=<span class="string">1</span></span><br></pre></td></tr></table></figure></p>
+<p>另一个属性是<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dfs.<span class="attribute">replication</span>=1</span><br></pre></td></tr></table></figure></p>
 <p>这样HDFS就不会讲每个块都复制三遍了。当只有单个<code>datanode</code>的时候，HDFS无法复制三遍，所以会不停地警告，这个设置会解决这个问题。</p>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyFromLocal input<span class="meta-keyword">/docs/</span>quangle.txt \</span><br><span class="line"><span class="symbol">hdfs:</span><span class="comment">//localhost/user/tom/quangle.txt</span></span><br></pre></td></tr></table></figure>
-<p>如果查找不到datanode的话<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -R <span class="regexp">/tmp/</span>*</span><br><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure></p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -copyFromLocal input<span class="regexp">/docs/</span>quangle.txt \</span><br><span class="line">hdfs:<span class="regexp">//</span>localhost<span class="regexp">/user/</span>tom<span class="regexp">/quangle.txt</span></span><br></pre></td></tr></table></figure>
+<p>如果查找不到datanode的话<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -R <span class="regexp">/tmp/</span>*</span><br><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure></p>
 <p>然后重启</p>
 <h3 id="hdfs-client读文件过程"><a href="#hdfs-client读文件过程" class="headerlink" title="hdfs client读文件过程"></a>hdfs client读文件过程</h3><ul>
 <li>客户端先打开一个<code>FileSystem</code>对象，对于HDFS文件系统来说是<code>DistributedFileSystem</code>。它会返回前几个block的地址。同时这些地址，也就是datanode的地址，会根据它们的拓扑情况排序。除此之外，还会返回一个<code>FSDataInputStream</code>，其中包含着一个<code>DFSInputStream</code>。</li>
@@ -233,7 +232,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2016/06/23/HDFS/" data-id="cji01c5jc0022ppgeuof41ey7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2016/06/23/HDFS/" data-id="cji5qzcv8001vc2ge6t66i11k" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -385,6 +384,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -458,25 +476,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -486,7 +485,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -496,7 +495,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

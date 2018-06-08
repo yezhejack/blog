@@ -9,11 +9,13 @@
         <meta name="keywords" content="Natural Language Processing,词性标注,统计自然语言处理基础" />
     
     <meta name="description" content="词性标注">
+<meta name="keywords" content="Natural Language Processing,词性标注,统计自然语言处理基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="词性标注">
 <meta property="og:url" content="http://yezhe.org/2016/05/25/词性标注/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="词性标注">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
 <meta property="og:updated_time" content="2017-07-02T08:20:55.000Z">
 <meta name="twitter:card" content="summary">
@@ -264,7 +266,7 @@ var _hmt = _hmt || [];
 <h3 id="10-3-2-隐马尔可夫模型训练中的初始化的作用"><a href="#10-3-2-隐马尔可夫模型训练中的初始化的作用" class="headerlink" title="10.3.2 隐马尔可夫模型训练中的初始化的作用"></a>10.3.2 隐马尔可夫模型训练中的初始化的作用</h3><p>为了防止训练过度，可以在训练集上留出一个验证集，每次迭代后都测试一下，在性能下降的时候就停止迭代。</p>
 <h2 id="10-4-基于转换的学习"><a href="#10-4-基于转换的学习" class="headerlink" title="10.4 基于转换的学习"></a>10.4 基于转换的学习</h2><p>我们需要一个已经标注好的语料库和一个词典作为输入数据。首先用最常用的标记来标注训练语料库中的每个词，这就是我们需要词典的原因。接下来学习算法构建了一个转换的排序表，它把初始的标注转化为接近正确的标注。通过再次初始化来选择每个词最常用的标记，再应用转换，这个排序表就可以用来标注新的文本。</p>
 <h3 id="10-4-1-转换"><a href="#10-4-1-转换" class="headerlink" title="10.4.1 转换"></a>10.4.1 转换</h3><p>一个转换包括两个部分，一个是触发环境，另一个是重写规则。大概的意思就是在特定的位置上出现特殊的标注的时候，这个标注需要进行转换，触发重写规则。</p>
-<h3 id="10-4-2-学习算法"><a href="#10-4-2-学习算法" class="headerlink" title="10.4.2 学习算法"></a>10.4.2 学习算法</h3><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C0:=corpus with each word tagged with its most frequent tag</span><br><span class="line"><span class="keyword">for</span> k:=0 step 1 do</span><br><span class="line">    v:=the transformation ui that minimizes E(ui(Ck))</span><br><span class="line">    <span class="keyword">if</span> (E(Ck))-E(v(Ck)))&lt;e then <span class="keyword">break</span> fi</span><br><span class="line">    C(k+1)=v(Ck)</span><br><span class="line">    T(k+1)=v</span><br><span class="line">end</span><br><span class="line">Output sequence:T1...Tk</span><br></pre></td></tr></table></figure>
+<h3 id="10-4-2-学习算法"><a href="#10-4-2-学习算法" class="headerlink" title="10.4.2 学习算法"></a>10.4.2 学习算法</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C0:=corpus <span class="keyword">with</span> <span class="keyword">each</span> word tagged <span class="keyword">with</span> its most frequent tag</span><br><span class="line"><span class="keyword">for</span> k:=<span class="number">0</span> <span class="keyword">step</span> <span class="number">1</span> <span class="keyword">do</span></span><br><span class="line">    v:=the transformation ui that minimizes E(ui(Ck))</span><br><span class="line">    <span class="keyword">if</span> (E(Ck))-E(v(Ck)))&lt;e <span class="keyword">then</span> <span class="keyword">break</span> fi</span><br><span class="line">    C(k+<span class="number">1</span>)=v(Ck)</span><br><span class="line">    T(k+<span class="number">1</span>)=v</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">Output <span class="keyword">sequence</span>:T1...Tk</span><br></pre></td></tr></table></figure>
 <p>最初我们使用最常见的标记标注每个词。在每次迭代中，我们选择最可能减少错误率的转换，通过标注过的语料库<span>$C_{k}$</span><!-- Has MathJax -->中的被错误标注的词语的数目来衡量错误率<span>$E(C_k)$</span><!-- Has MathJax -->。</p>
 <p>如何应用转换也有两种方式，一种是具有立即效果的，另一种是具有延迟效果的。如果是延迟转换的话<code>A-&gt;B</code>会将<code>AAAA</code>转换为<code>ABBB</code>。而立即转换的话则会变为<code>ABAB</code>。</p>
 <p>这个标注模型的一个应用Brill(1995b)。在HMM标注中，非监督学习唯一可以获得的信息是每个词有哪些标记是允许的，我们可以利用很多词只有一种词性标记这个事实，并把它作为选择转换的积分计分函数。而且文章中展示的问题没有训练过度的问题。这个文章中使用的无监督的学习，什么是无监督的学习（unsupervised learning）呢，就是看输入的数据是没有标签的，如果有，就是有监督的学习。</p>
@@ -282,7 +284,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2016/05/25/词性标注/" data-id="cji01c5lo009cppgel7rrl3rm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2016/05/25/词性标注/" data-id="cji5qzcz300edc2gewc4hih9m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -434,6 +436,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -507,25 +528,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -535,7 +537,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -545,7 +547,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

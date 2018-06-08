@@ -8,23 +8,19 @@
     
         <meta name="keywords" content="OS X" />
     
-    <meta name="description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。
-上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。
-在新 osx 系统里面， sa">
+    <meta name="description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。 上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。 在新 osx 系统里面， sa">
+<meta name="keywords" content="OS X">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS Flash 卡顿问题">
 <meta property="og:url" content="http://yezhe.org/2017/10/15/macOS Flash 卡顿问题/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。
-上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。
-在新 osx 系统里面， sa">
+<meta property="og:description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。 上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。 在新 osx 系统里面， sa">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/Howto.PNG">
 <meta property="og:updated_time" content="2017-10-26T02:43:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS Flash 卡顿问题">
-<meta name="twitter:description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。
-上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。
-在新 osx 系统里面， sa">
+<meta name="twitter:description" content="今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。 上网看到一个方法是或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。 在新 osx 系统里面， sa">
 <meta name="twitter:image" content="http://yezhe.org/img/Howto.PNG">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -191,8 +187,8 @@ var _hmt = _hmt || [];
             <p><del>今天发现打开腾讯NBA和斗鱼的时候，页面非常卡，而且打开Activity Monitor之后，发现Safari里的Flash插件经常CPU 100%，并且会出现未响应。</del></p>
 <p><del>上网看到一个方法是</del><br><del>或者自己手动把 RTMFPP2PDisable=1 这行添加到 /Library/Application\ Support/Macromedia/mms.cfg 这个里面去都可以。</del></p>
 <p><del>在新 osx 系统里面， safari 的媒体播放默认开启了 p2p 模式，手动关了就OK了。</del></p>
-<p><del>可以直接使用命令</del><br><del>```</del><br><del>sudo sh -c ‘echo “RTMFPP2PDisable=1” &gt;&gt; /Library/Application\ Support/Macromedia/mms.cfg’</del><br><del>```</del></p>
-<p><del>以上部分转载自<a href="https://m.aoh.cc/205.html" target="_blank" rel="external">https://m.aoh.cc/205.html</a></del></p>
+<p><del>可以直接使用命令</del><br><del><code>`</code></del><br><del>sudo sh -c ‘echo “RTMFPP2PDisable=1” &gt;&gt; /Library/Application\ Support/Macromedia/mms.cfg’</del><br><del><code>`</code></del></p>
+<p><del>以上部分转载自<a href="https://m.aoh.cc/205.html" target="_blank" rel="noopener">https://m.aoh.cc/205.html</a></del></p>
 <h2 id="最新解决方法"><a href="#最新解决方法" class="headerlink" title="最新解决方法"></a>最新解决方法</h2><p>事实证明上面的方法是不可行的。但是我也发现了新的方法，就是在safari里面点击<code>Safari</code>-&gt;<code>Websites</code>-&gt;<code>Adobe Flash Player</code>，右侧会有开关，将所有的都调成<code>off</code>。之后每次进视频网站需要点击允许flash之类的按钮才可以让视频播放，但是这样解决了三个问题:</p>
 <ul>
 <li>降低了Safari的功耗</li>
@@ -206,7 +202,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2017/10/15/macOS Flash 卡顿问题/" data-id="cji01c5kr006gppgeitlr95us" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2017/10/15/macOS Flash 卡顿问题/" data-id="cji5qzcwr005vc2gejxgmzrpk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -358,6 +354,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -431,25 +446,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -459,7 +455,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -469,7 +465,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

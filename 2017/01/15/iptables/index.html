@@ -8,23 +8,19 @@
     
         <meta name="keywords" content="Linux,iptables" />
     
-    <meta name="description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000
-这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000
-这里是为了解决一个问题，就是一个NA">
+    <meta name="description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000 这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000 这里是为了解决一个问题，就是一个NA">
+<meta name="keywords" content="Linux,iptables">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iptables">
 <meta property="og:url" content="http://yezhe.org/2017/01/15/iptables/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000
-这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000
-这里是为了解决一个问题，就是一个NA">
+<meta property="og:description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000 这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000 这里是为了解决一个问题，就是一个NA">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/linux.jpg">
 <meta property="og:updated_time" content="2017-01-15T08:58:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables">
-<meta name="twitter:description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000
-这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000
-这里是为了解决一个问题，就是一个NA">
+<meta name="twitter:description" content="iptables 设置使用的方法将输出的包重定向1iptables -t nat -A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000 这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000 这里是为了解决一个问题，就是一个NA">
 <meta name="twitter:image" content="http://yezhe.org/img/linux.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -188,10 +184,10 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="iptables-设置"><a href="#iptables-设置" class="headerlink" title="iptables 设置"></a>iptables 设置</h1><h2 id="使用的方法"><a href="#使用的方法" class="headerlink" title="使用的方法"></a>使用的方法</h2><h3 id="将输出的包重定向"><a href="#将输出的包重定向" class="headerlink" title="将输出的包重定向"></a>将输出的包重定向</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">iptables</span> <span class="selector-tag">-t</span> <span class="selector-tag">nat</span> <span class="selector-tag">-A</span> <span class="selector-tag">OUTPUT</span> <span class="selector-tag">-p</span> <span class="selector-tag">tcp</span> <span class="selector-tag">-d</span> 192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.107</span> <span class="selector-tag">--dport</span> 5001 <span class="selector-tag">-j</span> <span class="selector-tag">DNAT</span> <span class="selector-tag">--to-destination</span> 192<span class="selector-class">.168</span><span class="selector-class">.1</span><span class="selector-class">.107</span><span class="selector-pseudo">:5000</span></span><br></pre></td></tr></table></figure>
+            <h1 id="iptables-设置"><a href="#iptables-设置" class="headerlink" title="iptables 设置"></a>iptables 设置</h1><h2 id="使用的方法"><a href="#使用的方法" class="headerlink" title="使用的方法"></a>使用的方法</h2><h3 id="将输出的包重定向"><a href="#将输出的包重定向" class="headerlink" title="将输出的包重定向"></a>将输出的包重定向</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -t<span class="built_in"> nat </span>-A OUTPUT -p tcp -d 192.168.1.107 --dport 5001 -j DNAT --to-destination 192.168.1.107:5000</span><br></pre></td></tr></table></figure>
 <p>这是把本来发往192.168.1.107:5001端口的包发往192.168.1.107:5000</p>
 <p>这里是为了解决一个问题，就是一个NAS的NFS服务器需要一个111端口来进行挂载，但是似乎nfs没有提供可配置选项，如果我们在一个路由器后放上多个NAS的话怎么办，因此需要又一个办法让发出去的111端口重新定位到不同的端口上去，然后再将这个端口转发到111上。</p>
-<h2 id="开放特定端口"><a href="#开放特定端口" class="headerlink" title="开放特定端口"></a>开放特定端口</h2><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport <span class="number">80</span> -<span class="keyword">j</span> ACCEPT</span><br><span class="line">/etc/init.<span class="keyword">d</span>/firewall reload</span><br></pre></td></tr></table></figure>
+<h2 id="开放特定端口"><a href="#开放特定端口" class="headerlink" title="开放特定端口"></a>开放特定端口</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp --dport 80 -j ACCEPT</span><br><span class="line">/etc/init.d<span class="built_in">/firewall </span>reload</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -199,7 +195,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2017/01/15/iptables/" data-id="cji01c5ko0065ppge38dwtesu" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2017/01/15/iptables/" data-id="cji5qzcwp005oc2ge0fyoqjnl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -351,6 +347,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -424,25 +439,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -452,7 +448,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -462,7 +458,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

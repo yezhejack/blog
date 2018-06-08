@@ -9,11 +9,13 @@
         <meta name="keywords" content="python,编程语言" />
     
     <meta name="description" content="记录python的一些用法">
+<meta name="keywords" content="python,编程语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python学习">
 <meta property="og:url" content="http://yezhe.org/2015/12/10/python学习/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="记录python的一些用法">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/Programmer.jpg">
 <meta property="og:updated_time" content="2017-04-16T11:55:24.000Z">
 <meta name="twitter:card" content="summary">
@@ -189,7 +191,7 @@ var _hmt = _hmt || [];
 <li><p>argparse</p>
 <ol>
 <li><p>初始化</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line"><span class="meta">#新建一个解析器（应该是这么翻译的）</span></span><br><span class="line">parser=argparse.ArgumentParser()</span><br><span class="line"><span class="meta">#增加一个开关变量</span></span><br><span class="line">parser.add_argument(<span class="string">"-v"</span>,<span class="string">"--verbose"</span>,help=<span class="string">"increate output verbosity"</span>,action=<span class="string">"store_true"</span>)</span><br><span class="line"><span class="meta">#获得变量</span></span><br><span class="line">args=parser.parse_args()</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import argparse</span><br><span class="line"><span class="comment">#新建一个解析器（应该是这么翻译的）</span></span><br><span class="line"><span class="attribute">parser</span>=argparse.ArgumentParser()</span><br><span class="line"><span class="comment">#增加一个开关变量</span></span><br><span class="line">parser.add_argument(<span class="string">"-v"</span>,<span class="string">"--verbose"</span>,<span class="attribute">help</span>=<span class="string">"increate output verbosity"</span>,action="store_true")</span><br><span class="line"><span class="comment">#获得变量</span></span><br><span class="line"><span class="attribute">args</span>=parser.parse_args()</span><br></pre></td></tr></table></figure>
 <p>这个变量有一个缩写的名字-v，完整的名字是–verbose,并且是个开关变量，即标志，这里因为’action=”store_true”‘，因此有这个参数出现的时候，就代表了args.vebosity=True,当’action=count’时，会是一个计数器</p>
 </li>
 <li><p>使用<br>args是一个带有所有参数变量的结构体（类）</p>
@@ -210,15 +212,15 @@ var _hmt = _hmt || [];
 <li>获得当前工作路径<figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="built_in">os</span></span><br><span class="line"><span class="built_in">os</span>.getcwd()</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="编码错误"><a href="#编码错误" class="headerlink" title="编码错误"></a>编码错误</h3><p>如果碰到这个问题<br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="built_in">ascii</span>' codec can't encode characters <span class="keyword">in</span> <span class="built_in">position</span> <span class="number">0</span>-<span class="number">15</span>: ordinal <span class="keyword">not</span> <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">128</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="编码错误"><a href="#编码错误" class="headerlink" title="编码错误"></a>编码错误</h3><p>如果碰到这个问题<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">'ascii</span>' codec can<span class="symbol">'t</span> encode characters <span class="keyword">in</span> position <span class="number">0</span>-<span class="number">15</span>: ordinal <span class="keyword">not</span> <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">128</span>)</span><br></pre></td></tr></table></figure></p>
 <p>可以用下面的代码来解决<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line"><span class="function"><span class="title">reload</span><span class="params">(sys)</span></span></span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf8'</span>)</span><br></pre></td></tr></table></figure></p>
 <h3 id="修改开源组件"><a href="#修改开源组件" class="headerlink" title="修改开源组件"></a>修改开源组件</h3><p>因为项目需要加打log，所以需要修改开源组件webpy来进行纪录log。默认情况下webpy会被安装在’/usr/local/lib/python2.7/dist-packages’这个目录下，你需要删除webpy相关的几个东西，看名字就可以知道了，如果只是重新编译并安装的话是没有用的，有些地方无法覆盖</p>
-<h3 id="内存分析工具meliae"><a href="#内存分析工具meliae" class="headerlink" title="内存分析工具meliae"></a>内存分析工具meliae</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get <span class="keyword">install</span> python-pip</span><br><span class="line">sudo apt-<span class="keyword">get</span> <span class="keyword">install</span> Cython</span><br><span class="line">sudo pip <span class="keyword">install</span> meliae</span><br></pre></td></tr></table></figure>
-<h4 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> meliae <span class="keyword">import</span> scanner</span><br><span class="line">scanner.dump_all_objects(<span class="string">'/opt/log/dump.txt'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="内存分析工具meliae"><a href="#内存分析工具meliae" class="headerlink" title="内存分析工具meliae"></a>内存分析工具meliae</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install python-pip</span><br><span class="line">sudo apt-<span class="builtin-name">get</span> install Cython</span><br><span class="line">sudo pip install meliae</span><br></pre></td></tr></table></figure>
+<h4 id="dump内存"><a href="#dump内存" class="headerlink" title="dump内存"></a>dump内存</h4><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> meliae <span class="keyword">import</span> scanner</span><br><span class="line">scanner.dump_all_objects(<span class="string">'/opt/log/dump.txt'</span>)</span><br></pre></td></tr></table></figure>
 <h4 id="分析内存"><a href="#分析内存" class="headerlink" title="分析内存"></a>分析内存</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from meliae import loader</span><br><span class="line"><span class="keyword">om</span> = loader.load(<span class="string">'/opt/log/dump.txt'</span>)</span><br><span class="line"><span class="keyword">om</span>.compute_parents()</span><br><span class="line"><span class="keyword">om</span>.collapse_instance_dicts()</span><br><span class="line"><span class="keyword">om</span>.summarize()</span><br></pre></td></tr></table></figure>
 <h2 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h2><h2 id="文件锁"><a href="#文件锁" class="headerlink" title="文件锁"></a>文件锁</h2><p>最近遇到一个问题，我需要跑N个进程的训练程序，然后我想有序地输出结果到文件中，并且是以追加的形式，因此我要在打开文件之前就</p>
 <h2 id="非root安装third-party-modules"><a href="#非root安装third-party-modules" class="headerlink" title="非root安装third party modules"></a>非root安装third party modules</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --<span class="keyword">user</span> <span class="title">&lt;包名&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="和-的用法"><a href="#和-的用法" class="headerlink" title="和*的用法"></a><em>和*</em>的用法</h2><p>这是两种方便的做法，比如</p>
+<h2 id="和-的用法"><a href="#和-的用法" class="headerlink" title="*和**的用法"></a>*和**的用法</h2><p>这是两种方便的做法，比如</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a,b)</span>:</span></span><br><span class="line">    print(a)</span><br><span class="line">    print(b)</span><br><span class="line"></span><br><span class="line">a=[<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line">foo(*a)</span><br></pre></td></tr></table></figure>
 <p>这里把<code>a</code>中的两个分开，分别给了<code>a</code>和<code>b</code>。</p>
 <p>而<code>**</code>则可以把<code>dict</code>中的<code>value</code>赋给<code>key</code>，然后传到函数中。</p>
@@ -229,7 +231,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2015/12/10/python学习/" data-id="cji01c5ky0070ppge5octqk6m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2015/12/10/python学习/" data-id="cji5qzcwz006fc2geaq9vi8ci" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -381,6 +383,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -454,25 +475,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -482,7 +484,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -492,7 +494,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

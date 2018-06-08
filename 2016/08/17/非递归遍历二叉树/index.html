@@ -8,22 +8,18 @@
     
         <meta name="keywords" content="Tree" />
     
-    <meta name="description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的
-12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125;
-每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
+    <meta name="description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的 12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125; 每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
+<meta name="keywords" content="Tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="非递归遍历二叉树">
 <meta property="og:url" content="http://yezhe.org/2016/08/17/非递归遍历二叉树/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的
-12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125;
-每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
+<meta property="og:description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的 12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125; 每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-07-05T06:48:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非递归遍历二叉树">
-<meta name="twitter:description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的
-12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125;
-每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
+<meta name="twitter:description" content="非递归遍历二叉树先根遍历对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的 12345dg(root)&amp;#123;    fangwen(root);    dg(root-&amp;gt;left);    dg(root-&amp;gt;right);&amp;#125; 每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
     
@@ -187,16 +183,16 @@ var _hmt = _hmt || [];
         </div>
         <div class="article-entry" itemprop="articleBody">
             <h1 id="非递归遍历二叉树"><a href="#非递归遍历二叉树" class="headerlink" title="非递归遍历二叉树"></a>非递归遍历二叉树</h1><h2 id="先根遍历"><a href="#先根遍历" class="headerlink" title="先根遍历"></a>先根遍历</h2><p>对于递归来说，有一个很大的特征，就是先访问到的函数需要越晚结束掉。因此这就对应上栈这种数据结构。对于先根遍历来说递归函数是这样写的</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    fangwen(root);</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>left);</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    fangwen(root);</span><br><span class="line">    dg(root-&gt;<span class="built_in">left</span>);</span><br><span class="line">    dg(root-&gt;<span class="built_in">right</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>每次都需要把root入栈，因为只有这样才能找到左右儿子。因此对于当前节点P，先对其进行访问，然后把P入栈，然后再去访问P的左儿子，等到左儿子全都访问完毕后，会从栈里弹出P，从而找到右儿子。因此，有左儿子的情况下，需要把P入栈（之前访问过了），然后将P设为左儿子，从而进入左子树。</p>
 <p>如果没有左儿子的话，就去看右儿子，由于已经找到右儿子，所以就不需要把当前节点P入栈了，直接将P设成当前节点的右儿子。</p>
 <p>如果没有右儿子的话，则继续弹出，直到有右儿子为止，或者栈弹空了。</p>
 <h2 id="中根遍历"><a href="#中根遍历" class="headerlink" title="中根遍历"></a>中根遍历</h2><p>递归的写法</p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>left);</span><br><span class="line">    fangwen(root);</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    dg(root-&gt;<span class="built_in">left</span>);</span><br><span class="line">    fangwen(root);</span><br><span class="line">    dg(root-&gt;<span class="built_in">right</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出来，我们将root也就是P放进栈，是为了到时候拿出来进行访问，并且需要从而进入右儿子。</p>
 <p>对于当前节点P，如果它有左子树的话，则将其入栈，并且将P=P-&gt;left</p>
 <p>如果它没有左子树，则对其进行访问。如果有右子树，则将P设置为P=P-&gt;right。如果也没有右子树的话，则从栈里再弹出一个元素，并设置为P。</p>
-<h2 id="后根遍历"><a href="#后根遍历" class="headerlink" title="后根遍历"></a>后根遍历</h2><p>递归的写法<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>left)</span><br><span class="line">    <span class="function"><span class="title">dg</span>(root-&gt;</span>right)</span><br><span class="line">    fangwen(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="后根遍历"><a href="#后根遍历" class="headerlink" title="后根遍历"></a>后根遍历</h2><p>递归的写法<br><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dg(root)&#123;</span><br><span class="line">    dg(root-&gt;<span class="built_in">left</span>)</span><br><span class="line">    dg(root-&gt;<span class="built_in">right</span>)</span><br><span class="line">    fangwen(root);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>入栈是为了找到右子树和访问中间节点。因此只有第二次出现在栈顶的时候（进去的时候不算）才能被弹出，第一次是为了找到右节点，第二次是为了访问。</p>
 <p>因此对于当前的P，如果它有左子树，则将其P-&gt;record=0，然后P=P-&gt;left，如果没有左子树，则将其P-&gt;record=1，然后P=P-&gt;right。record=0表示还没出现在栈顶过，如果是1则表示左边已经不需要考虑，发现等0则不需要弹栈，如果等1，则需要弹栈</p>
 <p>无左有右的情况下，需要把record设为1，然后将当前节点设置为P=P-&gt;right</p>
@@ -208,7 +204,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2016/08/17/非递归遍历二叉树/" data-id="cji01c5lq009gppgepb346dba" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2016/08/17/非递归遍历二叉树/" data-id="cji5qzcxk008ec2gexowc6sn2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -360,6 +356,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -433,25 +448,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -461,7 +457,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -471,7 +467,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

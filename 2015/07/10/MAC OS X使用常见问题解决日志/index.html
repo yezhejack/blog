@@ -9,11 +9,13 @@
         <meta name="keywords" content="macOS" />
     
     <meta name="description" content="记录一下关于mbp的工作流程">
+<meta name="keywords" content="macOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MAC OS X使用常见问题解决日志">
 <meta property="og:url" content="http://yezhe.org/2015/07/10/MAC OS X使用常见问题解决日志/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
 <meta property="og:description" content="记录一下关于mbp的工作流程">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/Howto.PNG">
 <meta property="og:updated_time" content="2018-03-21T05:06:47.062Z">
 <meta name="twitter:card" content="summary">
@@ -192,7 +194,7 @@ var _hmt = _hmt || [];
 <li><code>command+r</code>刷新safari</li>
 <li><code>control+command+f</code> 通常情况下可以最大化窗口</li>
 </ul>
-<h1 id="iTerm-on-my-zsh-乱码问题"><a href="#iTerm-on-my-zsh-乱码问题" class="headerlink" title="iTerm + on-my-zsh 乱码问题"></a>iTerm + on-my-zsh 乱码问题</h1><p>登录到远程服务器上，然后打开了已有的screen，服务器上已经配置了oh-my-zsh，而在iTerm中出现了？等乱码，这个可以通过在<code>~/.zsh</code>中加入以下的代码来解决。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> LANG=en_US.UTF<span class="number">-8</span>  </span><br><span class="line"><span class="keyword">export</span> LC_CTYPE=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_NUMERIC=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_TIME=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_COLLATE=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_MONETARY=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_MESSAGES=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_PAPER=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_NAME=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_ADDRESS=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_TELEPHONE=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_MEASUREMENT=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_IDENTIFI<span class="built_in">CATION</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="keyword">export</span> LC_ALL=<span class="string">"en_US.UTF-8"</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="iTerm-on-my-zsh-乱码问题"><a href="#iTerm-on-my-zsh-乱码问题" class="headerlink" title="iTerm + on-my-zsh 乱码问题"></a>iTerm + on-my-zsh 乱码问题</h1><p>登录到远程服务器上，然后打开了已有的screen，服务器上已经配置了oh-my-zsh，而在iTerm中出现了？等乱码，这个可以通过在<code>~/.zsh</code>中加入以下的代码来解决。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">LANG</span>=en_US.UTF-8  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_CTYPE</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_NUMERIC</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_TIME</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_COLLATE</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_MONETARY</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_MESSAGES</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_PAPER</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_NAME</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ADDRESS</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_TELEPHONE</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_MEASUREMENT</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_IDENTIFICATION</span>=<span class="string">"en_US.UTF-8"</span>  </span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">LC_ALL</span>=<span class="string">"en_US.UTF-8"</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="iTerm2-自定义标签名字"><a href="#iTerm2-自定义标签名字" class="headerlink" title="iTerm2 自定义标签名字"></a>iTerm2 自定义标签名字</h1>
         </div>
         <footer class="article-footer">
@@ -200,7 +202,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2015/07/10/MAC OS X使用常见问题解决日志/" data-id="cji01c5jp0039ppgebwhm7ty3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2015/07/10/MAC OS X使用常见问题解决日志/" data-id="cji5qzcvp002yc2ge09b8e0de" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -346,6 +348,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -419,25 +440,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -447,7 +449,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -457,7 +459,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 

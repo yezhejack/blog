@@ -8,23 +8,19 @@
     
         <meta name="keywords" content="Linux,rsync" />
     
-    <meta name="description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
-如果上述链接失效，则需要到https://rsync.samba.org上
-我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
+    <meta name="description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz 如果上述链接失效，则需要到https://rsync.samba.org上 我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
+<meta name="keywords" content="Linux,rsync">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rsync">
 <meta property="og:url" content="http://yezhe.org/2016/08/23/rsync/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
-如果上述链接失效，则需要到https://rsync.samba.org上
-我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
+<meta property="og:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz 如果上述链接失效，则需要到https://rsync.samba.org上 我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/linux.jpg">
 <meta property="og:updated_time" content="2016-08-25T17:20:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rsync">
-<meta name="twitter:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz
-如果上述链接失效，则需要到https://rsync.samba.org上
-我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
+<meta name="twitter:description" content="rsync安装3.1.0版本的rsync为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本1wget https://download.samba.org/pub/rsync/src/rsync-3.1.2.tar.gz 如果上述链接失效，则需要到https://rsync.samba.org上 我的使用方法12rsync -a --progress -h -e &apos;ssh -p">
 <meta name="twitter:image" content="http://yezhe.org/img/linux.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -188,7 +184,7 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="安装3-1-0版本的rsync"><a href="#安装3-1-0版本的rsync" class="headerlink" title="安装3.1.0版本的rsync"></a>安装3.1.0版本的rsync</h2><p>为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget <span class="symbol">https:</span>/<span class="regexp">/download.samba.org/pub</span><span class="regexp">/rsync/src</span><span class="regexp">/rsync-3.1.2.tar.gz</span></span><br></pre></td></tr></table></figure></p>
+            <h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="安装3-1-0版本的rsync"><a href="#安装3-1-0版本的rsync" class="headerlink" title="安装3.1.0版本的rsync"></a>安装3.1.0版本的rsync</h2><p>为了显示进度条，我需要把我的路径下的rsync更新到3.1.0的版本<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>download.samba.org<span class="regexp">/pub/</span>rsync<span class="regexp">/src/</span>rsync-<span class="number">3.1</span>.<span class="number">2</span>.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p>如果上述链接失效，则需要到<code>https://rsync.samba.org</code>上</p>
 <h2 id="我的使用方法"><a href="#我的使用方法" class="headerlink" title="我的使用方法"></a>我的使用方法</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial zye<span class="variable">@202</span>.<span class="number">118.250</span>.<span class="number">16</span><span class="symbol">:/data/ltp/ltp-models</span> backup/</span><br><span class="line">rsync -a --progress -h -e <span class="string">'ssh -p 55555'</span> --partial backup rsync<span class="variable">@180</span>.<span class="number">168.92</span>.<span class="number">130</span><span class="symbol">:/volume1/hpc_data</span></span><br></pre></td></tr></table></figure>
 <p>如果在源地址后面加上斜杠的话，就只是表示拷贝下面的内容</p>
@@ -218,7 +214,7 @@ var _hmt = _hmt || [];
 <p>这个命令可以将<code>src/bar</code>这个文件夹下的所有内容都传输到<code>/data/tmp/bar</code>文件夹中。这些文件是在<code>archive</code>模式下传输的，这个会保证软链接、设备、属性、权限和所属等都被保留下来。另外，压缩也会在传输中被使用。</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -avz <span class="string">foo:</span>src<span class="regexp">/bar/</span> <span class="regexp">/data/</span>tmp</span><br></pre></td></tr></table></figure>
 <p>相比于上面多出现的一个斜杠可以避免拷贝的时候在目的地多出现一层文件结构。你可以这样来认为，多加一个斜杠在源地址表明了拷贝这个目录的内容，而不是按照名字拷贝目录，但是无论哪种，这些文件夹的属性都会用相同的方式传输过去。下面两个命令做的事情是一样的</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av <span class="meta-keyword">/src/</span>foo /dest</span><br><span class="line">rsync -av <span class="meta-keyword">/src/</span>foo/ <span class="meta-keyword">/dest/</span>foo</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av <span class="string">/src/foo</span> <span class="string">/dest</span></span><br><span class="line">rsync -av <span class="string">/src/foo/</span> <span class="string">/dest/foo</span></span><br></pre></td></tr></table></figure>
 <p>但是对于指向主机或者模块的地址，并不要求一个斜杠来拷贝默认文件夹的内容，比如，下面两个例子就都是把文件的内容拷贝到<code>/dest</code>中:</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rsync -av <span class="symbol">host:</span> /dest</span><br><span class="line">rsync -av host::<span class="class"><span class="keyword">module</span> /<span class="title">dest</span></span></span><br></pre></td></tr></table></figure>
 <p>你可以使用本地模式的rsync，就是其中的两个地址都不带有<code>:</code>。就像一个改进过的拷贝命令。</p>
@@ -239,7 +235,7 @@ var _hmt = _hmt || [];
 <li>不能指定<code>--rsh(-e)</code>选项</li>
 </ul>
 <p>一个拷贝远程主机中模块<code>src</code>中的所有文件的例子</p>
-<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">rsync -av host::</span>src /dets</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av host::src /dets</span><br></pre></td></tr></table></figure>
 <p>如果需要认证的话，你会被要求输入密码。你可以设置一个<code>RSYNC_PASSWD</code>的环境变量来避免这个过程。或者使用<code>--password-file</code>，这个方法对于在脚本中使用rsync有用。</p>
 <p>在某些系统中，环境变量对所有用户都是可见的，在这种系统中，推荐使用<code>--password-file</code>。</p>
 <p>设置环境变量<code>RSYNC_PROXY</code>来进行代理，格式为<code>hostname:port</code>。这个代理必须能够支持对端口873的连接。</p>
@@ -248,7 +244,7 @@ var _hmt = _hmt || [];
 <p>需要明确地设置远程shell程序，用<code>--rsh==COMMAND</code>选项。在环境变量中设置<code>RSYNC_RSH</code>并不会打开这个功能。例如</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av --rsh=ssh host::<span class="class"><span class="keyword">module</span> /<span class="title">dest</span></span></span><br></pre></td></tr></table></figure>
 <p>可以指定ssh的用户</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av -<span class="literal">e</span> <span class="string">"ssh -l ssh-user"</span> rsync-user<span class="meta">@host</span><span class="type">::</span><span class="keyword">module</span> /dest</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync -av -e <span class="string">"ssh -l ssh-user"</span> rsync-user@host::<span class="keyword">module</span> /dest</span><br></pre></td></tr></table></figure>
 <p><code>ssh-user</code>会被用于<code>ssh</code>的登陆，而<code>rsync-user</code>会被用于模块的登陆</p>
 <h2 id="可以对传输顺序排序"><a href="#可以对传输顺序排序" class="headerlink" title="可以对传输顺序排序"></a>可以对传输顺序排序</h2><p>rsync会把指定的文件名放入它内部的传输列表中，并排序。这个可以快速地筛除同名文件，会跟用户给出的文件顺序不同。</p>
 <h2 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h2><ul>
@@ -290,7 +286,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2016/08/23/rsync/" data-id="cji01c5l3007eppgebiorkjab" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2016/08/23/rsync/" data-id="cji5qzcyz00e0c2geoppdcl9u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -442,6 +438,25 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/06/07/Deep contextualized word representation/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/NLP.png)" alt="Deep contextualized word representations" class="thumbnail-image"></span>
+    
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Papers/">Papers</a></p>
+                            <p class="item-title"><a href="/2018/06/07/Deep contextualized word representation/" class="title">Deep contextualized word representations</a></p>
+                            <p class="item-date"><time datetime="2018-06-07T09:05:14.655Z" itemprop="datePublished">2018-06-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/06/04/Toward Controlled Generation of Text/" class="thumbnail">
     
     
@@ -515,25 +530,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/21/Deep Learning环境配置/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/linux.jpg)" alt="Deep Learning 环境配置" class="thumbnail-image"></span>
-    
-    
-</a>
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Howto/">Howto</a></p>
-                            <p class="item-title"><a href="/2018/03/21/Deep Learning环境配置/" class="title">Deep Learning 环境配置</a></p>
-                            <p class="item-date"><time datetime="2018-03-21T05:07:33.264Z" itemprop="datePublished">2018-03-21</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -543,7 +539,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Howto/">Howto</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Learning/">Learning</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/My-Projects/">My Projects</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Papers/">Papers</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programmer/">Programmer</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tensorflow/">Tensorflow</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -553,7 +549,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
