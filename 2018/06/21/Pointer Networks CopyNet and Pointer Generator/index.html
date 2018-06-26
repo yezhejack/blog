@@ -17,7 +17,7 @@
 <meta property="og:description" content="Papers以下三篇论文都是通过copy机制，想要能够在生成阶段生成输入中的词语，这样就可以组合出更多的句式。我们想看看这个方法能否应用到对话生成中去。第一篇论文是后两篇的基础。  Pointer Networks Incorporating Copying Mechanism in Sequence-to-Sequence Learning Get To The Point: Summariza">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-06-26T06:50:59.411Z">
+<meta property="og:updated_time" content="2018-06-26T06:59:04.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pointer Networks CopyNet and Pointer Generator">
 <meta name="twitter:description" content="Papers以下三篇论文都是通过copy机制，想要能够在生成阶段生成输入中的词语，这样就可以组合出更多的句式。我们想看看这个方法能否应用到对话生成中去。第一篇论文是后两篇的基础。  Pointer Networks Incorporating Copying Mechanism in Sequence-to-Sequence Learning Get To The Point: Summariza">
@@ -195,16 +195,14 @@ var _hmt = _hmt || [];
 <h1 id="Get-To-The-Point-Summarization-with-Pointer-Generator-Networks"><a href="#Get-To-The-Point-Summarization-with-Pointer-Generator-Networks" class="headerlink" title="Get To The Point: Summarization with Pointer-Generator Networks"></a>Get To The Point: Summarization with Pointer-Generator Networks</h1><h2 id="Pointer-generator-network"><a href="#Pointer-generator-network" class="headerlink" title="Pointer-generator network"></a>Pointer-generator network</h2><p>这篇论文主要是为了解决摘要生成，同时他也说了和CopyNet比较接近，所以可以对比看看。</p>
 <p>主要是将attention seq2seq模型和pointer networks结合在一起，中间计算一个$p_{gen}$来表示每一步的生成概率，依据的是每一步的context vector，decode的状态以及decoder的输入。（但是如果OOV的话输入的表示是什么呢？）。</p>
 <p>每个词的生成概率为</p>
-<p><center><br><span>$P(w) = p_{gen}P_{vocab}(w) + (1 - p_{gen}) \sum_{i:w_i = w} a_i^t$</span><!-- Has MathJax --><br></center><br>其中<span>$a_i^t$</span><!-- Has MathJax -->是attention机制在输入词的权重。代表了copy某个词的概率，如果是OOV的词，则前一项完全为0，如果不是出现在输入中的词，则后一项完全为0。</p>
-<h2 id="Coverage-mechanism"><a href="#Coverage-mechanism" class="headerlink" title="Coverage mechanism"></a>Coverage mechanism</h2><p>为了解决摘要过程中重复的问题，引入了一个覆盖度的机制。在覆盖度模型中，始终维持一个<code>coverage vector</code>，记做$c^t$。</p>
-
+<center><br><span>$P(w) = p_{gen}P_{vocab}(w) + (1 - p_{gen}) \sum_{i:w_i = w} a_i^t$</span><!-- Has MathJax --><br></center><br>其中<span>$a_i^t$</span><!-- Has MathJax -->是attention机制在输入词的权重。代表了copy某个词的概率，如果是OOV的词，则前一项完全为0，如果不是出现在输入中的词，则后一项完全为0。<br><br>## Coverage mechanism<br>为了解决摘要过程中重复的问题，引入了一个覆盖度的机制。在覆盖度模型中，始终维持一个<code>coverage vector</code>，记做$c^t$。<br><center><br><span>$c^t = \sum_{t\prime=0}^{t-1} a^{t\prime}$</span><!-- Has MathJax --><br></center><br>刚开始的时候，这个向量是全为0，然后每次再将这个向量输入到注意力机制中去影响注意力机制的输出。（个人猜测这个其实没有起到什么作用，因为理论上这个注意力会被RNN的序列建模性质学习到，如果说是一个正则项的话，那么没有任何的惩罚，不负责任地严重怀疑存在信息冗余）。这里作者说有必要引入一个<code>coverage loss</code>来惩罚重复的注意力机制。<br><center><br><span>$covloss_t = \sum_{i} min(a_i^t, c_i^t)$</span><!-- Has MathJax --><br></center>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhe.org/2018/06/21/Pointer Networks CopyNet and Pointer Generator/" data-id="cjivc1ag9003z78gemr4563dj" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/06/21/Pointer Networks CopyNet and Pointer Generator/" data-id="cjivd1oxx003zdege6jt735ga" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
