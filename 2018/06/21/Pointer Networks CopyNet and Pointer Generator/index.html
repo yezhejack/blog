@@ -17,7 +17,7 @@
 <meta property="og:description" content="Papers以下三篇论文都是通过copy机制，想要能够在生成阶段生成输入中的词语，这样就可以组合出更多的句式。我们想看看这个方法能否应用到对话生成中去。第一篇论文是后两篇的基础。  Pointer Networks Incorporating Copying Mechanism in Sequence-to-Sequence Learning Get To The Point: Summariza">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-06-26T06:25:42.605Z">
+<meta property="og:updated_time" content="2018-06-26T06:46:22.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pointer Networks CopyNet and Pointer Generator">
 <meta name="twitter:description" content="Papers以下三篇论文都是通过copy机制，想要能够在生成阶段生成输入中的词语，这样就可以组合出更多的句式。我们想看看这个方法能否应用到对话生成中去。第一篇论文是后两篇的基础。  Pointer Networks Incorporating Copying Mechanism in Sequence-to-Sequence Learning Get To The Point: Summariza">
@@ -192,6 +192,10 @@ var _hmt = _hmt || [];
 </ol>
 <h2 id="CopyNet"><a href="#CopyNet" class="headerlink" title="CopyNet"></a>CopyNet</h2><p>为了解决这个问题，他们提出了CopyNet。这个网路有两个机制，一个是生成模式，另一个则是拷贝模式。CopyNet的Encoder部分也是一个双向的RNN，然后用每个word对应的隐状态作为每个字的表示，同时记做M。通常的Encoder-Decoder框架在decode阶段更新decoder隐状态的时候不回使用到M，也就是Encoder生成的表示。</p>
 <p>最关键的是如何表示输入的每一个词，这就需要M了，因为每一个token都可以得到一个表示它上下文的表示，因此这个表示可以用来计算当前这个token到底有多少概率可以被copy到目前的decode位置上。</p>
+<h1 id="Get-To-The-Point-Summarization-with-Pointer-Generator-Networks"><a href="#Get-To-The-Point-Summarization-with-Pointer-Generator-Networks" class="headerlink" title="Get To The Point: Summarization with Pointer-Generator Networks"></a>Get To The Point: Summarization with Pointer-Generator Networks</h1><p>这篇论文主要是为了解决摘要生成，同时他也说了和CopyNet比较接近，所以可以对比看看。</p>
+<p>主要是将attention seq2seq模型和pointer networks结合在一起，中间计算一个$p_{gen}$来表示每一步的生成概率，依据的是每一步的context vector，decode的状态以及decoder的输入。（但是如果OOV的话输入的表示是什么呢？）。</p>
+<p>每个词的生成概率为</p>
+<p><center><br><span>$P(w) = p_{gen}P_{vocab}(w) + (1 - p_{gen}) \sum_{i:w_i = w} a_i^t$</span><!-- Has MathJax --><br></center><br>其中<span>$a_i^t$</span><!-- Has MathJax -->是attention机制在输入词的权重。代表了copy某个词的概率，如果是OOV的词，则前一项完全为0，如果不是出现在输入中的词，则后一项完全为0。</p>
 
         </div>
         <footer class="article-footer">
@@ -199,7 +203,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/06/21/Pointer Networks CopyNet and Pointer Generator/" data-id="cjivb4rg6003r12gecbadqf3b" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/06/21/Pointer Networks CopyNet and Pointer Generator/" data-id="cjivbw0ek003w5uge8ryptlde" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
