@@ -17,7 +17,7 @@
 <meta property="og:description" content="Softmax and Log-Softmax机器学习中为了求导和计算方便，会对probability做取对数的操作，比如softmax和log-softmax的关系。log-softmax看似等价于先做一个softmax的操作，然后再做一个log的操作。可是如果有些prob在做了softmax之后无限接近于0，那么就会导致计算机出现log(0)的问题。在Deep Learning书中的第四章，这">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-07-10T04:58:59.363Z">
+<meta property="og:updated_time" content="2018-07-10T07:58:36.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistics Regression and Softmax">
 <meta name="twitter:description" content="Softmax and Log-Softmax机器学习中为了求导和计算方便，会对probability做取对数的操作，比如softmax和log-softmax的关系。log-softmax看似等价于先做一个softmax的操作，然后再做一个log的操作。可是如果有些prob在做了softmax之后无限接近于0，那么就会导致计算机出现log(0)的问题。在Deep Learning书中的第四章，这">
@@ -186,7 +186,6 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <h1 id="Softmax-and-Log-Softmax"><a href="#Softmax-and-Log-Softmax" class="headerlink" title="Softmax and Log-Softmax"></a>Softmax and Log-Softmax</h1><p>机器学习中为了求导和计算方便，会对probability做取对数的操作，比如softmax和log-softmax的关系。<br>log-softmax看似等价于先做一个softmax的操作，然后再做一个log的操作。可是如果有些prob在做了softmax之后无限接近于0，那么就会导致计算机出现log(0)的问题。在Deep Learning书中的第四章，这被叫做<code>underflow</code>问题。</p>
 <p>对于softmax来说，如果一个数是一个非常负的负数（绝对值很大），那么对它的exp操作会被计算机约等于0，如果所有的激活值都是这样的数，就会出现除0错误。解决方法是取出激活值中最大的一个，然后让每个激活值都减去它，这样就至少保证一个数在exp计算后为1，解决了除零问题。</p>
-<p>这里还有一个小问题，就是当我们上面说的例子要进行log运算的时候（我们的目的是拿到log-softmax的值）。那么会出现log（0）的操作，这个算出来的值为负无穷。</p>
 
         </div>
         <footer class="article-footer">
@@ -194,7 +193,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/07/10/Logistics Regression and Softmax/" data-id="cjjfely3y002bpjge4rtf19p4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/07/10/Logistics Regression and Softmax/" data-id="cjjfenji8002z28ge6vfux9c5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
