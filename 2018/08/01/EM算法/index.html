@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-01T08:06:46.945Z">
+<meta property="og:updated_time" content="2018-08-01T08:07:09.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -186,14 +186,14 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
             <p>EM算法的全称是<code>Expectation Maximization algorithm</code>。它主要是为了解决存在隐变量<code>Z</code>的情况下如何去估计$P(Y|\theta)$。<br>在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。</p>
 <h1 id="三硬币模型"><a href="#三硬币模型" class="headerlink" title="三硬币模型"></a>三硬币模型</h1><p>首先先看<code>Bernoulli Distribution</code>的一些定义，比如一个硬币正面计作<code>Y=1</code>反面计作<code>Y=0</code>，抛一枚硬币，是正面的概率为$\Phi$。那么就有</p>
-<center><br><span>$P(Y=y) = \Phi^y(1-\Phi)^{(1-y)}$</span><!-- Has MathJax --><br></center><br>在三硬币模型中<br><center><br><span>$P(Y|\theta) = \sum_(Z) P(Y,Z|\theta)P(Z|\theta)$</span><!-- Has MathJax --><br></center>
+<center><br><span>$P(Y=y) = \Phi^y(1-\Phi)^{(1-y)}$</span><!-- Has MathJax --><br></center><br>在三硬币模型中<br><center><br><span>$P(Y|\theta) = \sum_{Z} P(Y,Z|\theta)P(Z|\theta)$</span><!-- Has MathJax --><br></center>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkaulbiw0019eygedb1in0l3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkaulub40019fjgegptiexel" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
