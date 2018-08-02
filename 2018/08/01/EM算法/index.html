@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-02T08:43:57.419Z">
+<meta property="og:updated_time" content="2018-08-02T08:44:56.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -205,11 +205,12 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 = \sum_Z P(Y|Z,\theta^{(i)}) log\frac{\sum_Z P(Y|Z,\theta)P(Z|\theta)}{\sum_Z P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$$</span><!-- Has MathJax --><br></center>
 
 <p>由此我们可以得到一个$L(\theta)$的一个下界</p>
-<center><br><span>$B(\theta, \theta^{(i)}) = L(\theta^{(i)}) + \sum_Z P(Y|Z,\theta^{(i)}) log\frac{\sum_Z P(Y|Z,\theta)P(Z|\theta)}{\sum_Z P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$</span><!-- Has MathJax --><br></center><br>同时<br><center><br><span>$B(\theta^{(i)}, \theta^{(i)}) = L(\theta^{(i)})$</span><!-- Has MathJax --><br></center><br>所以在$i+1$步迭代的时候<br><center><br><span>$$\theta^{(i+1)} = argmax_{\theta} B(\theta, \theta^{(i)}) \\
+<p><center><br><span>$B(\theta, \theta^{(i)}) = L(\theta^{(i)}) + \sum_Z P(Y|Z,\theta^{(i)}) log\frac{\sum_Z P(Y|Z,\theta)P(Z|\theta)}{\sum_Z P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$</span><!-- Has MathJax --><br></center><br>同时</p>
+<p><center><br><span>$B(\theta^{(i)}, \theta^{(i)}) = L(\theta^{(i)})$</span><!-- Has MathJax --><br></center><br>所以在$i+1$步迭代的时候</p>
+<p><center><br><span>$$\theta^{(i+1)} = argmax_{\theta} B(\theta, \theta^{(i)}) \\
 = argmax_{\theta} (\sum_Z P(Z|Y, \theta^{(i)})log(P(Y|Z, \theta)P(Z|\theta))) \\
 = argmax_{\theta} (\sum_Z P(Z|Y, \theta^{(i)}) logP(Y,Z|\theta)) \\
-= argmax_{\theta} Q(\theta, \theta^{(i)})$$</span><!-- Has MathJax --><br></center>
-
+= argmax_{\theta} Q(\theta, \theta^{(i)})$$</span><!-- Has MathJax --><br></center><br>因此Q函数实际上就是去掉了B函数在求极大值时不含参数的项。</p>
 <h1 id="Gaussian-Mixture-Model"><a href="#Gaussian-Mixture-Model" class="headerlink" title="Gaussian Mixture Model"></a>Gaussian Mixture Model</h1><p>可以从这个模型来理解EM算法</p>
 
         </div>
@@ -218,7 +219,7 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkcbczol0019u3geh7i9tfnm" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkcbe9ct0019v0gewt7arc2a" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
