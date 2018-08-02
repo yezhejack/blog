@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-02T08:08:03.483Z">
+<meta property="og:updated_time" content="2018-08-02T08:14:43.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -191,7 +191,10 @@ var _hmt = _hmt || [];
 <p>隐变量指的是针对分布$P(Z|\theta)$采样出来的变量，这里记作$\mu_i$，其中$i$表示第$i$的样本，表示这个是由硬币B还是硬币C得到的。</p>
 <center><br><span>$\mu_j^{(i+1)} = \frac{\pi_{(i)} (p{(i)})^{y_j} (1-p^{(i)})^{(1-y_j)}}{\pi_{(i)} (p{(i)})^{y_j} (1-p^{(i)})^{(1-y_j)} + (1-\pi_{(i)}) (q{(i)})^{y_j} (1-q^{(i)})^{(1-y_j)}}$</span><!-- Has MathJax --><br></center>
 
-<p>这一步是对隐变量的</p>
+<p>这一步是对隐变量的期望的估计，这就是EM算法的E步。接下去是M步，这一步是对Q函数的最大化</p>
+<center><br><span>$$\pi^{(i+1)} = \frac{1}{n} \sum_{j=1}^{n} \mu_j^{(i+1)}
+p^{(i+1)} = \frac{\sum_{j=1}^n \mu_j^{(i+1)} y_j}{\sum_{j=1}^n \mu_j^{(i+1)}$$</span><!-- Has MathJax --><br></center>
+
 <h1 id="Gaussian-Mixture-Model"><a href="#Gaussian-Mixture-Model" class="headerlink" title="Gaussian Mixture Model"></a>Gaussian Mixture Model</h1><p>可以从这个模型来理解EM算法</p>
 
         </div>
@@ -200,7 +203,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkca2t7u0019glgeuui9tywx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkcabgfs0019iyge4gmeliud" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
