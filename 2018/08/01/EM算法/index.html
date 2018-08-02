@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-01T08:11:48.914Z">
+<meta property="og:updated_time" content="2018-08-02T08:05:35.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -188,7 +188,9 @@ var _hmt = _hmt || [];
 <h1 id="三硬币模型"><a href="#三硬币模型" class="headerlink" title="三硬币模型"></a>三硬币模型</h1><p>首先先看<code>Bernoulli Distribution</code>的一些定义，比如一个硬币正面计作<code>Y=1</code>反面计作<code>Y=0</code>，抛一枚硬币，是正面的概率为$\Phi$。那么就有</p>
 <center><br><span>$P(Y=y) = \Phi^y(1-\Phi)^{(1-y)}$</span><!-- Has MathJax --><br></center><br>在三硬币模型中<br><center><br><span>$P(Y|\theta) = \sum_{Z} P(Y,Z|\theta)P(Z|\theta) = \prod_{j}^{n} [\pi p^y_j (1-p)^{1-y_j} + (1-\pi)q^{y_j}(1-q)^{1-y_j}]$</span><!-- Has MathJax --><br></center>
 
-<p>隐变量指的是针对分布$P(Z|\theta)$采样出来的变量</p>
+<p>隐变量指的是针对分布$P(Z|\theta)$采样出来的变量，这里记作$\mu_i$，其中$i$表示第$i$的样本，表示这个是由硬币B还是硬币C得到的。</p>
+<p><center><br><span>$\mu_j^{(i+1)} = \frac{\pi_{(i)} (p{(i)})^{y_j} (1-p^{(i)})^{(1-y_j)}}{\pi_{(i)} (p{(i)})^{y_j} (1-p^{(i)})^{(1-y_j)} + (1-\pi_{(i)}) (q{(i)})^{y_j} (1-q^{(i)})^{(1-y_j)}}$</span><!-- Has MathJax --><br></center></p>
+<h1 id="Gaussian-Mixture-Model"><a href="#Gaussian-Mixture-Model" class="headerlink" title="Gaussian Mixture Model"></a>Gaussian Mixture Model</h1><p>可以从这个模型来理解EM算法</p>
 
         </div>
         <footer class="article-footer">
@@ -196,7 +198,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkaursdy0019hpger122502w" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkc9zths0011fbgeoecvh559" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
