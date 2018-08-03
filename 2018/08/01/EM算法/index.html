@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-03T05:36:43.930Z">
+<meta property="og:updated_time" content="2018-08-03T05:38:15.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -223,10 +223,12 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 
 <p>此处需要区分一下$P(Z|Y, \theta^{(i)})$和$P(Z|\theta^{(i)})$，前者是我观测到$Y$的情况下，判断这个来自哪个分布，而后者则是在未观测到$Y$值的情况下就作出判断，所以后者其实对应的就是$\alpha_k$，前者我们给一个符号$\gamma_{jk}$，表示第$P(Z=k|Y=y_j, \theta^{(i)})$的情况下的估计。</p>
 <p>因为对应到Q函数中$log$前的一项，所以需要这个东西。因为我们在做第$i+1$步更新的时候，$\theta^{(i)}$实际上就已经知道了，所以我们对于$P(Z=k|Y=y_j, \theta^{(i)})$也可以估计了。具体如下</p>
-<p><center><br><span>$$P(Z=k|Y=y_j, \theta^{(i)}) &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{P(Y=y_j|\theta^{(i)})} \\
+<p><center><br><span>$$\begin{align}
+P(Z=k|Y=y_j, \theta^{(i)}) &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{P(Y=y_j|\theta^{(i)})} \\
 &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_Z P(Y=y_j, Z|\theta^{(i)})} \\
 &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_k P(Y=y_j, Z=k|\theta^{(i)})} \\
-&amp; = \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^K  \Phi(y_j|\theta_t^{(i)})}$$</span><!-- Has MathJax --><br></center><br>到这里就是E步了，有了这个东西我们就可以写出完整的Q函数了</p>
+&amp; = \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^K  \Phi(y_j|\theta_t^{(i)})}
+\end{align}$$</span><!-- Has MathJax --><br></center><br>到这里就是E步了，有了这个东西我们就可以写出完整的Q函数了</p>
 
         </div>
         <footer class="article-footer">
@@ -234,7 +236,7 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkdk42po00196igetm3ljo53" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkdk606j00197nge7pqagb2h" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
