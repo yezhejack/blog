@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-03T04:51:54.302Z">
+<meta property="og:updated_time" content="2018-08-03T04:53:15.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -208,9 +208,9 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 <center><br><span>$B(\theta, \theta^{(i)}) = L(\theta^{(i)}) + \sum_Z P(Y|Z,\theta^{(i)}) log\frac{\sum_Z P(Y|Z,\theta)P(Z|\theta)}{\sum_Z P(Y|Z,\theta^{(i)})P(Y|\theta^{(i)})}$</span><!-- Has MathJax --><br></center><br>同时<br><center><br><span>$B(\theta^{(i)}, \theta^{(i)}) = L(\theta^{(i)})$</span><!-- Has MathJax --><br></center><br>所以在$i+1$步迭代的时候<br><center><br><span>$$\theta^{(i+1)} = argmax_{\theta} B(\theta, \theta^{(i)}) \\
 = argmax_{\theta} (\sum_Z P(Z|Y, \theta^{(i)})log(P(Y|Z, \theta)P(Z|\theta))) \\
 = argmax_{\theta} (\sum_Z P(Z|Y, \theta^{(i)}) logP(Y,Z|\theta)) \\
-= argmax_{\theta} Q(\theta, \theta^{(i)})$$</span><!-- Has MathJax --><br></center><br>因此Q函数实际上就是去掉了B函数在求极大值时不含参数的项。<br><br># Gaussian Mixture Model<br>比如我们有三个一维的高斯模型<br><center><br><span>$$\theta_1 = (\alpha_1, \mu_1, \sigma_1^2) \\
-\theta_2 = (\alpha_2, \mu_2, \sigma_2^2) \\
-\theta_3 = (\alpha_3, \mu_3, \sigma_3^2)$$</span><!-- Has MathJax --><br></center>
+= argmax_{\theta} Q(\theta, \theta^{(i)})$$</span><!-- Has MathJax --><br></center><br>因此Q函数实际上就是去掉了B函数在求极大值时不含参数的项。<br><br># Gaussian Mixture Model<br>比如我们有三个一维的高斯模型<br><center><br><span>$$\theta_1 &amp;= (\alpha_1, \mu_1, \sigma_1^2) \\
+\theta_2 &amp;= (\alpha_2, \mu_2, \sigma_2^2) \\
+\theta_3 &amp;= (\alpha_3, \mu_3, \sigma_3^2)$$</span><!-- Has MathJax --><br></center>
 
 <p>对于一个观测序列$y_1, y_2,…, y_N$，从高斯混合中观测到$y_i$的概率是</p>
 <center><br><span>$P(y_i|\theta_1, \theta_2, \theta_3) = \sum_{k} \alpha_k \Phi(y_i|\mu_k, \sigma_k)$</span><!-- Has MathJax --><br></center>
@@ -223,11 +223,10 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 
 <p>此处需要区分一下$P(Z|Y, \theta^{(i)})$和$P(Z|\theta^{(i)})$，前者是我观测到$Y$的情况下，判断这个来自哪个分布，而后者则是在未观测到$Y$值的情况下就作出判断，所以后者其实对应的就是$\alpha_k$，前者我们给一个符号$\gamma_{jk}$，表示第$P(Z=k|Y=y_j, \theta^{(i)})$的情况下的估计。</p>
 <p>因为对应到Q函数中$log$前的一项，所以需要这个东西。因为我们在做第$i+1$步更新的时候，$\theta^{(i)}$实际上就已经知道了，所以我们对于$P(Z=k|Y=y_j, \theta^{(i)})$也可以估计了。具体如下</p>
-<center><br><span>$$P(Z=k|Y=y_j, \theta^{(i)}) &amp;= \frac{P(Z=k, Y=y_j|\theta^{(i)})}{P(Y=y_j|\theta^{(i)})} \\
+<p><center><br><span>$$P(Z=k|Y=y_j, \theta^{(i)}) &amp;= \frac{P(Z=k, Y=y_j|\theta^{(i)})}{P(Y=y_j|\theta^{(i)})} \\
 &amp;= \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_Z P(Y=y_j, Z|\theta^{(i)})} \\
 &amp;= \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_k P(Y=y_j, Z=k|\theta^{(i)})} \\
-&amp;= \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^k  \Phi(y_j|\theta_t^{(i)})}$$</span><!-- Has MathJax --><br></center>
-
+&amp;= \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^k  \Phi(y_j|\theta_t^{(i)})}$$</span><!-- Has MathJax --><br></center><br>到这里就是E步了，有了这个东西我们就可以写出完整的Q函数了</p>
 
         </div>
         <footer class="article-footer">
@@ -235,7 +234,7 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkdiig1p0019w1ge38lgxzb3" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkdik5kx0019x0gekjcqxjdi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
