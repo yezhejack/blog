@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-04T16:16:11.914Z">
+<meta property="og:updated_time" content="2018-08-04T16:17:35.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -229,7 +229,7 @@ q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+
 P(Z=k|Y=y_j, \theta^{(i)}) &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{P(Y=y_j|\theta^{(i)})} \\
 &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_Z P(Y=y_j, Z|\theta^{(i)})} \\
 &amp; = \frac{P(Z=k, Y=y_j|\theta^{(i)})}{\sum_k P(Y=y_j, Z=k|\theta^{(i)})} \\
-&amp; = \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^K  \Phi(y_j|\theta_t^{(i)})} \\
+&amp; = \frac{\alpha_k \Phi(y_j|\theta_k^{(i)})}{\sum_t^K \alpha_t \Phi(y_j|\theta_t^{(i)})} \\
 \gamma_{jk} &amp; = P(Z=k|Y=y_j, \theta^{(i)})
 \end{align}$$</span><!-- Has MathJax --><br></center><br>到这里就是E步了，有了这个东西我们就可以写出完整的Q函数了<br><center><br><span>$$\begin{align}
 P(Y, Z|\theta) &amp; = \prod_j^N P(Y=y_j, Z|\theta) \\
@@ -244,7 +244,7 @@ P(Y, Z|\theta) &amp; = \prod_j^N P(Y=y_j, Z|\theta) \\
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkfmee4w0011d3geaj67x3pw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkfmg32i0019eagelwb0vq1u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
