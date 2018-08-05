@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-05T02:47:44.393Z">
+<meta property="og:updated_time" content="2018-08-05T02:48:41.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -246,7 +246,7 @@ Q(\theta, \theta^{(i)}) &amp; = \sum_k^K n_k log \alpha_k + \sum_k^K \sum_j^N E(
 <center><br><span>$$\begin{align}
 \frac{\partial Q(\theta, \theta^{(i)})}{\partial \mu_k} &amp; = \frac{\partial \sum_j^N \frac{(-\gamma_{jk}(y_j-\mu_k)^2)}{2\sigma_k^2}}{\partial \mu_k} = \frac{\partial \sum_j^N \frac{\mu_k - y_j)^2}{2\sigma_k^2}}{\partial \mu_k} = 0 \\
 \sum_j^N \gamma_{jk}y_j &amp; = \sum_j^N \gamma_{jk} \mu_k \\
-\mu_k &amp; = \frac{\sum_j^N \gamma_{jk} y_j}{\sum_j^ \gamma_{jk}}
+\mu_k &amp; = \frac{\sum_j^N \gamma_{jk} y_j}{\sum_j^N \gamma_{jk}}
 \end{align}$$</span><!-- Has MathJax --><br></center>
 
 
@@ -256,7 +256,7 @@ Q(\theta, \theta^{(i)}) &amp; = \sum_k^K n_k log \alpha_k + \sum_k^K \sum_j^N E(
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkg8yhih00196zgeqb3xoft0" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkg8zogo00197vges8a1gtmr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
