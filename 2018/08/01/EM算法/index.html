@@ -17,7 +17,7 @@
 <meta property="og:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-08-05T04:00:15.619Z">
+<meta property="og:updated_time" content="2018-08-05T04:16:15.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法">
 <meta name="twitter:description" content="EM算法的全称是Expectation Maximization algorithm。它主要是为了解决存在隐变量Z的情况下如何去估计$P(Y|\theta)$。在实际中可能是对模型做极大思然估计，也可能是做极大后验概率的估计。资料来自李航的小蓝书的第九章，EM算法及其推广，因为在VAE模型中，如何去估计参数，也是参照了EM算法的思想。去优化对数似然函数的一个下界。 三硬币模型首先先看Bernoul">
@@ -261,7 +261,7 @@ Q(\theta, \theta^{(i)}) &amp; = \sum_k^K n_k log \alpha_k + \sum_k^K \sum_j^N E(
 \frac{\partial}{\partial \alpha_k} (Q(\theta, \theta^{(i)})) + \lambda(\sum_k \alpha_k - 1) &amp;= \frac{n_k}{\alpha_k} + \lambda = 0 \\
 \alpha_k &amp; = \frac{n_k}{-\lambda} \\
 \sum_k \alpha_k &amp; = \sum_k \frac{n_k}{-\lambda} \\
-\sum_k n_k = -\lambda
+\sum_k n_k &amp; = -\lambda
 \end{align}$$</span><!-- Has MathJax --><br></center>
 
         </div>
@@ -270,7 +270,7 @@ Q(\theta, \theta^{(i)}) &amp; = \sum_k^K n_k log \alpha_k + \sum_k^K \sum_j^N E(
 
 
 
-    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkgbjqfq0019ldgeiztn0s0s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/08/01/EM算法/" data-id="cjkgc4bhp0019p1ge4s3phsjw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
