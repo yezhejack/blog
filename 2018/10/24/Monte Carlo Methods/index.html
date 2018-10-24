@@ -17,7 +17,7 @@
 <meta property="og:description" content="Sampling and Monte Carlo MethodsWhy Sampling蒙特卡洛方法主要是为了计算出积分或者某些目标的近似值，通过随机采样的方式，这种在可求导的情况下可以提高计算速度。比如说用minibatch的方式来估计training loss。除此之外，有些时候还需要我们去估计intractable的值。 Basics of Monte Carlo Sampling$$s =">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/NLP.png">
-<meta property="og:updated_time" content="2018-10-24T06:05:32.955Z">
+<meta property="og:updated_time" content="2018-10-24T06:15:54.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Monte Carlo Methods">
 <meta name="twitter:description" content="Sampling and Monte Carlo MethodsWhy Sampling蒙特卡洛方法主要是为了计算出积分或者某些目标的近似值，通过随机采样的方式，这种在可求导的情况下可以提高计算速度。比如说用minibatch的方式来估计training loss。除此之外，有些时候还需要我们去估计intractable的值。 Basics of Monte Carlo Sampling$$s =">
@@ -185,15 +185,16 @@ var _hmt = _hmt || [];
         </div>
         <div class="article-entry" itemprop="articleBody">
             <h1 id="Sampling-and-Monte-Carlo-Methods"><a href="#Sampling-and-Monte-Carlo-Methods" class="headerlink" title="Sampling and Monte Carlo Methods"></a>Sampling and Monte Carlo Methods</h1><h2 id="Why-Sampling"><a href="#Why-Sampling" class="headerlink" title="Why Sampling"></a>Why Sampling</h2><p>蒙特卡洛方法主要是为了计算出积分或者某些目标的近似值，通过随机采样的方式，这种在可求导的情况下可以提高计算速度。比如说用minibatch的方式来估计training loss。除此之外，有些时候还需要我们去估计intractable的值。</p>
-<h2 id="Basics-of-Monte-Carlo-Sampling"><a href="#Basics-of-Monte-Carlo-Sampling" class="headerlink" title="Basics of Monte Carlo Sampling"></a>Basics of Monte Carlo Sampling</h2><center><br><span>$$s = \sum_x p(x)f(x) = E_p[f(x)] \\
-s = \int p(x)f(x) dx = E_p[f(x)]$$</span><!-- Has MathJax --><br></center>
+<h2 id="Basics-of-Monte-Carlo-Sampling"><a href="#Basics-of-Monte-Carlo-Sampling" class="headerlink" title="Basics of Monte Carlo Sampling"></a>Basics of Monte Carlo Sampling</h2><p><center><br><span>$$s = \sum_x p(x)f(x) = E_p[f(x)] \\
+s = \int p(x)f(x) dx = E_p[f(x)]$$</span><!-- Has MathJax --><br></center><br>当我们可以从$p(x)$中采样$x$的时候，我们可以根据计算的$f(x)$来估计出上面的两个连续和离散积分。</p>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://yezhe.org/2018/10/24/Monte Carlo Methods/" data-id="cjnmr97it003l4gge7ysqa3id" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/10/24/Monte Carlo Methods/" data-id="cjnmrmb4a003s6ige5127vive" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
