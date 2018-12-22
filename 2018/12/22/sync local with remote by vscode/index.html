@@ -8,19 +8,19 @@
     
         <meta name="keywords" content="linux,vscode" />
     
-    <meta name="description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  extensions in vscode. 123Aftering installing and reloading the extension, for Ma">
+    <meta name="description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  sftp extensions in vscode.Aftering installing and reloading the extension, for M">
 <meta name="keywords" content="linux,vscode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sync local with remote by vscode">
 <meta property="og:url" content="http://yezhe.org/2018/12/22/sync local with remote by vscode/index.html">
 <meta property="og:site_name" content="Zhe Ye - Home Page">
-<meta property="og:description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  extensions in vscode. 123Aftering installing and reloading the extension, for Ma">
+<meta property="og:description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  sftp extensions in vscode.Aftering installing and reloading the extension, for M">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yezhe.org/img/2018122201.jpg">
-<meta property="og:updated_time" content="2018-12-22T05:26:32.162Z">
+<meta property="og:updated_time" content="2018-12-22T05:29:11.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sync local with remote by vscode">
-<meta name="twitter:description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  extensions in vscode. 123Aftering installing and reloading the extension, for Ma">
+<meta name="twitter:description" content="I want to use vscode as my main code editor.I need to sync my code from local to the remote GPU server.I choose to use  sftp extensions in vscode.Aftering installing and reloading the extension, for M">
 <meta name="twitter:image" content="http://yezhe.org/img/2018122201.jpg">
 <meta name="twitter:creator" content="@JackYezhe">
 <link rel="publisher" href="yezhejack@gmail.com">
@@ -184,8 +184,8 @@ var _hmt = _hmt || [];
 
         </div>
         <div class="article-entry" itemprop="articleBody">
-            <p>I want to use vscode as my main code editor.<br>I need to sync my code from local to the remote GPU server.<br>I choose to use  <figure class="highlight plain"><figcaption><span>extensions in vscode. </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Aftering installing and reloading the extension, for Mac users, press ```cmd+shift+p``` and choose ```SFTP:Config```.</span><br><span class="line"></span><br><span class="line">It&apos;s an important feature to sync one code copy to multiple servers.</span><br></pre></td></tr></table></figure></p>
-<p>[<br>    {<br>        “name”: “server1”,<br>        “context”: “server1”,<br>        “protocol”: “sftp”,<br>        “host”: “server1”,<br>        “port”: 22,<br>        “username”: “yezhe”,<br>        “remotePath”: “/home/yezhe/workspace/project”,<br>        “privateKeyPath”: “~/.ssh/id_rsa”,<br>        “ignore”: [“.vscode”, “.git”, “.DS_Store”, “<strong>pycache</strong>“]<br>    },<br>    {<br>        “name”: “server2”,<br>        “context”: “server2”,<br>        “protocol”: “sftp”,<br>        “host”: “server2”,<br>        “port”: 22,<br>        “username”: “yezhe”,<br>        “remotePath”: “/home/yezhe/workspace/project”,<br>        “privateKeyPath”: “~/.ssh/id_rsa”,<br>        “ignore”: [“.vscode”, “.git”, “.DS_Store”, “<strong>pycache</strong>“]<br>    }<br>]<br><code>** It&#39;s important to give unique string in</code>context<code>`</code> fields or only the last context will be used **</p>
+            <p>I want to use vscode as my main code editor.<br>I need to sync my code from local to the remote GPU server.<br>I choose to use  <code>sftp</code> extensions in vscode.<br>Aftering installing and reloading the extension, for Mac users, press <code>cmd+shift+p</code> and choose <code>SFTP:Config</code>.</p>
+<p>It’s an important feature to sync one code copy to multiple servers.<br>‘’’<br>[<br>    {<br>        “name”: “server1”,<br>        “context”: “server1”,<br>        “protocol”: “sftp”,<br>        “host”: “server1”,<br>        “port”: 22,<br>        “username”: “yezhe”,<br>        “remotePath”: “/home/yezhe/workspace/project”,<br>        “privateKeyPath”: “~/.ssh/id_rsa”,<br>        “ignore”: [“.vscode”, “.git”, “.DS_Store”, “<strong>pycache</strong>“]<br>    },<br>    {<br>        “name”: “server2”,<br>        “context”: “server2”,<br>        “protocol”: “sftp”,<br>        “host”: “server2”,<br>        “port”: 22,<br>        “username”: “yezhe”,<br>        “remotePath”: “/home/yezhe/workspace/project”,<br>        “privateKeyPath”: “~/.ssh/id_rsa”,<br>        “ignore”: [“.vscode”, “.git”, “.DS_Store”, “<strong>pycache</strong>“]<br>    }<br>]<br>‘’’<br><strong> It’s important to give unique string in <code>context</code> fields or only the last context will be used </strong></p>
 
         </div>
         <footer class="article-footer">
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://yezhe.org/2018/12/22/sync local with remote by vscode/" data-id="cjpz0u6nz008iaxgeauczc4cf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yezhe.org/2018/12/22/sync local with remote by vscode/" data-id="cjpz0xgyd008kc5gegjqxvubz" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
